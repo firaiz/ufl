@@ -1,0 +1,9 @@
+{
+  "database" : {
+    "dsn" : ""
+  },
+  "template" : {
+    "engine" : "Smarty"
+
+  }
+}

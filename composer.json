@@ -1,0 +1,25 @@
+{
+  "name": "anysys/framework",
+  "description": "anysys framework",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Kenichi Yoshida",
+      "email": "yoshida@anysys.jp"
+    }
+  ],
+  "config" : {
+    "vendor-dir" : "library/vendor"
+  },
+  "require": {
+    "smarty/smarty": "~2.6",
+    "doctrine/dbal" : "~2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ays\\" : "library/Ays",
+      "Service\\" : "class"
+    }
+  }
+}

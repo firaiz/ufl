@@ -6,7 +6,6 @@ use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
 
 class Database
-    extends Connection
 {
     /** @var Connection */
     protected $connection;
@@ -40,27 +39,23 @@ class Database
             $config = Config::getInstance();
             if ($config->has('database.dsn')) {
                 $options = array('url' => $config->get('database.dsn'));
-            } else if ($config->has('database.servers')) {
-                $servers = $config->get('database.servers');
-                $options = array(
-                    'driver' => $config->get('database.driver'),
-                );
-                if (1 < count($servers) && $config->has('database.wrapper')) {
-                    $options['wrapperClass'] = $config->has('database.wrapper');
-                }
-                $options = array_merge($options, $servers);
             } else {
-                $options = array();
+                $options = $config->get('database');
             }
         }
 
-
-        if (is_object($this->connection) && is_a($this->connection, 'Connection')) {
-
+        if (is_object($this->connection) && $this->connection instanceof Connection) {
+            $params = $this->connection->getParams();
+            if (
+                isset($options['url']) && $options['url'] === $params['url'] ||
+                $options === $params
+            ) {
+                return $this->isConnected();
+            }
         }
 
         $this->connection = DriverManager::getConnection($options);
-        return $this->connection->isConnected();
+        return $this->isConnected();
     }
 
     /**

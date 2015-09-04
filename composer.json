@@ -13,6 +13,7 @@
     "vendor-dir" : "library/vendor"
   },
   "require": {
+    "php": ">=5.3.3",
     "smarty/smarty": "~3.1",
     "doctrine/dbal" : "~2.5"
   },

@@ -1,9 +1,32 @@
 {
+  "application" : {
+    "encoding" : "utf8",
+    "timezone" : "Asia/Tokyo",
+    "locale"   : "ja_JP.UTF-8"
+  },
   "database" : {
     "dsn" : ""
   },
-  "template" : {
-    "engine" : "Smarty"
-
+  "render" : {
+    "engine" : "Smarty",
+    "default" : {
+      "dir" : "",
+      "headers" : [],
+      "use-sub-dir" : true,
+      "auto-literal" : true
+    },
+    "cache" : {
+      "use" : false,
+      "dir" : "",
+      "lifetime" : 0
+    },
+    "compile" : {
+      "forced" : false,
+      "dir"    : ""
+    },
+    "debug" : {
+      "use" : false,
+      "use-url" : false
+    }
   }
 }

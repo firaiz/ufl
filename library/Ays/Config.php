@@ -53,7 +53,7 @@ class Config
         if (is_null($confPath) && defined('CONF_PATH')) {
             $confPath = CONF_PATH;
         } else if (!file_exists($confPath)) {
-            $confPath = dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR.'configs';
+            $confPath = Storage::getInstance()->getPath('configs');
         }
 
         if (is_null($confPath) || !file_exists($confPath)) {

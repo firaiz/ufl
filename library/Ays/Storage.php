@@ -37,7 +37,8 @@ class Storage
         }
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
 
         if (!(self::$instance instanceof static)) {
             self::$instance = new static();
@@ -46,19 +47,27 @@ class Storage
         return self::$instance;
     }
 
-    public function base() {
+    public function base()
+    {
         return $this->filePath;
     }
 
-    public function getPath($path) {
-        return realpath($this->base().self::DS.$path);
+    public function getPath($path)
+    {
+        return realpath($this->base() . self::DS . $this->replace($path));
     }
 
-    public function create($path, $permission = 0700) {
-        $dirPath = $this->base().self::DS.$path;
+    public function create($path, $permission = 0700)
+    {
+        $dirPath = $this->base() . self::DS . $this->replace($path);
         if (is_writable($this->base())) {
             return mkdir($dirPath, $permission, true);
         }
         return false;
+    }
+
+    protected function replace($path)
+    {
+        return str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);
     }
 }

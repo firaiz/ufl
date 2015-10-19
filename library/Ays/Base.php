@@ -10,9 +10,9 @@ namespace Ays;
 abstract class Base
 {
     /** @var array overwriting ok */
-    protected $singletons = array( 'conf' => 'Config', 'db' => 'Database');
+    protected $singletons = array( 'conf' => 'Config', 'db' => 'Database', 'view' => 'View');
     /** @var array overwriting ok */
-    protected $instances = array('request' => 'Request', 'view' => 'View');
+    protected $instances = array('request' => 'Request');
 
     final public function __construct() {
         $this->init();

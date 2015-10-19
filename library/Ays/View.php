@@ -9,6 +9,8 @@ class View
     protected static $_instance;
     /** @var ICompiler */
     protected $compiler;
+    /** @var array */
+    protected $headers = array();
 
     protected function __construct()
     {
@@ -19,6 +21,7 @@ class View
             $render['engine'] = 'Smarty';
         }
         $this->initCompiler($render['engine']);
+        $this->setHeaders($render['header']);
         $this->setConfigs($render['config']);
     }
 
@@ -76,6 +79,7 @@ class View
      */
     public function render($template)
     {
+        $this->renderHeaders();
         echo $this->compile($template);
     }
 
@@ -94,7 +98,11 @@ class View
      */
     public function toJSON($data)
     {
-        return json_encode($data);
+        $this->setHeaders(array(
+            'Content-Type' => 'application/json'
+        ));
+        $this->renderHeaders();
+        echo json_encode($data);
     }
 
     /**
@@ -115,14 +123,39 @@ class View
             $size = strlen($contents);
         }
 
-        header('Content-Disposition: inline; filename="' . $downloadFileName . '"');
-        header('Content-Length: ' . $size);
-        header('Content-Type: ' . $contentType);
+        $this->setConfigs(array(
+            'Content-Disposition' => 'inline; filename="' . $downloadFileName . '"',
+            'Content-Length' => $size,
+            'Content-Type' => $contentType
+        ));
 
+        $this->renderHeaders();
         if ($isFile) {
             readfile($contents);
         } else {
             echo $contents;
+        }
+    }
+
+    /**
+     * @param array $headers
+     */
+    public function setHeaders($headers)
+    {
+        foreach ($headers as $name => $value) {
+            $namedValues =& isset($this->headers[$name]) ? $this->headers[$name] : array();
+            foreach ((array) $value as $val) {
+                $namedValues[] = $val;
+            }
+        }
+    }
+
+    protected function renderHeaders()
+    {
+        foreach ($this->headers as $name => $values) {
+            foreach ($values as $value) {
+                header(sprintf('%s : %s', $name, $value));
+            }
         }
     }
 }

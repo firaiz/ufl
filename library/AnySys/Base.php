@@ -9,6 +9,7 @@ namespace AnySys;
  * @property Config $conf
  * @property View $view
  * @property Request $request
+ * @property Session $session
  */
 abstract class Base
 {

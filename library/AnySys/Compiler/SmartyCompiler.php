@@ -25,11 +25,9 @@ class SmartyCompiler implements ICompiler
     function setConfigs(array $configs)
     {
         $storage = Storage::getInstance();
+
         // general
-        $path = ArrayUtil::get($configs, 'general.dir');
-        if ($storage->create($path)) {
-            $this->smarty->setTemplateDir($path);
-        }
+        $this->smarty->setTemplateDir($storage->getPath(ArrayUtil::get($configs, 'general.dir'), true));
         $this->smarty->setAutoLiteral(ArrayUtil::get($configs, 'general.auto-literal'));
 
         // debug
@@ -37,19 +35,13 @@ class SmartyCompiler implements ICompiler
         $this->smarty->debugging_ctrl = ArrayUtil::get($configs, 'debug.use-url', false) ? 'URL' : 'NONE';
 
         // compile
-        $path = ArrayUtil::get($configs, 'compile.dir');
-        if ($storage->create($path)) {
-            $this->smarty->setCompileDir($path);
-        }
+        $this->smarty->setCompileDir($storage->getPath(ArrayUtil::get($configs, 'compile.dir'), true));
         $this->smarty->setForceCompile(ArrayUtil::get($configs, 'compile.forced', false));
         $this->smarty->use_sub_dirs = ArrayUtil::get($configs, 'compile.use-sub-dir', true);
 
         // cache
         $this->smarty->setCaching(ArrayUtil::get($configs, 'cache.use', true));
-        $path = ArrayUtil::get($configs, 'cache.dir');
-        if ($storage->create($path)) {
-            $this->smarty->setCacheDir($path);
-        }
+        $this->smarty->setCacheDir($storage->getPath(ArrayUtil::get($configs, 'cache.dir'), true));
         $this->smarty->setCacheLifetime(ArrayUtil::get($configs, 'cache.lifetime', 60));
     }
 

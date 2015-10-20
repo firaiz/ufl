@@ -21,11 +21,14 @@ class Storage
 {
     /** @var static */
     protected static $instance = null;
-
+    /** @var string base path */
     protected $filePath = null;
 
     const DS = DIRECTORY_SEPARATOR;
 
+    /**
+     * Storage constructor.
+     */
     protected function __construct()
     {
         $this->filePath = defined('BASE_DIR') ? BASE_DIR : dirname(dirname(dirname(__FILE__)));
@@ -37,6 +40,9 @@ class Storage
         }
     }
 
+    /**
+     * @return static
+     */
     public static function getInstance()
     {
 
@@ -47,16 +53,28 @@ class Storage
         return self::$instance;
     }
 
+    /**
+     * @return string
+     */
     public function base()
     {
         return $this->filePath;
     }
 
+    /**
+     * @param string $path
+     * @return string is fullpath
+     */
     public function getPath($path)
     {
         return realpath($this->base() . self::DS . $this->replace($path));
     }
 
+    /**
+     * @param string $path
+     * @param int $permission octet number
+     * @return bool
+     */
     public function create($path, $permission = 0700)
     {
         $dirPath = $this->base() . self::DS . $this->replace($path);
@@ -66,6 +84,10 @@ class Storage
         return false;
     }
 
+    /**
+     * @param string $path
+     * @return string
+     */
     protected function replace($path)
     {
         return str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);

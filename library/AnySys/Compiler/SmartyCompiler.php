@@ -7,8 +7,12 @@ use Smarty;
 
 class SmartyCompiler implements ICompiler
 {
+    /** @var Smarty */
     protected $smarty;
 
+    /**
+     * SmartyCompiler constructor.
+     */
     function __construct()
     {
         $this->smarty = new Smarty();

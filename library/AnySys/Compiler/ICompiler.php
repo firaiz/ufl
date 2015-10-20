@@ -1,5 +1,5 @@
 <?php
-namespace Ays\Compiler;
+namespace AnySys\Compiler;
 
 interface ICompiler
 {

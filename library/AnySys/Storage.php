@@ -1,6 +1,6 @@
 <?php
 
-namespace Ays;
+namespace AnySys;
 
 use Exception;
 

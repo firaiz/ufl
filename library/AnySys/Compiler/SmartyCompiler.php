@@ -1,8 +1,8 @@
 <?php
-namespace Ays\Compiler;
+namespace AnySys\Compiler;
 
-use Ays\ArrayUtil;
-use Ays\Storage;
+use AnySys\ArrayUtil;
+use AnySys\Storage;
 use Smarty;
 
 class SmartyCompiler implements ICompiler

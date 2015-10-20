@@ -1,7 +1,7 @@
 <?php
-namespace Ays;
+namespace AnySys;
 
-use Ays\Compiler\ICompiler;
+use AnySys\Compiler\ICompiler;
 
 class View
 {

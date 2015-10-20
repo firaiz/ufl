@@ -3,9 +3,12 @@ namespace AnySys;
 
 /**
  * Class Base
- * @package Ays
+ * @package AnySys
  *
  * @property Database $db
+ * @property Config $conf
+ * @property View $view
+ * @property Request $request
  */
 abstract class Base
 {

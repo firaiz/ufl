@@ -9,6 +9,9 @@ class Config
     /** @var static */
     protected static $instance = null;
 
+    /**
+     * Config constructor.
+     */
     protected function __construct() {
         $this->initConfig();
     }

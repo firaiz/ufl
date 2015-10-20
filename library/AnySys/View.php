@@ -12,6 +12,9 @@ class View
     /** @var array */
     protected $headers = array();
 
+    /**
+     * View constructor.
+     */
     protected function __construct()
     {
         $config = Config::getInstance();
@@ -77,7 +80,7 @@ class View
     /**
      * @param string $template
      */
-    public function render($template)
+    public function response($template)
     {
         $this->renderHeaders();
         echo $this->compile($template);
@@ -96,7 +99,7 @@ class View
      * @param mixed $data
      * @return string
      */
-    public function toJSON($data)
+    public function responseJson($data)
     {
         $this->setHeaders(array(
             'Content-Type' => 'application/json'
@@ -106,11 +109,11 @@ class View
     }
 
     /**
-     * @param mixed $contents is filepath or contents or template path
-     * @param string $downloadFileName
+     * @param mixed $contents is filepath or raw contents or template path
+     * @param string $downloadFileName is local file name
      * @param string $contentType
      */
-    public function download($contents, $downloadFileName, $contentType = 'application/octet-stream')
+    public function responseDownload($contents, $downloadFileName, $contentType = 'application/octet-stream')
     {
         $isFile = file_exists($contents) && is_readable($contents) && is_file($contents);
 

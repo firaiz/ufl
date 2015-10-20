@@ -14,6 +14,9 @@ abstract class Base
     /** @var array overwriting ok */
     protected $instances = array('request' => 'Request');
 
+    /**
+     * Base constructor.
+     */
     final public function __construct() {
         $this->init();
     }

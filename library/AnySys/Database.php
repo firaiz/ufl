@@ -12,6 +12,9 @@ class Database
 
     protected static $_instance = null;
 
+    /**
+     * Database constructor.
+     */
     private function __construct() {
         // empty
     }

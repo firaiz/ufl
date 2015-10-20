@@ -10,6 +10,9 @@ class Request
     protected $requestMethod = null;
     protected $vars = array();
 
+    /**
+     * Request constructor.
+     */
     public function __construct() {
         $this->detectRequest();
         $this->vars = array(

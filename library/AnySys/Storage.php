@@ -63,11 +63,14 @@ class Storage
 
     /**
      * @param string $path
+     * @param boolean $isCreate
      * @return string is fullpath
      */
-    public function getPath($path)
+    public function getPath($path, $isCreate = false)
     {
-        return realpath($this->base() . self::DS . $this->replace($path));
+        if ($isCreate === false || $isCreate && $this->create($path)) {
+            return realpath($this->base()) . self::DS . $this->replace($path);
+        }
     }
 
     /**

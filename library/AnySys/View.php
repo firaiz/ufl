@@ -24,7 +24,7 @@ class View
             $render['engine'] = 'Smarty';
         }
         $this->initCompiler($render['engine']);
-        $this->setHeaders($render['header']);
+        $this->setHeaders($render['headers']);
         $this->setConfigs($render['config']);
     }
 
@@ -146,10 +146,11 @@ class View
     public function setHeaders($headers)
     {
         foreach ($headers as $name => $value) {
-            $namedValues =& isset($this->headers[$name]) ? $this->headers[$name] : array();
+            $namedValues = isset($this->headers[$name]) ? $this->headers[$name] : array();
             foreach ((array) $value as $val) {
                 $namedValues[] = $val;
             }
+            $this->headers[$name] = $namedValues;
         }
     }
 

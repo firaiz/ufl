@@ -13,7 +13,6 @@ class Session
      */
     protected function __construct()
     {
-        session_start();
     }
 
     /**

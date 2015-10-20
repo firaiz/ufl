@@ -79,7 +79,7 @@ class Storage
     {
         $dirPath = $this->base() . self::DS . $this->replace($path);
         if (is_writable($this->base())) {
-            return mkdir($dirPath, $permission, true);
+            return is_dir($dirPath) ? true : mkdir($dirPath, $permission, true);
         }
         return false;
     }

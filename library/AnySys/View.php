@@ -101,9 +101,7 @@ class View
      */
     public function responseJson($data)
     {
-        $this->setHeaders(array(
-            'Content-Type' => 'application/json'
-        ));
+        $this->setHeaders(array( 'Content-Type' => 'application/json' ), true);
         $this->renderHeaders();
         echo json_encode($data);
     }
@@ -126,11 +124,11 @@ class View
             $size = strlen($contents);
         }
 
-        $this->setConfigs(array(
+        $this->setHeaders(array(
             'Content-Disposition' => 'inline; filename="' . $downloadFileName . '"',
             'Content-Length' => $size,
             'Content-Type' => $contentType
-        ));
+        ), true);
 
         $this->renderHeaders();
         if ($isFile) {
@@ -142,15 +140,16 @@ class View
 
     /**
      * @param array $headers
+     * @param boolean $isOverwrite
      */
-    public function setHeaders($headers)
+    public function setHeaders($headers, $isOverwrite = false)
     {
         foreach ($headers as $name => $value) {
             $namedValues = isset($this->headers[$name]) ? $this->headers[$name] : array();
             foreach ((array) $value as $val) {
                 $namedValues[] = $val;
             }
-            $this->headers[$name] = $namedValues;
+            $this->headers[$name] = $isOverwrite ? array($value) : $namedValues;
         }
     }
 

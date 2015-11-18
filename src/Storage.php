@@ -31,7 +31,7 @@ class Storage
      */
     protected function __construct()
     {
-        $this->filePath = defined('BASE_DIR') ? BASE_DIR : dirname(dirname(dirname(__FILE__)));
+        $this->filePath = defined('BASE_DIR') ? BASE_DIR : dirname(dirname(dirname(dirname(__FILE__))));
 
         if (!file_exists($this->filePath)) {
             throw new NotFoundException();

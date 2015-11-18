@@ -1,26 +1,17 @@
 {
-  "name": "anysys/framework",
-  "description": "anysys framework",
+  "name": "anysys/framework-library",
+  "description": "anysys framework library",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
-    {
-      "name": "Kenichi Yoshida",
-      "email": "yoshida@anysys.jp"
-    }
+    { "name": "Kenichi Yoshida", "email": "yoshida@anysys.jp" }
   ],
-  "config" : {
-    "vendor-dir" : "library/vendor"
-  },
   "require": {
     "php": ">=5.3.3",
     "smarty/smarty": "~3.1",
     "doctrine/dbal" : "~2.5"
   },
   "autoload": {
-    "psr-4": {
-      "Ays\\" : "library/AnySys",
-      "Service\\" : "class"
-    }
+    "psr-4": { "AnySys\\" : "src" }
   }
 }

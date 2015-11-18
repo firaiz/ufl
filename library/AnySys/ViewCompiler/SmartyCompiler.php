@@ -1,5 +1,5 @@
 <?php
-namespace AnySys\Compiler;
+namespace AnySys\ViewCompiler;
 
 use AnySys\ArrayUtil;
 use AnySys\Storage;

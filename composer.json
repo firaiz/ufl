@@ -1,7 +1,6 @@
 {
   "name": "anysys/framework-library",
   "description": "anysys framework library",
-  "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     { "name": "Kenichi Yoshida", "email": "yoshida@anysys.jp" }

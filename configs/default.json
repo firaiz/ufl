@@ -22,7 +22,7 @@
         "auto-literal" : true
       },
       "cache" : {
-        "use" : false,
+        "use" : true,
         "dir" : "storage/cache",
         "lifetime" : 60
       },

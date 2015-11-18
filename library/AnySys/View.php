@@ -1,7 +1,7 @@
 <?php
 namespace AnySys;
 
-use AnySys\Compiler\ICompiler;
+use AnySys\ViewCompiler\ICompiler;
 
 class View
 {
@@ -33,7 +33,7 @@ class View
      */
     protected function initCompiler($engine)
     {
-        $compiler = __NAMESPACE__ . '\\Compiler\\' . $engine . 'Compiler';
+        $compiler = __NAMESPACE__ . '\\ViewCompiler\\' . $engine . 'Compiler';
         $this->compiler = new $compiler();
     }
 
@@ -157,7 +157,7 @@ class View
     {
         foreach ($this->headers as $name => $values) {
             foreach ($values as $value) {
-                header(sprintf('%s : %s', $name, $value));
+                header(sprintf('%s : %s', $name, $value), false);
             }
         }
     }

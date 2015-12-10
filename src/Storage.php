@@ -2,20 +2,9 @@
 
 namespace AnySys;
 
-use Exception;
+use AnySys\Exception\File\NotFound;
+use AnySys\Exception\File\NotWritable;
 
-class NotFoundException extends Exception {
-    public function __construct($message = "", $code = 0, Exception $previous = null)
-    {
-        parent::__construct("dir not found", 404, $previous);
-    }
-}
-class NotWritableException extends Exception {
-    public function __construct($message = "", $code = 0, Exception $previous = null)
-    {
-        parent::__construct("dir is not writable", 400, $previous);
-    }
-}
 
 class Storage
 {
@@ -34,9 +23,9 @@ class Storage
         $this->filePath = defined('BASE_DIR') ? BASE_DIR : dirname(dirname(dirname(dirname(__FILE__))));
 
         if (!file_exists($this->filePath)) {
-            throw new NotFoundException();
+            throw new NotFound();
         } else if (!is_writable($this->filePath)) {
-            throw new NotWritableException();
+            throw new NotWritable();
         }
     }
 

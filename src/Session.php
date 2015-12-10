@@ -1,6 +1,7 @@
 <?php
 namespace AnySys;
 
+
 class Session
 {
     /** @var static */
@@ -38,8 +39,7 @@ class Session
         if ($this->isStarted()) {
             return;
         }
-        session_start();
-        $this->status = true;
+        $this->status = session_start();
     }
 
     /**
@@ -56,31 +56,16 @@ class Session
 
     /**
      * @param string $name
-     * @param string $value
-     */
-    public function set($name, $value) {
-        if ($this->isStarted()) {
-            ArrayUtil::set($_SESSION, $name, $value);
-        }
-    }
-
-    /**
-     * @param $name
-     * @param mixed $default
-     * @return mixed
-     */
-    public function get($name, $default = null) {
-        if ($this->isStarted()) {
-            return ArrayUtil::get($_SESSION, $name, $default);
-        }
-        return $default;
-    }
-
-    /**
-     * @param string $name
      * @param string|int $value
      */
     public function setConfig($name, $value) {
         ini_set('session.'.$name, $value);
+    }
+
+    /**
+     * @return array
+     */
+    public function &getContainer() {
+        return $_SESSION;
     }
 }

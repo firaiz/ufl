@@ -9,14 +9,14 @@ namespace AnySys;
  * @property Config $conf
  * @property View $view
  * @property Request $request
- * @property Session $session
+ * @property SessionContainer $session
  */
 abstract class Base
 {
     /** @var array overwriting ok */
-    protected $singletons = array( 'conf' => 'Config', 'db' => 'Database', 'view' => 'View', 'session' => 'Session');
+    protected $singletons = array( 'conf' => 'Config', 'db' => 'Database', 'view' => 'View');
     /** @var array overwriting ok */
-    protected $instances = array('request' => 'Request');
+    protected $instances = array('request' => 'Request', 'session' => 'SessionContainer');
 
     /**
      * Base constructor.

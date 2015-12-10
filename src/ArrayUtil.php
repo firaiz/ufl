@@ -53,7 +53,7 @@ class ArrayUtil
 			return $array[$key];
 		}
 
-		foreach (explode(self::$delimiter, $key) as $segment) {
+		foreach (self::toKeys($key) as $segment) {
 			if (!is_array($array) || !array_key_exists($segment, $array)) {
 				return self::value($default);
 			}
@@ -81,7 +81,7 @@ class ArrayUtil
 			return true;
 		}
 
-		foreach (explode(self::$delimiter, $key) as $segment) {
+		foreach (self::toKeys($key) as $segment) {
 			if (!is_array($array) || !array_key_exists($segment, $array)) {
 				return false;
 			}
@@ -111,7 +111,7 @@ class ArrayUtil
 	 */
 	public static function keyValue($key, $number)
 	{
-		$keys = explode(self::$delimiter, $key);
+		$keys = self::toKeys($key);
 		return isset($keys[$number]) ? str_replace(self::REPLACEMENT, self::$delimiter, $keys[$number]) : null;
 	}
 
@@ -132,7 +132,7 @@ class ArrayUtil
 			return $array = $value;
 		}
 
-		$keys = explode(self::$delimiter, $key);
+		$keys = self::toKeys($key);
 
 		while (count($keys) > 1) {
 			$key = array_shift($keys);
@@ -151,6 +151,10 @@ class ArrayUtil
 
 		return $array;
 	}
+
+    public static function toKeys($key) {
+        return explode(self::$delimiter, $key);
+    }
 
 	/**
 	 * Convert to key string

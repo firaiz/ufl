@@ -11,6 +11,7 @@
     "doctrine/dbal" : "~2.5"
   },
   "autoload": {
-    "psr-4": { "AnySys\\" : "src" }
+    "psr-4": { "AnySys\\" : "src" },
+    "files" : [ "src/helpers.php" ]
   }
 }

@@ -29,4 +29,31 @@ interface ICompiler
      * @return boolean
      */
     function templateExists($template);
+
+    /**
+     * @param string $layout is template path
+     * @return void
+     */
+    function setLayoutPath($layout);
+
+    /**
+     * @return string
+     */
+    function getLayoutPath();
+
+    /**
+     * @return boolean
+     */
+    function isLayoutMode();
+
+    /**
+     * @param $contentName
+     * @return void
+     */
+    function setContentName($contentName);
+
+    /**
+     * @return string
+     */
+    function getContentName();
 }

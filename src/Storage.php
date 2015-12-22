@@ -60,6 +60,7 @@ class Storage
         if ($isCreate === false || $isCreate && $this->create($path)) {
             return realpath($this->base()) . self::DS . $this->replace($path);
         }
+        return '';
     }
 
     /**

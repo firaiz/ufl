@@ -153,6 +153,9 @@ class View
         }
     }
 
+    /**
+     * header 出力
+     */
     protected function renderHeaders()
     {
         foreach ($this->headers as $name => $values) {

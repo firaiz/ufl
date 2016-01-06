@@ -38,6 +38,21 @@ class View
     }
 
     /**
+     * @param array $headers
+     * @param boolean $isOverwrite
+     */
+    public function setHeaders($headers, $isOverwrite = false)
+    {
+        foreach ($headers as $name => $value) {
+            $namedValues = isset($this->headers[$name]) ? $this->headers[$name] : array();
+            foreach ((array)$value as $val) {
+                $namedValues[] = $val;
+            }
+            $this->headers[$name] = $isOverwrite ? array($value) : $namedValues;
+        }
+    }
+
+    /**
      * @param array $configs
      * @return void
      */
@@ -66,6 +81,14 @@ class View
     }
 
     /**
+     * @param string $templatePath
+     */
+    public function setLayout($templatePath)
+    {
+        $this->getCompiler()->setLayoutPath($templatePath);
+    }
+
+    /**
      * @param string|array $name
      * @param mixed $var
      * @param boolean $noCache
@@ -87,6 +110,18 @@ class View
     }
 
     /**
+     * header 出力
+     */
+    protected function renderHeaders()
+    {
+        foreach ($this->headers as $name => $values) {
+            foreach ($values as $value) {
+                header(sprintf('%s : %s', $name, $value), false);
+            }
+        }
+    }
+
+    /**
      * @param string $template
      * @return string
      */
@@ -101,7 +136,7 @@ class View
      */
     public function responseJson($data)
     {
-        $this->setHeaders(array( 'Content-Type' => 'application/json' ), true);
+        $this->setHeaders(array('Content-Type' => 'application/json'), true);
         $this->renderHeaders();
         echo json_encode($data);
     }
@@ -135,33 +170,6 @@ class View
             readfile($contents);
         } else {
             echo $contents;
-        }
-    }
-
-    /**
-     * @param array $headers
-     * @param boolean $isOverwrite
-     */
-    public function setHeaders($headers, $isOverwrite = false)
-    {
-        foreach ($headers as $name => $value) {
-            $namedValues = isset($this->headers[$name]) ? $this->headers[$name] : array();
-            foreach ((array) $value as $val) {
-                $namedValues[] = $val;
-            }
-            $this->headers[$name] = $isOverwrite ? array($value) : $namedValues;
-        }
-    }
-
-    /**
-     * header 出力
-     */
-    protected function renderHeaders()
-    {
-        foreach ($this->headers as $name => $values) {
-            foreach ($values as $value) {
-                header(sprintf('%s : %s', $name, $value), false);
-            }
         }
     }
 }

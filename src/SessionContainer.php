@@ -36,7 +36,7 @@ class SessionContainer
         $keys = ArrayUtil::toKeys($name);
         $key = $name;
         if (count($keys) === 1) {
-            if (isset($container[$key])) {
+            if (array_key_exists($key, $container)) {
                 unset($container[$key]);
             }
             return;
@@ -45,7 +45,7 @@ class SessionContainer
         $lastKey = array_pop($keys);
         $key = ArrayUtil::toKey($keys);
         $setValue = ArrayUtil::get($container, $key, array());
-        if (isset($setValue[$lastKey])) {
+        if (array_key_exists($lastKey, $setValue)) {
             unset($setValue[$lastKey]);
         }
 
@@ -71,7 +71,7 @@ class SessionContainer
     {
         $session =& Session::getInstance()->getContainer();
         if (is_string($this->prefix)) {
-            if (!isset($session[$this->prefix])) {
+            if (!array_key_exists($this->prefix, $session)) {
                 $session[$this->prefix] = array();
             }
             $this->container =& $session[$this->prefix];

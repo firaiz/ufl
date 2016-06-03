@@ -54,7 +54,7 @@ class CommandLine implements ArrayAccess
     public function offsetExists($offset)
     {
         $opt = $this->getOpt($offset);
-        return isset($opt[$offset]);
+        return array_key_exists($offset, $opt);
     }
 
     /**
@@ -69,7 +69,7 @@ class CommandLine implements ArrayAccess
     public function offsetGet($offset)
     {
         $opt = $this->getOpt($offset);
-        return isset($opt[$offset]) ? $opt[$offset] : null;
+        return $this->offsetExists($offset) ? $opt[$offset] : null;
     }
 
     /**

@@ -44,7 +44,7 @@ class View
     public function setHeaders($headers, $isOverwrite = false)
     {
         foreach ($headers as $name => $value) {
-            $namedValues = isset($this->headers[$name]) ? $this->headers[$name] : array();
+            $namedValues = array_key_exists($name, $this->headers) ? $this->headers[$name] : array();
             foreach ((array)$value as $val) {
                 $namedValues[] = $val;
             }

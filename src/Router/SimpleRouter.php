@@ -19,16 +19,26 @@ class SimpleRouter extends AbstractRouter
 
     /**
      * detect & call route
+     * @return void
+     * @throws \AnySys\Exception\Route\NotFound
      */
     public function detect()
     {
         $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
-        $keys = ArrayUtil::toKeys($routeKey);
-        $class = array_shift($keys);
-        $method = array_shift($keys);
+        $params = $keys = ArrayUtil::toKeys($routeKey);
+        $context = $this->routes;
+        foreach ($keys as $key) {
+            $context = ArrayUtil::get($context, $key);
+            array_shift($params);
+            if (is_callable($context)) {
+                break;
+            }
+        }
 
-        $context = ArrayUtil::get($this->routes, ArrayUtil::toKey(array($class, $method)));
-        call_user_func_array($context, array($method, $keys));
+        if (!is_callable($context)) {
+            $this->notDetectRoute();
+        }
+        call_user_func_array($context, $params);
     }
 
     /**

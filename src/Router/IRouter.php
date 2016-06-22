@@ -18,6 +18,7 @@ interface IRouter
     /**
      * detect & call router
      * @return void
+     * @throws \AnySys\Exception\Route\NotFound
      */
     public function detect();
 }

@@ -51,4 +51,11 @@ class Router
     {
         return static::$router->getPathInfo();
     }
+
+    /**
+     * @param \Closure $closure
+     */
+    public static function setNoRoute($closure) {
+        static::$router->setNoRoute($closure);
+    }
 }

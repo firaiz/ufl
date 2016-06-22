@@ -18,6 +18,15 @@ class SimpleRouter extends AbstractRouter
     }
 
     /**
+     * @param string $path
+     * @return string
+     */
+    protected function pathToKey($path)
+    {
+        return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
+    }
+
+    /**
      * detect & call route
      * @return void
      * @throws \AnySys\Exception\Route\NotFound
@@ -40,14 +49,5 @@ class SimpleRouter extends AbstractRouter
         } else {
             call_user_func_array($context, $params);
         }
-    }
-
-    /**
-     * @param string $path
-     * @return string
-     */
-    protected function pathToKey($path)
-    {
-        return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
     }
 }

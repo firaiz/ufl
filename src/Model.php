@@ -102,25 +102,6 @@ class Model
     }
 
     /**
-     * @param $array
-     * @param string $findKeyName
-     * @return static is create object
-     */
-    public static function create($array, $findKeyName = 'id')
-    {
-        $qb = static::builder()
-            ->insert(static::tableName());
-
-        foreach ($array as $key => $value) {
-            $qb->setValue(static::quoteIdentifier($key), ':' . $key)
-                ->setParameter(':' . $key, $value);
-        }
-        $qb->execute();
-
-        return new static($qb->getConnection()->lastInsertId(), $findKeyName);
-    }
-
-    /**
      * @param array $row
      * @return static
      */
@@ -135,7 +116,7 @@ class Model
     {
         static::builder()
             ->delete(static::tableName())
-            ->where(static::quoteIdentifier($this->_findKeyName).' = :id')
+            ->where(static::quoteIdentifier($this->_findKeyName) . ' = :id')
             ->setParameter(':id', $this->id);
     }
 
@@ -183,10 +164,44 @@ class Model
         return false;
     }
 
-
     public function isExists()
     {
         return 0 < count($this->_initValues);
+    }
+
+    /**
+     * @param $array
+     * @param string $findKeyName
+     * @return static is create object
+     */
+    public static function create($array, $findKeyName = 'id')
+    {
+        $qb = static::builder()
+            ->insert(static::tableName());
+
+        foreach ($array as $key => $value) {
+            $qb->setValue(static::quoteIdentifier($key), ':' . $key)
+                ->setParameter(':' . $key, $value);
+        }
+        $qb->execute();
+
+        return new static($qb->getConnection()->lastInsertId(), $findKeyName);
+    }
+
+    public static function toTableizeArray($array)
+    {
+        $result = array();
+        foreach ($array as $key => $value) {
+            $result[static::tableize($key)] = $value;
+        }
+        return $result;
+    }
+
+    public function toArray()
+    {
+        $row = get_object_vars($this);
+        unset($row['_initValues'], $row['_findKeyName']);
+        return $row;
     }
 
     /**
@@ -217,6 +232,27 @@ class Model
     }
 
     /**
+     * @param $array
+     * @return array
+     */
+    public static function toFiledArray($array)
+    {
+        $result = array();
+        foreach ($array as $key => $value) {
+            $result[static::toField($key)] = $value;
+        }
+        return $result;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIndex()
+    {
+        return $this->{$this->toField($this->_findKeyName)};
+    }
+
+    /**
      * @param static $obj
      * @param string $key
      * @param bool $isStrict
@@ -233,43 +269,6 @@ class Model
             return $this->{$filed} === $obj->{$filed};
         }
         return $this->{$filed} == $obj->{$filed};
-    }
-
-    /**
-     * @param $array
-     * @return array
-     */
-    public static function toFiledArray($array)
-    {
-        $result = array();
-        foreach ($array as $key => $value) {
-            $result[static::toField($key)] = $value;
-        }
-        return $result;
-    }
-
-    public static function toTableizeArray($array)
-    {
-        $result = array();
-        foreach ($array as $key => $value) {
-            $result[static::tableize($key)] = $value;
-        }
-        return $result;
-    }
-
-    public function toArray()
-    {
-        $row = get_object_vars($this);
-        unset($row['_initValues'], $row['_findKeyName']);
-        return $row;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIndex()
-    {
-        return $this->{$this->toField($this->_findKeyName)};
     }
 
     /**

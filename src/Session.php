@@ -28,14 +28,8 @@ class Session
         return self::$instance;
     }
 
-    /**
-     * @return bool
-     */
-    public function isStarted() {
-        return $this->status;
-    }
-
-    public function start() {
+    public function start()
+    {
         if ($this->isStarted()) {
             return;
         }
@@ -43,10 +37,19 @@ class Session
     }
 
     /**
+     * @return bool
+     */
+    public function isStarted()
+    {
+        return $this->status;
+    }
+
+    /**
      * @param bool $deleteOld
      * @return bool
      */
-    public function regenerate($deleteOld = false) {
+    public function regenerate($deleteOld = false)
+    {
         if (!$this->isStarted()) {
             return false;
         }
@@ -58,14 +61,16 @@ class Session
      * @param string $name
      * @param string|int $value
      */
-    public function setConfig($name, $value) {
-        ini_set('session.'.$name, $value);
+    public function setConfig($name, $value)
+    {
+        ini_set('session.' . $name, $value);
     }
 
     /**
      * @return array
      */
-    public function &getContainer() {
+    public function &getContainer()
+    {
         return $_SESSION;
     }
 }

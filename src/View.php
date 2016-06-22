@@ -116,7 +116,7 @@ class View
     {
         foreach ($this->headers as $name => $values) {
             foreach ($values as $value) {
-                header(sprintf('%s : %s', $name, $value), false);
+                header(sprintf('%s: %s', $name, $value), false);
             }
         }
     }
@@ -160,7 +160,7 @@ class View
         }
 
         $this->setHeaders(array(
-            'Content-Disposition' => 'inline; filename="' . $downloadFileName . '"',
+            'Content-Disposition' => 'attachment; filename="' . $downloadFileName . '"',
             'Content-Length' => $size,
             'Content-Type' => $contentType
         ), true);

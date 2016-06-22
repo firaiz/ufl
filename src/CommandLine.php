@@ -21,14 +21,30 @@ class CommandLine implements ArrayAccess
     }
 
     /**
+     * (PHP 5 &gt;= 5.0.0)<br/>
+     * Offset to retrieve
+     * @link http://php.net/manual/en/arrayaccess.offsetget.php
+     * @param mixed $offset <p>
+     * The offset to retrieve.
+     * </p>
+     * @return mixed Can return all value types.
+     */
+    public function offsetGet($offset)
+    {
+        $opt = $this->getOpt($offset);
+        return $this->offsetExists($offset) ? $opt[$offset] : null;
+    }
+
+    /**
      * @param int|string $offset
      * @return array
      */
-    protected function getOpt($offset) {
+    protected function getOpt($offset)
+    {
         if (is_int($offset)) {
             return $this->argv;
         }
-        $key = $offset.'::';
+        $key = $offset . '::';
         $short = '';
         $longs = array();
         if (1 < strlen($offset)) {
@@ -55,21 +71,6 @@ class CommandLine implements ArrayAccess
     {
         $opt = $this->getOpt($offset);
         return array_key_exists($offset, $opt);
-    }
-
-    /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Offset to retrieve
-     * @link http://php.net/manual/en/arrayaccess.offsetget.php
-     * @param mixed $offset <p>
-     * The offset to retrieve.
-     * </p>
-     * @return mixed Can return all value types.
-     */
-    public function offsetGet($offset)
-    {
-        $opt = $this->getOpt($offset);
-        return $this->offsetExists($offset) ? $opt[$offset] : null;
     }
 
     /**

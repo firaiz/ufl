@@ -15,14 +15,16 @@ class Database
     /**
      * Database constructor.
      */
-    private function __construct() {
+    private function __construct()
+    {
         // empty
     }
 
     /**
      * @return Database
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (!(self::$_instance instanceof Database)) {
             self::$_instance = new Database();
         }
@@ -74,9 +76,9 @@ class Database
     /**
      * Prepares and executes an SQL query and returns the result as an associative array.
      *
-     * @param string $sql    The SQL query.
-     * @param array  $params The query parameters.
-     * @param array  $types  The query parameter types.
+     * @param string $sql The SQL query.
+     * @param array $params The query parameters.
+     * @param array $types The query parameter types.
      *
      * @return array
      */
@@ -90,8 +92,8 @@ class Database
      * as an associative array.
      *
      * @param string $statement The SQL query.
-     * @param array  $params    The query parameters.
-     * @param array  $types     The query parameter types.
+     * @param array $params The query parameters.
+     * @param array $types The query parameter types.
      *
      * @return array
      */
@@ -105,9 +107,9 @@ class Database
      *
      * Table expression and columns are not escaped and are not safe for user-input.
      *
-     * @param string $tableExpression  The expression of the table on which to delete.
-     * @param array  $identifier The deletion criteria. An associative array containing column-value pairs.
-     * @param array  $types      The types of identifiers.
+     * @param string $tableExpression The expression of the table on which to delete.
+     * @param array $identifier The deletion criteria. An associative array containing column-value pairs.
+     * @param array $types The types of identifiers.
      *
      * @return integer The number of affected rows.
      *
@@ -123,10 +125,10 @@ class Database
      *
      * Table expression and columns are not escaped and are not safe for user-input.
      *
-     * @param string $tableExpression  The expression of the table to update quoted or unquoted.
-     * @param array  $data       An associative array containing column-value pairs.
-     * @param array  $identifier The update criteria. An associative array containing column-value pairs.
-     * @param array  $types      Types of the merged $data and $identifier arrays in that order.
+     * @param string $tableExpression The expression of the table to update quoted or unquoted.
+     * @param array $data An associative array containing column-value pairs.
+     * @param array $identifier The update criteria. An associative array containing column-value pairs.
+     * @param array $types Types of the merged $data and $identifier arrays in that order.
      *
      * @return integer The number of affected rows.
      */
@@ -141,8 +143,8 @@ class Database
      * Table expression and columns are not escaped and are not safe for user-input.
      *
      * @param string $tableExpression The expression of the table to insert data into, quoted or unquoted.
-     * @param array  $data      An associative array containing column-value pairs.
-     * @param array  $types     Types of the inserted data.
+     * @param array $data An associative array containing column-value pairs.
+     * @param array $types Types of the inserted data.
      *
      * @return integer The number of affected rows.
      */
@@ -154,8 +156,8 @@ class Database
     /**
      * Quotes a given input parameter.
      *
-     * @param mixed       $input The parameter to be quoted.
-     * @param string|null $type  The type of the parameter.
+     * @param mixed $input The parameter to be quoted.
+     * @param string|null $type The type of the parameter.
      *
      * @return string The quoted parameter.
      */
@@ -214,7 +216,8 @@ class Database
      *
      * @return string A string representation of the last inserted ID.
      */
-    public function lastInsertId($seqName = null) {
+    public function lastInsertId($seqName = null)
+    {
         return $this->connection->lastInsertId($seqName);
     }
 

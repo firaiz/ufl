@@ -24,8 +24,10 @@ class Storage
 
         if (!file_exists($this->filePath)) {
             throw new NotFound();
-        } else if (!is_writable($this->filePath)) {
-            throw new NotWritable();
+        } else {
+            if (!is_writable($this->filePath)) {
+                throw new NotWritable();
+            }
         }
     }
 

@@ -78,7 +78,8 @@ class SmartyCompiler implements ICompiler
      * @param string $template
      * @return bool
      */
-    function templateExists($template) {
+    function templateExists($template)
+    {
         return $this->smarty->templateExists($template);
     }
 

@@ -36,7 +36,8 @@ abstract class AbstractRouter implements IRouter
     public function getPathInfo()
     {
         if (is_null($this->pathInfo)) {
-            $selfUri = str_replace(DIRECTORY_SEPARATOR, '/', str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])));
+            $selfUri = str_replace(DIRECTORY_SEPARATOR, '/',
+                str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])));
             $this->pathInfo = str_replace($selfUri, '', $_SERVER['PATH_INFO']);
         }
         return $this->pathInfo;

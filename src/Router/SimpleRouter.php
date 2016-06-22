@@ -37,8 +37,9 @@ class SimpleRouter extends AbstractRouter
 
         if (!is_callable($context)) {
             $this->notDetectRoute();
+        } else {
+            call_user_func_array($context, $params);
         }
-        call_user_func_array($context, $params);
     }
 
     /**

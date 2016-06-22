@@ -2,26 +2,51 @@
 namespace AnySys;
 
 use AnySys\Router\AbstractRouter;
-use AnySys\Router\IRouter;
 use AnySys\Router\SimpleRouter;
 
 class Router
 {
     /**
+     * @var static
+     */
+    protected static $instance;
+    /**
      * @var AbstractRouter
      */
-    static $router;
+    protected $router;
 
     /**
-     * @param IRouter $router
+     * Router constructor.
+     */
+    final protected function __construct()
+    {
+        // empty
+    }
+
+    /**
+     * @return static
+     */
+    public static function getInstance()
+    {
+        if (!(static::$instance instanceof static)) {
+            static::$instance = new static();
+        }
+        return static::$instance;
+    }
+
+    /**
+     * @param AbstractRouter $router
      * @return void
      */
-    public static function initRouter($router = null)
+    public function init($router = null)
     {
-        if (!(static::$router instanceof IRouter) && is_null($router)) {
+        if (!($this->router instanceof AbstractRouter) && is_null($router)) {
             $router = new SimpleRouter();
         }
-        static::$router = $router;
+
+        if ($router instanceof AbstractRouter) {
+            $this->router = $router;
+        }
     }
 
     /**
@@ -29,33 +54,33 @@ class Router
      * @param mixed $detector
      * @return void
      */
-    public static function add($routPath, $detector)
+    public function add($routPath, $detector)
     {
-        static::initRouter();
-        static::$router->add($routPath, $detector);
+        $this->router->add($routPath, $detector);
     }
 
     /**
      * detect & call router
      * @return void
      */
-    public static function detect()
+    public function detect()
     {
-        static::$router->detect();
+        $this->router->detect();
     }
 
     /**
      * @return string
      */
-    public static function getPathInfo()
+    public function getPathInfo()
     {
-        return static::$router->getPathInfo();
+        return $this->router->getPathInfo();
     }
 
     /**
      * @param \Closure $closure
      */
-    public static function setNoRoute($closure) {
-        static::$router->setNoRoute($closure);
+    public function setNoRoute($closure)
+    {
+        $this->router->setNoRoute($closure);
     }
 }

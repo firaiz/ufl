@@ -7,13 +7,18 @@ use Doctrine\DBAL\Query\QueryBuilder as DoctrineQueryBuilder;
 
 class QueryCacheBuilder extends DoctrineQueryBuilder
 {
+    /**
+     * @return \Doctrine\DBAL\Driver\Statement|int
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function execute()
     {
         if ($this->getType() !== self::SELECT) {
             return parent::execute();
         }
-        return $this->getConnection()
-            ->executeQuery($this->getSQL(), $this->getParameters(), $this->getParameterTypes(),
-                Database::getInstance()->getCacheProfile());
+        $result = $this->getConnection()->executeQuery($this->getSQL(), $this->getParameters(),
+            $this->getParameterTypes(), Database::getInstance()->getCacheProfile());
+        $result->closeCursor();
+        return $result;
     }
 }

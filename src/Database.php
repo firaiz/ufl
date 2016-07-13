@@ -1,8 +1,6 @@
 <?php
 namespace AnySys;
 
-use AnySys\Inherits\QueryCacheBuilder;
-use Doctrine\DBAL\Cache\QueryCacheProfile;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
@@ -14,9 +12,6 @@ class Database
     protected $connection;
 
     protected static $_instance = null;
-
-    protected $hasCache = null;
-
     /**
      * Database constructor.
      */
@@ -69,28 +64,6 @@ class Database
     }
 
     /**
-     * @return QueryCacheProfile|null
-     */
-    public function getCacheProfile() {
-        if (!$this->hasCacheImpl()) {
-            return null;
-        }
-        return new QueryCacheProfile();
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasCacheImpl() {
-        if ($this->hasCache === false) {
-            return false;
-        }
-        $cacheImpl = $this->connection->getConfiguration()->getResultCacheImpl();
-        $this->hasCache = !is_null($cacheImpl);
-        return $this->hasCache;
-    }
-
-    /**
      * @return Connection
      */
     public function getConnection() {
@@ -100,14 +73,11 @@ class Database
     /**
      * Creates a new instance of a SQL query builder.
      *
-     * @return \AnySys\Inherits\QueryCacheBuilder
+     * @return \Doctrine\DBAL\Query\QueryBuilder
      */
     public function builder()
     {
-        if (!$this->hasCacheImpl()) {
-            return $this->connection->createQueryBuilder();
-        }
-        return new QueryCacheBuilder($this->connection);
+        return $this->connection->createQueryBuilder();
     }
 
     /**
@@ -117,9 +87,7 @@ class Database
      * @return \Doctrine\DBAL\Driver\Statement
      */
     public function select($sql, array $params = array(), array $types = array()) {
-        $result = $this->connection->executeQuery($sql, $params, $types, $this->getCacheProfile());
-        $result->closeCursor();
-        return $result;
+        return $this->connection->executeQuery($sql, $params, $types);
     }
 
     /**

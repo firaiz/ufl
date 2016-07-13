@@ -86,7 +86,7 @@ class Database
             return false;
         }
         $cacheImpl = $this->connection->getConfiguration()->getResultCacheImpl();
-        $this->hasCache = is_null($cacheImpl);
+        $this->hasCache = !is_null($cacheImpl);
         return $this->hasCache;
     }
 

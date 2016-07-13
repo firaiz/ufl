@@ -1,9 +1,12 @@
 <?php
 namespace AnySys;
 
+use AnySys\Inherits\QueryCacheBuilder;
+use Doctrine\DBAL\Cache\QueryCacheProfile;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
+use PDO;
 
 class Database
 {
@@ -11,6 +14,8 @@ class Database
     protected $connection;
 
     protected static $_instance = null;
+
+    protected $hasCache = null;
 
     /**
      * Database constructor.
@@ -64,13 +69,35 @@ class Database
     }
 
     /**
+     * @return QueryCacheProfile|null
+     */
+    public function getCacheProfile() {
+        if (!$this->hasCacheImpl()) {
+            return null;
+        }
+        return new QueryCacheProfile();
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasCacheImpl() {
+        if ($this->hasCache === false) {
+            return false;
+        }
+        $cacheImpl = $this->connection->getConfiguration()->getResultCacheImpl();
+        $this->hasCache = is_null($cacheImpl);
+        return $this->hasCache;
+    }
+
+    /**
      * Creates a new instance of a SQL query builder.
      *
-     * @return \Doctrine\DBAL\Query\QueryBuilder
+     * @return \AnySys\Inherits\QueryCacheBuilder
      */
     public function builder()
     {
-        return $this->connection->createQueryBuilder();
+        return new QueryCacheBuilder($this->connection);
     }
 
     /**
@@ -84,7 +111,7 @@ class Database
      */
     public function fetchAll($sql, array $params = array(), $types = array())
     {
-        return $this->connection->fetchAll($sql, $params, $types);
+        return $this->connection->executeQuery($sql, $params, $types, $this->getCacheProfile())->fetchAll();
     }
 
     /**
@@ -99,7 +126,7 @@ class Database
      */
     public function fetchRow($statement, array $params = array(), array $types = array())
     {
-        return $this->connection->fetchAssoc($statement, $params, $types);
+        return $this->connection->executeQuery($statement, $params, $types, $this->getCacheProfile())->fetch(PDO::FETCH_ASSOC);
     }
 
     /**

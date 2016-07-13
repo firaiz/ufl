@@ -91,13 +91,35 @@ class Database
     }
 
     /**
+     * @return Connection
+     */
+    public function getConnection() {
+        return $this->connection;
+    }
+
+    /**
      * Creates a new instance of a SQL query builder.
      *
      * @return \AnySys\Inherits\QueryCacheBuilder
      */
     public function builder()
     {
+        if (!$this->hasCacheImpl()) {
+            return $this->connection->createQueryBuilder();
+        }
         return new QueryCacheBuilder($this->connection);
+    }
+
+    /**
+     * @param $sql
+     * @param array $params
+     * @param array $types
+     * @return \Doctrine\DBAL\Driver\Statement
+     */
+    public function select($sql, array $params = array(), array $types = array()) {
+        $result = $this->connection->executeQuery($sql, $params, $types, $this->getCacheProfile());
+        $result->closeCursor();
+        return $result;
     }
 
     /**
@@ -111,7 +133,7 @@ class Database
      */
     public function fetchAll($sql, array $params = array(), $types = array())
     {
-        return $this->connection->executeQuery($sql, $params, $types, $this->getCacheProfile())->fetchAll();
+        return $this->select($sql, $params, $types)->fetchAll();
     }
 
     /**
@@ -126,7 +148,7 @@ class Database
      */
     public function fetchRow($statement, array $params = array(), array $types = array())
     {
-        return $this->connection->executeQuery($statement, $params, $types, $this->getCacheProfile())->fetch(PDO::FETCH_ASSOC);
+        return $this->select($statement, $params, $types)->fetch(PDO::FETCH_ASSOC);
     }
 
     /**

@@ -28,6 +28,9 @@ class Session
         return self::$instance;
     }
 
+    /**
+     *
+     */
     public function start()
     {
         if ($this->isStarted()) {

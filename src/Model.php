@@ -3,9 +3,6 @@ namespace AnySys;
 
 use Doctrine\Common\Inflector\Inflector;
 
-/**
- * @property int $id
- */
 class Model
 {
     private $_findKeyName = '';
@@ -117,7 +114,7 @@ class Model
         static::builder()
             ->delete(static::tableName())
             ->where(static::quoteIdentifier($this->_findKeyName) . ' = :id')
-            ->setParameter(':id', $this->id);
+            ->setParameter(':id', $this->{$this->_findKeyName});
     }
 
     /**
@@ -164,6 +161,9 @@ class Model
         return false;
     }
 
+    /**
+     * @return bool
+     */
     public function isExists()
     {
         return 0 < count($this->_initValues);
@@ -188,6 +188,10 @@ class Model
         return new static($qb->getConnection()->lastInsertId(), $findKeyName);
     }
 
+    /**
+     * @param array $array
+     * @return array
+     */
     public static function toTableizeArray($array)
     {
         $result = array();
@@ -197,6 +201,9 @@ class Model
         return $result;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         $row = get_object_vars($this);
@@ -232,7 +239,7 @@ class Model
     }
 
     /**
-     * @param $array
+     * @param array $array
      * @return array
      */
     public static function toFiledArray($array)

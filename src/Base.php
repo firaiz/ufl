@@ -13,9 +13,9 @@ namespace AnySys;
  */
 abstract class Base
 {
-    /** @var array overwriting ok */
+    /** @var array allowed overwrite */
     protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'view' => 'View');
-    /** @var array overwriting ok */
+    /** @var array allowed overwrite */
     protected $instances = array('request' => 'Request', 'session' => 'SessionContainer');
 
     /**

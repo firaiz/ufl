@@ -7,6 +7,29 @@ use DateTime;
 
 class Date
 {
+    const INTERVAL_TYPE_YEAR = 'Y';
+    const INTERVAL_TYPE_MONTH = 'M';
+    const INTERVAL_TYPE_DAY = 'D';
+    const INTERVAL_TYPE_HOUR = 'H';
+    const INTERVAL_TYPE_MINUETS = 'm';
+    const INTERVAL_TYPE_SECOND = 'S';
+
+    /**
+     * @param string $type
+     * @param int $span
+     * @return DateInterval
+     */
+    public static function createSimpleInterval($type, $span = 1) {
+        $format = 'P';
+        if (in_array($type, array('H', 'm', 'S'))) {
+            $format .= 'T';
+        }
+        return new DateInterval($format.$span.strtoupper($type));
+    }
+
+    /**
+     * @param string $timezone init timezone
+     */
     public static function init($timezone = 'Asia/Tokyo')
     {
         date_default_timezone_set($timezone);
@@ -30,7 +53,7 @@ class Date
     public static function object($date = null)
     {
         if ($date instanceof DateTime) {
-            return $date;
+            return clone $date;
         } elseif (is_int($date)) {
             $obj = new DateTime();
             return $obj->setTimestamp($date);
@@ -63,7 +86,7 @@ class Date
      */
     public static function getDateList($startDate, $endDate)
     {
-        $dateIterator = new DatePeriod($startDate, new DateInterval('P1D'), $endDate);
+        $dateIterator = new DatePeriod($startDate, static::createSimpleInterval(static::INTERVAL_TYPE_DAY), $endDate);
 
         $result = array();
         foreach ($dateIterator as $date) {
@@ -80,10 +103,11 @@ class Date
     public static function createYears($startYear, $dateMargin = 2)
     {
         $startDate = static::object($startYear);
-        $endDate = new DateTime();
-        $endDate->add(new DateInterval('P' . $dateMargin . 'Y'));
 
-        $dateIterator = new DatePeriod($startDate, new DateInterval('P1Y'), $endDate);
+        $endDate = new DateTime();
+        $endDate->add(static::createSimpleInterval(static::INTERVAL_TYPE_YEAR, $dateMargin));
+        $dateIterator = new DatePeriod($startDate, static::createSimpleInterval(static::INTERVAL_TYPE_YEAR), $endDate);
+
         $result = array();
         foreach ($dateIterator as $date) {
             /** @var DateTime $date */
@@ -131,13 +155,14 @@ class Date
     }
 
     /**
+     * @param string|int|DateTime|null $date
      * @return DateTime
      */
-    public static function today()
+    public static function toDay($date = null)
     {
-        $today = static::object();
-        $today->setTime(0, 0, 0);
-        return $today;
+        $toDay = static::object($date);
+        $toDay->setTime(0, 0, 0);
+        return $toDay;
     }
 
     /**
@@ -147,22 +172,42 @@ class Date
      */
     public static function diffDate($base, $target)
     {
-        $diffBase = clone $base;
-        $diffBase->setTime(0, 0);
-        $diffTarget = clone $target;
-        $diffTarget->setTime(0, 0);
+        $diffBase = static::toDay($base);
+        $diffTarget = static::toDay($target);
         return $diffBase->diff($diffTarget);
     }
 
     /**
+     * @param string $addType use INTERVAL_TYPE_* constants
      * @param DateTime $date
      * @param int $dateCount
      * @return DateTime
      */
-    public static function addDay($date, $dateCount)
+    public static function add($addType, $date, $dateCount)
     {
         $newDate = clone $date;
-        $newDate->add(new DateInterval('P' . $dateCount . 'D'));
+        $newDate->add(static::createSimpleInterval($addType, $dateCount));
         return $newDate;
+    }
+
+    /**
+     * @param string|int|DateTime $date
+     * @return DateTime
+     */
+    public static function firstDayOfThisMonth($date) {
+        $date = static::toDay($date);
+        $date->setDate($date->format('Y'), $date->format('m'), 1);
+        return $date;
+    }
+
+    /**
+     * @param string|int|DateTime $date
+     * @return DateTime
+     */
+    public static function lastDayOfThisMonth($date) {
+        $date = static::object($date);
+        $date->modify('last day of this month');
+        $date->setTime(23, 59, 59);
+        return $date;
     }
 }

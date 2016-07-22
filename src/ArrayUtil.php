@@ -54,6 +54,10 @@ class ArrayUtil
         return $array;
     }
 
+    /**
+     * @param string $key
+     * @return array
+     */
     public static function toKeys($key)
     {
         return explode(self::$delimiter, $key);

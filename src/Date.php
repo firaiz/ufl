@@ -70,7 +70,7 @@ class Date
     {
         $startDate = static::object($time);
         if ($startDate->format('w') === '0') {
-            $startDate->sub(new DateInterval('P1D'));
+            $startDate->sub(static::createSimpleInterval(static::INTERVAL_TYPE_DAY));
         }
         $startDate->modify('this week monday');
         $endDate = clone $startDate;
@@ -155,10 +155,18 @@ class Date
     }
 
     /**
+     * @return DateTime
+     */
+    public static function today()
+    {
+        return static::toDayTime();
+    }
+
+    /**
      * @param string|int|DateTime|null $date
      * @return DateTime
      */
-    public static function toDay($date = null)
+    public static function toDayTime($date = null)
     {
         $toDay = static::object($date);
         $toDay->setTime(0, 0, 0);
@@ -172,8 +180,8 @@ class Date
      */
     public static function diffDate($base, $target)
     {
-        $diffBase = static::toDay($base);
-        $diffTarget = static::toDay($target);
+        $diffBase = static::toDayTime($base);
+        $diffTarget = static::toDayTime($target);
         return $diffBase->diff($diffTarget);
     }
 
@@ -195,7 +203,7 @@ class Date
      * @return DateTime
      */
     public static function firstDayOfThisMonth($date) {
-        $date = static::toDay($date);
+        $date = static::toDayTime($date);
         $date->setDate($date->format('Y'), $date->format('m'), 1);
         return $date;
     }

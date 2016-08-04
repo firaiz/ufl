@@ -25,9 +25,16 @@ $instance->insert('users', array('name' => 'i', 'created_at' => '2016-01-06'));
 ##### SQL pattern
 ```
 $instance = Database::getInstance();
-$result = $instance->select('SELECT * FROM users WHERE id = :id AND valid_flg = :validFlg', array(':id' => 1, ':validFlg' => 1));
+$result = $instance->select(
+              'SELECT * FROM users WHERE id = :id AND valid_flg = :validFlg',
+              array(':id' => 1, ':validFlg' => 1)
+          );
 
-$result = $instance->select('SELECT * FROM users WHERE id IN (:idList) AND valid_flg = :validFlg', array(':idList' => array(1,2,5), ':validFlg' => 1), array(':idList' => \Doctrine\DBAL\Connection::PARAM_INT_ARRAY));
+$result = $instance->select(
+              'SELECT * FROM users WHERE id IN (:idList) AND valid_flg = :validFlg',
+              array(':idList' => array(1,2,5), ':validFlg' => 1),
+              array(':idList' => \Doctrine\DBAL\Connection::PARAM_INT_ARRAY)
+          );
 ```
 
 ##### QueryBuilder pattern

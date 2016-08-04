@@ -16,8 +16,5 @@
   "autoload": {
     "psr-4": { "AnySys\\" : "src" },
     "files" : [ "src/helpers.php" ]
-  },
-  "require-dev": {
-    "apigen/apigen": "^4.1"
   }
 }

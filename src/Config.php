@@ -38,7 +38,8 @@ class Config
 
 
         if (is_dir($confPath)) {
-            $confPath .= DIRECTORY_SEPARATOR . (isset($_ENV['SERV_ENV']) ? strtolower($_ENV['SERV_ENV']) : 'default') . '.json';
+            $serverEnv = $this->getEnv('SERV_ENV') ?: $this->getEnv('SERVER_ENV');
+            $confPath .= DIRECTORY_SEPARATOR . ($serverEnv ?: 'default') . '.json';
         }
 
         if (!file_exists($confPath)) {
@@ -48,6 +49,14 @@ class Config
         $this->configPath = $confPath;
         $this->configs = json_decode(file_get_contents($this->configPath), true);
         return true;
+    }
+
+    private function getEnv($envName) {
+        $env = getenv($envName);
+        if (strlen($env) === 0) {
+            return null;
+        }
+        return strtolower($env);
     }
 
     /**

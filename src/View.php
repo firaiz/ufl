@@ -132,11 +132,12 @@ class View
 
     /**
      * @param mixed $data
+     * @param string $charset
      * @return string
      */
-    public function responseJson($data)
+    public function responseJson($data, $charset = 'utf-8')
     {
-        $this->setHeaders(array('Content-Type' => 'application/json'), true);
+        $this->setHeaders(array('Content-Type' => 'application/json; charset='.$charset), true);
         $this->renderHeaders();
         echo json_encode($data);
     }

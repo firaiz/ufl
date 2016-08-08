@@ -12,6 +12,7 @@ users
 
 ### INSERT
 ```
+#!php
 $instance = Database::getInstance();
 $instance->insert('users', array('name' => 'e', 'created_at' => '2016-01-06'));
 $instance->insert('users', array('name' => 'f', 'created_at' => '2016-01-06'));
@@ -24,6 +25,7 @@ $instance->insert('users', array('name' => 'i', 'created_at' => '2016-01-06'));
 
 ##### SQL pattern
 ```
+#!php
 $instance = Database::getInstance();
 $result = $instance->select(
               'SELECT * FROM users WHERE id = :id AND valid_flg = :validFlg',
@@ -39,6 +41,7 @@ $result = $instance->select(
 
 ##### QueryBuilder pattern
 ```
+#!php
 $qb = Database::getInstance()->builder();
 $qb->from('users')
    ->select('*')
@@ -63,6 +66,7 @@ $qb->addWhere('id in (:idList)')->setParameter(':idList', array(1,2,5), \Doctrin
 
 #### Use result
 ```
+#!php
 // fetch row
 $result->fetch()
 
@@ -76,6 +80,7 @@ freach ($result as $row) {
 
 ### UPDATE
 ```
+#!php
 $instance = Database::getInstance();
 $affectedRowCount = $instance->update('users', array('valid_flg' => 0, 'name' => 'f'), array('valid_flg' => 1, 'id' => '5'));
 ```
@@ -91,6 +96,7 @@ result
 
 ### DELETE
 ```
+#!php
 $instance = Database::getInstance();
 $affectedRowCount = $instance->delete('users', array('valid_flg' => 1, 'id' => '5'));
 ```

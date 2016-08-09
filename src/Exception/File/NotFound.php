@@ -1,5 +1,5 @@
 <?php
-namespace AnySys\Exception\File;
+namespace UflAs\Exception\File;
 
 use Exception;
 

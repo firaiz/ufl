@@ -1,5 +1,5 @@
 <?php
-namespace AnySys;
+namespace UflAs;
 
 /**
  * Class Base

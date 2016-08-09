@@ -1,7 +1,7 @@
 <?php
-namespace AnySys\Router;
+namespace UflAs\Router;
 
-use AnySys\Exception\Route\NotFound;
+use UflAs\Exception\Route\NotFound;
 
 abstract class AbstractRouter implements IRouter
 {
@@ -20,7 +20,7 @@ abstract class AbstractRouter implements IRouter
     }
 
     /**
-     * @throws \AnySys\Exception\Route\NotFound
+     * @throws \UflAs\Exception\Route\NotFound
      */
     protected function notDetectRoute()
     {

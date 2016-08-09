@@ -1,8 +1,8 @@
 <?php
-namespace AnySys\ViewCompiler;
+namespace UflAs\ViewCompiler;
 
-use AnySys\ArrayUtil;
-use AnySys\Storage;
+use UflAs\ArrayUtil;
+use UflAs\Storage;
 use Smarty;
 
 class SmartyCompiler implements ICompiler

@@ -1,5 +1,5 @@
 <?php
-namespace AnySys\ViewCompiler;
+namespace UflAs\ViewCompiler;
 
 interface ICompiler
 {

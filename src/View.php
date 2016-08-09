@@ -1,7 +1,7 @@
 <?php
-namespace AnySys;
+namespace UflAs;
 
-use AnySys\ViewCompiler\ICompiler;
+use UflAs\ViewCompiler\ICompiler;
 
 class View
 {

@@ -1,5 +1,5 @@
 <?php
-namespace AnySys\Exception\Route;
+namespace UflAs\Exception\Route;
 
 use Exception;
 

@@ -1,6 +1,6 @@
 <?php
 
-use AnySys\Storage;
+use UflAs\Storage;
 
 if (!function_exists('storage')) {
     function storage($key, $isCreate = false)

@@ -8,12 +8,11 @@ use AnySys\Exception\File\NotWritable;
 
 class Storage
 {
+    const DS = DIRECTORY_SEPARATOR;
     /** @var static */
     protected static $instance = null;
     /** @var string base path */
     protected $filePath = null;
-
-    const DS = DIRECTORY_SEPARATOR;
 
     /**
      * Storage constructor.
@@ -24,10 +23,8 @@ class Storage
 
         if (!file_exists($this->filePath)) {
             throw new NotFound();
-        } else {
-            if (!is_writable($this->filePath)) {
-                throw new NotWritable();
-            }
+        } elseif (!is_writable($this->filePath)) {
+            throw new NotWritable();
         }
     }
 
@@ -36,20 +33,10 @@ class Storage
      */
     public static function getInstance()
     {
-
         if (!(self::$instance instanceof static)) {
             self::$instance = new static();
         }
-
         return self::$instance;
-    }
-
-    /**
-     * @return string
-     */
-    public function base()
-    {
-        return $this->filePath;
     }
 
     /**
@@ -77,6 +64,14 @@ class Storage
             return is_dir($dirPath) ? true : mkdir($dirPath, $permission, true);
         }
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function base()
+    {
+        return $this->filePath;
     }
 
     /**

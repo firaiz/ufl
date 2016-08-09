@@ -8,10 +8,10 @@ use PDO;
 
 class Database
 {
+    protected static $_instance = null;
     /** @var Connection */
     protected $connection;
 
-    protected static $_instance = null;
     /**
      * Database constructor.
      */
@@ -64,9 +64,20 @@ class Database
     }
 
     /**
+     * Whether an actual connection to the database is established.
+     *
+     * @return boolean
+     */
+    public function isConnected()
+    {
+        return $this->connection->isConnected();
+    }
+
+    /**
      * @return Connection
      */
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->connection;
     }
 
@@ -81,16 +92,6 @@ class Database
     }
 
     /**
-     * @param $sql
-     * @param array $params
-     * @param array $types
-     * @return \Doctrine\DBAL\Driver\Statement
-     */
-    public function select($sql, array $params = array(), array $types = array()) {
-        return $this->connection->executeQuery($sql, $params, $types);
-    }
-
-    /**
      * Prepares and executes an SQL query and returns the result as an associative array.
      *
      * @param string $sql The SQL query.
@@ -102,6 +103,17 @@ class Database
     public function fetchAll($sql, array $params = array(), $types = array())
     {
         return $this->select($sql, $params, $types)->fetchAll();
+    }
+
+    /**
+     * @param $sql
+     * @param array $params
+     * @param array $types
+     * @return \Doctrine\DBAL\Driver\Statement
+     */
+    public function select($sql, array $params = array(), array $types = array())
+    {
+        return $this->connection->executeQuery($sql, $params, $types);
     }
 
     /**
@@ -193,7 +205,6 @@ class Database
         $this->connection->beginTransaction();
     }
 
-
     /**
      * Commits the current transaction.
      *
@@ -206,7 +217,6 @@ class Database
     {
         $this->connection->commit();
     }
-
 
     /**
      * Cancels any database changes done during the current transaction.
@@ -246,16 +256,6 @@ class Database
     public function close()
     {
         $this->connection->close();
-    }
-
-    /**
-     * Whether an actual connection to the database is established.
-     *
-     * @return boolean
-     */
-    public function isConnected()
-    {
-        return $this->connection->isConnected();
     }
 
     /**

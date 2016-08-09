@@ -75,6 +75,39 @@ class SmartyCompiler implements ICompiler
     }
 
     /**
+     * @return boolean
+     */
+    function isLayoutMode()
+    {
+        return is_string($this->layout);
+    }
+
+    /**
+     * @return string
+     */
+    function getContentName()
+    {
+        return $this->isLayoutMode() ? $this->contentName : null;
+    }
+
+    /**
+     * @param $contentName
+     * @return void
+     */
+    function setContentName($contentName)
+    {
+        $this->contentName = $contentName;
+    }
+
+    /**
+     * @return string
+     */
+    function getLayoutPath()
+    {
+        return $this->layout;
+    }
+
+    /**
      * @param string $template
      * @return bool
      */
@@ -90,38 +123,5 @@ class SmartyCompiler implements ICompiler
     function setLayoutPath($layout)
     {
         $this->layout = $layout;
-    }
-
-    /**
-     * @return string
-     */
-    function getLayoutPath()
-    {
-        return $this->layout;
-    }
-
-    /**
-     * @return boolean
-     */
-    function isLayoutMode()
-    {
-        return is_string($this->layout);
-    }
-
-    /**
-     * @param $contentName
-     * @return void
-     */
-    function setContentName($contentName)
-    {
-        $this->contentName = $contentName;
-    }
-
-    /**
-     * @return string
-     */
-    function getContentName()
-    {
-        return $this->isLayoutMode() ? $this->contentName : null;
     }
 }

@@ -3,7 +3,6 @@ namespace UflAs;
 
 /**
  * Class Base
- * @package AnySys
  *
  * @property Database $db
  * @property Config $conf

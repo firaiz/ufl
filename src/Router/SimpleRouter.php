@@ -1,7 +1,7 @@
 <?php
-namespace AnySys\Router;
+namespace UflAs\Router;
 
-use AnySys\ArrayUtil;
+use UflAs\ArrayUtil;
 
 class SimpleRouter extends AbstractRouter
 {
@@ -29,7 +29,7 @@ class SimpleRouter extends AbstractRouter
     /**
      * detect & call route
      * @return void
-     * @throws \AnySys\Exception\Route\NotFound
+     * @throws \UflAs\Exception\Route\NotFound
      */
     public function detect()
     {

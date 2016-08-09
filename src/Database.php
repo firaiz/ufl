@@ -1,5 +1,5 @@
 <?php
-namespace AnySys;
+namespace UflAs;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;

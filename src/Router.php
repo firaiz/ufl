@@ -1,8 +1,8 @@
 <?php
-namespace AnySys;
+namespace UflAs;
 
-use AnySys\Router\AbstractRouter;
-use AnySys\Router\SimpleRouter;
+use UflAs\Router\AbstractRouter;
+use UflAs\Router\SimpleRouter;
 
 class Router
 {

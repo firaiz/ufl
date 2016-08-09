@@ -1,5 +1,5 @@
 <?php
-namespace AnySys\Router;
+namespace UflAs\Router;
 
 interface IRouter
 {
@@ -18,7 +18,7 @@ interface IRouter
     /**
      * detect & call router
      * @return void
-     * @throws \AnySys\Exception\Route\NotFound
+     * @throws \UflAs\Exception\Route\NotFound
      */
     public function detect();
 }

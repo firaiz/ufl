@@ -15,19 +15,6 @@ class Date
     const INTERVAL_TYPE_SECOND = 'S';
 
     /**
-     * @param string $type
-     * @param int $span
-     * @return DateInterval
-     */
-    public static function createSimpleInterval($type, $span = 1) {
-        $format = 'P';
-        if (in_array($type, array('H', 'm', 'S'))) {
-            $format .= 'T';
-        }
-        return new DateInterval($format.$span.strtoupper($type));
-    }
-
-    /**
      * @param string $timezone init timezone
      */
     public static function init($timezone = 'Asia/Tokyo')
@@ -77,6 +64,20 @@ class Date
         $endDate->modify('+' . $size . ' week');
 
         return static::getDateList($startDate, $endDate);
+    }
+
+    /**
+     * @param string $type
+     * @param int $span
+     * @return DateInterval
+     */
+    public static function createSimpleInterval($type, $span = 1)
+    {
+        $format = 'P';
+        if (in_array($type, array('H', 'm', 'S'))) {
+            $format .= 'T';
+        }
+        return new DateInterval($format . $span . strtoupper($type));
     }
 
     /**
@@ -202,7 +203,8 @@ class Date
      * @param string|int|DateTime $date
      * @return DateTime
      */
-    public static function firstDayOfThisMonth($date) {
+    public static function firstDayOfThisMonth($date)
+    {
         $date = static::toDayTime($date);
         $date->setDate($date->format('Y'), $date->format('m'), 1);
         return $date;
@@ -212,7 +214,8 @@ class Date
      * @param string|int|DateTime $date
      * @return DateTime
      */
-    public static function lastDayOfThisMonth($date) {
+    public static function lastDayOfThisMonth($date)
+    {
         $date = static::object($date);
         $date->modify('last day of this month');
         $date->setTime(23, 59, 59);

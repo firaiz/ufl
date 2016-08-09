@@ -51,7 +51,8 @@ class Config
         return true;
     }
 
-    private function getEnv($envName) {
+    private function getEnv($envName)
+    {
         $env = getenv($envName);
         if (strlen($env) === 0) {
             return null;

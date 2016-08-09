@@ -1,6 +1,6 @@
 {
-  "name": "anysys/framework-library",
-  "description": "anysys framework library",
+  "name": "ulfas/framework-library",
+  "description": "ulterior framework library for any system",
   "license": "proprietary",
   "authors": [
     { "name": "Kenichi Yoshida", "email": "yoshida@anysys.jp" }
@@ -14,7 +14,7 @@
     "doctrine/dbal" : "2.5.*"
   },
   "autoload": {
-    "psr-4": { "AnySys\\" : "src" },
+    "psr-4": { "UflAs\\" : "src" },
     "files" : [ "src/helpers.php" ]
   }
 }

@@ -30,6 +30,7 @@ class Request
         );
 
         if ($this->isCLIRequest()) {
+            $this->detectOrders = array(self::TYPE_CLI);
             $this->vars = array(
                 self::TYPE_CLI => new CommandLine(),
             );
@@ -104,7 +105,7 @@ class Request
     protected function val($targetTypes, $key, $default)
     {
         foreach ((array)$targetTypes as $type) {
-            $val = ArrayUtil::get($this->getTypeVers($type), $key, null);
+            $val = ArrayUtil::get($this->getTypeVars($type), $key, null);
             if (!is_null($val)) {
                 return $val;
             }
@@ -116,7 +117,7 @@ class Request
      * @param $type
      * @return array is typed arrays
      */
-    private function getTypeVers($type)
+    private function getTypeVars($type)
     {
         return $this->vars[$type];
     }

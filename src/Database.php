@@ -4,11 +4,22 @@ namespace UflAs;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
+
 use PDO;
+
 
 class Database
 {
-    protected static $_instance = null;
+    const PARAM_NULL = PDO::PARAM_NULL;
+    const PARAM_INT = PDO::PARAM_INT;
+    const PARAM_STR = PDO::PARAM_STR;
+    const PARAM_LOB = PDO::PARAM_LOB;
+    const PARAM_BOOL = PDO::PARAM_BOOL;
+    const PARAM_INT_ARRAY = Connection::PARAM_INT_ARRAY;
+    const PARAM_STR_ARRAY = Connection::PARAM_STR_ARRAY;
+
+    /** @var static */
+    protected static $_instance;
     /** @var Connection */
     protected $connection;
 

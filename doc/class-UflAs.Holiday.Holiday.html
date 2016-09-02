@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class UflAs\Config</title>
+	<title>Class UflAs\Holiday\Holiday</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -28,7 +28,7 @@
 
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="namespace-UflAs.html" title="Summary of UflAs"><span>Namespace</span></a>
+						<a href="namespace-UflAs.Holiday.html" title="Summary of UflAs\Holiday"><span>Namespace</span></a>
 					</li>
 					<li class="active">
 <span>Class</span>					</li>
@@ -71,7 +71,7 @@
 							Route						</a>
 							</li>
 								</ul></li>
-					<li>
+					<li class="active">
 						<a href="namespace-UflAs.Holiday.html">
 							Holiday						</a>
 							</li>
@@ -91,22 +91,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-UflAs.ArrayUtil.html">ArrayUtil</a></li>
-				<li><a href="class-UflAs.Base.html">Base</a></li>
-				<li><a href="class-UflAs.CommandLine.html">CommandLine</a></li>
-				<li class="active"><a href="class-UflAs.Config.html">Config</a></li>
-				<li><a href="class-UflAs.Database.html">Database</a></li>
-				<li><a href="class-UflAs.Date.html">Date</a></li>
-				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
-				<li><a href="class-UflAs.Model.html">Model</a></li>
-				<li><a href="class-UflAs.Request.html">Request</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
-				<li><a href="class-UflAs.Session.html">Session</a></li>
-				<li><a href="class-UflAs.SessionContainer.html">SessionContainer</a></li>
-				<li><a href="class-UflAs.Storage.html">Storage</a></li>
-				<li><a href="class-UflAs.View.html">View</a></li>
+				<li class="active"><a href="class-UflAs.Holiday.Holiday.html">Holiday</a></li>
+				<li><a href="class-UflAs.Holiday.Japan.html">Japan</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-UflAs.Holiday.IHoliday.html">IHoliday</a></li>
+			</ul>
 
 
 
@@ -120,12 +112,27 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class Config</h1>
+	<h1>Class Holiday</h1>
 
 
 
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+<b><span>UflAs\Holiday\Holiday</span></b>			
+			 implements 
+				<a href="class-UflAs.Holiday.IHoliday.html"><span>UflAs\Holiday\IHoliday</span></a>
+			
+			
+		</dd>
+	</dl>
 
 
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-UflAs.Holiday.Japan.html">UflAs\Holiday\Japan</a></code>
+		</p>
+	</div>
 
 
 
@@ -133,12 +140,12 @@
 
 
 	<div class="alert alert-info">
+		<b>Abstract</b><br>
 		
-		
-		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
+		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a>\<a href="namespace-UflAs.Holiday.html">Holiday</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Config.html#4-93" title="Go to source code">Config.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Holiday.Holiday.html#6-58" title="Go to source code">Holiday/Holiday.php</a>
 		<br>
 	</div>
 
@@ -150,7 +157,7 @@
 		<tr data-order="__construct" id="___construct">
 
 			<td class="attributes"><code>
-				 protected 
+				 public 
 				
 				
 				</code>
@@ -158,55 +165,24 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Config.html#11-17" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Holiday.Holiday.html#13-22" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>DateTime <var>$date</var></span> )</code>
 
 			<div class="description short">
-				<p>Config constructor.</p>
+				<p>Holiday constructor.</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Config constructor.</p>
-
-
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="initConfig" id="_initConfig">
-
-			<td class="attributes"><code>
-				 public 
-				boolean
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_initConfig">#</a>
-			<code><a href="source-class-UflAs.Config.html#19-52" title="Go to source code">initConfig</a>( <span>string <var>$confPath</var> = <span class="php-keyword1">null</span></span> )</code>
-
-			<div class="description short">
-				<p>initialize configuration</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>initialize configuration</p>
+				<p>Holiday constructor.</p>
 
 
 					<h4>Parameters</h4>
 					<div class="list"><dl>
-						<dt><var>$confPath</var></dt>
-						<dd>is optional default: <strong>DIR</strong>/../../configs/default.json or {SERV_ENV}.json</dd>
+						<dt><var>$name</var></dt>
+						<dd></dd>
+						<dt><var>$date</var></dt>
+						<dd></dd>
 					</dl></div>
 
-					<h4>Returns</h4>
-					<div class="list">
-						boolean
-					</div>
 
 
 
@@ -214,18 +190,18 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="getInstance" id="_getInstance">
+		<tr data-order="init" id="_init">
 
 			<td class="attributes"><code>
-				 public static
+				 protected static
 				static
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Config.html#63-73" title="Go to source code">getInstance</a>( )</code>
+			<a class="anchor" href="#_init">#</a>
+			<code><a href="source-class-UflAs.Holiday.Holiday.html#24-32" title="Go to source code">init</a>( <span>string <var>$name</var></span>, <span>DateTime <var>$date</var></span> )</code>
 
 			<div class="description short">
 				
@@ -235,6 +211,13 @@
 				
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$name</var></dt>
+						<dd></dd>
+						<dt><var>$date</var></dt>
+						<dd></dd>
+					</dl></div>
 
 					<h4>Returns</h4>
 					<div class="list">
@@ -247,18 +230,18 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="get" id="_get">
+		<tr data-order="__toString" id="___toString">
 
 			<td class="attributes"><code>
 				 public 
-				string|false
+				
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_get">#</a>
-			<code><a href="source-class-UflAs.Config.html#75-83" title="Go to source code">get</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<a class="anchor" href="#___toString">#</a>
+			<code><a href="source-class-UflAs.Holiday.Holiday.html#34-37" title="Go to source code">__toString</a>( )</code>
 
 			<div class="description short">
 				
@@ -268,17 +251,39 @@
 				
 
 
-					<h4>Parameters</h4>
-					<div class="list"><dl>
-						<dt><var>$key</var></dt>
-						<dd></dd>
-						<dt><var>$default</var></dt>
-						<dd></dd>
-					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getName" id="_getName">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getName">#</a>
+			<code><a href="source-class-UflAs.Holiday.Holiday.html#39-45" title="Go to source code">getName</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
 
 					<h4>Returns</h4>
 					<div class="list">
-						string|false
+						string
 					</div>
 
 
@@ -287,18 +292,18 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="has" id="_has">
+		<tr data-order="getDate" id="_getDate">
 
 			<td class="attributes"><code>
 				 public 
-				boolean
+				DateTime|string
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_has">#</a>
-			<code><a href="source-class-UflAs.Config.html#85-92" title="Go to source code">has</a>( <span>string <var>$key</var></span> )</code>
+			<a class="anchor" href="#_getDate">#</a>
+			<code><a href="source-class-UflAs.Holiday.Holiday.html#47-57" title="Go to source code">getDate</a>( <span>string <var>$format</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				
@@ -310,13 +315,13 @@
 
 					<h4>Parameters</h4>
 					<div class="list"><dl>
-						<dt><var>$key</var></dt>
-						<dd></dd>
+						<dt><var>$format</var></dt>
+						<dd>$format]</dd>
 					</dl></div>
 
 					<h4>Returns</h4>
 					<div class="list">
-						boolean
+						DateTime|string
 					</div>
 
 
@@ -328,6 +333,12 @@
 			</table>
 		</div>
 
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-UflAs.Holiday.IHoliday.html#methods">UflAs\Holiday\IHoliday</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-UflAs.Holiday.IHoliday.html#_listOf">listOf()</a></code>
+			</p>
+		</div>
 
 
 
@@ -341,14 +352,14 @@
 		<div class="panel panel-default">
             <div class="panel-heading"><h2>Properties summary</h2></div>
 			<table class="summary table table-bordered table-striped properties" id="properties">
-		<tr data-order="instance" id="$instance">
+		<tr data-order="name" id="$name">
 			<td class="attributes"><code>
-				protected static 
-				static
+				protected  
+				string
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Config.html#6-7" title="Go to source code"><var>$instance</var></a>
+					<a href="source-class-UflAs.Holiday.Holiday.html#8-9" title="Go to source code"><var>$name</var></a>
 
 				<div class="description short">
 					
@@ -361,19 +372,19 @@
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$instance" class="anchor">#</a>
-					<code><span class="php-keyword1">null</span></code>
+					<a href="#$name" class="anchor">#</a>
+					<code></code>
 				</div>
 			</td>
 		</tr>
-		<tr data-order="configs" id="$configs">
+		<tr data-order="date" id="$date">
 			<td class="attributes"><code>
 				protected  
-				array
+				DateTime
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Config.html#8" title="Go to source code"><var>$configs</var></a>
+					<a href="source-class-UflAs.Holiday.Holiday.html#10-11" title="Go to source code"><var>$date</var></a>
 
 				<div class="description short">
 					
@@ -386,32 +397,7 @@
 			</td>
 			<td class="value">
 				<div>
-					<a href="#$configs" class="anchor">#</a>
-					<code><span class="php-keyword1">array</span>()</code>
-				</div>
-			</td>
-		</tr>
-		<tr data-order="configPath" id="$configPath">
-			<td class="attributes"><code>
-				protected  
-				
-			</code></td>
-
-			<td class="name">
-					<a href="source-class-UflAs.Config.html#9" title="Go to source code"><var>$configPath</var></a>
-
-				<div class="description short">
-					
-				</div>
-
-				<div class="description detailed hidden">
-					
-
-				</div>
-			</td>
-			<td class="value">
-				<div>
-					<a href="#$configPath" class="anchor">#</a>
+					<a href="#$date" class="anchor">#</a>
 					<code></code>
 				</div>
 			</td>

@@ -72,6 +72,10 @@
 							</li>
 								</ul></li>
 					<li>
+						<a href="namespace-UflAs.Holiday.html">
+							Holiday						</a>
+							</li>
+					<li>
 						<a href="namespace-UflAs.Router.html">
 							Router						</a>
 							</li>
@@ -93,6 +97,7 @@
 				<li><a href="class-UflAs.Config.html">Config</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li class="active"><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.Model.html">Model</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Router.html">Router</a></li>
@@ -133,7 +138,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Date.html#8-224" title="Go to source code">Date.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Date.html#8-296" title="Go to source code">Date.php</a>
 		<br>
 	</div>
 
@@ -737,6 +742,170 @@
 					<h4>Returns</h4>
 					<div class="list">
 						DateTime
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="weekToText" id="_weekToText">
+
+			<td class="attributes"><code>
+				 public static
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_weekToText">#</a>
+			<code><a href="source-class-UflAs.Date.html#225-247" title="Go to source code">weekToText</a>( <span> <var>$week</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$week</var></dt>
+						<dd>sunday - saturday</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="monthWeekNoToText" id="_monthWeekNoToText">
+
+			<td class="attributes"><code>
+				 public static
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_monthWeekNoToText">#</a>
+			<code><a href="source-class-UflAs.Date.html#249-267" title="Go to source code">monthWeekNoToText</a>( <span> <var>$weekNo</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$weekNo</var></dt>
+						<dd>1-5</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="calcWeekDay" id="_calcWeekDay">
+
+			<td class="attributes"><code>
+				 public static
+				integer
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_calcWeekDay">#</a>
+			<code><a href="source-class-UflAs.Date.html#269-283" title="Go to source code">calcWeekDay</a>( <span>integer <var>$year</var></span>, <span>integer <var>$month</var></span>, <span> <var>$weekNo</var></span>, <span> <var>$week</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$year</var></dt>
+						<dd></dd>
+						<dt><var>$month</var></dt>
+						<dd></dd>
+						<dt><var>$weekNo</var></dt>
+						<dd>1-5</dd>
+						<dt><var>$week</var></dt>
+						<dd>0-6</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						integer
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="toDate" id="_toDate">
+
+			<td class="attributes"><code>
+				 public static
+				DateTime|string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_toDate">#</a>
+			<code><a href="source-class-UflAs.Date.html#285-295" title="Go to source code">toDate</a>( <span>integer <var>$year</var></span>, <span>integer <var>$month</var></span>, <span>integer <var>$day</var></span>, <span>string <var>$format</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$year</var></dt>
+						<dd></dd>
+						<dt><var>$month</var></dt>
+						<dd></dd>
+						<dt><var>$day</var></dt>
+						<dd></dd>
+						<dt><var>$format</var></dt>
+						<dd>$format]</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						DateTime|string
 					</div>
 
 

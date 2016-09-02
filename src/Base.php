@@ -13,7 +13,7 @@ namespace UflAs;
 abstract class Base
 {
     /** @var array allowed overwrite */
-    protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'view' => 'View');
+    protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'response' => 'Response');
     /** @var array allowed overwrite */
     protected $instances = array('request' => 'Request', 'session' => 'SessionContainer');
 

@@ -57,7 +57,6 @@ class Japan extends Holiday
             }
             $prevHoliday = $day;
         }
-        ksort($prevHoliday);
         return $newHolidays;
     }
 

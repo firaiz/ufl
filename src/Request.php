@@ -11,9 +11,9 @@ class Request
     protected $requestMethod = null;
     protected $vars = array();
     protected $defaultDetectOrders = array(
-        self::TYPE_POST,
-        self::TYPE_GET,
-        self::TYPE_REQUEST,
+        self::TYPE_POST => true,
+        self::TYPE_GET => true,
+        self::TYPE_REQUEST => true,
     );
     protected $detectOrders;
 
@@ -30,7 +30,7 @@ class Request
         );
 
         if ($this->isCLIRequest()) {
-            $this->detectOrders = array(self::TYPE_CLI);
+            $this->detectOrders = array(self::TYPE_CLI => true);
             $this->vars = array(
                 self::TYPE_CLI => new CommandLine(),
             );
@@ -56,14 +56,14 @@ class Request
             return self::TYPE_CLI;
         }
         $method = strtoupper($_SERVER["REQUEST_METHOD"]);
-        if (!in_array($method, $this->detectOrders)) {
+        if (!array_key_exists($method, $this->detectOrders)) {
             return null;
         }
         return $method;
     }
 
     /**
-     * @param string[] $order
+     * @param array $order key => bool array
      * @return bool
      */
     public function setDetectOrder($order)
@@ -72,12 +72,9 @@ class Request
             return false;
         }
 
-        $isOk = false;
+        $isOk = true;
         foreach ($order as $type) {
-            if (in_array($type, $this->defaultDetectOrders)) {
-                $isOk = true;
-                break;
-            }
+            $isOk = $isOk && array_key_exists($type, $this->defaultDetectOrders);
         }
         if ($isOk) {
             $this->detectOrders = $order;
@@ -104,7 +101,10 @@ class Request
      */
     protected function val($targetTypes, $key, $default)
     {
-        foreach ((array)$targetTypes as $type) {
+        if (is_string($targetTypes)) {
+            $targetTypes = array($targetTypes => true);
+        }
+        foreach ($targetTypes as $type => $null) {
             $val = ArrayUtil::get($this->getTypeVars($type), $key, null);
             if (!is_null($val)) {
                 return $val;

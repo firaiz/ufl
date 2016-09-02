@@ -3,9 +3,9 @@ namespace UflAs;
 
 use UflAs\ViewCompiler\ICompiler;
 
-class View
+class Response
 {
-    /** @var View */
+    /** @var Response */
     protected static $_instance;
     /** @var ICompiler */
     protected $compiler;

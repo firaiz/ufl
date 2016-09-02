@@ -74,7 +74,7 @@ class Date
     public static function createSimpleInterval($type, $span = 1)
     {
         $format = 'P';
-        if (in_array($type, array('H', 'm', 'S'))) {
+        if ($type === 'H' || $type === 'm' || $type === 'S') {
             $format .= 'T';
         }
         return new DateInterval($format . $span . strtoupper($type));

@@ -221,4 +221,76 @@ class Date
         $date->setTime(23, 59, 59);
         return $date;
     }
+
+    /**
+     * @param $week 0-6 sunday - saturday
+     * @return string
+     */
+    public static function weekToText($week) {
+        switch ($week) {
+            case 0:
+                return 'sunday';
+            case 1:
+                return 'monday';
+            case 2:
+                return 'tuesday';
+            case 3:
+                return 'wednesday';
+            case 4:
+                return 'thursday';
+            case 5:
+                return 'friday';
+            case 6:
+                return 'saturday';
+        }
+        return '';
+    }
+
+    /**
+     * @param $weekNo 1-5
+     * @return string
+     */
+    public static function monthWeekNoToText($weekNo) {
+        switch ($weekNo) {
+            case 1:
+                return 'first';
+            case 2:
+                return 'second';
+            case 3:
+                return 'third';
+            case 4:
+                return 'fourth';
+            case 5:
+                return 'fifth';
+        }
+        return '';
+    }
+
+    /**
+     * @param int $year
+     * @param int $month
+     * @param $weekNo 1-5
+     * @param $week 0-6
+     * @return int
+     */
+    public static function calcWeekDay($year, $month, $weekNo, $week)
+    {
+        $date = static::object($year.'-'.$month);
+        $weekText = static::weekToText($week);
+        $weekNoText = static::monthWeekNoToText($weekNo);
+        $date->modify($weekNoText.' '.$weekText);
+        return $date->format('d') - 0;
+    }
+
+    /**
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     * @param string [$format]
+     * @return DateTime|string
+     */
+    public static function toDate($year, $month, $day, $format = null) {
+        $date = static::object(sprintf('%4d-%02d-%02d', $year, $month, $day));
+        return is_null($format) ? $date : $date->format($format);
+    }
 }

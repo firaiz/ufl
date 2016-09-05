@@ -76,12 +76,12 @@
 							Holiday						</a>
 							</li>
 					<li>
-						<a href="namespace-UflAs.Router.html">
-							Router						</a>
+						<a href="namespace-UflAs.Render.html">
+							Render						</a>
 							</li>
 					<li>
-						<a href="namespace-UflAs.ViewCompiler.html">
-							ViewCompiler						</a>
+						<a href="namespace-UflAs.Router.html">
+							Router						</a>
 							</li>
 								</ul></li>
 			</ul>
@@ -97,26 +97,28 @@
 				<li><a href="class-UflAs.Config.html">UflAs\Config</a></li>
 				<li><a href="class-UflAs.Database.html">UflAs\Database</a></li>
 				<li><a href="class-UflAs.Date.html">UflAs\Date</a></li>
+				<li><a href="class-UflAs.Header.html">UflAs\Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">UflAs\Holiday</a></li>
 				<li><a href="class-UflAs.Holiday.Holiday.html">UflAs\Holiday\Holiday</a></li>
 				<li><a href="class-UflAs.Holiday.Japan.html">UflAs\Holiday\Japan</a></li>
 				<li><a href="class-UflAs.Model.html">UflAs\Model</a></li>
+				<li><a href="class-UflAs.Render.html">UflAs\Render</a></li>
+				<li><a href="class-UflAs.Render.SmartyRender.html">UflAs\Render\SmartyRender</a></li>
 				<li><a href="class-UflAs.Request.html">UflAs\Request</a></li>
+				<li><a href="class-UflAs.Response.html">UflAs\Response</a></li>
 				<li><a href="class-UflAs.Router.html">UflAs\Router</a></li>
 				<li><a href="class-UflAs.Router.AbstractRouter.html">UflAs\Router\AbstractRouter</a></li>
 				<li><a href="class-UflAs.Router.SimpleRouter.html">UflAs\Router\SimpleRouter</a></li>
 				<li><a href="class-UflAs.Session.html">UflAs\Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html">UflAs\SessionContainer</a></li>
 				<li><a href="class-UflAs.Storage.html">UflAs\Storage</a></li>
-				<li><a href="class-UflAs.View.html">UflAs\View</a></li>
-				<li><a href="class-UflAs.ViewCompiler.SmartyCompiler.html">UflAs\ViewCompiler\SmartyCompiler</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
 				<li><a href="class-UflAs.Holiday.IHoliday.html">UflAs\Holiday\IHoliday</a></li>
+				<li><a href="class-UflAs.Render.IRender.html">UflAs\Render\IRender</a></li>
 				<li><a href="class-UflAs.Router.IRouter.html">UflAs\Router\IRouter</a></li>
-				<li><a href="class-UflAs.ViewCompiler.ICompiler.html">UflAs\ViewCompiler\ICompiler</a></li>
 			</ul>
 
 
@@ -182,7 +184,7 @@
 </span><span id="38" class="l">        <span class="php-keyword1">if</span> (<span class="php-keyword2">is_null</span>(<span class="php-var">$this</span>-&gt;<span class="php-keyword2">pathInfo</span>)) {
 </span><span id="39" class="l">            <span class="php-var">$selfUri</span> = <span class="php-keyword2">str_replace</span>(DIRECTORY_SEPARATOR, <span class="php-quote">'/'</span>,
 </span><span id="40" class="l">                <span class="php-keyword2">str_replace</span>(<span class="php-var">$_SERVER</span>[<span class="php-quote">'DOCUMENT_ROOT'</span>], <span class="php-quote">''</span>, <span class="php-keyword2">dirname</span>(<span class="php-var">$_SERVER</span>[<span class="php-quote">'SCRIPT_FILENAME'</span>])));
-</span><span id="41" class="l">            <span class="php-var">$this</span>-&gt;<span class="php-keyword2">pathInfo</span> = <span class="php-keyword2">str_replace</span>(<span class="php-var">$selfUri</span>, <span class="php-quote">''</span>, <span class="php-var">$_SERVER</span>[<span class="php-quote">'PATH_INFO'</span>]);
+</span><span id="41" class="l">            <span class="php-var">$this</span>-&gt;<span class="php-keyword2">pathInfo</span> = <span class="php-keyword2">str_replace</span>(<span class="php-var">$selfUri</span>, <span class="php-quote">''</span>, <span class="php-keyword1">isset</span>(<span class="php-var">$_SERVER</span>[<span class="php-quote">'PATH_INFO'</span>]) ? <span class="php-var">$_SERVER</span>[<span class="php-quote">'PATH_INFO'</span>] : <span class="php-quote">''</span>);
 </span><span id="42" class="l">        }
 </span><span id="43" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;<span class="php-keyword2">pathInfo</span>;
 </span><span id="44" class="l">    }
@@ -195,6 +197,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?a950fdc87fa0e448887c9dab1d55708a8df85544"></script>
-<script src="elementlist.js?b279b4920fd9ba214dc448ac878bb30a9895542e"></script>
+<script src="elementlist.js?0ae85a9ea1365f5269be96dfb00a4f0957c6f9d9"></script>
 </body>
 </html>

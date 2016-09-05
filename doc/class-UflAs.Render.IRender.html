@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class UflAs\Router</title>
+	<title>Interface UflAs\Render\IRender</title>
 
 	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
 	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
@@ -28,7 +28,7 @@
 
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="namespace-UflAs.html" title="Summary of UflAs"><span>Namespace</span></a>
+						<a href="namespace-UflAs.Render.html" title="Summary of UflAs\Render"><span>Namespace</span></a>
 					</li>
 					<li class="active">
 <span>Class</span>					</li>
@@ -75,7 +75,7 @@
 						<a href="namespace-UflAs.Holiday.html">
 							Holiday						</a>
 							</li>
-					<li>
+					<li class="active">
 						<a href="namespace-UflAs.Render.html">
 							Render						</a>
 							</li>
@@ -91,24 +91,13 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-UflAs.ArrayUtil.html">ArrayUtil</a></li>
-				<li><a href="class-UflAs.Base.html">Base</a></li>
-				<li><a href="class-UflAs.CommandLine.html">CommandLine</a></li>
-				<li><a href="class-UflAs.Config.html">Config</a></li>
-				<li><a href="class-UflAs.Database.html">Database</a></li>
-				<li><a href="class-UflAs.Date.html">Date</a></li>
-				<li><a href="class-UflAs.Header.html">Header</a></li>
-				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
-				<li><a href="class-UflAs.Model.html">Model</a></li>
-				<li><a href="class-UflAs.Render.html">Render</a></li>
-				<li><a href="class-UflAs.Request.html">Request</a></li>
-				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li class="active"><a href="class-UflAs.Router.html">Router</a></li>
-				<li><a href="class-UflAs.Session.html">Session</a></li>
-				<li><a href="class-UflAs.SessionContainer.html">SessionContainer</a></li>
-				<li><a href="class-UflAs.Storage.html">Storage</a></li>
+				<li><a href="class-UflAs.Render.SmartyRender.html">SmartyRender</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-UflAs.Render.IRender.html">IRender</a></li>
+			</ul>
 
 
 
@@ -122,7 +111,7 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class Router</h1>
+	<h1>Interface IRender</h1>
 
 
 
@@ -130,6 +119,13 @@
 
 
 
+	<div>
+		<h3>Direct known implementers</h3>
+		<p class="elementList">
+			<code><a href="class-UflAs.Render.html">UflAs\Render</a></code>, 
+			<code><a href="class-UflAs.Render.SmartyRender.html">UflAs\Render\SmartyRender</a></code>
+		</p>
+	</div>
 
 
 
@@ -137,10 +133,10 @@
 	<div class="alert alert-info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
+		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a>\<a href="namespace-UflAs.Render.html">Render</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Router.html#7-86" title="Go to source code">Router.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Render.IRender.html#4-59" title="Go to source code">Render/IRender.php</a>
 		<br>
 	</div>
 
@@ -149,27 +145,32 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
-		<tr data-order="__construct" id="___construct">
+		<tr data-order="setConfigs" id="_setConfigs">
 
 			<td class="attributes"><code>
-				final protected 
+				 public 
 				
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Router.html#18-24" title="Go to source code">__construct</a>( )</code>
+			<a class="anchor" href="#_setConfigs">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#7-11" title="Go to source code">setConfigs</a>( <span>array <var>$configs</var></span> )</code>
 
 			<div class="description short">
-				<p>Router constructor.</p>
+				
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Router constructor.</p>
+				
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$configs</var></dt>
+						<dd></dd>
+					</dl></div>
 
 
 
@@ -178,18 +179,18 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="getInstance" id="_getInstance">
+		<tr data-order="assign" id="_assign">
 
 			<td class="attributes"><code>
-				 public static
+				 public 
 				static
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Router.html#26-35" title="Go to source code">getInstance</a>( )</code>
+			<a class="anchor" href="#_assign">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#13-19" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				
@@ -199,6 +200,15 @@
 				
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$name</var></dt>
+						<dd></dd>
+						<dt><var>$var</var></dt>
+						<dd></dd>
+						<dt><var>$noCache</var></dt>
+						<dd></dd>
+					</dl></div>
 
 					<h4>Returns</h4>
 					<div class="list">
@@ -211,106 +221,7 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="init" id="_init">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_init">#</a>
-			<code><a href="source-class-UflAs.Router.html#37-50" title="Go to source code">init</a>( <span><code><a href="class-UflAs.Router.AbstractRouter.html">UflAs\Router\AbstractRouter</a></code> <var>$router</var> = <span class="php-keyword1">null</span></span> )</code>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-
-					<h4>Parameters</h4>
-					<div class="list"><dl>
-						<dt><var>$router</var></dt>
-						<dd></dd>
-					</dl></div>
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="add" id="_add">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_add">#</a>
-			<code><a href="source-class-UflAs.Router.html#52-60" title="Go to source code">add</a>( <span>string <var>$routPath</var></span>, <span>mixed <var>$detector</var></span> )</code>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-
-					<h4>Parameters</h4>
-					<div class="list"><dl>
-						<dt><var>$routPath</var></dt>
-						<dd></dd>
-						<dt><var>$detector</var></dt>
-						<dd></dd>
-					</dl></div>
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="detect" id="_detect">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_detect">#</a>
-			<code><a href="source-class-UflAs.Router.html#62-69" title="Go to source code">detect</a>( )</code>
-
-			<div class="description short">
-				<p>detect &amp; call router</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>detect &amp; call router</p>
-
-
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="getPathInfo" id="_getPathInfo">
+		<tr data-order="compile" id="_compile">
 
 			<td class="attributes"><code>
 				 public 
@@ -320,8 +231,118 @@
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_getPathInfo">#</a>
-			<code><a href="source-class-UflAs.Router.html#71-77" title="Go to source code">getPathInfo</a>( )</code>
+			<a class="anchor" href="#_compile">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#21-25" title="Go to source code">compile</a>( <span>string <var>$template</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$template</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="templateExists" id="_templateExists">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_templateExists">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#27-31" title="Go to source code">templateExists</a>( <span> <var>$template</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$template</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setLayoutPath" id="_setLayoutPath">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setLayoutPath">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#33-37" title="Go to source code">setLayoutPath</a>( <span>string <var>$layout</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$layout</var></dt>
+						<dd>is template path</dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getLayoutPath" id="_getLayoutPath">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getLayoutPath">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#39-42" title="Go to source code">getLayoutPath</a>( )</code>
 
 			<div class="description short">
 				
@@ -343,7 +364,40 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="setNoRoute" id="_setNoRoute">
+		<tr data-order="isLayoutMode" id="_isLayoutMode">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_isLayoutMode">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#44-47" title="Go to source code">isLayoutMode</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setContentName" id="_setContentName">
 
 			<td class="attributes"><code>
 				 public 
@@ -353,8 +407,8 @@
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_setNoRoute">#</a>
-			<code><a href="source-class-UflAs.Router.html#79-85" title="Go to source code">setNoRoute</a>( <span>Closure <var>$closure</var></span> )</code>
+			<a class="anchor" href="#_setContentName">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#49-53" title="Go to source code">setContentName</a>( <span> <var>$contentName</var></span> )</code>
 
 			<div class="description short">
 				
@@ -366,10 +420,43 @@
 
 					<h4>Parameters</h4>
 					<div class="list"><dl>
-						<dt><var>$closure</var></dt>
+						<dt><var>$contentName</var></dt>
 						<dd></dd>
 					</dl></div>
 
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getContentName" id="_getContentName">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getContentName">#</a>
+			<code><a href="source-class-UflAs.Render.IRender.html#55-58" title="Go to source code">getContentName</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
 
 
 
@@ -384,67 +471,6 @@
 
 
 
-
-
-
-
-
-
-		<div class="panel panel-default">
-            <div class="panel-heading"><h2>Properties summary</h2></div>
-			<table class="summary table table-bordered table-striped properties" id="properties">
-		<tr data-order="instance" id="$instance">
-			<td class="attributes"><code>
-				protected static 
-				static
-			</code></td>
-
-			<td class="name">
-					<a href="source-class-UflAs.Router.html#9-12" title="Go to source code"><var>$instance</var></a>
-
-				<div class="description short">
-					
-				</div>
-
-				<div class="description detailed hidden">
-					
-
-				</div>
-			</td>
-			<td class="value">
-				<div>
-					<a href="#$instance" class="anchor">#</a>
-					<code></code>
-				</div>
-			</td>
-		</tr>
-		<tr data-order="router" id="$router">
-			<td class="attributes"><code>
-				protected  
-				<code><a href="class-UflAs.Router.AbstractRouter.html">UflAs\Router\AbstractRouter</a></code>
-			</code></td>
-
-			<td class="name">
-					<a href="source-class-UflAs.Router.html#13-16" title="Go to source code"><var>$router</var></a>
-
-				<div class="description short">
-					
-				</div>
-
-				<div class="description detailed hidden">
-					
-
-				</div>
-			</td>
-			<td class="value">
-				<div>
-					<a href="#$router" class="anchor">#</a>
-					<code></code>
-				</div>
-			</td>
-		</tr>
-			</table>
-		</div>
 
 
 

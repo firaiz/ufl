@@ -6,7 +6,7 @@ namespace UflAs;
  *
  * @property Database $db
  * @property Config $conf
- * @property Response $view
+ * @property Response $response
  * @property Request $request
  * @property SessionContainer $session
  */

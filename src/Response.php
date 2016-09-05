@@ -1,72 +1,24 @@
 <?php
 namespace UflAs;
 
-use UflAs\ViewCompiler\ICompiler;
-
 class Response
 {
     /** @var Response */
-    protected static $_instance;
-    /** @var ICompiler */
-    protected $compiler;
-    /** @var array */
-    protected $headers = array();
+    protected static $instance;
+    /** @var Render */
+    protected $render;
+    /** @var Header */
+    private $header;
 
     /**
      * View constructor.
      */
     protected function __construct()
     {
-        $config = Config::getInstance();
-        $render = $config->get("render");
-
-        if (isset($render['engine']) === false) {
-            $render['engine'] = 'Smarty';
-        }
-        $this->initCompiler($render['engine']);
-        $this->setHeaders($render['headers']);
-        $this->setConfigs($render['config']);
-    }
-
-    /**
-     * @param string $engine is class name. Have a implemented ICompiler interface
-     */
-    protected function initCompiler($engine)
-    {
-        $compiler = __NAMESPACE__ . '\\ViewCompiler\\' . $engine . 'Compiler';
-        $this->compiler = new $compiler();
-    }
-
-    /**
-     * @param array $headers
-     * @param boolean $isOverwrite
-     */
-    public function setHeaders($headers, $isOverwrite = false)
-    {
-        foreach ($headers as $name => $value) {
-            $namedValues = array_key_exists($name, $this->headers) ? $this->headers[$name] : array();
-            foreach ((array)$value as $val) {
-                $namedValues[] = $val;
-            }
-            $this->headers[$name] = $isOverwrite ? array($value) : $namedValues;
-        }
-    }
-
-    /**
-     * @param array $configs
-     * @return void
-     */
-    protected function setConfigs(array $configs)
-    {
-        $this->getCompiler()->setConfigs($configs);
-    }
-
-    /**
-     * @return ICompiler
-     */
-    protected function getCompiler()
-    {
-        return $this->compiler;
+        $this->render = Render::getInstance();
+        $this->header = Header::getInstance();
+        $this->header->reset();
+        $this->header->add($this->render->getDefaultHeaders());
     }
 
     /**
@@ -74,10 +26,10 @@ class Response
      */
     public static function getInstance()
     {
-        if (!(static::$_instance instanceof static)) {
-            static::$_instance = new static();
+        if (!(static::$instance instanceof static)) {
+            static::$instance = new static();
         }
-        return static::$_instance;
+        return static::$instance;
     }
 
     /**
@@ -85,7 +37,7 @@ class Response
      */
     public function setLayout($templatePath)
     {
-        $this->getCompiler()->setLayoutPath($templatePath);
+        $this->render()->setLayout($templatePath);
     }
 
     /**
@@ -96,49 +48,43 @@ class Response
      */
     function assign($name, $var = null, $noCache = false)
     {
-        $this->getCompiler()->assign($name, $var, $noCache);
+        $this->render()->assign($name, $var, $noCache);
         return $this;
     }
 
     /**
      * @param string $template
      */
-    public function response($template)
+    public function html($template)
     {
-        $this->renderHeaders();
-        echo $this->compile($template);
+        $this->header()->flush();
+        echo $this->compileHtml($template);
     }
 
     /**
-     * header 出力
+     * @return Header
      */
-    protected function renderHeaders()
-    {
-        foreach ($this->headers as $name => $values) {
-            foreach ($values as $value) {
-                header(sprintf('%s: %s', $name, $value), false);
-            }
-        }
+    public function header() {
+       return $this->header;
     }
 
     /**
      * @param string $template
      * @return string
      */
-    public function compile($template)
+    public function compileHtml($template)
     {
-        return $this->getCompiler()->compile($template);
+        return $this->render()->compile($template);
     }
 
     /**
      * @param mixed $data
      * @param string $charset
-     * @return string
      */
-    public function responseJson($data, $charset = 'utf-8')
+    public function json($data, $charset = 'utf-8')
     {
-        $this->setHeaders(array('Content-Type' => 'application/json; charset=' . $charset), true);
-        $this->renderHeaders();
+        $this->header()->set(array('Content-Type' => 'application/json; charset=' . $charset));
+        $this->header()->flush();
         echo json_encode($data);
     }
 
@@ -147,30 +93,39 @@ class Response
      * @param string $downloadFileName is local file name
      * @param string $contentType
      */
-    public function responseDownload($contents, $downloadFileName, $contentType = 'application/octet-stream')
+    public function download($contents, $downloadFileName, $contentType = 'application/octet-stream')
     {
         $isFile = file_exists($contents) && is_readable($contents) && is_file($contents);
 
         if ($isFile) {
             $size = filesize($contents);
         } else {
-            if ($this->getCompiler()->templateExists($contents)) {
-                $contents = $this->compile($contents);
+            $render = $this->render();
+            if ($render->templateExists($contents)) {
+                $contents = $render->compile($contents);
             }
             $size = strlen($contents);
         }
 
-        $this->setHeaders(array(
+        $header = $this->header();
+        $header->set(array(
             'Content-Disposition' => 'attachment; filename="' . $downloadFileName . '"',
             'Content-Length' => $size,
             'Content-Type' => $contentType
-        ), true);
-
-        $this->renderHeaders();
+        ));
+        $header->flush();
         if ($isFile) {
             readfile($contents);
         } else {
             echo $contents;
         }
+    }
+
+    /**
+     * @return Render
+     */
+    private function render()
+    {
+        return $this->render;
     }
 }

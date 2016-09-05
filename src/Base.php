@@ -6,14 +6,15 @@ namespace UflAs;
  *
  * @property Database $db
  * @property Config $conf
- * @property View $view
+ * @property Response $response
  * @property Request $request
  * @property SessionContainer $session
+ * @property Header $header
  */
 abstract class Base
 {
     /** @var array allowed overwrite */
-    protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'view' => 'View');
+    protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'response' => 'Response', 'header' => 'Header');
     /** @var array allowed overwrite */
     protected $instances = array('request' => 'Request', 'session' => 'SessionContainer');
 

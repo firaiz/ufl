@@ -76,12 +76,12 @@
 							Holiday						</a>
 							</li>
 					<li>
-						<a href="namespace-UflAs.Router.html">
-							Router						</a>
+						<a href="namespace-UflAs.Render.html">
+							Render						</a>
 							</li>
 					<li>
-						<a href="namespace-UflAs.ViewCompiler.html">
-							ViewCompiler						</a>
+						<a href="namespace-UflAs.Router.html">
+							Router						</a>
 							</li>
 								</ul></li>
 			</ul>
@@ -97,14 +97,16 @@
 				<li><a href="class-UflAs.Config.html">Config</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.Model.html">Model</a></li>
+				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
+				<li><a href="class-UflAs.Response.html">Response</a></li>
 				<li><a href="class-UflAs.Router.html">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html">SessionContainer</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
-				<li><a href="class-UflAs.View.html">View</a></li>
 			</ul>
 
 
@@ -141,7 +143,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Base.html#4-60" title="Go to source code">Base.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Base.html#4-61" title="Go to source code">Base.php</a>
 		<br>
 	</div>
 
@@ -161,7 +163,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Base.html#20-26" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Base.html#21-27" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>Base constructor.</p>
@@ -190,7 +192,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_init">#</a>
-			<code><a href="source-class-UflAs.Base.html#28-42" title="Go to source code">init</a>( )</code>
+			<code><a href="source-class-UflAs.Base.html#29-43" title="Go to source code">init</a>( )</code>
 
 			<div class="description short">
 				<p>initialized instances</p>
@@ -219,7 +221,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_execute">#</a>
-			<code><a href="source-class-UflAs.Base.html#56-59" title="Go to source code">execute</a>( )</code>
+			<code><a href="source-class-UflAs.Base.html#57-60" title="Go to source code">execute</a>( )</code>
 
 			<div class="description short">
 				
@@ -260,7 +262,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Base.html#15-16" title="Go to source code"><var>$singletons</var></a>
+					<a href="source-class-UflAs.Base.html#16-17" title="Go to source code"><var>$singletons</var></a>
 
 				<div class="description short">
 					<p>allowed overwrite</p>
@@ -274,7 +276,7 @@
 			<td class="value">
 				<div>
 					<a href="#$singletons" class="anchor">#</a>
-					<code><span class="php-keyword1">array</span>(<span class="php-quote">'conf'</span> =&gt; <span class="php-quote">'Config'</span>, <span class="php-quote">'db'</span> =&gt; <span class="php-quote">'Database'</span>, <span class="php-quote">'view'</span> =&gt; <span class="php-quote">'View'</span>)</code>
+					<code><span class="php-keyword1">array</span>(<span class="php-quote">'conf'</span> =&gt; <span class="php-quote">'Config'</span>, <span class="php-quote">'db'</span> =&gt; <span class="php-quote">'Database'</span>, <span class="php-quote">'response'</span> =&gt; <span class="php-quote">'Response'</span>, <span class="php-quote">'header'</span> =&gt; <span class="php-quote">'Header'</span>)</code>
 				</div>
 			</td>
 		</tr>
@@ -285,7 +287,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Base.html#17-18" title="Go to source code"><var>$instances</var></a>
+					<a href="source-class-UflAs.Base.html#18-19" title="Go to source code"><var>$instances</var></a>
 
 				<div class="description short">
 					<p>allowed overwrite</p>
@@ -349,14 +351,14 @@
 				</div>
 			</td>
 		</tr>
-		<tr data-order="view" id="m$view">
+		<tr data-order="response" id="m$response">
 			<td class="attributes"><code>
 				public  
-				<code><a href="class-UflAs.View.html">UflAs\View</a></code>
+				<code><a href="class-UflAs.Response.html">UflAs\Response</a></code>
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Base.html#9" title="Go to source code"><var>$view</var></a>
+					<a href="source-class-UflAs.Base.html#9" title="Go to source code"><var>$response</var></a>
 
 				<div class="description short">
 					
@@ -395,6 +397,25 @@
 
 			<td class="name">
 					<a href="source-class-UflAs.Base.html#11" title="Go to source code"><var>$session</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+		<tr data-order="header" id="m$header">
+			<td class="attributes"><code>
+				public  
+				<code><a href="class-UflAs.Header.html">UflAs\Header</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-UflAs.Base.html#12" title="Go to source code"><var>$header</var></a>
 
 				<div class="description short">
 					

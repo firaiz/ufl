@@ -4,9 +4,11 @@ namespace UflAs;
 class Config
 {
     /** @var static */
-    protected static $instance = null;
+    protected static $instances = array();
+    /** @var array */
     protected $configs = array();
-    protected $configPath;
+    /** @var string */
+    protected $configPath = '';
 
     /**
      * Config constructor.
@@ -18,27 +20,23 @@ class Config
 
     /**
      * initialize configuration
-     * @param string $confPath is optional default: __DIR__/../../configs/default.json or {SERV_ENV}.json
+     * @param string $confPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
      * @return bool
      */
     public function initConfig($confPath = null)
     {
-
         if (is_null($confPath) && defined('CONF_PATH')) {
             $confPath = CONF_PATH;
-        } else {
-            if (!file_exists($confPath)) {
-                $confPath = Storage::getInstance()->getPath('configs');
-            }
+        } elseif (!file_exists($confPath)) {
+            $confPath = Storage::getInstance()->getPath('configs');
         }
 
         if (is_null($confPath) || !file_exists($confPath)) {
             return false;
         }
 
-
         if (is_dir($confPath)) {
-            $serverEnv = $this->getEnv('SERV_ENV') ?: $this->getEnv('SERVER_ENV');
+            $serverEnv = $this->getEnv('SERVER_ENV');
             $confPath .= DIRECTORY_SEPARATOR . ($serverEnv ?: 'default') . '.json';
         }
 
@@ -61,15 +59,15 @@ class Config
     }
 
     /**
+     * @param string $store
      * @return static
      */
-    public static function getInstance()
+    public static function getInstance($store = '_')
     {
-        if (!(self::$instance instanceof static)) {
-            self::$instance = new static();
+        if (!(self::$instances[$store] instanceof static)) {
+            self::$instances[$store] = new static($store);
         }
-
-        return self::$instance;
+        return self::$instances[$store];
     }
 
     /**

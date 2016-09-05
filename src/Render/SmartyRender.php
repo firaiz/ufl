@@ -1,11 +1,11 @@
 <?php
-namespace UflAs\ViewCompiler;
+namespace UflAs\Render;
 
 use UflAs\ArrayUtil;
 use UflAs\Storage;
 use Smarty;
 
-class SmartyCompiler implements ICompiler
+class SmartyRender implements IRender
 {
     /** @var Smarty */
     protected $smarty;
@@ -15,7 +15,7 @@ class SmartyCompiler implements ICompiler
     protected $contentName = 'contents';
 
     /**
-     * SmartyCompiler constructor.
+     * SmartyRender constructor.
      */
     function __construct()
     {

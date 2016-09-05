@@ -1,7 +1,7 @@
 <?php
-namespace UflAs\ViewCompiler;
+namespace UflAs\Render;
 
-interface ICompiler
+interface IRender
 {
 
     /**

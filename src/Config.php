@@ -64,7 +64,7 @@ class Config
      */
     public static function getInstance($store = '_')
     {
-        if (!(self::$instances[$store] instanceof static)) {
+        if (!(isset(self::$instances[$store]) && self::$instances[$store] instanceof static)) {
             self::$instances[$store] = new static($store);
         }
         return self::$instances[$store];

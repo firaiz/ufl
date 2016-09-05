@@ -21,7 +21,7 @@ class Header
      */
     public static function getInstance()
     {
-        if (static::$instance instanceof Header) {
+        if (!(static::$instance instanceof Header)) {
             static::$instance = new static();
         }
         return static::$instance;

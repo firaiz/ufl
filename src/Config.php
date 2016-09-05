@@ -35,7 +35,6 @@ class Config
             return false;
         }
 
-
         if (is_dir($confPath)) {
             $serverEnv = $this->getEnv('SERVER_ENV');
             $confPath .= DIRECTORY_SEPARATOR . ($serverEnv ?: 'default') . '.json';

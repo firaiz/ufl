@@ -50,7 +50,7 @@ class Header
             foreach ((array)$value as $val) {
                 $namedValues[] = $val;
             }
-            $this->headers[$name] = $isOverWrite ? array($namedValues) : $namedValues;
+            $this->headers[$name] = $isOverWrite ? (is_array($value) ? $value : array($value)) : $namedValues;
         }
     }
 

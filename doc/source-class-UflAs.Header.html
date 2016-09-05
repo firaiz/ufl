@@ -196,7 +196,7 @@
 </span><span id="50" class="l">            <span class="php-keyword1">foreach</span> ((<span class="php-keyword1">array</span>)<span class="php-var">$value</span> <span class="php-keyword1">as</span> <span class="php-var">$val</span>) {
 </span><span id="51" class="l">                <span class="php-var">$namedValues</span>[] = <span class="php-var">$val</span>;
 </span><span id="52" class="l">            }
-</span><span id="53" class="l">            <span class="php-var">$this</span>-&gt;headers[<span class="php-var">$name</span>] = <span class="php-var">$isOverWrite</span> ? <span class="php-keyword1">array</span>(<span class="php-var">$namedValues</span>) : <span class="php-var">$namedValues</span>;
+</span><span id="53" class="l">            <span class="php-var">$this</span>-&gt;headers[<span class="php-var">$name</span>] = <span class="php-var">$isOverWrite</span> ? (<span class="php-keyword2">is_array</span>(<span class="php-var">$value</span>) ? <span class="php-var">$value</span> : <span class="php-keyword1">array</span>(<span class="php-var">$value</span>)) : <span class="php-var">$namedValues</span>;
 </span><span id="54" class="l">        }
 </span><span id="55" class="l">    }
 </span><span id="56" class="l">

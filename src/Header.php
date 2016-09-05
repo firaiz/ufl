@@ -70,7 +70,36 @@ class Header
         $this->setHeaders($headers, true);
     }
 
+    /**
+     * clear headers
+     */
     public function reset() {
         $this->headers = array();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSent() {
+        return headers_sent();
+    }
+
+    /**
+     * @param $url
+     * @param int $code
+     */
+    public function location($url, $code = 302) {
+        if (!$this->isSent()) {
+            header('Location: ' . $url, true, $code);
+        } else {
+            echo '<script type="text/javascript">',
+                   'window.location.replace="'.$url.'";',
+                 '</script>',
+                 '<noscript>',
+                   '<meta http-equiv="refresh" content="',($code === 301 ? 0 : 3), ';url=',$url,'" />',
+                 '</noscript>',
+                 '<a href="', $url ,'">moved page</a>';
+        }
+        exit;
     }
 }

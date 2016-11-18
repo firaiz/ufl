@@ -2,9 +2,10 @@
 namespace UflAs;
 
 use UflAs\Router\AbstractRouter;
+use UflAs\Router\IRouter;
 use UflAs\Router\SimpleRouter;
 
-class Router
+class Router implements IRouter
 {
     /**
      * @var static
@@ -49,11 +50,6 @@ class Router
         }
     }
 
-    /**
-     * @param string $routPath
-     * @param mixed $detector
-     * @return void
-     */
     public function add($routPath, $detector)
     {
         $this->router->add($routPath, $detector);
@@ -77,10 +73,15 @@ class Router
     }
 
     /**
-     * @param \Closure $closure
+     * @param callable $closure
      */
     public function setNoRoute($closure)
     {
         $this->router->setNoRoute($closure);
+    }
+
+    public function getContainer()
+    {
+        return $this->router->getContainer();
     }
 }

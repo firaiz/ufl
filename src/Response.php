@@ -46,7 +46,7 @@ class Response
      * @param boolean $noCache
      * @return static
      */
-    function assign($name, $var = null, $noCache = false)
+    public function assign($name, $var = null, $noCache = false)
     {
         $this->render()->assign($name, $var, $noCache);
         return $this;

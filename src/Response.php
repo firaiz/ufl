@@ -3,7 +3,7 @@ namespace UflAs;
 
 class Response
 {
-    /** @var Response */
+    /** @var static */
     protected static $instance;
     /** @var Render */
     protected $render;
@@ -15,9 +15,12 @@ class Response
      */
     protected function __construct()
     {
-        $this->render = Render::getInstance();
         $this->header = Header::getInstance();
         $this->header->reset();
+    }
+
+    protected function initRender() {
+        $this->render = Render::getInstance();
         $this->header->add($this->render->getDefaultHeaders());
     }
 
@@ -28,6 +31,7 @@ class Response
     {
         if (!(static::$instance instanceof static)) {
             static::$instance = new static();
+            static::$instance->initRender();
         }
         return static::$instance;
     }

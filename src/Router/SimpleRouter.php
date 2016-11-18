@@ -5,6 +5,7 @@ use UflAs\ArrayUtil;
 
 class SimpleRouter extends AbstractRouter
 {
+
     protected $routes = array();
 
     /**
@@ -26,12 +27,7 @@ class SimpleRouter extends AbstractRouter
         return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
     }
 
-    /**
-     * detect & call route
-     * @return void
-     * @throws \UflAs\Exception\Route\NotFound
-     */
-    public function detect()
+    public function getContainer()
     {
         $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
         $params = $keys = ArrayUtil::toKeys($routeKey);
@@ -44,10 +40,6 @@ class SimpleRouter extends AbstractRouter
             }
         }
 
-        if (!is_callable($context)) {
-            $this->notDetectRoute();
-        } else {
-            call_user_func_array($context, $params);
-        }
+        return new CallableContainer($context, $params);
     }
 }

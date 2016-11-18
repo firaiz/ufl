@@ -16,9 +16,7 @@ interface IRouter
     public function add($routPath, $detector);
 
     /**
-     * detect & call router
-     * @return void
-     * @throws \UflAs\Exception\Route\NotFound
+     * @return IRouterContainer
      */
-    public function detect();
+    public function getContainer();
 }

@@ -31,7 +31,6 @@ class Response
     {
         if (!(static::$instance instanceof static)) {
             static::$instance = new static();
-            static::$instance->initRender();
         }
         return static::$instance;
     }
@@ -130,6 +129,9 @@ class Response
      */
     private function render()
     {
+        if (is_null($this->render)) {
+            $this->initRender();
+        }
         return $this->render;
     }
 }

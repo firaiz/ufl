@@ -7,12 +7,12 @@ abstract class AbstractRouter implements IRouter
 {
     private $pathInfo = null;
     /**
-     * @var \Closure
+     * @var callable
      */
     private $noRoute = null;
 
     /**
-     * @param \Closure $closure
+     * @param callable $closure
      */
     public function setNoRoute($closure)
     {
@@ -41,5 +41,14 @@ abstract class AbstractRouter implements IRouter
             $this->pathInfo = str_replace($selfUri, '', isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '');
         }
         return $this->pathInfo;
+    }
+
+    public function detect() {
+        $container = $this->getContainer();
+        if ($container->isValid()) {
+            $container->exec();
+        } else {
+            $this->notDetectRoute();
+        }
     }
 }

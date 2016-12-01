@@ -56,7 +56,7 @@ class Router
      */
     public function dispatch() {
         $routeContainer = $this->router->getContainer();
-        if ($routeContainer instanceof IRouterContainer) {
+        if ($routeContainer instanceof IRouterContainer && $routeContainer->isValid()) {
             $routeContainer->exec();
             return ;
         }

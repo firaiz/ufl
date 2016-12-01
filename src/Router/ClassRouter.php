@@ -34,33 +34,34 @@ class ClassRouter extends AbstractRouter
     {
         $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
         $params = $keys = ArrayUtil::toKeys($routeKey);
-        $context = $this->routes;
+        $routes = $this->routes;
 
         $className = '';
         $methodName = '';
 
-        foreach (array($keys[0], $keys[1]) as $key) {
-            $context = ArrayUtil::get($context, $key);
-            if (is_string($context)) {
-                $className = $context;
+        $detectKeys = array($keys[0]);
+        if (isset($keys[1])) {
+            $detectKeys[] = $keys[1];
+        }
+        foreach ($detectKeys as $key) {
+            $routes = ArrayUtil::get($routes, $key);
+            if (is_string($routes)) {
+                $className = $routes;
                 array_shift($params);
                 $methodName = array_shift($params);
-            } elseif (is_array($context) && isset($context['class'], $context['method'])) {
-                $className = $context['class'];
-                $methodName = $context['method'];
+                $methodName = is_null($methodName) ? 'index' : $methodName;
+            } elseif (is_array($routes) && isset($routes['class'], $routes['method'])) {
+                $className = $routes['class'];
+                $methodName = $routes['method'];
                 array_shift($params);
                 array_shift($params);
             }
         }
 
         $obj = null;
-        if (class_exists($className)) {
-            $obj = new $className;
-        }
-        if (method_exists($obj, $methodName)) {
+        $context = null;
+        if (class_exists($className) && method_exists($className, $methodName)) {
             $context = array($obj, $methodName);
-        } else {
-            $context = null;
         }
         return $this->initContainer($context, $params);
     }

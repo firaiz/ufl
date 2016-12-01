@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: k.yoshida
- * Date: 2016/11/18
- * Time: 16:22
- */
-
 namespace UflAs\Router;
-
 
 interface IRouterContainer
 {
@@ -25,4 +17,9 @@ interface IRouterContainer
      * @return array
      */
     public function getParams();
+
+    /**
+     * @param array $params
+     */
+    public function setParams($params);
 }

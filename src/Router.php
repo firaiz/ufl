@@ -6,7 +6,7 @@ use UflAs\Router\IRouter;
 use UflAs\Router\IRouterContainer;
 use UflAs\Router\SimpleRouter;
 
-class Router implements IRouter
+class Router
 {
     /**
      * @var static
@@ -20,7 +20,7 @@ class Router implements IRouter
     /**
      * Router constructor.
      */
-    final protected function __construct()
+    final private function __construct()
     {
         // empty
     }
@@ -55,12 +55,12 @@ class Router implements IRouter
      * @return void
      */
     public function dispatch() {
-        $routeContainer = $this->getContainer();
+        $routeContainer = $this->router->getContainer();
         if ($routeContainer instanceof IRouterContainer) {
             $routeContainer->exec();
             return ;
         }
-        $routeContainer = $this->getNoRoute();
+        $routeContainer = $this->router->getNoRoute();
         $routeContainer->exec();
     }
 
@@ -68,7 +68,7 @@ class Router implements IRouter
      * @param callable $closure
      */
     public function initNoRoute($closure) {
-        $this->setNoRoute(new CallableContainer($closure));
+        $this->router->setNoRoute(new CallableContainer($closure));
     }
 
     // ----------------------
@@ -80,30 +80,5 @@ class Router implements IRouter
     public function add($routePath, $detector)
     {
         $this->router->add($routePath, $detector);
-    }
-
-    /**
-     * @return Router\IRouterContainer
-     */
-    public function getContainer()
-    {
-        return $this->router->getContainer();
-    }
-
-    /**
-     * @param IRouterContainer $container
-     */
-    public function setNoRoute($container)
-    {
-        $this->router->setNoRoute($container);
-    }
-
-    /**
-     * @return IRouterContainer
-     * @throws \UflAs\Exception\Route\NotFound
-     */
-    public function getNoRoute()
-    {
-        return $this->router->getNoRoute();
     }
 }

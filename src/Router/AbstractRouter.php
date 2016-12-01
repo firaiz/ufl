@@ -5,30 +5,20 @@ use UflAs\Exception\Route\NotFound;
 
 abstract class AbstractRouter implements IRouter
 {
+    /**
+     * uri path separator
+     */
+    const PATH_SEPARATOR = '/';
+
+    /**
+     * @var string
+     */
     private $pathInfo = null;
-    /**
-     * @var callable
-     */
-    private $noRoute = null;
 
     /**
-     * @param callable $closure
+     * @var IRouterContainer
      */
-    public function setNoRoute($closure)
-    {
-        $this->noRoute = $closure;
-    }
-
-    /**
-     * @throws \UflAs\Exception\Route\NotFound
-     */
-    protected function notDetectRoute()
-    {
-        if (!is_callable($this->noRoute)) {
-            throw new NotFound();
-        }
-        call_user_func_array($this->noRoute, array($this->getPathInfo()));
-    }
+    private $noRoute;
 
     /**
      * @return string
@@ -43,12 +33,31 @@ abstract class AbstractRouter implements IRouter
         return $this->pathInfo;
     }
 
-    public function detect() {
-        $container = $this->getContainer();
-        if ($container->isValid()) {
-            $container->exec();
-        } else {
-            $this->notDetectRoute();
+    /**
+     * @param mixed $context
+     * @param mixed $params
+     * @return IRouterContainer
+     */
+    abstract function initContainer($context, $params);
+
+    /**
+     * @param IRouterContainer $container
+     */
+    public function setNoRoute($container)
+    {
+        $this->noRoute = $container;
+    }
+
+    /**
+     * @return IRouterContainer
+     * @throws NotFound
+     */
+    public function getNoRoute()
+    {
+        if ($this->noRoute instanceof IRouterContainer) {
+            $this->noRoute->setParams(array($this->getPathInfo()));
+            return $this->noRoute;
         }
+        throw new NotFound();
     }
 }

@@ -19,7 +19,7 @@ class CallableContainer implements IRouterContainer
      * @param callable $context
      * @param array $params
      */
-    public function __construct($context, $params)
+    public function __construct($context, $params = array())
     {
         $this->context = $context;
         $this->params = $params;
@@ -40,5 +40,13 @@ class CallableContainer implements IRouterContainer
     public function getParams()
     {
         return $this->params;
+    }
+
+    /**
+     * @param array $params
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
     }
 }

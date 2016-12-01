@@ -1,8 +1,9 @@
 <?php
 namespace UflAs;
 
-use UflAs\Router\AbstractRouter;
+use UflAs\Router\CallableContainer;
 use UflAs\Router\IRouter;
+use UflAs\Router\IRouterContainer;
 use UflAs\Router\SimpleRouter;
 
 class Router implements IRouter
@@ -12,7 +13,7 @@ class Router implements IRouter
      */
     protected static $instance;
     /**
-     * @var AbstractRouter
+     * @var IRouter
      */
     protected $router;
 
@@ -36,52 +37,73 @@ class Router implements IRouter
     }
 
     /**
-     * @param AbstractRouter $router
+     * @param IRouter $router
      * @return void
      */
     public function init($router = null)
     {
-        if (!($this->router instanceof AbstractRouter) && is_null($router)) {
+        if (!($this->router instanceof IRouter) && is_null($router)) {
             $router = new SimpleRouter();
         }
 
-        if ($router instanceof AbstractRouter) {
+        if ($router instanceof IRouter) {
             $this->router = $router;
         }
     }
 
-    public function add($routPath, $detector)
-    {
-        $this->router->add($routPath, $detector);
-    }
-
     /**
-     * detect & call router
      * @return void
      */
-    public function detect()
-    {
-        $this->router->detect();
-    }
-
-    /**
-     * @return string
-     */
-    public function getPathInfo()
-    {
-        return $this->router->getPathInfo();
+    public function dispatch() {
+        $routeContainer = $this->getContainer();
+        if ($routeContainer instanceof IRouterContainer) {
+            $routeContainer->exec();
+            return ;
+        }
+        $routeContainer = $this->getNoRoute();
+        $routeContainer->exec();
     }
 
     /**
      * @param callable $closure
      */
-    public function setNoRoute($closure)
-    {
-        $this->router->setNoRoute($closure);
+    public function initNoRoute($closure) {
+        $this->setNoRoute(new CallableContainer($closure));
     }
 
+    // ----------------------
+
+    /**
+     * @param string $routePath
+     * @param mixed $detector
+     */
+    public function add($routePath, $detector)
+    {
+        $this->router->add($routePath, $detector);
+    }
+
+    /**
+     * @return Router\IRouterContainer
+     */
     public function getContainer()
     {
         return $this->router->getContainer();
+    }
+
+    /**
+     * @param IRouterContainer $container
+     */
+    public function setNoRoute($container)
+    {
+        $this->router->setNoRoute($container);
+    }
+
+    /**
+     * @return IRouterContainer
+     * @throws \UflAs\Exception\Route\NotFound
+     */
+    public function getNoRoute()
+    {
+        return $this->router->getNoRoute();
     }
 }

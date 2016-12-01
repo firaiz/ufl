@@ -29,6 +29,7 @@ abstract class AbstractRouter implements IRouter
             $selfUri = str_replace(DIRECTORY_SEPARATOR, '/',
                 str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])));
             $this->pathInfo = str_replace($selfUri, '', isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '');
+            $this->pathInfo = preg_replace('/(\S+)\/$/', '$1', $this->pathInfo);
         }
         return $this->pathInfo;
     }

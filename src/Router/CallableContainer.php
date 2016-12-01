@@ -27,7 +27,9 @@ class CallableContainer implements IRouterContainer
 
     public function exec()
     {
-        call_user_func_array($this->context, $this->getParams());
+        if ($this->isValid()) {
+            call_user_func_array($this->context, $this->getParams());
+        }
     }
 
     public function isValid() {

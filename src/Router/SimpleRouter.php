@@ -34,11 +34,11 @@ class SimpleRouter extends AbstractRouter
     {
         $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
         $params = $keys = ArrayUtil::toKeys($routeKey);
-        $context = null;
+        $context = $this->routes;
         foreach ($keys as $key) {
-            $tmpContext = ArrayUtil::get($this->routes, $key);
+            $context = ArrayUtil::get($context, $key);
             array_shift($params);
-            if (is_callable($tmpContext)) {
+            if (is_callable($context)) {
                 break;
             }
         }

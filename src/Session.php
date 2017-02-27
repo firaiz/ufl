@@ -76,4 +76,11 @@ class Session
     {
         return $_SESSION;
     }
+
+    public function getSID() {
+        if (!$this->isStarted()) {
+            return null;
+        }
+        return session_id();
+    }
 }

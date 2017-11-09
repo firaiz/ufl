@@ -48,7 +48,7 @@ abstract class Base
      */
     private function initClassName($className)
     {
-        if (0 < strpos('\\', $className)) {
+        if (strpos($className, '\\') !== false) {
             return $className;
         }
         return __NAMESPACE__ . '\\' . $className;

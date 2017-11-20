@@ -49,6 +49,16 @@
 				<h3>Namespaces</h3>
 			<ul>
 					<li>
+						<a href="namespace-Exception.html">
+							Exception<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Exception.Session.html">
+							Session						</a>
+							</li>
+								</ul></li>
+					<li>
 						<a href="namespace-None.html">
 							None						</a>
 							</li>
@@ -58,10 +68,22 @@
 						</a>
 							<ul>
 					<li>
+						<a href="namespace-UflAs.Cache.html">
+							Cache						</a>
+							</li>
+					<li>
+						<a href="namespace-UflAs.Cron.html">
+							Cron						</a>
+							</li>
+					<li>
 						<a href="namespace-UflAs.Exception.html">
 							Exception<span></span>
 						</a>
 							<ul>
+					<li>
+						<a href="namespace-UflAs.Exception.Cache.html">
+							Cache						</a>
+							</li>
 					<li>
 						<a href="namespace-UflAs.Exception.File.html">
 							File						</a>
@@ -83,6 +105,14 @@
 						<a href="namespace-UflAs.Router.html">
 							Router						</a>
 							</li>
+					<li>
+						<a href="namespace-UflAs.Security.html">
+							Security						</a>
+							</li>
+					<li>
+						<a href="namespace-UflAs.Session.html">
+							Session						</a>
+							</li>
 								</ul></li>
 			</ul>
 		</div>
@@ -95,10 +125,12 @@
 				<li><a href="class-UflAs.Base.html">Base</a></li>
 				<li><a href="class-UflAs.CommandLine.html">CommandLine</a></li>
 				<li><a href="class-UflAs.Config.html">Config</a></li>
+				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
+				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
 				<li><a href="class-UflAs.Model.html">Model</a></li>
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
@@ -106,7 +138,9 @@
 				<li><a href="class-UflAs.Router.html">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html">SessionContainer</a></li>
+				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
+				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
 			</ul>
 
 
@@ -128,6 +162,12 @@
 
 
 
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-UflAs.JsonResponse.html">UflAs\JsonResponse</a></code>
+		</p>
+	</div>
 
 
 
@@ -140,7 +180,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Response.html#4-131" title="Go to source code">Response.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Response.html#4-137" title="Go to source code">Response.php</a>
 		<br>
 	</div>
 
@@ -160,7 +200,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Response.html#13-22" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#13-20" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>View constructor.</p>
@@ -168,6 +208,35 @@
 
 			<div class="description detailed hidden">
 				<p>View constructor.</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="initRender" id="_initRender">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_initRender">#</a>
+			<code><a href="source-class-UflAs.Response.html#22-25" title="Go to source code">initRender</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
 
 
 
@@ -189,7 +258,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Response.html#24-33" title="Go to source code">getInstance</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#27-36" title="Go to source code">getInstance</a>( )</code>
 
 			<div class="description short">
 				
@@ -222,7 +291,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setLayout">#</a>
-			<code><a href="source-class-UflAs.Response.html#35-41" title="Go to source code">setLayout</a>( <span>string <var>$templatePath</var></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#38-44" title="Go to source code">setLayout</a>( <span>string <var>$templatePath</var></span> )</code>
 
 			<div class="description short">
 				
@@ -256,7 +325,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_assign">#</a>
-			<code><a href="source-class-UflAs.Response.html#43-53" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#46-56" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				
@@ -298,7 +367,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_html">#</a>
-			<code><a href="source-class-UflAs.Response.html#55-62" title="Go to source code">html</a>( <span>string <var>$template</var></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#58-65" title="Go to source code">html</a>( <span>string <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -332,7 +401,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_header">#</a>
-			<code><a href="source-class-UflAs.Response.html#64-69" title="Go to source code">header</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#67-72" title="Go to source code">header</a>( )</code>
 
 			<div class="description short">
 				
@@ -365,7 +434,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_compileHtml">#</a>
-			<code><a href="source-class-UflAs.Response.html#71-78" title="Go to source code">compileHtml</a>( <span>string <var>$template</var></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#74-81" title="Go to source code">compileHtml</a>( <span>string <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -403,7 +472,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_json">#</a>
-			<code><a href="source-class-UflAs.Response.html#80-89" title="Go to source code">json</a>( <span>mixed <var>$data</var></span>, <span>string <var>$charset</var> = <span class="php-quote">'utf-8'</span></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#83-92" title="Go to source code">json</a>( <span>mixed <var>$data</var></span>, <span>string <var>$charset</var> = <span class="php-quote">'utf-8'</span></span> )</code>
 
 			<div class="description short">
 				
@@ -439,7 +508,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_download">#</a>
-			<code><a href="source-class-UflAs.Response.html#91-122" title="Go to source code">download</a>( <span>mixed <var>$contents</var></span>, <span>string <var>$downloadFileName</var></span>, <span>string <var>$contentType</var> = <span class="php-quote">'application/octet-stream'</span></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#94-125" title="Go to source code">download</a>( <span>mixed <var>$contents</var></span>, <span>string <var>$downloadFileName</var></span>, <span>string <var>$contentType</var> = <span class="php-quote">'application/octet-stream'</span></span> )</code>
 
 			<div class="description short">
 				
@@ -485,7 +554,7 @@
 		<tr data-order="instance" id="$instance">
 			<td class="attributes"><code>
 				protected static 
-				<code><a href="class-UflAs.Response.html">UflAs\Response</a></code>
+				static
 			</code></td>
 
 			<td class="name">

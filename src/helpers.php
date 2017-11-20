@@ -1,5 +1,6 @@
 <?php
 
+use UflAs\Security\Csrf;
 use UflAs\Storage;
 use UflAs\StringUtility;
 
@@ -16,7 +17,7 @@ if (!function_exists('csrf_token')) {
         if (!is_null($id)) {
             $idText = ' id="'.$id.'"';
         }
-        return '<input type="hidden"'.$idText.' name="'.\UflAs\Security\Csrf::CSRF_TAG.'" value="'.Security::takeCSRFToken().'">';
+        return '<input type="hidden"'.$idText.' name="'. Csrf::CSRF_TAG.'" value="'.Csrf::takeToken().'">';
     }
 }
 

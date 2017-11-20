@@ -9,6 +9,16 @@ abstract class Cron implements ICron
      */
     protected $db;
 
+    /**
+     * @var Config
+     */
+    protected $config;
+
+    /**
+     * @var Request
+     */
+    protected $request;
+
     final public function __construct()
     {
         $this->init();
@@ -17,5 +27,7 @@ abstract class Cron implements ICron
     protected function init()
     {
         $this->db = Database::getInstance();
+        $this->config = Config::getInstance();
+        $this->request = new Request();
     }
 }

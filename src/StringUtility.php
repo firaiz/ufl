@@ -32,4 +32,31 @@ class StringUtility {
             mt_rand(0, 0xffff)
         );
     }
+
+    public static function random($length = 32, $isFast = false) {
+        if ($isFast) {
+            $count = $length / 32;
+            $randomStr = '';
+            for ($i = 1; $i <= $count; $i++) {
+                $randomStr .= self::randomUUID('');
+            }
+        } else {
+            $str = '';
+            $generateLength = ceil($length / 2);
+            if (function_exists('random_bytes')) {
+                $str = random_bytes($generateLength);
+            }
+            if (function_exists('mcrypt_create_iv')) {
+                $str = mcrypt_create_iv($generateLength, MCRYPT_DEV_URANDOM);
+            }
+            if (function_exists('openssl_random_pseudo_bytes')) {
+                $str = openssl_random_pseudo_bytes($generateLength);
+            }
+            if (strlen($str) === 0) {
+                return self::random($length, true);
+            }
+            $randomStr = bin2hex($str);
+        }
+        return substr($randomStr, 0, $length);
+    }
 }

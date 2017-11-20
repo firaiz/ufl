@@ -49,6 +49,16 @@
 				<h3>Namespaces</h3>
 			<ul>
 					<li>
+						<a href="namespace-Exception.html">
+							Exception<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Exception.Session.html">
+							Session						</a>
+							</li>
+								</ul></li>
+					<li>
 						<a href="namespace-None.html">
 							None						</a>
 							</li>
@@ -58,10 +68,22 @@
 						</a>
 							<ul>
 					<li>
+						<a href="namespace-UflAs.Cache.html">
+							Cache						</a>
+							</li>
+					<li>
+						<a href="namespace-UflAs.Cron.html">
+							Cron						</a>
+							</li>
+					<li>
 						<a href="namespace-UflAs.Exception.html">
 							Exception<span></span>
 						</a>
 							<ul>
+					<li>
+						<a href="namespace-UflAs.Exception.Cache.html">
+							Cache						</a>
+							</li>
 					<li>
 						<a href="namespace-UflAs.Exception.File.html">
 							File						</a>
@@ -83,6 +105,14 @@
 						<a href="namespace-UflAs.Router.html">
 							Router						</a>
 							</li>
+					<li>
+						<a href="namespace-UflAs.Security.html">
+							Security						</a>
+							</li>
+					<li>
+						<a href="namespace-UflAs.Session.html">
+							Session						</a>
+							</li>
 								</ul></li>
 			</ul>
 		</div>
@@ -95,10 +125,12 @@
 				<li><a href="class-UflAs.Base.html">Base</a></li>
 				<li><a href="class-UflAs.CommandLine.html">CommandLine</a></li>
 				<li><a href="class-UflAs.Config.html">Config</a></li>
+				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
+				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
 				<li><a href="class-UflAs.Model.html">Model</a></li>
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
@@ -106,7 +138,9 @@
 				<li class="active"><a href="class-UflAs.Router.html">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html">SessionContainer</a></li>
+				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
+				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
 			</ul>
 
 
@@ -140,7 +174,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Router.html#7-86" title="Go to source code">Router.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Router.html#9-84" title="Go to source code">Router.php</a>
 		<br>
 	</div>
 
@@ -149,35 +183,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
-		<tr data-order="__construct" id="___construct">
-
-			<td class="attributes"><code>
-				final protected 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Router.html#18-24" title="Go to source code">__construct</a>( )</code>
-
-			<div class="description short">
-				<p>Router constructor.</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>Router constructor.</p>
-
-
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
 		<tr data-order="getInstance" id="_getInstance">
 
 			<td class="attributes"><code>
@@ -189,7 +194,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Router.html#26-35" title="Go to source code">getInstance</a>( )</code>
+			<code><a href="source-class-UflAs.Router.html#28-37" title="Go to source code">getInstance</a>( )</code>
 
 			<div class="description short">
 				
@@ -222,7 +227,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_init">#</a>
-			<code><a href="source-class-UflAs.Router.html#37-50" title="Go to source code">init</a>( <span><code><a href="class-UflAs.Router.AbstractRouter.html">UflAs\Router\AbstractRouter</a></code> <var>$router</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Router.html#39-52" title="Go to source code">init</a>( <span><code><a href="class-UflAs.Router.IRouter.html">UflAs\Router\IRouter</a></code> <var>$router</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				
@@ -245,7 +250,7 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="add" id="_add">
+		<tr data-order="dispatch" id="_dispatch">
 
 			<td class="attributes"><code>
 				 public 
@@ -255,73 +260,8 @@
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_add">#</a>
-			<code><a href="source-class-UflAs.Router.html#52-60" title="Go to source code">add</a>( <span>string <var>$routPath</var></span>, <span>mixed <var>$detector</var></span> )</code>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-
-					<h4>Parameters</h4>
-					<div class="list"><dl>
-						<dt><var>$routPath</var></dt>
-						<dd></dd>
-						<dt><var>$detector</var></dt>
-						<dd></dd>
-					</dl></div>
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="detect" id="_detect">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_detect">#</a>
-			<code><a href="source-class-UflAs.Router.html#62-69" title="Go to source code">detect</a>( )</code>
-
-			<div class="description short">
-				<p>detect &amp; call router</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>detect &amp; call router</p>
-
-
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
-		<tr data-order="getPathInfo" id="_getPathInfo">
-
-			<td class="attributes"><code>
-				 public 
-				string
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_getPathInfo">#</a>
-			<code><a href="source-class-UflAs.Router.html#71-77" title="Go to source code">getPathInfo</a>( )</code>
+			<a class="anchor" href="#_dispatch">#</a>
+			<code><a href="source-class-UflAs.Router.html#54-65" title="Go to source code">dispatch</a>( )</code>
 
 			<div class="description short">
 				
@@ -332,10 +272,6 @@
 
 
 
-					<h4>Returns</h4>
-					<div class="list">
-						string
-					</div>
 
 
 
@@ -343,7 +279,7 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="setNoRoute" id="_setNoRoute">
+		<tr data-order="initNoRoute" id="_initNoRoute">
 
 			<td class="attributes"><code>
 				 public 
@@ -353,8 +289,8 @@
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_setNoRoute">#</a>
-			<code><a href="source-class-UflAs.Router.html#79-85" title="Go to source code">setNoRoute</a>( <span>Closure <var>$closure</var></span> )</code>
+			<a class="anchor" href="#_initNoRoute">#</a>
+			<code><a href="source-class-UflAs.Router.html#67-72" title="Go to source code">initNoRoute</a>( <span>callable <var>$closure</var></span> )</code>
 
 			<div class="description short">
 				
@@ -367,6 +303,42 @@
 					<h4>Parameters</h4>
 					<div class="list"><dl>
 						<dt><var>$closure</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="add" id="_add">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_add">#</a>
+			<code><a href="source-class-UflAs.Router.html#76-83" title="Go to source code">add</a>( <span>string <var>$routePath</var></span>, <span>mixed <var>$detector</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$routePath</var></dt>
+						<dd></dd>
+						<dt><var>$detector</var></dt>
 						<dd></dd>
 					</dl></div>
 
@@ -400,7 +372,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Router.html#9-12" title="Go to source code"><var>$instance</var></a>
+					<a href="source-class-UflAs.Router.html#11-14" title="Go to source code"><var>$instance</var></a>
 
 				<div class="description short">
 					
@@ -421,11 +393,11 @@
 		<tr data-order="router" id="$router">
 			<td class="attributes"><code>
 				protected  
-				<code><a href="class-UflAs.Router.AbstractRouter.html">UflAs\Router\AbstractRouter</a></code>
+				<code><a href="class-UflAs.Router.IRouter.html">UflAs\Router\IRouter</a></code>
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Router.html#13-16" title="Go to source code"><var>$router</var></a>
+					<a href="source-class-UflAs.Router.html#15-18" title="Go to source code"><var>$router</var></a>
 
 				<div class="description short">
 					

@@ -1,5 +1,5 @@
 <?php
-namespace Exception\Session;
+namespace UflAs\Exception\Session;
 
 use Exception;
 

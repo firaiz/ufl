@@ -106,15 +106,21 @@ class PDOSessionHandler implements SessionHandlerInterface
         return $stmt->execute($params);
     }
 
-    public function sid() {
+    /**
+     * @return string
+     */
+    public function sid()
+    {
         return $this->create_sid();
     }
 
-    public function v4()
+    /**
+     * @return string
+     */
+    public function create_sid()
     {
-        return StringUtility::uuid('');
+        return StringUtility::random(64);
     }
-
     // 以下 implements
 
     /**
@@ -229,10 +235,5 @@ class PDOSessionHandler implements SessionHandlerInterface
                 ':expire' => $this->getTime()
             )
         );
-    }
-
-    public function create_sid()
-    {
-        return $this->v4() . $this->v4();
     }
 }

@@ -81,6 +81,9 @@ class Database
      */
     public function isConnected()
     {
+        if (!($this->connection instanceof Connection)) {
+            return false;
+        }
         return $this->connection->isConnected();
     }
 

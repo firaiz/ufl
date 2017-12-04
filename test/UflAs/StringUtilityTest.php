@@ -11,27 +11,30 @@ class StringUtilityTest extends TestCase
     {
         $str = StringUtility::random(32, true);
         $this->assertEquals(strlen($str), 32);
-    }
 
-    public function testLengthWithNormal()
-    {
         $str = StringUtility::random(32);
         $this->assertEquals(strlen($str), 32);
     }
 
-    public function testLengthWithNormalLoop()
+    public function testLengthWithLoop()
     {
+        for ($i = 1; $i <= 512; $i++) {
+            $str = StringUtility::random($i, true);
+            $this->assertEquals(strlen($str), $i);
+        }
+
         for ($i = 1; $i <= 512; $i++) {
             $str = StringUtility::random($i);
             $this->assertEquals(strlen($str), $i);
         }
     }
 
-    public function testLengthWithFastLoop()
+    public function testMinimumLength()
     {
-        for ($i = 1; $i <= 512; $i++) {
-            $str = StringUtility::random($i);
-            $this->assertEquals(strlen($str), $i);
-        }
+        $str = StringUtility::random(16, true);
+        $this->assertEquals(strlen($str), 16);
+
+        $str = StringUtility::random(16);
+        $this->assertEquals(strlen($str), 16);
     }
 }

@@ -37,7 +37,7 @@ class StringUtility {
         if ($isFast) {
             $count = $length / 32;
             $randomStr = '';
-            for ($i = 1; $i <= $count; $i++) {
+            for ($i = 0; $i < $count; $i++) {
                 $randomStr .= self::randomUUID('');
             }
         } else {

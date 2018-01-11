@@ -2,7 +2,7 @@
 
 namespace UflAs\Security;
 
-use Exception\Session\NotStarted;
+use UflAs\Exception\Session\NotStarted;
 use UflAs\Session;
 use UflAs\SessionContainer;
 use UflAs\StringUtility;

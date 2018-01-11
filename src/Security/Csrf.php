@@ -39,6 +39,7 @@ class Csrf
     /**
      * @param string $token
      * @return string
+     * @throws NotStarted
      */
     protected static function generateToken($token = null)
     {
@@ -53,10 +54,11 @@ class Csrf
 
     /**
      * @return string
+     * @throws NotStarted
      */
     public static function takeToken()
     {
-        if (!is_null(self::$container)) {
+        if (!is_null(self::container())) {
             return self::generateToken();
         }
         return '';
@@ -65,6 +67,7 @@ class Csrf
     /**
      * @param string $token
      * @return bool
+     * @throws NotStarted
      */
     public static function isValidToken($token)
     {
@@ -73,6 +76,7 @@ class Csrf
 
     /**
      * @return string
+     * @throws NotStarted
      */
     public static function regenerateToken()
     {

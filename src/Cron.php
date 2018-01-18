@@ -2,6 +2,8 @@
 
 namespace UflAs;
 
+use UflAs\Cron\ICron;
+
 abstract class Cron implements ICron
 {
     /**

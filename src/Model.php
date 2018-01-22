@@ -305,4 +305,19 @@ class Model
             $this->initFields($row);
         }
     }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function getOldValue($key) {
+        return array_key_exists($key, $this->_initValues) ? $this->_initValues[$key] : null;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getOldValues() {
+        return $this->_initValues;
+    }
 }

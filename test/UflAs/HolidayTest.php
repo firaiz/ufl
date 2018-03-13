@@ -225,6 +225,7 @@ class HolidayTest extends TestCase
             '2020-01-01' => '元日',
             '2020-01-13' => '成人の日',
             '2020-02-11' => '建国記念日',
+            '2020-02-23' => '天皇誕生日',
             '2020-03-20' => '春分の日',
             '2020-04-29' => '昭和の日',
             '2020-05-03' => '憲法記念日',
@@ -238,12 +239,12 @@ class HolidayTest extends TestCase
             '2020-10-12' => '体育の日',
             '2020-11-03' => '文化の日',
             '2020-11-23' => '勤労感謝の日',
-            '2020-12-23' => '天皇誕生日',
         ),
         2021 => array(
             '2021-01-01' => '元日',
             '2021-01-11' => '成人の日',
             '2021-02-11' => '建国記念日',
+            '2020-02-23' => '天皇誕生日',
             '2021-03-20' => '春分の日',
             '2021-04-29' => '昭和の日',
             '2021-05-03' => '憲法記念日',
@@ -256,7 +257,6 @@ class HolidayTest extends TestCase
             '2021-10-11' => '体育の日',
             '2021-11-03' => '文化の日',
             '2021-11-23' => '勤労感謝の日',
-            '2021-12-23' => '天皇誕生日',
         )
     );
     protected $calcLists = array(
@@ -315,8 +315,7 @@ class HolidayTest extends TestCase
 
     public function testAll()
     {
-        $keys = array_keys($this->lists);
-        foreach (range(min($keys), max($keys)) as $year) {
+        foreach ($this->lists as $year => $list) {
             $this->oneYear($year);
         }
     }

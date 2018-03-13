@@ -65,43 +65,9 @@ class Japan extends Holiday
      * @param int $year
      * @return int
      */
-    private static function getSpringEquinoxDay($year)
+    public  static function getSpringEquinoxDay($year)
     {
-        switch ($year % 4) {
-            case 0:
-                if (2092 <= $year && $year <= 2096) {
-                    return 19;
-                } elseif (1960 <= $year && $year <= 2088) {
-                    return 20;
-                } elseif (1900 <= $year && $year <= 1956) {
-                    return 21;
-                }
-                break;
-            case 1:
-                if (1993 <= $year && $year <= 2097) {
-                    return 20;
-                } elseif (1901 <= $year && $year <= 1989) {
-                    return 21;
-                }
-                break;
-            case 2:
-                if (2026 <= $year && $year <= 2098) {
-                    return 20;
-                } elseif (1902 <= $year && $year <= 2022) {
-                    return 21;
-                }
-                break;
-            case 3:
-                if (2059 <= $year && $year <= 2099) {
-                    return 19;
-                } elseif (1927 <= $year && $year <= 2055) {
-                    return 20;
-                } elseif (1903 <= $year && $year <= 1923) {
-                    return 21;
-                }
-                break;
-        }
-        return 1000;
+        return floor(20.8431 + 0.242194 * ($year - 1980)) - floor(($year - 1980)/4);
     }
 
     /**
@@ -109,42 +75,8 @@ class Japan extends Holiday
      * @param int $year
      * @return int
      */
-    private static function getAutumnalEquinoxDay($year)
+    public static function getAutumnalEquinoxDay($year)
     {
-        switch ($year % 4) {
-            case 0:
-                if (2012 <= $year && $year <= 2096) {
-                    return 22;
-                } elseif (1900 <= $year && $year <= 2008) {
-                    return 23;
-                }
-                break;
-            case 1:
-                if (2045 <= $year && $year <= 2097) {
-                    return 22;
-                } elseif (1921 <= $year && $year <= 2041) {
-                    return 23;
-                } elseif (1901 <= $year && $year <= 1917) {
-                    return 24;
-                }
-                break;
-            case 2:
-                if (2078 <= $year && $year <= 2098) {
-                    return 22;
-                } elseif (1950 <= $year && $year <= 2074) {
-                    return 23;
-                } elseif (1902 <= $year && $year <= 1946) {
-                    return 24;
-                }
-                break;
-            case 3:
-                if (1983 <= $year && $year <= 2099) {
-                    return 23;
-                } elseif (1903 <= $year && $year <= 1979) {
-                    return 24;
-                }
-                break;
-        }
-        return 1000;
+        return floor(23.2488 + 0.242194 * ($year - 1980)) - floor(($year - 1980)/4);
     }
 }

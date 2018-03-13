@@ -52,6 +52,7 @@ class Date
      * @param string|int|DateTime $time
      * @param int $size
      * @return DateTime[]
+     * @throws \Exception
      */
     public static function getWeekDateList($time, $size = 1)
     {
@@ -70,6 +71,7 @@ class Date
      * @param string $type
      * @param int $span
      * @return DateInterval
+     * @throws \Exception
      */
     public static function createSimpleInterval($type, $span = 1)
     {
@@ -84,6 +86,7 @@ class Date
      * @param DateTime $startDate
      * @param DateTime $endDate
      * @return DateTime[]
+     * @throws \Exception
      */
     public static function getDateList($startDate, $endDate)
     {
@@ -100,6 +103,7 @@ class Date
      * @param string|int|DateTime $startYear
      * @param int $dateMargin
      * @return array
+     * @throws \Exception
      */
     public static function createYears($startYear, $dateMargin = 2)
     {
@@ -191,6 +195,7 @@ class Date
      * @param DateTime $date
      * @param int $dateCount
      * @return DateTime
+     * @throws \Exception
      */
     public static function add($addType, $date, $dateCount)
     {

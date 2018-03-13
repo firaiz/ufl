@@ -22,6 +22,8 @@ class Config
      * initialize configuration
      * @param string $confPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
      * @return bool
+     * @throws Exception\File\NotFound
+     * @throws Exception\File\NotWritable
      */
     public function initConfig($confPath = null)
     {

@@ -25,6 +25,8 @@ class SmartyRender implements IRender
     /**
      * @param array $configs
      * @return void
+     * @throws \UflAs\Exception\File\NotFound
+     * @throws \UflAs\Exception\File\NotWritable
      */
     function setConfigs(array $configs)
     {
@@ -64,6 +66,8 @@ class SmartyRender implements IRender
     /**
      * @param string $template
      * @return string
+     * @throws \Exception
+     * @throws \SmartyException
      */
     function compile($template)
     {

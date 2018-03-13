@@ -11,6 +11,7 @@ class Generator
      * @param Initializer $initializer
      * @return CacheProvider
      * @throws ClassNotFound
+     * @throws \ReflectionException
      */
     public static function generate($initializer)
     {

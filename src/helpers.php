@@ -5,9 +5,9 @@ use UflAs\Storage;
 use UflAs\StringUtility;
 
 if (!function_exists('storage')) {
-    function storage($key, $isCreate = false)
+    function storage($key, $isCreate = false, $permission = Storage::DEFAULT_PERMISSION)
     {
-        return Storage::getInstance()->getPath($key, $isCreate);
+        return Storage::getInstance()->getPath($key, $isCreate, $permission);
     }
 }
 

@@ -5,10 +5,12 @@ namespace UflAs;
 use UflAs\Exception\File\NotFound;
 use UflAs\Exception\File\NotWritable;
 
-
 class Storage
 {
     const DS = DIRECTORY_SEPARATOR;
+    const DEFAULT_PERMISSION = 0700;
+
+
     /** @var static */
     protected static $instance = null;
     /** @var string base path */
@@ -16,6 +18,8 @@ class Storage
 
     /**
      * Storage constructor.
+     * @throws NotFound
+     * @throws NotWritable
      */
     protected function __construct()
     {
@@ -30,6 +34,8 @@ class Storage
 
     /**
      * @return static
+     * @throws NotFound
+     * @throws NotWritable
      */
     public static function getInstance()
     {
@@ -42,11 +48,12 @@ class Storage
     /**
      * @param string $path
      * @param boolean $isCreate
+     * @param int $permission
      * @return string is fullpath
      */
-    public function getPath($path, $isCreate = false)
+    public function getPath($path, $isCreate = false, $permission = self::DEFAULT_PERMISSION)
     {
-        if ($isCreate === false || $isCreate && $this->create($path)) {
+        if ($isCreate === false || $isCreate && $this->create($path, $permission)) {
             return realpath($this->base()) . self::DS . $this->replace($path);
         }
         return '';
@@ -57,7 +64,7 @@ class Storage
      * @param int $permission octet number
      * @return bool
      */
-    public function create($path, $permission = 0700)
+    public function create($path, $permission = self::DEFAULT_PERMISSION)
     {
         $dirPath = $this->base() . self::DS . $this->replace($path);
         if (is_writable($this->base())) {

@@ -3,6 +3,7 @@ namespace UflAs;
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
+use DateTime;
 use PHPUnit\Framework\TestCase;
 use UflAs\Holiday\Japan;
 
@@ -358,7 +359,6 @@ class HolidayTest extends TestCase
             '2019-11-03' => '文化の日',
             '2019-11-04' => '振替休日',
             '2019-11-23' => '勤労感謝の日',
-            '2019-12-23' => '天皇誕生日',
         ),
         2020 => array(
             '2020-01-01' => '元日',
@@ -455,7 +455,7 @@ class HolidayTest extends TestCase
         }
 
         foreach ($lists as $date => $name) {
-            $this->assertArrayHasKey($date, $holidays, 'holidays has date');
+            $this->assertArrayHasKey($date, $holidays, 'holidays has date '.$date);
 
             $holiday = $holidays[$date];
             $this->assertEquals( $name, $holiday->getName(), 'list text equal'.$holiday->getDate(self::FORMAT));
@@ -487,6 +487,33 @@ class HolidayTest extends TestCase
     public function testOneAt1973()
     {
         $this->oneYear(1973);
+    }
+
+    public function testCheckSince()
+    {
+        $this->assertTrue(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => 2020,),new DateTime('2020-02-23')));
+        $this->assertFalse(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => 2020,),new DateTime('2019-02-23')));
+        $this->assertTrue(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => 2020,), new DateTime('2021-02-23')));
+        $this->assertFalse(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => new DateTime('2020-01-02'),), new DateTime('2020-01-01')));
+        $this->assertTrue(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => new DateTime('2020-01-02'),), new DateTime('2020-01-02')));
+        $this->assertTrue(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => new DateTime('2020-01-02'),), new DateTime('2020-01-02')));
+    }
+
+    public function testCheckAbort()
+    {
+        $this->assertTrue(Japan::isAbortDate(array(Japan::CHECK_TYPE_ABORT => 2020,), new DateTime('2020-02-23')));
+        $this->assertTrue(Japan::isAbortDate(array(Japan::CHECK_TYPE_ABORT => 2020,), new DateTime('2019-02-23')));
+        $this->assertFalse(Japan::isAbortDate(array(Japan::CHECK_TYPE_ABORT => 2020,), new DateTime('2021-02-23')));
+        $this->assertTrue(Japan::isAbortDate(array(Japan::CHECK_TYPE_ABORT => new DateTime('2020-01-01'),), new DateTime('2020-01-01')));
+        $this->assertFalse(Japan::isAbortDate(array(Japan::CHECK_TYPE_ABORT => new DateTime('2020-01-01'),), new DateTime('2020-01-02')));
+        $this->assertFalse(Japan::isAbortDate(array(Japan::CHECK_TYPE_ABORT => new DateTime('2020-01-01'),), new DateTime('2020-12-31')));
+    }
+
+    public function testCheckBoth()
+    {
+        $this->assertTrue(Japan::isSinceDate(array(Japan::CHECK_TYPE_SINCE => 1959, Japan::CHECK_TYPE_ABORT => 1959), new DateTime('1959-01-01')));
+        $this->assertTrue(Japan::isAbortDate(array(Japan::CHECK_TYPE_SINCE => 1959, Japan::CHECK_TYPE_ABORT => 1959), new DateTime('1959-12-31')));
+        $this->assertFalse(Japan::isAbortDate(array(Japan::CHECK_TYPE_SINCE => 1959, Japan::CHECK_TYPE_ABORT => 1959), new DateTime('1960-01-01')));
     }
 
     public function testBoundaryValue()

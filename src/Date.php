@@ -276,6 +276,9 @@ class Date
     public static function calcWeekDay($year, $month, $weekNo, $week)
     {
         $date = static::object($year.'-'.$month);
+        if ($date->format('w') == $week) {
+            $weekNo -= 1;
+        }
         $weekText = static::weekToText($week);
         $weekNoText = static::monthWeekNoToText($weekNo);
         $date->modify($weekNoText.' '.$weekText);

@@ -6,54 +6,94 @@ use UflAs\Date;
 
 class Japan extends Holiday
 {
+    const FORMAT = 'Y-m-d';
+    const CHECK_TYPE_ABORT = 'abort';
+    const CHECK_TYPE_SINCE = 'since';
+
+    public static function getYearConfig($year) {
+        return array(
+            array('date' => Date::toDate($year, 1, 1, self::FORMAT), 'name' => '元日'),
+            array('date' => Date::toDate($year, 1, Date::calcWeekDay($year, 1, 2, 1), self::FORMAT), 'name' => '成人の日', self::CHECK_TYPE_SINCE => 2000),
+            array('date' => Date::toDate($year, 2, 11, self::FORMAT), 'name' => '建国記念の日', self::CHECK_TYPE_SINCE => 1967),
+            array('date' => Date::toDate($year, 3, static::getSpringEquinoxDay($year), self::FORMAT), 'name' => '春分の日'),
+            array('date' => Date::toDate($year, 4, 29, self::FORMAT), 'name' => '昭和の日', self::CHECK_TYPE_SINCE => 2007),
+            array('date' => Date::toDate($year, 5, 3, self::FORMAT), 'name' => '憲法記念日'),
+            array('date' => Date::toDate($year, 5, 4, self::FORMAT), 'name' => 'みどりの日', self::CHECK_TYPE_SINCE => 2007),
+            array('date' => Date::toDate($year, 5, 5, self::FORMAT), 'name' => 'こどもの日'),
+            array('date' => Date::toDate($year, 7, Date::calcWeekDay($year, 7, 3, 1), self::FORMAT), 'name' => '海の日', self::CHECK_TYPE_SINCE => 2003),
+            array('date' => Date::toDate($year, 8, 11, self::FORMAT), 'name' => '山の日', self::CHECK_TYPE_SINCE => 2016),
+            array('date' => Date::toDate($year, 9, Date::calcWeekDay($year, 9, 3, 1), self::FORMAT), 'name' => '敬老の日', self::CHECK_TYPE_SINCE => 2003),
+            array('date' => Date::toDate($year, 9, static::getAutumnalEquinoxDay($year), self::FORMAT), 'name' => '秋分の日'),
+            array('date' => Date::toDate($year, 10, Date::calcWeekDay($year, 10, 2, 1), self::FORMAT), 'name' => '体育の日', self::CHECK_TYPE_SINCE => 2000),
+            array('date' => Date::toDate($year, 11, 3, self::FORMAT), 'name' => '文化の日'),
+            array('date' => Date::toDate($year, 11, 23, self::FORMAT), 'name' => '勤労感謝の日'),
+            array('date' => Date::toDate($year, 12, 23, self::FORMAT), 'name' => '天皇誕生日', self::CHECK_TYPE_SINCE => 1989, self::CHECK_TYPE_ABORT => Date::toDate(2019, 4, 30)),
+
+            // 新
+            array('date' => Date::toDate($year, 2, 23, self::FORMAT), 'name' => '天皇誕生日', self::CHECK_TYPE_SINCE => 2020),
+
+            // 旧
+            array('date' => Date::toDate($year, 1, 15, self::FORMAT), 'name' => '成人の日', self::CHECK_TYPE_ABORT => 1999),
+            array('date' => Date::toDate($year, 4, 29, self::FORMAT), 'name' => '天皇誕生日', self::CHECK_TYPE_ABORT => 1988),
+            array('date' => Date::toDate($year, 4, 29, self::FORMAT), 'name' => 'みどりの日', self::CHECK_TYPE_SINCE => 1989, self::CHECK_TYPE_ABORT => 2006),
+            array('date' => Date::toDate($year, 7, 20, self::FORMAT), 'name' => '海の日', self::CHECK_TYPE_SINCE => 1996, self::CHECK_TYPE_ABORT => 2002),
+            array('date' => Date::toDate($year, 9, 15, self::FORMAT), 'name' => '敬老の日', self::CHECK_TYPE_SINCE => 1966, self::CHECK_TYPE_ABORT => 2002),
+            array('date' => Date::toDate($year, 10, 10, self::FORMAT), 'name' => '体育の日', self::CHECK_TYPE_SINCE => 1966, self::CHECK_TYPE_ABORT => 1999),
+
+            // 個別設定
+            array('date' => Date::toDate($year, 4, 10, self::FORMAT), 'name' => '明仁親王の結婚の儀', self::CHECK_TYPE_SINCE => 1959, self::CHECK_TYPE_ABORT => 1959),
+            array('date' => Date::toDate($year, 2, 24, self::FORMAT), 'name' => '昭和天皇の大喪の礼', self::CHECK_TYPE_SINCE => 1989, self::CHECK_TYPE_ABORT => 1989),
+            array('date' => Date::toDate($year, 11, 12, self::FORMAT), 'name' => '即位の礼正殿の儀', self::CHECK_TYPE_SINCE => 1990, self::CHECK_TYPE_ABORT => 1990),
+            array('date' => Date::toDate($year, 6, 9, self::FORMAT), 'name' => '皇太子徳仁親王の結婚の儀', self::CHECK_TYPE_SINCE => 1993, self::CHECK_TYPE_ABORT => 1993),
+        );
+    }
+
+    public static function isSinceDate($config, $checkTarget)
+    {
+        return static::checkDate($config, $checkTarget, self::CHECK_TYPE_SINCE);
+    }
+
+    public static function isAbortDate($config, $checkTarget)
+    {
+        return static::checkDate($config, $checkTarget, self::CHECK_TYPE_ABORT);
+    }
+
+    protected static function checkDate($config, $checkTarget, $type) {
+        if (!isset($config[$type])) {
+            return true;
+        }
+
+        $date = $config[$type];
+        if (is_int($date)) {
+            $date = $type === self::CHECK_TYPE_SINCE ?
+                Date::toDate($date, 1, 1) :
+                Date::toDate($date, 12, 31)->setTime(23, 59, 59);
+        }
+
+        if (
+            ($type === self::CHECK_TYPE_SINCE && $checkTarget < $date) ||
+            ($type === self::CHECK_TYPE_ABORT && $date < $checkTarget)
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * @param int $year
      * @return static[]
      */
     public static function listOf($year)
     {
-        $format = 'Y-m-d';
-        $list = array(
-            array('date' => Date::toDate($year, 1, 1, $format), 'name' => '元日'),
-            array('date' => Date::toDate($year, 1, Date::calcWeekDay($year, 1, 2, 1), $format), 'name' => '成人の日', 'since' => 2000),
-            array('date' => Date::toDate($year, 1, 15, $format), 'name' => '成人の日', 'abort' => 1999),
-            array('date' => Date::toDate($year, 2, 11, $format), 'name' => '建国記念の日', 'since' => 1967),
-            array('date' => Date::toDate($year, 2, 23, $format), 'name' => '天皇誕生日', 'since' => 2020),
-            array('date' => Date::toDate($year, 3, static::getSpringEquinoxDay($year), $format), 'name' => '春分の日'),
-            array('date' => Date::toDate($year, 4, 29, $format), 'name' => '天皇誕生日', 'abort' => 1988),
-            array('date' => Date::toDate($year, 4, 29, $format), 'name' => 'みどりの日', 'since' => 1989, 'abort' => 2006),
-            array('date' => Date::toDate($year, 4, 29, $format), 'name' => '昭和の日', 'since' => 2007),
-            array('date' => Date::toDate($year, 5, 3, $format), 'name' => '憲法記念日'),
-            array('date' => Date::toDate($year, 5, 4, $format), 'name' => 'みどりの日', 'since' => 2007),
-            array('date' => Date::toDate($year, 5, 5, $format), 'name' => 'こどもの日'),
-            array('date' => Date::toDate($year, 7, Date::calcWeekDay($year, 7, 3, 1), $format), 'name' => '海の日', 'since' => 2003),
-            array('date' => Date::toDate($year, 7, 20, $format), 'name' => '海の日', 'since' => 1996, 'abort' => 2002),
-            array('date' => Date::toDate($year, 8, 11, $format), 'name' => '山の日', 'since' => 2016),
-            array('date' => Date::toDate($year, 9, 15, $format), 'name' => '敬老の日', 'since' => 1966, 'abort' => 2002),
-            array('date' => Date::toDate($year, 9, Date::calcWeekDay($year, 9, 3, 1), $format), 'name' => '敬老の日', 'since' => 2003),
-            array('date' => Date::toDate($year, 9, static::getAutumnalEquinoxDay($year), $format), 'name' => '秋分の日'),
-            array('date' => Date::toDate($year, 10, Date::calcWeekDay($year, 10, 2, 1), $format), 'name' => '体育の日', 'since' => 2000),
-            array('date' => Date::toDate($year, 10, 10, $format), 'name' => '体育の日', 'since' => 1966, 'abort' => 1999),
-            array('date' => Date::toDate($year, 11, 3, $format), 'name' => '文化の日'),
-            array('date' => Date::toDate($year, 11, 23, $format), 'name' => '勤労感謝の日'),
-            array('date' => Date::toDate($year, 12, 23, $format), 'name' => '天皇誕生日', 'since' => 1989, 'abort' => 2019),
-
-            array('date' => Date::toDate($year, 4, 10, $format), 'name' => '明仁親王の結婚の儀', 'since' => 1959, 'abort' => 1959),
-            array('date' => Date::toDate($year, 2, 24, $format), 'name' => '昭和天皇の大喪の礼', 'since' => 1989, 'abort' => 1989),
-            array('date' => Date::toDate($year, 11, 12, $format), 'name' => '即位の礼正殿の儀', 'since' => 1990, 'abort' => 1990),
-            array('date' => Date::toDate($year, 6, 9, $format), 'name' => '皇太子徳仁親王の結婚の儀', 'since' => 1993, 'abort' => 1993),
-        );
+        $list = static::getYearConfig($year);
         /** @var Holiday[] $newHolidays */
         $newHolidays = array();
         foreach ($list as $holiday) {
-            if (
-                isset($holiday['since']) && $year < $holiday['since'] ||
-                isset($holiday['abort']) && $holiday['abort'] < $year
-            ) {
+            $day = Date::object($holiday['date']);
+            if (!static::checkDate($holiday, $day, self::CHECK_TYPE_SINCE) || !static::checkDate($holiday, $day, self::CHECK_TYPE_ABORT)) {
                 continue;
             }
-            $day = Date::object($holiday['date']);
-            $newHolidays[$day->format($format)] = static::init($holiday['name'], $day);
+            $newHolidays[$day->format(self::FORMAT)] = static::init($holiday['name'], $day);
         }
 
         // 国民の休日
@@ -64,7 +104,7 @@ class Japan extends Holiday
                     $diff = Date::diffDate($holiday->getDate(), $prevHoliday);
                     if ($diff->days === 2) {
                         $prevHoliday->modify('+1 day');
-                        $newHolidays[$prevHoliday->format($format)] = static::init('国民の休日', $prevHoliday);
+                        $newHolidays[$prevHoliday->format(self::FORMAT)] = static::init('国民の休日', $prevHoliday);
                     }
                 }
                 $prevHoliday = clone $holiday->getDate();
@@ -86,8 +126,8 @@ class Japan extends Holiday
             if ($isTransferDateFlag) {
                 $nextDay = clone $day;
                 $nextDay->modify('+1 day');
-                if (!isset($newHolidays[$nextDay->format($format)])) {
-                    $newHolidays[$nextDay->format($format)] = static::init('振替休日', $nextDay);
+                if (!isset($newHolidays[$nextDay->format(self::FORMAT)])) {
+                    $newHolidays[$nextDay->format(self::FORMAT)] = static::init('振替休日', $nextDay);
                     $isTransferDateFlag = false;
                 }
             }

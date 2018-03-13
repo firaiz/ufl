@@ -168,7 +168,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Database.html#11-294" title="Go to source code">Database.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Database.html#11-296" title="Go to source code">Database.php</a>
 		<br>
 	</div>
 
@@ -404,7 +404,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_select">#</a>
-			<code><a href="source-class-UflAs.Database.html#122-131" title="Go to source code">select</a>( <span> <var>$sql</var></span>, <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-UflAs.Database.html#122-132" title="Go to source code">select</a>( <span> <var>$sql</var></span>, <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				
@@ -429,6 +429,10 @@
 						Doctrine\DBAL\Driver\Statement
 					</div>
 
+					<h4>Throws</h4>
+					<div class="list">
+						Doctrine\DBAL\DBALException
+					</div>
 
 
 
@@ -446,7 +450,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_fetchRow">#</a>
-			<code><a href="source-class-UflAs.Database.html#133-146" title="Go to source code">fetchRow</a>( <span>string <var>$statement</var></span>, <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-UflAs.Database.html#134-148" title="Go to source code">fetchRow</a>( <span>string <var>$statement</var></span>, <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Prepares and executes an SQL query and returns the first row of the result
@@ -473,6 +477,10 @@ as an associative array.</p>
 						array
 					</div>
 
+					<h4>Throws</h4>
+					<div class="list">
+						Doctrine\DBAL\DBALException
+					</div>
 
 
 
@@ -490,7 +498,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_delete">#</a>
-			<code><a href="source-class-UflAs.Database.html#148-164" title="Go to source code">delete</a>( <span>string <var>$tableExpression</var></span>, <span>array <var>$identifier</var></span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-UflAs.Database.html#150-166" title="Go to source code">delete</a>( <span>string <var>$tableExpression</var></span>, <span>array <var>$identifier</var></span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Executes an SQL DELETE statement on a table.</p>
@@ -538,7 +546,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_update">#</a>
-			<code><a href="source-class-UflAs.Database.html#166-181" title="Go to source code">update</a>( <span>string <var>$tableExpression</var></span>, <span>array <var>$data</var></span>, <span>array <var>$identifier</var></span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-UflAs.Database.html#168-183" title="Go to source code">update</a>( <span>string <var>$tableExpression</var></span>, <span>array <var>$data</var></span>, <span>array <var>$identifier</var></span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Executes an SQL UPDATE statement on a table.</p>
@@ -584,7 +592,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_insert">#</a>
-			<code><a href="source-class-UflAs.Database.html#183-197" title="Go to source code">insert</a>( <span>string <var>$tableExpression</var></span>, <span>array <var>$data</var></span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-UflAs.Database.html#185-199" title="Go to source code">insert</a>( <span>string <var>$tableExpression</var></span>, <span>array <var>$data</var></span>, <span>array <var>$types</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Inserts a table row with specified data.</p>
@@ -628,7 +636,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_quote">#</a>
-			<code><a href="source-class-UflAs.Database.html#199-210" title="Go to source code">quote</a>( <span>mixed <var>$input</var></span>, <span>string|null <var>$type</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Database.html#201-212" title="Go to source code">quote</a>( <span>mixed <var>$input</var></span>, <span>string|null <var>$type</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>Quotes a given input parameter.</p>
@@ -668,7 +676,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_begin">#</a>
-			<code><a href="source-class-UflAs.Database.html#212-220" title="Go to source code">begin</a>( )</code>
+			<code><a href="source-class-UflAs.Database.html#214-222" title="Go to source code">begin</a>( )</code>
 
 			<div class="description short">
 				<p>Starts a transaction by suspending auto-commit mode.</p>
@@ -697,7 +705,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_commit">#</a>
-			<code><a href="source-class-UflAs.Database.html#222-233" title="Go to source code">commit</a>( )</code>
+			<code><a href="source-class-UflAs.Database.html#224-235" title="Go to source code">commit</a>( )</code>
 
 			<div class="description short">
 				<p>Commits the current transaction.</p>
@@ -731,7 +739,7 @@ as an associative array.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_rollBack">#</a>
-			<code><a href="source-class-UflAs.Database.html#235-246" title="Go to source code">rollBack</a>( )</code>
+			<code><a href="source-class-UflAs.Database.html#237-248" title="Go to source code">rollBack</a>( )</code>
 
 			<div class="description short">
 				<p>Cancels any database changes done during the current transaction.</p>
@@ -767,7 +775,7 @@ eventlistener methods.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_lastInsertId">#</a>
-			<code><a href="source-class-UflAs.Database.html#248-263" title="Go to source code">lastInsertId</a>( <span>string|null <var>$seqName</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Database.html#250-265" title="Go to source code">lastInsertId</a>( <span>string|null <var>$seqName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>Returns the ID of the last inserted row, or the last value from a sequence object,
@@ -811,7 +819,7 @@ columns or sequences.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_close">#</a>
-			<code><a href="source-class-UflAs.Database.html#265-273" title="Go to source code">close</a>( )</code>
+			<code><a href="source-class-UflAs.Database.html#267-275" title="Go to source code">close</a>( )</code>
 
 			<div class="description short">
 				<p>Closes the connection.</p>
@@ -840,7 +848,7 @@ columns or sequences.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_errorInfo">#</a>
-			<code><a href="source-class-UflAs.Database.html#275-283" title="Go to source code">errorInfo</a>( )</code>
+			<code><a href="source-class-UflAs.Database.html#277-285" title="Go to source code">errorInfo</a>( )</code>
 
 			<div class="description short">
 				<p>Fetches extended error information associated with the last database operation.</p>
@@ -873,7 +881,7 @@ columns or sequences.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_errorCode">#</a>
-			<code><a href="source-class-UflAs.Database.html#285-293" title="Go to source code">errorCode</a>( )</code>
+			<code><a href="source-class-UflAs.Database.html#287-295" title="Go to source code">errorCode</a>( )</code>
 
 			<div class="description short">
 				<p>Fetches the SQLSTATE associated with the last database operation.</p>

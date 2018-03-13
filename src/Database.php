@@ -124,6 +124,7 @@ class Database
      * @param array $params
      * @param array $types
      * @return \Doctrine\DBAL\Driver\Statement
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function select($sql, array $params = array(), array $types = array())
     {
@@ -139,6 +140,7 @@ class Database
      * @param array $types The query parameter types.
      *
      * @return array
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function fetchRow($statement, array $params = array(), array $types = array())
     {

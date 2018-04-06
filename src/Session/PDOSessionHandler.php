@@ -14,7 +14,7 @@ class PDOSessionHandler implements SessionHandlerInterface
     
     public function __construct()
     {
-        if (!defined('IS_LEGACY_PHP') && IS_LEGACY_PHP) {
+        if (PHP_VERSION_ID < 504000) {
             session_set_save_handler(
                 array($this, "open"),
                 array($this, "close"),

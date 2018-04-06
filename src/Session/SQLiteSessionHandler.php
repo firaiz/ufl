@@ -5,7 +5,7 @@ use PDO;
 use PDOStatement;
 use UflAs\StringUtility;
 
-class PDOSessionHandler implements SessionHandlerInterface
+class SQLiteSessionHandler implements SessionHandlerInterface
 {
     /** @var PDO */
     private $pdo;

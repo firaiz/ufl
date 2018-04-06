@@ -7,6 +7,7 @@ use UflAs\StringUtility;
 if (!function_exists('storage')) {
     function storage($key, $isCreate = false, $permission = Storage::DEFAULT_PERMISSION)
     {
+        /** @noinspection PhpUnhandledExceptionInspection */
         return Storage::getInstance()->getPath($key, $isCreate, $permission);
     }
 }
@@ -17,6 +18,7 @@ if (!function_exists('csrf_token')) {
         if (!is_null($id)) {
             $idText = ' id="'.$id.'"';
         }
+        /** @noinspection PhpUnhandledExceptionInspection */
         return '<input type="hidden"'.$idText.' name="'. Csrf::CSRF_TAG.'" value="'.Csrf::takeToken().'">';
     }
 }

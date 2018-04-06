@@ -15,7 +15,10 @@
   },
   "autoload": {
     "psr-4": { "UflAs\\" : "src" },
-    "files" : [ "src/helpers.php" ]
+    "files" : [
+      "src/helpers.php",
+      "src/compatible.php"
+    ]
   },
   "require-dev": {
     "phpunit/phpunit": "^6.4",

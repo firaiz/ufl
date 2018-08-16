@@ -1,5 +1,5 @@
 <?php
-if (PHP_VERSION_ID < 504000) {
+if (PHP_VERSION_ID < 50400) {
     /**
      * Interface SessionHandlerInterface
      * @package UflAs\Session

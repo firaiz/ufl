@@ -45,11 +45,9 @@ class StringUtility {
             $generateLength = ceil($length / 2);
             if (function_exists('random_bytes')) {
                 $str = random_bytes($generateLength);
-            }
-            if (function_exists('mcrypt_create_iv')) {
+            } else if (function_exists('mcrypt_create_iv')) {
                 $str = mcrypt_create_iv($generateLength, MCRYPT_DEV_URANDOM);
-            }
-            if (function_exists('openssl_random_pseudo_bytes')) {
+            } else if (function_exists('openssl_random_pseudo_bytes')) {
                 $str = openssl_random_pseudo_bytes($generateLength);
             }
             if (strlen($str) === 0) {

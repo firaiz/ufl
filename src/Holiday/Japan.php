@@ -104,6 +104,8 @@ class Japan extends Holiday
             $newHolidays[$day->format(self::FORMAT)] = static::init($holiday['name'], $day);
         }
 
+        ksort($newHolidays);
+
         // 国民の休日
         if (1988 <= $year) {
             $prevHoliday = null;

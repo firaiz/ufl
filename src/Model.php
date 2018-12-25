@@ -149,7 +149,7 @@ class Model
 
         foreach ($updateRow as $key => $value) {
             $paramKey = ':' . $key;
-            $qb->set($key, $paramKey);
+            $qb->set(static::quoteIdentifier($key), $paramKey);
             $qb->setParameter($paramKey, $value);
         }
 

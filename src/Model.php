@@ -2,6 +2,7 @@
 namespace UflAs;
 
 use Doctrine\Common\Inflector\Inflector;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 class Model
 {
@@ -15,10 +16,22 @@ class Model
      */
     public function __construct($findKey = null, $findKeyName = 'id')
     {
-        $this->_findKeyName = $findKeyName;
+        $this->setFindKeyName($findKeyName);
         if (!is_null($findKey)) {
             $this->init($findKey);
         }
+    }
+
+    /**
+     * @param $findKey
+     * @return QueryBuilder
+     */
+    protected function initQuery($findKey) {
+        return static::builder()
+            ->select('*')
+            ->from(static::tableName())
+            ->where(static::quoteIdentifier($this->_findKeyName) . ' = :findKey')
+            ->setParameter('findKey', $findKey);
     }
 
     /**
@@ -26,12 +39,7 @@ class Model
      */
     protected function init($findKey)
     {
-        $row = static::db()
-            ->fetchRow(
-                'SELECT * FROM ' . static::quoteIdentifier(static::tableName()) . ' WHERE ' . static::quoteIdentifier($this->_findKeyName) . '=:findKey;',
-                array('findKey' => $findKey)
-            );
-
+        $row = $this->initQuery($findKey)->execute()->fetch();
         if (!is_array($row)) {
             $this->{$this->_findKeyName} = $findKey;
             return;
@@ -53,7 +61,7 @@ class Model
     }
 
     /**
-     * @return \Doctrine\DBAL\Query\QueryBuilder
+     * @return QueryBuilder
      */
     protected static function builder()
     {
@@ -319,5 +327,13 @@ class Model
      */
     public function getOldValues() {
         return $this->_initValues;
+    }
+
+    /**
+     * @param string $findKeyName
+     */
+    protected function setFindKeyName($findKeyName)
+    {
+        $this->_findKeyName = $findKeyName;
     }
 }

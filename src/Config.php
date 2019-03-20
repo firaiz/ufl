@@ -15,7 +15,11 @@ class Config
      */
     protected function __construct()
     {
-        $this->initConfig();
+        try {
+            $this->initConfig();
+        } catch (Exception\File\NotFound $e) {
+        } catch (Exception\File\NotWritable $e) {
+        }
     }
 
     /**

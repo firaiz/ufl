@@ -4,6 +4,7 @@ namespace UflAs;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Exception;
 
 class Date
 {
@@ -25,6 +26,7 @@ class Date
     /**
      * @param string|int|DateTime $date
      * @return string
+     * @throws Exception
      */
     public static function week($date)
     {
@@ -36,6 +38,7 @@ class Date
     /**
      * @param string|int|DateTime
      * @return DateTime
+     * @throws Exception
      */
     public static function object($date = null)
     {
@@ -52,7 +55,7 @@ class Date
      * @param string|int|DateTime $time
      * @param int $size
      * @return DateTime[]
-     * @throws \Exception
+     * @throws Exception
      */
     public static function getWeekDateList($time, $size = 1)
     {
@@ -71,7 +74,7 @@ class Date
      * @param string $type
      * @param int $span
      * @return DateInterval
-     * @throws \Exception
+     * @throws Exception
      */
     public static function createSimpleInterval($type, $span = 1)
     {
@@ -86,7 +89,7 @@ class Date
      * @param DateTime $startDate
      * @param DateTime $endDate
      * @return DateTime[]
-     * @throws \Exception
+     * @throws Exception
      */
     public static function getDateList($startDate, $endDate)
     {
@@ -103,7 +106,7 @@ class Date
      * @param string|int|DateTime $startYear
      * @param int $dateMargin
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     public static function createYears($startYear, $dateMargin = 2)
     {
@@ -145,6 +148,7 @@ class Date
     /**
      * @param string $format
      * @return string
+     * @throws Exception
      */
     public static function nowString($format = 'Y-m-d H:i:s')
     {
@@ -153,6 +157,7 @@ class Date
 
     /**
      * @return DateTime
+     * @throws Exception
      */
     public static function now()
     {
@@ -170,6 +175,7 @@ class Date
     /**
      * @param string|int|DateTime|null $date
      * @return DateTime
+     * @throws Exception
      */
     public static function toDayTime($date = null)
     {
@@ -182,6 +188,7 @@ class Date
      * @param DateTime $base
      * @param DateTime $target
      * @return bool|DateInterval
+     * @throws Exception
      */
     public static function diffDate($base, $target)
     {
@@ -195,7 +202,7 @@ class Date
      * @param DateTime $date
      * @param int $dateCount
      * @return DateTime
-     * @throws \Exception
+     * @throws Exception
      */
     public static function add($addType, $date, $dateCount)
     {
@@ -207,6 +214,7 @@ class Date
     /**
      * @param string|int|DateTime $date
      * @return DateTime
+     * @throws Exception
      */
     public static function firstDayOfThisMonth($date)
     {
@@ -218,6 +226,7 @@ class Date
     /**
      * @param string|int|DateTime $date
      * @return DateTime
+     * @throws Exception
      */
     public static function lastDayOfThisMonth($date)
     {
@@ -277,6 +286,7 @@ class Date
      * @param $weekNo 1-5
      * @param $week 0-6
      * @return int
+     * @throws Exception
      */
     public static function calcWeekDay($year, $month, $weekNo, $week)
     {
@@ -296,6 +306,7 @@ class Date
      * @param int $day
      * @param string [$format]
      * @return DateTime|string
+     * @throws Exception
      */
     public static function toDate($year, $month, $day, $format = null) {
         $date = static::object(sprintf('%4d-%02d-%02d', $year, $month, $day));

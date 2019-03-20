@@ -377,11 +377,10 @@ class HolidayTest extends TestCase
             '2020-05-05' => 'こどもの日',
             '2020-05-06' => '振替休日',
             '2020-07-23' => '海の日',
-            '2020-07-24' => '体育の日',
+            '2020-07-24' => 'スポーツの日',
             '2020-08-10' => '山の日',
             '2020-09-21' => '敬老の日',
             '2020-09-22' => '秋分の日',
-            '2020-10-12' => 'スポーツの日',
             '2020-11-03' => '文化の日',
             '2020-11-23' => '勤労感謝の日',
         ),
@@ -502,6 +501,11 @@ class HolidayTest extends TestCase
     public function testOneAt2020()
     {
         $this->oneYear(2020);
+    }
+
+    public function testOneAt2021()
+    {
+        $this->oneYear(2021);
     }
 
     public function testCheckSince()

@@ -25,7 +25,7 @@ class Japan extends Holiday
             array('date' => Date::toDate($year, 8, 11, self::FORMAT), 'name' => '山の日', self::CHECK_TYPE_SINCE => 2021),
             array('date' => Date::toDate($year, 9, Date::calcWeekDay($year, 9, 3, 1), self::FORMAT), 'name' => '敬老の日', self::CHECK_TYPE_SINCE => 2003),
             array('date' => Date::toDate($year, 9, static::getAutumnalEquinoxDay($year), self::FORMAT), 'name' => '秋分の日'),
-            array('date' => Date::toDate($year, 10, Date::calcWeekDay($year, 10, 2, 1), self::FORMAT), 'name' => 'スポーツの日', self::CHECK_TYPE_SINCE => 2020),
+            array('date' => Date::toDate($year, 10, Date::calcWeekDay($year, 10, 2, 1), self::FORMAT), 'name' => 'スポーツの日', self::CHECK_TYPE_SINCE => 2021),
             array('date' => Date::toDate($year, 11, 3, self::FORMAT), 'name' => '文化の日'),
             array('date' => Date::toDate($year, 11, 23, self::FORMAT), 'name' => '勤労感謝の日'),
             array('date' => Date::toDate($year, 12, 23, self::FORMAT), 'name' => '天皇誕生日', self::CHECK_TYPE_SINCE => 1989, self::CHECK_TYPE_ABORT => Date::toDate(2019, 4, 30)),
@@ -51,7 +51,7 @@ class Japan extends Holiday
 
             // オリンピック関連
             array('date' => Date::toDate($year, 7, 23, self::FORMAT), 'name' => '海の日', self::CHECK_TYPE_SINCE => 2020, self::CHECK_TYPE_ABORT => 2020),
-            array('date' => Date::toDate($year, 7, 24, self::FORMAT), 'name' => '体育の日', self::CHECK_TYPE_SINCE => 2020, self::CHECK_TYPE_ABORT => 2020),
+            array('date' => Date::toDate($year, 7, 24, self::FORMAT), 'name' => 'スポーツの日', self::CHECK_TYPE_SINCE => 2020, self::CHECK_TYPE_ABORT => 2020),
             array('date' => Date::toDate($year, 8, 10, self::FORMAT), 'name' => '山の日', self::CHECK_TYPE_SINCE => 2020, self::CHECK_TYPE_ABORT => 2020),
         );
     }

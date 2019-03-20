@@ -113,6 +113,7 @@ class Database
      * @param array $types The query parameter types.
      *
      * @return array
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function fetchAll($sql, array $params = array(), $types = array())
     {

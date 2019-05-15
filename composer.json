@@ -16,7 +16,7 @@
     "ext-json": "*"
   },
   "autoload": {
-    "psr-4": { "UflAs\\" : "src" },
+    "psr-4": { "UflAs\\" : "src", "UflAs\\TestClass\\" : "test/class", "UflAs\\TestCase\\" : "test/case" },
     "files" : [
       "src/helpers.php",
       "src/compatible.php"

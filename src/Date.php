@@ -166,6 +166,7 @@ class Date
 
     /**
      * @return DateTime
+     * @throws Exception
      */
     public static function today()
     {

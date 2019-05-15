@@ -69,7 +69,7 @@ class SessionContainer
      */
     protected function initContainer()
     {
-        $session =& Session::getInstance()->getContainer();
+        $session =& $this->makeContainer();
         if (is_string($this->prefix)) {
             if (!array_key_exists($this->prefix, $session)) {
                 $session[$this->prefix] = array();
@@ -78,6 +78,10 @@ class SessionContainer
             return;
         }
         $this->container =& $session;
+    }
+
+    protected function &makeContainer() {
+        return Session::getInstance()->getContainer();
     }
 
     /**

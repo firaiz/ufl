@@ -5,6 +5,7 @@ include_once __DIR__ . '/../../vendor/autoload.php';
 
 use DateTime;
 use PHPUnit\Framework\TestCase;
+use UflAs\Date;
 use UflAs\Holiday\Japan;
 
 class HolidayTest extends TestCase

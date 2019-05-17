@@ -2,6 +2,8 @@
 
 namespace UflAs\Container;
 
+use UflAs\Session;
+
 /**
  * Class SessionContainer
  * @package UflAs

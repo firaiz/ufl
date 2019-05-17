@@ -8,6 +8,7 @@ class TestSessionContainer extends SessionContainer implements JsonSerializable
 {
     protected function &makeContainer() {
         static $ary;
+        $ary = parent::makeContainer();
         $ary = array();
         return $ary;
     }

@@ -62,6 +62,10 @@
 							Cache						</a>
 							</li>
 					<li>
+						<a href="namespace-UflAs.Container.html">
+							Container						</a>
+							</li>
+					<li>
 						<a href="namespace-UflAs.Cron.html">
 							Cron						</a>
 							</li>
@@ -131,7 +135,7 @@
 				<li><a href="class-UflAs.Response.html">Response</a></li>
 				<li><a href="class-UflAs.Router.html">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
-				<li><a href="class-UflAs.SessionContainer.html">SessionContainer</a></li>
+				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
@@ -168,7 +172,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Model.html#6-323" title="Go to source code">Model.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Model.html#7-339" title="Go to source code">Model.php</a>
 		<br>
 	</div>
 
@@ -188,7 +192,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Model.html#11-22" title="Go to source code">__construct</a>( <span>mixed <var>$findKey</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#12-23" title="Go to source code">__construct</a>( <span>mixed <var>$findKey</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
 
 			<div class="description short">
 				<p>Model constructor.</p>
@@ -213,6 +217,44 @@
 			</div>
 			</div></td>
 		</tr>
+		<tr data-order="initQuery" id="_initQuery">
+
+			<td class="attributes"><code>
+				 protected 
+				Doctrine\DBAL\Query\QueryBuilder
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_initQuery">#</a>
+			<code><a href="source-class-UflAs.Model.html#25-35" title="Go to source code">initQuery</a>( <span> <var>$findKey</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$findKey</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						Doctrine\DBAL\Query\QueryBuilder
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
 		<tr data-order="init" id="_init">
 
 			<td class="attributes"><code>
@@ -224,7 +266,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_init">#</a>
-			<code><a href="source-class-UflAs.Model.html#24-40" title="Go to source code">init</a>( <span>mixed <var>$findKey</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#37-48" title="Go to source code">init</a>( <span>mixed <var>$findKey</var></span> )</code>
 
 			<div class="description short">
 				
@@ -258,7 +300,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_db">#</a>
-			<code><a href="source-class-UflAs.Model.html#42-48" title="Go to source code">db</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#50-56" title="Go to source code">db</a>( )</code>
 
 			<div class="description short">
 				
@@ -291,7 +333,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_quoteIdentifier">#</a>
-			<code><a href="source-class-UflAs.Model.html#50-53" title="Go to source code">quoteIdentifier</a>( <span> <var>$name</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#58-61" title="Go to source code">quoteIdentifier</a>( <span> <var>$name</var></span> )</code>
 
 			<div class="description short">
 				
@@ -320,7 +362,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_builder">#</a>
-			<code><a href="source-class-UflAs.Model.html#55-61" title="Go to source code">builder</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#63-69" title="Go to source code">builder</a>( )</code>
 
 			<div class="description short">
 				
@@ -353,7 +395,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_tableName">#</a>
-			<code><a href="source-class-UflAs.Model.html#63-70" title="Go to source code">tableName</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#71-78" title="Go to source code">tableName</a>( )</code>
 
 			<div class="description short">
 				
@@ -386,7 +428,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_tableize">#</a>
-			<code><a href="source-class-UflAs.Model.html#72-79" title="Go to source code">tableize</a>( <span>string <var>$word</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#80-87" title="Go to source code">tableize</a>( <span>string <var>$word</var></span> )</code>
 
 			<div class="description short">
 				
@@ -424,7 +466,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toField">#</a>
-			<code><a href="source-class-UflAs.Model.html#92-99" title="Go to source code">toField</a>( <span>string <var>$filed</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#100-107" title="Go to source code">toField</a>( <span>string <var>$filed</var></span> )</code>
 
 			<div class="description short">
 				
@@ -462,7 +504,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_import">#</a>
-			<code><a href="source-class-UflAs.Model.html#101-110" title="Go to source code">import</a>( <span>array <var>$row</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#109-118" title="Go to source code">import</a>( <span>array <var>$row</var></span> )</code>
 
 			<div class="description short">
 				
@@ -500,7 +542,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_delete">#</a>
-			<code><a href="source-class-UflAs.Model.html#112-118" title="Go to source code">delete</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#120-126" title="Go to source code">delete</a>( )</code>
 
 			<div class="description short">
 				
@@ -529,7 +571,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_save">#</a>
-			<code><a href="source-class-UflAs.Model.html#120-162" title="Go to source code">save</a>( <span>boolean <var>$isCreating</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#128-170" title="Go to source code">save</a>( <span>boolean <var>$isCreating</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				
@@ -567,7 +609,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_isExists">#</a>
-			<code><a href="source-class-UflAs.Model.html#164-170" title="Go to source code">isExists</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#172-178" title="Go to source code">isExists</a>( )</code>
 
 			<div class="description short">
 				
@@ -600,7 +642,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_create">#</a>
-			<code><a href="source-class-UflAs.Model.html#172-189" title="Go to source code">create</a>( <span> <var>$array</var></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#180-197" title="Go to source code">create</a>( <span> <var>$array</var></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
 
 			<div class="description short">
 				
@@ -640,7 +682,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toTableizeArray">#</a>
-			<code><a href="source-class-UflAs.Model.html#191-202" title="Go to source code">toTableizeArray</a>( <span>array <var>$array</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#199-210" title="Go to source code">toTableizeArray</a>( <span>array <var>$array</var></span> )</code>
 
 			<div class="description short">
 				
@@ -678,7 +720,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toArray">#</a>
-			<code><a href="source-class-UflAs.Model.html#204-212" title="Go to source code">toArray</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#212-220" title="Go to source code">toArray</a>( )</code>
 
 			<div class="description short">
 				
@@ -711,7 +753,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_diff">#</a>
-			<code><a href="source-class-UflAs.Model.html#214-239" title="Go to source code">diff</a>( <span>array <var>$row</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#222-247" title="Go to source code">diff</a>( <span>array <var>$row</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				
@@ -749,7 +791,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toFiledArray">#</a>
-			<code><a href="source-class-UflAs.Model.html#241-252" title="Go to source code">toFiledArray</a>( <span>array <var>$array</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#249-260" title="Go to source code">toFiledArray</a>( <span>array <var>$array</var></span> )</code>
 
 			<div class="description short">
 				
@@ -787,7 +829,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getIndex">#</a>
-			<code><a href="source-class-UflAs.Model.html#254-260" title="Go to source code">getIndex</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#262-268" title="Go to source code">getIndex</a>( )</code>
 
 			<div class="description short">
 				
@@ -820,7 +862,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_eqByKey">#</a>
-			<code><a href="source-class-UflAs.Model.html#262-279" title="Go to source code">eqByKey</a>( <span>static <var>$obj</var></span>, <span>string <var>$key</var></span>, <span>boolean <var>$isStrict</var> = <span class="php-keyword1">true</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#270-287" title="Go to source code">eqByKey</a>( <span>static <var>$obj</var></span>, <span>string <var>$key</var></span>, <span>boolean <var>$isStrict</var> = <span class="php-keyword1">true</span></span> )</code>
 
 			<div class="description short">
 				
@@ -862,7 +904,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_overwrite">#</a>
-			<code><a href="source-class-UflAs.Model.html#281-291" title="Go to source code">overwrite</a>( <span>array <var>$row</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#289-299" title="Go to source code">overwrite</a>( <span>array <var>$row</var></span> )</code>
 
 			<div class="description short">
 				
@@ -896,7 +938,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_initOverwrite">#</a>
-			<code><a href="source-class-UflAs.Model.html#293-307" title="Go to source code">initOverwrite</a>( <span>array <var>$row</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#301-315" title="Go to source code">initOverwrite</a>( <span>array <var>$row</var></span> )</code>
 
 			<div class="description short">
 				
@@ -930,7 +972,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getOldValue">#</a>
-			<code><a href="source-class-UflAs.Model.html#309-315" title="Go to source code">getOldValue</a>( <span>string <var>$key</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#317-323" title="Go to source code">getOldValue</a>( <span>string <var>$key</var></span> )</code>
 
 			<div class="description short">
 				
@@ -968,7 +1010,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getOldValues">#</a>
-			<code><a href="source-class-UflAs.Model.html#317-322" title="Go to source code">getOldValues</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#325-330" title="Go to source code">getOldValues</a>( )</code>
 
 			<div class="description short">
 				
@@ -983,6 +1025,40 @@
 					<div class="list">
 						string[]
 					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setFindKeyName" id="_setFindKeyName">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setFindKeyName">#</a>
+			<code><a href="source-class-UflAs.Model.html#332-338" title="Go to source code">setFindKeyName</a>( <span>string <var>$findKeyName</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$findKeyName</var></dt>
+						<dd></dd>
+					</dl></div>
+
 
 
 

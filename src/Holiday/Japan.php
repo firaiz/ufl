@@ -28,7 +28,6 @@ class Japan extends Holiday
             array('date' => Date::toDate($year, 10, Date::calcWeekDay($year, 10, 2, 1), self::FORMAT), 'name' => 'スポーツの日', self::CHECK_TYPE_SINCE => 2021),
             array('date' => Date::toDate($year, 11, 3, self::FORMAT), 'name' => '文化の日'),
             array('date' => Date::toDate($year, 11, 23, self::FORMAT), 'name' => '勤労感謝の日'),
-            array('date' => Date::toDate($year, 12, 23, self::FORMAT), 'name' => '天皇誕生日', self::CHECK_TYPE_SINCE => 1989, self::CHECK_TYPE_ABORT => Date::toDate(2019, 4, 30)),
 
             // 旧
             array('date' => Date::toDate($year, 1, 15, self::FORMAT), 'name' => '成人の日', self::CHECK_TYPE_ABORT => 1999),
@@ -40,6 +39,7 @@ class Japan extends Holiday
             array('date' => Date::toDate($year, 9, 15, self::FORMAT), 'name' => '敬老の日', self::CHECK_TYPE_SINCE => 1966, self::CHECK_TYPE_ABORT => 2002),
             array('date' => Date::toDate($year, 10, 10, self::FORMAT), 'name' => '体育の日', self::CHECK_TYPE_SINCE => 1966, self::CHECK_TYPE_ABORT => 1999),
             array('date' => Date::toDate($year, 10, Date::calcWeekDay($year, 10, 2, 1), self::FORMAT), 'name' => '体育の日', self::CHECK_TYPE_SINCE => 2000, self::CHECK_TYPE_ABORT => 2019),
+            array('date' => Date::toDate($year, 12, 23, self::FORMAT), 'name' => '天皇誕生日', self::CHECK_TYPE_SINCE => 1989, self::CHECK_TYPE_ABORT => Date::toDate(2019, 4, 30)),
 
             // 個別設定
             array('date' => Date::toDate($year, 4, 10, self::FORMAT), 'name' => '明仁親王の結婚の儀', self::CHECK_TYPE_SINCE => 1959, self::CHECK_TYPE_ABORT => 1959),

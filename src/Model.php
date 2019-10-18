@@ -30,7 +30,7 @@ class Model
         return static::builder()
             ->select('*')
             ->from(static::tableName())
-            ->where(static::quoteIdentifier($this->_findKeyName) . ' = :findKey')
+            ->where(static::quoteIdentifier($this->getFindKeyName()) . ' = :findKey')
             ->setParameter('findKey', $findKey);
     }
 
@@ -41,7 +41,7 @@ class Model
     {
         $row = $this->initQuery($findKey)->execute()->fetch();
         if (!is_array($row)) {
-            $this->{$this->_findKeyName} = $findKey;
+            $this->{$this->getFindKeyName()} = $findKey;
             return;
         }
         $this->initFields($row);
@@ -121,8 +121,8 @@ class Model
     {
         static::builder()
             ->delete(static::tableName())
-            ->where(static::quoteIdentifier($this->_findKeyName) . ' = :id')
-            ->setParameter(':id', $this->{$this->_findKeyName});
+            ->where(static::quoteIdentifier($this->getFindKeyName()) . ' = :id')
+            ->setParameter(':id', $this->{$this->getFindKeyName()});
     }
 
     /**
@@ -148,7 +148,7 @@ class Model
 
         $qb = static::builder()
             ->update(static::tableName())
-            ->where(static::quoteIdentifier($this->_findKeyName) . ' = :id')
+            ->where(static::quoteIdentifier($this->getFindKeyName()) . ' = :id')
             ->setParameter(':id', $this->getIndex());
 
         if ($hasUpdated) {
@@ -264,7 +264,7 @@ class Model
      */
     public function getIndex()
     {
-        return $this->{$this->toField($this->_findKeyName)};
+        return $this->{$this->toField($this->getFindKeyName())};
     }
 
     /**
@@ -335,5 +335,12 @@ class Model
     protected function setFindKeyName($findKeyName)
     {
         $this->_findKeyName = $findKeyName;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getFindKeyName() {
+        return $this->_findKeyName;
     }
 }

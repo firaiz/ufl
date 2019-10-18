@@ -21,4 +21,16 @@ if (PHP_VERSION_ID < 50400) {
             public function write($session_id, $session_data);
         }
     }
+
+    if (!interface_exists('JsonSerializable')) {
+        /**
+         * Interface JsonSerializable
+         * @package Uflas
+         * @covers
+         */
+        interface JsonSerializable
+        {
+            public function jsonSerialize();
+        }
+    }
 }

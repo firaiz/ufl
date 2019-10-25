@@ -8,7 +8,7 @@ namespace UflAs;
  * @property Config $conf
  * @property Response $response
  * @property Request $request
- * @property SessionContainer $session
+ * @property Container\SessionContainer $session
  * @property Header $header
  */
 abstract class Base
@@ -16,7 +16,7 @@ abstract class Base
     /** @var array allowed overwrite */
     protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'response' => 'Response', 'header' => 'Header');
     /** @var array allowed overwrite */
-    protected $instances = array('request' => 'Request', 'session' => 'SessionContainer');
+    protected $instances = array('request' => 'Request', 'session' => '\\Uflas\\Container\\SessionContainer');
 
     /**
      * Base constructor.

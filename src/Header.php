@@ -41,7 +41,7 @@ class Header
      */
     public function code($code)
     {
-        header('', true, $code);
+        http_response_code($code);
     }
 
     private function setHeaders($headers, $isOverWrite) {

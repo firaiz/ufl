@@ -28,7 +28,7 @@ class SmartyRender implements IRender
      * @throws \UflAs\Exception\File\NotFound
      * @throws \UflAs\Exception\File\NotWritable
      */
-    function setConfigs(array $configs)
+    function setConfigs($configs)
     {
         $storage = Storage::getInstance();
 

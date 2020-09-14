@@ -46,7 +46,7 @@ class Render implements IRender
      * @param array $configs
      * @return void
      */
-    public function setConfigs(array $configs)
+    public function setConfigs($configs)
     {
         $this->getRender()->setConfigs($configs);
     }

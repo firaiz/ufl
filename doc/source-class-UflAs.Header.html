@@ -184,6 +184,7 @@
 			<h3>Functions</h3>
 			<ul>
 				<li><a href="function-csrf_token.html">csrf_token</a></li>
+				<li><a href="function-http_response_code.html">http_response_code</a></li>
 				<li><a href="function-storage.html">storage</a></li>
 				<li><a href="function-uuid.html">uuid</a></li>
 			</ul>
@@ -240,7 +241,7 @@
 </span></span><span id="41" class="l"><span class="php-comment">     */</span>
 </span><span id="42" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> code(<span class="php-var">$code</span>)
 </span><span id="43" class="l">    {
-</span><span id="44" class="l">        <span class="php-keyword2">header</span>(<span class="php-quote">''</span>, <span class="php-keyword1">true</span>, <span class="php-var">$code</span>);
+</span><span id="44" class="l">        <span class="php-keyword2">http_response_code</span>(<span class="php-var">$code</span>);
 </span><span id="45" class="l">    }
 </span><span id="46" class="l">
 </span><span id="47" class="l">    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> setHeaders(<span class="php-var">$headers</span>, <span class="php-var">$isOverWrite</span>) {
@@ -310,6 +311,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?7d001351ad27784b6fd85fca5c48609d0810083f"></script>
+<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
 </body>
 </html>

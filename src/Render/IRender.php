@@ -8,7 +8,7 @@ interface IRender
      * @param array $configs
      * @return void
      */
-    function setConfigs(array $configs);
+    function setConfigs($configs);
 
     /**
      * @param string|array $name

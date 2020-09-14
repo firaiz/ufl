@@ -25,7 +25,7 @@ if (PHP_VERSION_ID < 50400) {
     if (!interface_exists('JsonSerializable')) {
         /**
          * Interface JsonSerializable
-         * @package Uflas
+         * @package UflAs
          * @covers
          */
         interface JsonSerializable

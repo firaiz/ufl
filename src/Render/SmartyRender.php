@@ -1,7 +1,11 @@
 <?php
 namespace UflAs\Render;
 
+use Exception;
+use SmartyException;
 use UflAs\ArrayUtil;
+use UflAs\Exception\File\NotFound;
+use UflAs\Exception\File\NotWritable;
 use UflAs\Storage;
 use Smarty;
 
@@ -25,8 +29,8 @@ class SmartyRender implements IRender
     /**
      * @param array $configs
      * @return void
-     * @throws \UflAs\Exception\File\NotFound
-     * @throws \UflAs\Exception\File\NotWritable
+     * @throws NotFound
+     * @throws NotWritable
      */
     function setConfigs($configs)
     {
@@ -66,8 +70,8 @@ class SmartyRender implements IRender
     /**
      * @param string $template
      * @return string
-     * @throws \Exception
-     * @throws \SmartyException
+     * @throws Exception
+     * @throws SmartyException
      */
     function compile($template)
     {

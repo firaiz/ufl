@@ -208,7 +208,7 @@
 </span></span><span id="8" class="l"><span class="php-comment"> * @property Config $conf
 </span></span><span id="9" class="l"><span class="php-comment"> * @property Response $response
 </span></span><span id="10" class="l"><span class="php-comment"> * @property Request $request
-</span></span><span id="11" class="l"><span class="php-comment"> * @property SessionContainer $session
+</span></span><span id="11" class="l"><span class="php-comment"> * @property Container\SessionContainer $session
 </span></span><span id="12" class="l"><span class="php-comment"> * @property Header $header
 </span></span><span id="13" class="l"><span class="php-comment"> */</span>
 </span><span id="14" class="l"><span class="php-keyword1">abstract</span> <span class="php-keyword1">class</span> Base
@@ -216,7 +216,7 @@
 </span><span id="16" class="l">    <span class="php-comment">/** @var array allowed overwrite */</span>
 </span><span id="17" class="l">    <span class="php-keyword1">protected</span> <span class="php-var">$singletons</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'conf'</span> =&gt; <span class="php-quote">'Config'</span>, <span class="php-quote">'db'</span> =&gt; <span class="php-quote">'Database'</span>, <span class="php-quote">'response'</span> =&gt; <span class="php-quote">'Response'</span>, <span class="php-quote">'header'</span> =&gt; <span class="php-quote">'Header'</span>);
 </span><span id="18" class="l">    <span class="php-comment">/** @var array allowed overwrite */</span>
-</span><span id="19" class="l">    <span class="php-keyword1">protected</span> <span class="php-var">$instances</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'request'</span> =&gt; <span class="php-quote">'Request'</span>, <span class="php-quote">'session'</span> =&gt; <span class="php-quote">'SessionContainer'</span>);
+</span><span id="19" class="l">    <span class="php-keyword1">protected</span> <span class="php-var">$instances</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'request'</span> =&gt; <span class="php-quote">'Request'</span>, <span class="php-quote">'session'</span> =&gt; <span class="php-quote">'\\UflAs\\Container\\SessionContainer'</span>);
 </span><span id="20" class="l">
 </span><span id="21" class="l">    <span class="php-comment">/**
 </span></span><span id="22" class="l"><span class="php-comment">     * Base constructor.

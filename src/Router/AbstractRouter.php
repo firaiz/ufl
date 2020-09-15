@@ -43,11 +43,31 @@ abstract class AbstractRouter implements IRouter
     }
 
     /**
+     * @return IRouterContainer
+     */
+    public function getContainer()
+    {
+        list($context, $params) = $this->makeContextWithParams();
+        return $this->initContainer($context, $params);
+    }
+
+    /**
+     * @return array [context,params]
+     */
+    abstract protected function makeContextWithParams();
+
+    /**
      * @param mixed $context
      * @param mixed $params
      * @return IRouterContainer
      */
-    abstract function initContainer($context, $params);
+    protected function initContainer($context, $params)
+    {
+        if (!is_array($params)) {
+            $params = array();
+        }
+        return new CallableContainer($context, $params);
+    }
 
     /**
      * @param IRouterContainer $container

@@ -20,16 +20,16 @@ class ClassRouter extends AbstractRouter
      */
     public function add($routPath, $detector)
     {
-        ArrayUtil::set($this->routes, $this->pathToKey(substr($routPath, 1)), $detector);
+        ArrayUtil::set($this->routes, self::pathToKey($routPath), $detector);
     }
 
     /**
      * @param string $path
      * @return string
      */
-    protected function pathToKey($path)
+    public static function pathToKey($path)
     {
-        return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
+        return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, substr($path, 1)));
     }
 
     protected function getRoutes()
@@ -42,7 +42,7 @@ class ClassRouter extends AbstractRouter
      */
     protected function makeContextWithParams()
     {
-        $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
+        $routeKey = self::pathToKey($this->getPathInfo());
         $params = $keys = ArrayUtil::toKeys($routeKey);
         $routes = $this->getRoutes();
 

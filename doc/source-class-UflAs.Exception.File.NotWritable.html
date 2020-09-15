@@ -146,6 +146,7 @@
 				<li><a href="class-UflAs.Router.AbstractRouter.html">UflAs\Router\AbstractRouter</a></li>
 				<li><a href="class-UflAs.Router.CallableContainer.html">UflAs\Router\CallableContainer</a></li>
 				<li><a href="class-UflAs.Router.ClassRouter.html">UflAs\Router\ClassRouter</a></li>
+				<li><a href="class-UflAs.Router.PrefixClassRouteAppender.html">UflAs\Router\PrefixClassRouteAppender</a></li>
 				<li><a href="class-UflAs.Router.PrefixClassRouter.html">UflAs\Router\PrefixClassRouter</a></li>
 				<li><a href="class-UflAs.Router.SimpleRouter.html">UflAs\Router\SimpleRouter</a></li>
 				<li><a href="class-UflAs.Security.Csrf.html">UflAs\Security\Csrf</a></li>
@@ -214,7 +215,7 @@
 </span><span id="12" class="l">{
 </span><span id="13" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> __construct(<span class="php-var">$message</span> = <span class="php-quote">&quot;&quot;</span>, <span class="php-var">$code</span> = <span class="php-num">0</span>, Exception <span class="php-var">$previous</span> = <span class="php-keyword1">null</span>)
 </span><span id="14" class="l">    {
-</span><span id="15" class="l">        parent::__construct(<span class="php-quote">&quot;file is not writable&quot;</span>, <span class="php-num">400</span>, <span class="php-var">$previous</span>);
+</span><span id="15" class="l">        parent::__construct(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'file is not writable (%s)'</span>, <span class="php-var">$message</span>), <span class="php-num">400</span>, <span class="php-var">$previous</span>);
 </span><span id="16" class="l">    }
 </span><span id="17" class="l">}</span></code></pre>
 </div>
@@ -225,6 +226,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
+<script src="elementlist.js?e29342f406fe3ba337f5f03ddbf9af17b0301ec2"></script>
 </body>
 </html>

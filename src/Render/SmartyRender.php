@@ -3,12 +3,10 @@
 namespace UflAs\Render;
 
 use Exception;
+use Smarty;
 use SmartyException;
 use UflAs\ArrayUtil;
-use UflAs\Exception\File\NotFound;
-use UflAs\Exception\File\NotWritable;
 use UflAs\Storage;
-use Smarty;
 use UflAs\System;
 
 /**

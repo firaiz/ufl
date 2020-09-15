@@ -32,14 +32,19 @@ class ClassRouter extends AbstractRouter
         return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
     }
 
+    protected function getRoutes()
+    {
+        return $this->routes;
+    }
+
     /**
-     * @return IRouterContainer
+     * @return array
      */
-    public function getContainer()
+    protected function makeContextWithParams()
     {
         $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
         $params = $keys = ArrayUtil::toKeys($routeKey);
-        $routes = $this->routes;
+        $routes = $this->getRoutes();
 
         $className = '';
         $methodName = '';
@@ -67,20 +72,9 @@ class ClassRouter extends AbstractRouter
         $context = null;
         if (class_exists($className) && method_exists($className, $methodName)) {
             $context = array(new $className, $methodName);
+        } elseif (class_exists($className) && method_exists($className, 'index')) {
+            $context = array(new $className, 'index');
         }
-        return $this->initContainer($context, $params);
-    }
-
-    /**
-     * @param mixed $context
-     * @param mixed $params
-     * @return IRouterContainer
-     */
-    function initContainer($context, $params)
-    {
-        if (!is_array($params)) {
-            $params = array();
-        }
-        return new CallableContainer($context, $params);
+        return array($context, $params);
     }
 }

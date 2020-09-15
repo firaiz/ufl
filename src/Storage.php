@@ -27,9 +27,9 @@ class Storage
             STORAGE_DIR : dirname(dirname(dirname(dirname(dirname(__FILE__))))).DIRECTORY_SEPARATOR.'storage';
 
         if (!file_exists($this->filePath)) {
-            throw new NotFound();
+            throw new NotFound($this->filePath);
         } elseif (!is_writable($this->filePath)) {
-            throw new NotWritable();
+            throw new NotWritable($this->filePath);
         }
     }
 

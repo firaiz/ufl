@@ -12,7 +12,7 @@ class PrefixClassRouteAppender
      */
     public function add($routPath, $detector)
     {
-        $this->routes[] = array($routPath, $detector);
+        $this->routes[PrefixClassRouter::pathToKey($routPath)] = $detector;
     }
 
     /**

@@ -122,6 +122,7 @@
 				<li class="active"><a href="class-UflAs.Router.AbstractRouter.html">AbstractRouter</a></li>
 				<li><a href="class-UflAs.Router.CallableContainer.html">CallableContainer</a></li>
 				<li><a href="class-UflAs.Router.ClassRouter.html">ClassRouter</a></li>
+				<li><a href="class-UflAs.Router.PrefixClassRouteAppender.html">PrefixClassRouteAppender</a></li>
 				<li><a href="class-UflAs.Router.PrefixClassRouter.html">PrefixClassRouter</a></li>
 				<li><a href="class-UflAs.Router.SimpleRouter.html">SimpleRouter</a></li>
 			</ul>
@@ -187,7 +188,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a>\<a href="namespace-UflAs.Router.html">Router</a><br>
 		<b>Package:</b> UflAs\Router<br>
 
-			<b>Located at</b> <a href="source-class-UflAs.Router.AbstractRouter.html#7-72" title="Go to source code">Router/AbstractRouter.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Router.AbstractRouter.html#7-92" title="Go to source code">Router/AbstractRouter.php</a>
 		<br>
 	</div>
 
@@ -229,10 +230,78 @@
 			</div>
 			</div></td>
 		</tr>
+		<tr data-order="getContainer" id="_getContainer">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-UflAs.Router.IRouterContainer.html">UflAs\Router\IRouterContainer</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getContainer">#</a>
+			<code><a href="source-class-UflAs.Router.AbstractRouter.html#45-52" title="Go to source code">getContainer</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-UflAs.Router.IRouterContainer.html">UflAs\Router\IRouterContainer</a></code>
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-UflAs.Router.IRouter.html#_getContainer">UflAs\Router\IRouter::getContainer()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="makeContextWithParams" id="_makeContextWithParams">
+
+			<td class="attributes"><code>
+				abstract protected 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_makeContextWithParams">#</a>
+			<code><a href="source-class-UflAs.Router.AbstractRouter.html#54-57" title="Go to source code">makeContextWithParams</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array<br>[context,params]
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
 		<tr data-order="initContainer" id="_initContainer">
 
 			<td class="attributes"><code>
-				abstract public 
+				 protected 
 				<code><a href="class-UflAs.Router.IRouterContainer.html">UflAs\Router\IRouterContainer</a></code>
 				
 				</code>
@@ -240,7 +309,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_initContainer">#</a>
-			<code><a href="source-class-UflAs.Router.AbstractRouter.html#45-50" title="Go to source code">initContainer</a>( <span>mixed <var>$context</var></span>, <span>mixed <var>$params</var></span> )</code>
+			<code><a href="source-class-UflAs.Router.AbstractRouter.html#59-70" title="Go to source code">initContainer</a>( <span>mixed <var>$context</var></span>, <span>mixed <var>$params</var></span> )</code>
 
 			<div class="description short">
 				
@@ -280,7 +349,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setNoRoute">#</a>
-			<code><a href="source-class-UflAs.Router.AbstractRouter.html#52-58" title="Go to source code">setNoRoute</a>( <span><code><a href="class-UflAs.Router.IRouterContainer.html">UflAs\Router\IRouterContainer</a></code> <var>$container</var></span> )</code>
+			<code><a href="source-class-UflAs.Router.AbstractRouter.html#72-78" title="Go to source code">setNoRoute</a>( <span><code><a href="class-UflAs.Router.IRouterContainer.html">UflAs\Router\IRouterContainer</a></code> <var>$container</var></span> )</code>
 
 			<div class="description short">
 				
@@ -316,7 +385,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getNoRoute">#</a>
-			<code><a href="source-class-UflAs.Router.AbstractRouter.html#60-71" title="Go to source code">getNoRoute</a>( )</code>
+			<code><a href="source-class-UflAs.Router.AbstractRouter.html#80-91" title="Go to source code">getNoRoute</a>( )</code>
 
 			<div class="description short">
 				
@@ -350,8 +419,7 @@
 		<div class="panel panel-default">
 	        <div class="panel-heading"><h3>Methods inherited from <a href="class-UflAs.Router.IRouter.html#methods">UflAs\Router\IRouter</a></h3></div>
 			<p class="elementList">
-				<code><a href="class-UflAs.Router.IRouter.html#_add">add()</a></code>, 
-				<code><a href="class-UflAs.Router.IRouter.html#_getContainer">getContainer()</a></code>
+				<code><a href="class-UflAs.Router.IRouter.html#_add">add()</a></code>
 			</p>
 		</div>
 
@@ -402,6 +470,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
+<script src="elementlist.js?e29342f406fe3ba337f5f03ddbf9af17b0301ec2"></script>
 </body>
 </html>

@@ -2,28 +2,61 @@
 
 namespace UflAs\Router;
 
+
 /**
  * Class PrefixClassRouter
  * @package UflAs\Router
  */
 class PrefixClassRouter extends ClassRouter
 {
-    protected $prefix = null;
+    /**
+     * @var PrefixClassRouteAppender[]
+     */
+    protected $prefixes = array();
+    protected $usePrefix = '';
 
+    /**
+     * @param string $prefix
+     * @return PrefixClassRouteAppender
+     */
     public function setPrefix($prefix)
     {
-        $this->prefix = $prefix;
+        $this->prefixes[$prefix] = new PrefixClassRouteAppender();
+        return $this->prefixes[$prefix];
     }
 
     public function getPathInfo()
     {
         $pathInfo = parent::getPathInfo();
-        if (is_null($this->prefix)) {
+        if (count($this->prefixes) === 0) {
             return $pathInfo;
         }
-        if (strpos($pathInfo, $this->prefix) !== 0) {
-            return '/';
+        foreach ($this->prefixes as $prefix => $appender) {
+            if (strpos($pathInfo, $prefix) === 0) {
+                $this->usePrefix = $prefix;
+                return preg_replace('#^' . $prefix . '#', '', $pathInfo);
+            }
         }
-        return preg_replace('#^' . $this->prefix . '#', '', $pathInfo);
+        return '/';
+    }
+
+    public function add($routPath, $detector)
+    {
+        foreach ($this->prefixes as $prefix => $appender) {
+            $appender->add($routPath, $detector);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRoutes()
+    {
+        if (!isset($this->prefixes[$this->usePrefix])) {
+            return array();
+        }
+        /** @var PrefixClassRouteAppender */
+        $appender = $this->prefixes[$this->usePrefix];
+        return $appender->getRoutes();
     }
 }

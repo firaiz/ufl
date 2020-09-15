@@ -2,7 +2,10 @@
 
 namespace UflAs\Container;
 
-
+/**
+ * Interface IContainer
+ * @package UflAs\Container
+ */
 interface IContainer
 {
     /**

@@ -1,6 +1,12 @@
 <?php
+
 namespace UflAs\Cron;
 
-interface ICron {
+/**
+ * Interface ICron
+ * @package UflAs\Cron
+ */
+interface ICron
+{
     public function execute();
 }

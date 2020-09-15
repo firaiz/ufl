@@ -1,8 +1,10 @@
 <?php
+
 namespace UflAs;
 
 use Doctrine\Common\Inflector\Inflector;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Exception;
 use JsonSerializable;
 use Serializable;
 
@@ -28,7 +30,8 @@ class Model implements Serializable, JsonSerializable
      * @param $findKey
      * @return QueryBuilder
      */
-    protected function initQuery($findKey) {
+    protected function initQuery($findKey)
+    {
         return static::builder()
             ->select('*')
             ->from(static::tableName())
@@ -129,7 +132,8 @@ class Model implements Serializable, JsonSerializable
 
     /**
      * @param bool $isCreating
-     * @return bool
+     * @return static
+     * @throws Exception
      */
     public function save($isCreating = false)
     {
@@ -145,7 +149,7 @@ class Model implements Serializable, JsonSerializable
         }
 
         if (count($updateRow) <= 0) {
-            return true;
+            return $this;
         }
 
         $qb = static::builder()
@@ -165,10 +169,10 @@ class Model implements Serializable, JsonSerializable
 
         if ($qb->execute() === 1) {
             $this->initFields($updateRow);
-            return true;
+            return $this;
         }
 
-        return false;
+        return $this;
     }
 
     /**
@@ -320,14 +324,16 @@ class Model implements Serializable, JsonSerializable
      * @param string $key
      * @return mixed
      */
-    public function getOldValue($key) {
+    public function getOldValue($key)
+    {
         return array_key_exists($key, $this->_initValues) ? $this->_initValues[$key] : null;
     }
 
     /**
      * @return string[]
      */
-    public function getOldValues() {
+    public function getOldValues()
+    {
         return $this->_initValues;
     }
 
@@ -342,7 +348,8 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return string
      */
-    protected function getFindKeyName() {
+    protected function getFindKeyName()
+    {
         return $this->_findKeyName;
     }
 

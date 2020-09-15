@@ -1,6 +1,11 @@
 <?php
+
 namespace UflAs;
 
+/**
+ * Class Config
+ * @package UflAs
+ */
 class Config
 {
     /** @var static */
@@ -12,49 +17,48 @@ class Config
 
     /**
      * Config constructor.
+     * @param string $configPath
      */
-    protected function __construct()
+    protected function __construct($configPath)
     {
-        try {
-            $this->initConfig();
-        } catch (Exception\File\NotFound $e) {
-        } catch (Exception\File\NotWritable $e) {
-        }
+        $this->initConfig($configPath);
     }
 
     /**
      * initialize configuration
-     * @param string $confPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
+     * @param string $configPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
      * @return bool
-     * @throws Exception\File\NotFound
-     * @throws Exception\File\NotWritable
      */
-    public function initConfig($confPath = null)
+    public function initConfig($configPath = null)
     {
-        if (is_null($confPath) && defined('CONF_PATH')) {
-            $confPath = CONF_PATH;
-        } elseif (!file_exists($confPath)) {
-            $confPath = Storage::getInstance()->getPath('configs');
+        if (is_null($configPath) && defined('CONF_PATH')) {
+            $configPath = CONF_PATH;
+        } elseif (!file_exists($configPath)) {
+            $configPath = System::path() . DIRECTORY_SEPARATOR . 'configs';
         }
 
-        if (is_null($confPath) || !file_exists($confPath)) {
+        if (is_null($configPath) || !file_exists($configPath)) {
             return false;
         }
 
-        if (is_dir($confPath)) {
+        if (is_dir($configPath)) {
             $serverEnv = $this->getEnv('SERVER_ENV');
-            $confPath .= DIRECTORY_SEPARATOR . ($serverEnv ?: 'default') . '.json';
+            $configPath .= DIRECTORY_SEPARATOR . ($serverEnv ?: 'default') . '.json';
         }
 
-        if (!file_exists($confPath)) {
+        if (!file_exists($configPath)) {
             return false;
         }
 
-        $this->configPath = $confPath;
+        $this->configPath = $configPath;
         $this->configs = json_decode(file_get_contents($this->configPath), true);
         return true;
     }
 
+    /**
+     * @param string $envName
+     * @return string|null
+     */
     private function getEnv($envName)
     {
         $env = getenv($envName);
@@ -66,12 +70,13 @@ class Config
 
     /**
      * @param string $store
+     * @param null $configPath
      * @return static
      */
-    public static function getInstance($store = '_')
+    public static function getInstance($store = '_', $configPath = null)
     {
         if (!(isset(self::$instances[$store]) && self::$instances[$store] instanceof static)) {
-            self::$instances[$store] = new static($store);
+            self::$instances[$store] = new static($configPath);
         }
         return self::$instances[$store];
     }

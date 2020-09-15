@@ -1,8 +1,13 @@
 <?php
+
 namespace UflAs\Holiday;
 
 use DateTime;
 
+/**
+ * Class Holiday
+ * @package UflAs\Holiday
+ */
 abstract class Holiday implements IHoliday
 {
     /** @var string */

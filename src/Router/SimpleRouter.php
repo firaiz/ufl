@@ -1,8 +1,13 @@
 <?php
+
 namespace UflAs\Router;
 
 use UflAs\ArrayUtil;
 
+/**
+ * Class SimpleRouter
+ * @package UflAs\Router
+ */
 class SimpleRouter extends AbstractRouter
 {
 

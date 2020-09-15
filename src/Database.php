@@ -1,4 +1,5 @@
 <?php
+
 namespace UflAs;
 
 use Doctrine\DBAL\Connection;
@@ -7,7 +8,10 @@ use Doctrine\DBAL\Exception\InvalidArgumentException;
 
 use PDO;
 
-
+/**
+ * Class Database
+ * @package UflAs
+ */
 class Database
 {
     const PARAM_NULL = PDO::PARAM_NULL;

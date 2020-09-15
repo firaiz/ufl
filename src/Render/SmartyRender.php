@@ -1,4 +1,5 @@
 <?php
+
 namespace UflAs\Render;
 
 use Exception;
@@ -8,7 +9,12 @@ use UflAs\Exception\File\NotFound;
 use UflAs\Exception\File\NotWritable;
 use UflAs\Storage;
 use Smarty;
+use UflAs\System;
 
+/**
+ * Class SmartyRender
+ * @package UflAs\Render
+ */
 class SmartyRender implements IRender
 {
     /** @var Smarty */
@@ -29,29 +35,28 @@ class SmartyRender implements IRender
     /**
      * @param array $configs
      * @return void
-     * @throws NotFound
-     * @throws NotWritable
      */
     function setConfigs($configs)
     {
         $storage = Storage::getInstance();
 
         // general
-        $this->smarty->setTemplateDir($storage->getPath(ArrayUtil::get($configs, 'general.dir'), true));
-        $this->smarty->setAutoLiteral(ArrayUtil::get($configs, 'general.auto-literal'));
+        $templateDir = System::templatePath();
+        $this->smarty->setTemplateDir($templateDir);
+        $this->smarty->setAutoLiteral(ArrayUtil::get($configs, 'general.auto-literal', true));
 
         // debug
         $this->smarty->setDebugging(ArrayUtil::get($configs, 'debug.use', false));
         $this->smarty->debugging_ctrl = ArrayUtil::get($configs, 'debug.use-url', false) ? 'URL' : 'NONE';
 
         // compile
-        $this->smarty->setCompileDir($storage->getPath(ArrayUtil::get($configs, 'compile.dir'), true));
+        $this->smarty->setCompileDir($storage->getPath(ArrayUtil::get($configs, 'compile.dir', 'compile'), true));
         $this->smarty->setForceCompile(ArrayUtil::get($configs, 'compile.forced', false));
         $this->smarty->use_sub_dirs = ArrayUtil::get($configs, 'compile.use-sub-dir', true);
 
         // cache
         $this->smarty->setCaching(ArrayUtil::get($configs, 'cache.use', true));
-        $this->smarty->setCacheDir($storage->getPath(ArrayUtil::get($configs, 'cache.dir'), true));
+        $this->smarty->setCacheDir($storage->getPath(ArrayUtil::get($configs, 'cache.dir', 'cache' . DIRECTORY_SEPARATOR . 'template'), true));
         $this->smarty->setCacheLifetime(ArrayUtil::get($configs, 'cache.lifetime', 60));
     }
 

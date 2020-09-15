@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li class="active"><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -172,7 +174,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Request.html#4-156" title="Go to source code">Request.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Request.html#5-157" title="Go to source code">Request.php</a>
 		<br>
 	</div>
 
@@ -192,7 +194,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Request.html#20-38" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Request.html#21-39" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>Request constructor.</p>
@@ -221,7 +223,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_isCLIRequest">#</a>
-			<code><a href="source-class-UflAs.Request.html#40-47" title="Go to source code">isCLIRequest</a>( )</code>
+			<code><a href="source-class-UflAs.Request.html#41-48" title="Go to source code">isCLIRequest</a>( )</code>
 
 			<div class="description short">
 				<p>request is cli</p>
@@ -254,7 +256,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setDetectOrder">#</a>
-			<code><a href="source-class-UflAs.Request.html#65-83" title="Go to source code">setDetectOrder</a>( <span>array <var>$order</var></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#66-84" title="Go to source code">setDetectOrder</a>( <span>array <var>$order</var></span> )</code>
 
 			<div class="description short">
 				
@@ -292,7 +294,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_post">#</a>
-			<code><a href="source-class-UflAs.Request.html#85-94" title="Go to source code">post</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#86-95" title="Go to source code">post</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>get the post request value</p>
@@ -332,7 +334,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_val">#</a>
-			<code><a href="source-class-UflAs.Request.html#96-114" title="Go to source code">val</a>( <span>string|string[] <var>$targetTypes</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$default</var></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#97-115" title="Go to source code">val</a>( <span>string|string[] <var>$targetTypes</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$default</var></span> )</code>
 
 			<div class="description short">
 				
@@ -374,7 +376,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_cli">#</a>
-			<code><a href="source-class-UflAs.Request.html#125-134" title="Go to source code">cli</a>( <span>string|integer <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#126-135" title="Go to source code">cli</a>( <span>string|integer <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>get the cli options</p>
@@ -414,7 +416,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_both">#</a>
-			<code><a href="source-class-UflAs.Request.html#136-144" title="Go to source code">both</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#137-145" title="Go to source code">both</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				
@@ -454,7 +456,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_get">#</a>
-			<code><a href="source-class-UflAs.Request.html#146-155" title="Go to source code">get</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#147-156" title="Go to source code">get</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>get the get request value</p>
@@ -501,7 +503,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#6" title="Go to source code"><b>TYPE_GET</b></a>
+						<a href="source-class-UflAs.Request.html#7" title="Go to source code"><b>TYPE_GET</b></a>
 					</code>
 
 					<div class="description short">
@@ -525,7 +527,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#7" title="Go to source code"><b>TYPE_POST</b></a>
+						<a href="source-class-UflAs.Request.html#8" title="Go to source code"><b>TYPE_POST</b></a>
 					</code>
 
 					<div class="description short">
@@ -549,7 +551,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#8" title="Go to source code"><b>TYPE_CLI</b></a>
+						<a href="source-class-UflAs.Request.html#9" title="Go to source code"><b>TYPE_CLI</b></a>
 					</code>
 
 					<div class="description short">
@@ -573,7 +575,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#9" title="Go to source code"><b>TYPE_REQUEST</b></a>
+						<a href="source-class-UflAs.Request.html#10" title="Go to source code"><b>TYPE_REQUEST</b></a>
 					</code>
 
 					<div class="description short">
@@ -608,7 +610,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#11" title="Go to source code"><var>$requestMethod</var></a>
+					<a href="source-class-UflAs.Request.html#12" title="Go to source code"><var>$requestMethod</var></a>
 
 				<div class="description short">
 					
@@ -633,7 +635,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#12" title="Go to source code"><var>$vars</var></a>
+					<a href="source-class-UflAs.Request.html#13" title="Go to source code"><var>$vars</var></a>
 
 				<div class="description short">
 					
@@ -658,7 +660,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#13-17" title="Go to source code"><var>$defaultDetectOrders</var></a>
+					<a href="source-class-UflAs.Request.html#14-18" title="Go to source code"><var>$defaultDetectOrders</var></a>
 
 				<div class="description short">
 					
@@ -687,7 +689,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#18" title="Go to source code"><var>$detectOrders</var></a>
+					<a href="source-class-UflAs.Request.html#19" title="Go to source code"><var>$detectOrders</var></a>
 
 				<div class="description short">
 					
@@ -721,6 +723,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li class="active"><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -157,6 +159,9 @@
 	<h1>Class Header</h1>
 
 
+	<div class="description">
+	<p>Class Header</p>
+	</div>
 
 
 
@@ -170,9 +175,9 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
-		
+		<b>Package:</b> UflAs<br>
 
-			<b>Located at</b> <a href="source-class-UflAs.Header.html#4-105" title="Go to source code">Header.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Header.html#5-114" title="Go to source code">Header.php</a>
 		<br>
 	</div>
 
@@ -192,7 +197,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Header.html#19-28" title="Go to source code">getInstance</a>( )</code>
+			<code><a href="source-class-UflAs.Header.html#24-33" title="Go to source code">getInstance</a>( )</code>
 
 			<div class="description short">
 				
@@ -225,7 +230,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_flush">#</a>
-			<code><a href="source-class-UflAs.Header.html#30-37" title="Go to source code">flush</a>( )</code>
+			<code><a href="source-class-UflAs.Header.html#35-42" title="Go to source code">flush</a>( )</code>
 
 			<div class="description short">
 				
@@ -254,7 +259,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_code">#</a>
-			<code><a href="source-class-UflAs.Header.html#39-45" title="Go to source code">code</a>( <span>integer <var>$code</var></span> )</code>
+			<code><a href="source-class-UflAs.Header.html#44-50" title="Go to source code">code</a>( <span>integer <var>$code</var></span> )</code>
 
 			<div class="description short">
 				
@@ -288,7 +293,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_add">#</a>
-			<code><a href="source-class-UflAs.Header.html#57-63" title="Go to source code">add</a>( <span>array <var>$headers</var></span> )</code>
+			<code><a href="source-class-UflAs.Header.html#63-69" title="Go to source code">add</a>( <span>array <var>$headers</var></span> )</code>
 
 			<div class="description short">
 				
@@ -322,7 +327,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_set">#</a>
-			<code><a href="source-class-UflAs.Header.html#65-71" title="Go to source code">set</a>( <span>array <var>$headers</var></span> )</code>
+			<code><a href="source-class-UflAs.Header.html#71-77" title="Go to source code">set</a>( <span>array <var>$headers</var></span> )</code>
 
 			<div class="description short">
 				
@@ -356,7 +361,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_reset">#</a>
-			<code><a href="source-class-UflAs.Header.html#73-78" title="Go to source code">reset</a>( )</code>
+			<code><a href="source-class-UflAs.Header.html#79-85" title="Go to source code">reset</a>( )</code>
 
 			<div class="description short">
 				<p>clear headers</p>
@@ -385,7 +390,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_isSent">#</a>
-			<code><a href="source-class-UflAs.Header.html#80-85" title="Go to source code">isSent</a>( )</code>
+			<code><a href="source-class-UflAs.Header.html#87-93" title="Go to source code">isSent</a>( )</code>
 
 			<div class="description short">
 				
@@ -418,7 +423,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_location">#</a>
-			<code><a href="source-class-UflAs.Header.html#87-104" title="Go to source code">location</a>( <span> <var>$url</var></span>, <span>integer <var>$code</var> = <span class="php-num">302</span></span> )</code>
+			<code><a href="source-class-UflAs.Header.html#95-113" title="Go to source code">location</a>( <span> <var>$url</var></span>, <span>integer <var>$code</var> = <span class="php-num">302</span></span> )</code>
 
 			<div class="description short">
 				
@@ -466,7 +471,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Header.html#8" title="Go to source code"><var>$headers</var></a>
+					<a href="source-class-UflAs.Header.html#13" title="Go to source code"><var>$headers</var></a>
 
 				<div class="description short">
 					
@@ -500,6 +505,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

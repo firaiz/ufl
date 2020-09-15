@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -157,6 +159,9 @@
 	<h1>Class CommandLine</h1>
 
 
+	<div class="description">
+	<p>Class CommandLine</p>
+	</div>
 
 	<dl class="tree well">
 		<dd style="padding-left:0px">
@@ -179,9 +184,9 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
-		
+		<b>Package:</b> UflAs<br>
 
-			<b>Located at</b> <a href="source-class-UflAs.CommandLine.html#6-106" title="Go to source code">CommandLine.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.CommandLine.html#6-110" title="Go to source code">CommandLine.php</a>
 		<br>
 	</div>
 
@@ -201,7 +206,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.CommandLine.html#11-21" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.CommandLine.html#15-25" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>CommandLine constructor.</p>
@@ -230,7 +235,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_offsetGet">#</a>
-			<code><a href="source-class-UflAs.CommandLine.html#23-36" title="Go to source code">offsetGet</a>( <span>mixed <var>$offset</var></span> )</code>
+			<code><a href="source-class-UflAs.CommandLine.html#27-40" title="Go to source code">offsetGet</a>( <span>mixed <var>$offset</var></span> )</code>
 
 			<div class="description short">
 				<p>(PHP 5 &gt;= 5.0.0)<br/>
@@ -278,7 +283,7 @@ The offset to retrieve.
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getOpt">#</a>
-			<code><a href="source-class-UflAs.CommandLine.html#38-56" title="Go to source code">getOpt</a>( <span>integer|string <var>$offset</var></span> )</code>
+			<code><a href="source-class-UflAs.CommandLine.html#42-60" title="Go to source code">getOpt</a>( <span>integer|string <var>$offset</var></span> )</code>
 
 			<div class="description short">
 				
@@ -316,7 +321,7 @@ The offset to retrieve.
 
 			<td class="name"><div>
 			<a class="anchor" href="#_offsetExists">#</a>
-			<code><a href="source-class-UflAs.CommandLine.html#58-74" title="Go to source code">offsetExists</a>( <span>mixed <var>$offset</var></span> )</code>
+			<code><a href="source-class-UflAs.CommandLine.html#62-78" title="Go to source code">offsetExists</a>( <span>mixed <var>$offset</var></span> )</code>
 
 			<div class="description short">
 				<p>(PHP 5 &gt;= 5.0.0)<br/>
@@ -370,7 +375,7 @@ The return value will be casted to boolean if non-boolean was returned.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_offsetSet">#</a>
-			<code><a href="source-class-UflAs.CommandLine.html#76-91" title="Go to source code">offsetSet</a>( <span>mixed <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
+			<code><a href="source-class-UflAs.CommandLine.html#80-95" title="Go to source code">offsetSet</a>( <span>mixed <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>(PHP 5 &gt;= 5.0.0)<br/>
@@ -418,7 +423,7 @@ The value to set.
 
 			<td class="name"><div>
 			<a class="anchor" href="#_offsetUnset">#</a>
-			<code><a href="source-class-UflAs.CommandLine.html#93-105" title="Go to source code">offsetUnset</a>( <span>mixed <var>$offset</var></span> )</code>
+			<code><a href="source-class-UflAs.CommandLine.html#97-109" title="Go to source code">offsetUnset</a>( <span>mixed <var>$offset</var></span> )</code>
 
 			<div class="description short">
 				<p>(PHP 5 &gt;= 5.0.0)<br/>
@@ -474,7 +479,7 @@ The offset to unset.
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.CommandLine.html#8" title="Go to source code"><var>$argv</var></a>
+					<a href="source-class-UflAs.CommandLine.html#12" title="Go to source code"><var>$argv</var></a>
 
 				<div class="description short">
 					
@@ -499,7 +504,7 @@ The offset to unset.
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.CommandLine.html#9" title="Go to source code"><var>$argc</var></a>
+					<a href="source-class-UflAs.CommandLine.html#13" title="Go to source code"><var>$argc</var></a>
 
 				<div class="description short">
 					
@@ -533,6 +538,6 @@ The offset to unset.
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

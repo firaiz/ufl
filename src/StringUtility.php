@@ -2,8 +2,10 @@
 
 namespace UflAs;
 
-class StringUtility {
-    public static function uuid($separator = '-', $version = 4) {
+class StringUtility
+{
+    public static function uuid($separator = '-', $version = 4)
+    {
         switch ($version) {
             case 4:
                 return static::randomUUID($separator);
@@ -11,9 +13,10 @@ class StringUtility {
         return '';
     }
 
-    public static function randomUUID($separator = '-') {
+    public static function randomUUID($separator = '-')
+    {
         return sprintf(
-            implode($separator, array('%04x%04x','%04x','%04x','%04x','%04x%04x%04x')),
+            implode($separator, array('%04x%04x', '%04x', '%04x', '%04x', '%04x%04x%04x')),
             // 32 bits for "time_low"
             mt_rand(0, 0xffff),
             mt_rand(0, 0xffff),
@@ -33,7 +36,8 @@ class StringUtility {
         );
     }
 
-    public static function random($length = 32, $isFast = false) {
+    public static function random($length = 32, $isFast = true)
+    {
         if ($isFast) {
             $count = $length / 32;
             $randomStr = '';
@@ -51,7 +55,7 @@ class StringUtility {
                 $str = openssl_random_pseudo_bytes($generateLength);
             }
             if (strlen($str) === 0) {
-                return self::random($length, true);
+                return self::random($length);
             }
             $randomStr = bin2hex($str);
         }

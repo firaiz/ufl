@@ -4,6 +4,10 @@ namespace UflAs;
 
 use UflAs\Cron\ICron;
 
+/**
+ * Class Cron
+ * @package UflAs
+ */
 abstract class Cron implements ICron
 {
     /**

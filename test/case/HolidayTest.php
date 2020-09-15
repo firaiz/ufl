@@ -1,8 +1,6 @@
 <?php
 namespace UflAs\TestCase;
 
-include_once __DIR__ . '/../../vendor/autoload.php';
-
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use UflAs\Date;

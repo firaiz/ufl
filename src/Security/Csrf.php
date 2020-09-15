@@ -7,6 +7,10 @@ use UflAs\Session;
 use UflAs\Container\SessionContainer;
 use UflAs\StringUtility;
 
+/**
+ * Class Csrf
+ * @package UflAs\Security
+ */
 class Csrf
 {
     const CSRF_TAG = '__secure__';
@@ -28,7 +32,7 @@ class Csrf
             $session = Session::getInstance();
             if ($session->isStarted()) {
                 self::$container = new SessionContainer(self::CSRF_TAG);
-                self::$container->set(self::FIXED_TOKEN, self::$container->get(self::FIXED_TOKEN, StringUtility::random()));
+                self::$container->set(self::FIXED_TOKEN, self::$container->get(self::FIXED_TOKEN, StringUtility::random(32, false)));
             } else {
                 throw new NotStarted();
             }
@@ -45,7 +49,7 @@ class Csrf
     {
         $securityContainer = self::container();
         if (is_null($token)) {
-            $token = $securityContainer->get(self::SECRET_TOKEN, StringUtility::random(64));
+            $token = $securityContainer->get(self::SECRET_TOKEN, StringUtility::random(64, false));
         }
         $securityContainer->set(self::SECRET_TOKEN, $token);
         $fixedToken = $securityContainer->get(self::FIXED_TOKEN);
@@ -80,6 +84,6 @@ class Csrf
      */
     public static function regenerateToken()
     {
-        return self::generateToken(StringUtility::random(64));
+        return self::generateToken(StringUtility::random(64, false));
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace UflAs;
 
 
@@ -77,7 +78,8 @@ class Session
         return $_SESSION;
     }
 
-    public function getSID() {
+    public function getSID()
+    {
         if (!$this->isStarted()) {
             return null;
         }

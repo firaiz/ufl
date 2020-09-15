@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -157,6 +159,9 @@
 	<h1>Class ArrayUtil</h1>
 
 
+	<div class="description">
+	<p>Class ArrayUtil</p>
+	</div>
 
 
 
@@ -170,9 +175,9 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
-		
+		<b>Package:</b> UflAs<br>
 
-			<b>Located at</b> <a href="source-class-UflAs.ArrayUtil.html#4-199" title="Go to source code">ArrayUtil.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.ArrayUtil.html#5-204" title="Go to source code">ArrayUtil.php</a>
 		<br>
 	</div>
 
@@ -192,7 +197,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_add">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#10-25" title="Go to source code">add</a>( <span>array <var>&amp; $array</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#15-30" title="Go to source code">add</a>( <span>array <var>&amp; $array</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Add an element to an array using "dot" notation</p>
@@ -234,7 +239,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_get">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#27-55" title="Go to source code">get</a>( <span>array <var>$array</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#32-60" title="Go to source code">get</a>( <span>array <var>$array</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>Get an item from an array using "dot" notation.</p>
@@ -276,7 +281,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toKeys">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#57-64" title="Go to source code">toKeys</a>( <span>string <var>$key</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#62-69" title="Go to source code">toKeys</a>( <span>string <var>$key</var></span> )</code>
 
 			<div class="description short">
 				
@@ -314,7 +319,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_value">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#66-76" title="Go to source code">value</a>( <span>mixed <var>$value</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#71-81" title="Go to source code">value</a>( <span>mixed <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Return the default value of the given value.</p>
@@ -352,7 +357,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_set">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#78-113" title="Go to source code">set</a>( <span>array <var>&amp; $array</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#83-118" title="Go to source code">set</a>( <span>array <var>&amp; $array</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 			<div class="description short">
 				<p>Set an array item to a given value using "dot" notation.</p>
@@ -396,7 +401,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_count">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#115-123" title="Go to source code">count</a>( <span>array <var>$array</var></span>, <span>string <var>$key</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#120-128" title="Go to source code">count</a>( <span>array <var>$array</var></span>, <span>string <var>$key</var></span> )</code>
 
 			<div class="description short">
 				
@@ -436,7 +441,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_has">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#125-150" title="Go to source code">has</a>( <span>array <var>$array</var></span>, <span>string <var>$key</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#130-155" title="Go to source code">has</a>( <span>array <var>$array</var></span>, <span>string <var>$key</var></span> )</code>
 
 			<div class="description short">
 				<p>Check if an item exists in an array using "dot" notation.</p>
@@ -476,7 +481,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_head">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#152-161" title="Go to source code">head</a>( <span>array <var>$array</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#157-166" title="Go to source code">head</a>( <span>array <var>$array</var></span> )</code>
 
 			<div class="description short">
 				<p>Get the first element of an array. Useful for method chaining.</p>
@@ -514,7 +519,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_keyValue">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#163-174" title="Go to source code">keyValue</a>( <span>string <var>$key</var></span>, <span>integer <var>$number</var></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#168-179" title="Go to source code">keyValue</a>( <span>string <var>$key</var></span>, <span>integer <var>$number</var></span> )</code>
 
 			<div class="description short">
 				<p>Return the dot key string from number</p>
@@ -554,7 +559,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toKey">#</a>
-			<code><a href="source-class-UflAs.ArrayUtil.html#176-198" title="Go to source code">toKey</a>( <span>string|array <var>$value</var></span>, <span>boolean <var>$disableEscape</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-UflAs.ArrayUtil.html#181-203" title="Go to source code">toKey</a>( <span>string|array <var>$value</var></span>, <span>boolean <var>$disableEscape</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				<p>Convert to key string</p>
@@ -601,7 +606,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.ArrayUtil.html#6" title="Go to source code"><b>DELIMITER</b></a>
+						<a href="source-class-UflAs.ArrayUtil.html#11" title="Go to source code"><b>DELIMITER</b></a>
 					</code>
 
 					<div class="description short">
@@ -625,7 +630,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.ArrayUtil.html#7" title="Go to source code"><b>REPLACEMENT</b></a>
+						<a href="source-class-UflAs.ArrayUtil.html#12" title="Go to source code"><b>REPLACEMENT</b></a>
 					</code>
 
 					<div class="description short">
@@ -660,7 +665,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.ArrayUtil.html#8" title="Go to source code"><var>$delimiter</var></a>
+					<a href="source-class-UflAs.ArrayUtil.html#13" title="Go to source code"><var>$delimiter</var></a>
 
 				<div class="description short">
 					
@@ -694,6 +699,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

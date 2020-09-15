@@ -2,6 +2,10 @@
 
 namespace UflAs\Router;
 
+/**
+ * Class CallableContainer
+ * @package UflAs\Router
+ */
 class CallableContainer implements IRouterContainer
 {
     /**
@@ -32,7 +36,11 @@ class CallableContainer implements IRouterContainer
         }
     }
 
-    public function isValid() {
+    /**
+     * @return bool
+     */
+    public function isValid()
+    {
         return is_callable($this->context);
     }
 

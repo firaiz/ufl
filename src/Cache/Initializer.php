@@ -1,6 +1,11 @@
 <?php
+
 namespace UflAs\Cache;
 
+/**
+ * Class Initializer
+ * @package UflAs\Cache
+ */
 class Initializer
 {
     const CACHE_TYPE_SQLite3 = 'SQLite3';

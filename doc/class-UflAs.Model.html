@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -188,7 +190,7 @@
 
 				<b>Covers</b>
 				<br>
-			<b>Located at</b> <a href="source-class-UflAs.Model.html#9-388" title="Go to source code">Model.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Model.html#11-395" title="Go to source code">Model.php</a>
 		<br>
 	</div>
 
@@ -208,7 +210,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Model.html#14-25" title="Go to source code">__construct</a>( <span>mixed <var>$findKey</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#16-27" title="Go to source code">__construct</a>( <span>mixed <var>$findKey</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
 
 			<div class="description short">
 				<p>Model constructor.</p>
@@ -244,7 +246,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_initQuery">#</a>
-			<code><a href="source-class-UflAs.Model.html#27-37" title="Go to source code">initQuery</a>( <span> <var>$findKey</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#29-40" title="Go to source code">initQuery</a>( <span> <var>$findKey</var></span> )</code>
 
 			<div class="description short">
 				
@@ -282,7 +284,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_init">#</a>
-			<code><a href="source-class-UflAs.Model.html#39-50" title="Go to source code">init</a>( <span>mixed <var>$findKey</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#42-53" title="Go to source code">init</a>( <span>mixed <var>$findKey</var></span> )</code>
 
 			<div class="description short">
 				
@@ -316,7 +318,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_db">#</a>
-			<code><a href="source-class-UflAs.Model.html#52-58" title="Go to source code">db</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#55-61" title="Go to source code">db</a>( )</code>
 
 			<div class="description short">
 				
@@ -349,7 +351,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_quoteIdentifier">#</a>
-			<code><a href="source-class-UflAs.Model.html#60-63" title="Go to source code">quoteIdentifier</a>( <span> <var>$name</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#63-66" title="Go to source code">quoteIdentifier</a>( <span> <var>$name</var></span> )</code>
 
 			<div class="description short">
 				
@@ -378,7 +380,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_builder">#</a>
-			<code><a href="source-class-UflAs.Model.html#65-71" title="Go to source code">builder</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#68-74" title="Go to source code">builder</a>( )</code>
 
 			<div class="description short">
 				
@@ -411,7 +413,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_tableName">#</a>
-			<code><a href="source-class-UflAs.Model.html#73-80" title="Go to source code">tableName</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#76-83" title="Go to source code">tableName</a>( )</code>
 
 			<div class="description short">
 				
@@ -444,7 +446,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_tableize">#</a>
-			<code><a href="source-class-UflAs.Model.html#82-89" title="Go to source code">tableize</a>( <span>string <var>$word</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#85-92" title="Go to source code">tableize</a>( <span>string <var>$word</var></span> )</code>
 
 			<div class="description short">
 				
@@ -482,7 +484,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toField">#</a>
-			<code><a href="source-class-UflAs.Model.html#102-109" title="Go to source code">toField</a>( <span>string <var>$filed</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#105-112" title="Go to source code">toField</a>( <span>string <var>$filed</var></span> )</code>
 
 			<div class="description short">
 				
@@ -520,7 +522,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_import">#</a>
-			<code><a href="source-class-UflAs.Model.html#111-120" title="Go to source code">import</a>( <span>array <var>$row</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#114-123" title="Go to source code">import</a>( <span>array <var>$row</var></span> )</code>
 
 			<div class="description short">
 				
@@ -558,7 +560,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_delete">#</a>
-			<code><a href="source-class-UflAs.Model.html#122-128" title="Go to source code">delete</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#125-131" title="Go to source code">delete</a>( )</code>
 
 			<div class="description short">
 				
@@ -580,14 +582,14 @@
 
 			<td class="attributes"><code>
 				 public 
-				boolean
+				static
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_save">#</a>
-			<code><a href="source-class-UflAs.Model.html#130-172" title="Go to source code">save</a>( <span>boolean <var>$isCreating</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#133-176" title="Go to source code">save</a>( <span>boolean <var>$isCreating</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				
@@ -605,9 +607,13 @@
 
 					<h4>Returns</h4>
 					<div class="list">
-						boolean
+						static
 					</div>
 
+					<h4>Throws</h4>
+					<div class="list">
+						Exception
+					</div>
 
 
 
@@ -625,7 +631,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_isExists">#</a>
-			<code><a href="source-class-UflAs.Model.html#174-180" title="Go to source code">isExists</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#178-184" title="Go to source code">isExists</a>( )</code>
 
 			<div class="description short">
 				
@@ -658,7 +664,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_create">#</a>
-			<code><a href="source-class-UflAs.Model.html#182-199" title="Go to source code">create</a>( <span> <var>$array</var></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#186-203" title="Go to source code">create</a>( <span> <var>$array</var></span>, <span>string <var>$findKeyName</var> = <span class="php-quote">'id'</span></span> )</code>
 
 			<div class="description short">
 				
@@ -698,7 +704,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toTableizeArray">#</a>
-			<code><a href="source-class-UflAs.Model.html#201-212" title="Go to source code">toTableizeArray</a>( <span>array <var>$array</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#205-216" title="Go to source code">toTableizeArray</a>( <span>array <var>$array</var></span> )</code>
 
 			<div class="description short">
 				
@@ -736,7 +742,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toArray">#</a>
-			<code><a href="source-class-UflAs.Model.html#214-222" title="Go to source code">toArray</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#218-226" title="Go to source code">toArray</a>( )</code>
 
 			<div class="description short">
 				
@@ -769,7 +775,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_diff">#</a>
-			<code><a href="source-class-UflAs.Model.html#224-249" title="Go to source code">diff</a>( <span>array <var>$row</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#228-253" title="Go to source code">diff</a>( <span>array <var>$row</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				
@@ -807,7 +813,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toFiledArray">#</a>
-			<code><a href="source-class-UflAs.Model.html#251-262" title="Go to source code">toFiledArray</a>( <span>array <var>$array</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#255-266" title="Go to source code">toFiledArray</a>( <span>array <var>$array</var></span> )</code>
 
 			<div class="description short">
 				
@@ -845,7 +851,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getIndex">#</a>
-			<code><a href="source-class-UflAs.Model.html#264-270" title="Go to source code">getIndex</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#268-274" title="Go to source code">getIndex</a>( )</code>
 
 			<div class="description short">
 				
@@ -878,7 +884,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_eqByKey">#</a>
-			<code><a href="source-class-UflAs.Model.html#272-289" title="Go to source code">eqByKey</a>( <span>static <var>$obj</var></span>, <span>string <var>$key</var></span>, <span>boolean <var>$isStrict</var> = <span class="php-keyword1">true</span></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#276-293" title="Go to source code">eqByKey</a>( <span>static <var>$obj</var></span>, <span>string <var>$key</var></span>, <span>boolean <var>$isStrict</var> = <span class="php-keyword1">true</span></span> )</code>
 
 			<div class="description short">
 				
@@ -920,7 +926,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_overwrite">#</a>
-			<code><a href="source-class-UflAs.Model.html#291-301" title="Go to source code">overwrite</a>( <span>array <var>$row</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#295-305" title="Go to source code">overwrite</a>( <span>array <var>$row</var></span> )</code>
 
 			<div class="description short">
 				
@@ -954,7 +960,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_initOverwrite">#</a>
-			<code><a href="source-class-UflAs.Model.html#303-317" title="Go to source code">initOverwrite</a>( <span>array <var>$row</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#307-321" title="Go to source code">initOverwrite</a>( <span>array <var>$row</var></span> )</code>
 
 			<div class="description short">
 				
@@ -988,7 +994,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getOldValue">#</a>
-			<code><a href="source-class-UflAs.Model.html#319-325" title="Go to source code">getOldValue</a>( <span>string <var>$key</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#323-330" title="Go to source code">getOldValue</a>( <span>string <var>$key</var></span> )</code>
 
 			<div class="description short">
 				
@@ -1026,7 +1032,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getOldValues">#</a>
-			<code><a href="source-class-UflAs.Model.html#327-332" title="Go to source code">getOldValues</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#332-338" title="Go to source code">getOldValues</a>( )</code>
 
 			<div class="description short">
 				
@@ -1059,7 +1065,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setFindKeyName">#</a>
-			<code><a href="source-class-UflAs.Model.html#334-340" title="Go to source code">setFindKeyName</a>( <span>string <var>$findKeyName</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#340-346" title="Go to source code">setFindKeyName</a>( <span>string <var>$findKeyName</var></span> )</code>
 
 			<div class="description short">
 				
@@ -1093,7 +1099,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getFindKeyName">#</a>
-			<code><a href="source-class-UflAs.Model.html#342-347" title="Go to source code">getFindKeyName</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#348-354" title="Go to source code">getFindKeyName</a>( )</code>
 
 			<div class="description short">
 				
@@ -1126,7 +1132,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_serialize">#</a>
-			<code><a href="source-class-UflAs.Model.html#349-359" title="Go to source code">serialize</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#356-366" title="Go to source code">serialize</a>( )</code>
 
 			<div class="description short">
 				<p>String representation of object</p>
@@ -1169,7 +1175,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_unserialize">#</a>
-			<code><a href="source-class-UflAs.Model.html#361-375" title="Go to source code">unserialize</a>( <span>string <var>$serialized</var></span> )</code>
+			<code><a href="source-class-UflAs.Model.html#368-382" title="Go to source code">unserialize</a>( <span>string <var>$serialized</var></span> )</code>
 
 			<div class="description short">
 				<p>Constructs the object</p>
@@ -1215,7 +1221,7 @@ The string representation of the object.
 
 			<td class="name"><div>
 			<a class="anchor" href="#_jsonSerialize">#</a>
-			<code><a href="source-class-UflAs.Model.html#377-387" title="Go to source code">jsonSerialize</a>( )</code>
+			<code><a href="source-class-UflAs.Model.html#384-394" title="Go to source code">jsonSerialize</a>( )</code>
 
 			<div class="description short">
 				<p>Specify data which should be serialized to JSON</p>
@@ -1269,6 +1275,6 @@ which is a value of any type other than a resource.</p>
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

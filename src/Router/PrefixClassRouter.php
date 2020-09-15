@@ -1,11 +1,17 @@
 <?php
+
 namespace UflAs\Router;
 
+/**
+ * Class PrefixClassRouter
+ * @package UflAs\Router
+ */
 class PrefixClassRouter extends ClassRouter
 {
     protected $prefix = null;
 
-    public function setPrefix($prefix) {
+    public function setPrefix($prefix)
+    {
         $this->prefix = $prefix;
     }
 
@@ -18,6 +24,6 @@ class PrefixClassRouter extends ClassRouter
         if (strpos($pathInfo, $this->prefix) !== 0) {
             return '/';
         }
-        return preg_replace('#^'.$this->prefix.'#', '', $pathInfo);
+        return preg_replace('#^' . $this->prefix . '#', '', $pathInfo);
     }
 }

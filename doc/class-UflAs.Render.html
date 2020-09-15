@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li class="active"><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -157,6 +159,9 @@
 	<h1>Class Render</h1>
 
 
+	<div class="description">
+	<p>Interface IRender</p>
+	</div>
 
 	<dl class="tree well">
 		<dd style="padding-left:0px">
@@ -179,9 +184,9 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
-		
+		<b>Package:</b> UflAs\Render<br>
 
-			<b>Located at</b> <a href="source-class-UflAs.Render.html#6-157" title="Go to source code">Render.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Render.html#7-158" title="Go to source code">Render.php</a>
 		<br>
 	</div>
 
@@ -201,7 +206,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Render.html#15-29" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Render.html#16-30" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>View constructor.</p>
@@ -230,7 +235,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_initRender">#</a>
-			<code><a href="source-class-UflAs.Render.html#31-38" title="Go to source code">initRender</a>( <span>string <var>$engine</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#32-39" title="Go to source code">initRender</a>( <span>string <var>$engine</var></span> )</code>
 
 			<div class="description short">
 				
@@ -264,7 +269,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setConfigs">#</a>
-			<code><a href="source-class-UflAs.Render.html#45-52" title="Go to source code">setConfigs</a>( <span>array <var>$configs</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#46-53" title="Go to source code">setConfigs</a>( <span>array <var>$configs</var></span> )</code>
 
 			<div class="description short">
 				
@@ -300,7 +305,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getDefaultHeaders">#</a>
-			<code><a href="source-class-UflAs.Render.html#62-65" title="Go to source code">getDefaultHeaders</a>( )</code>
+			<code><a href="source-class-UflAs.Render.html#63-66" title="Go to source code">getDefaultHeaders</a>( )</code>
 
 			<div class="description short">
 				
@@ -329,7 +334,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setLayout">#</a>
-			<code><a href="source-class-UflAs.Render.html#67-73" title="Go to source code">setLayout</a>( <span>string <var>$templatePath</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#68-74" title="Go to source code">setLayout</a>( <span>string <var>$templatePath</var></span> )</code>
 
 			<div class="description short">
 				
@@ -363,7 +368,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_assign">#</a>
-			<code><a href="source-class-UflAs.Render.html#75-85" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#76-86" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				
@@ -407,7 +412,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_compile">#</a>
-			<code><a href="source-class-UflAs.Render.html#87-94" title="Go to source code">compile</a>( <span> <var>$template</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#88-95" title="Go to source code">compile</a>( <span> <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -447,7 +452,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Render.html#96-105" title="Go to source code">getInstance</a>( )</code>
+			<code><a href="source-class-UflAs.Render.html#97-106" title="Go to source code">getInstance</a>( )</code>
 
 			<div class="description short">
 				
@@ -480,7 +485,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_templateExists">#</a>
-			<code><a href="source-class-UflAs.Render.html#107-114" title="Go to source code">templateExists</a>( <span> <var>$template</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#108-115" title="Go to source code">templateExists</a>( <span> <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -520,7 +525,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setLayoutPath">#</a>
-			<code><a href="source-class-UflAs.Render.html#116-123" title="Go to source code">setLayoutPath</a>( <span>string <var>$layout</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#117-124" title="Go to source code">setLayoutPath</a>( <span>string <var>$layout</var></span> )</code>
 
 			<div class="description short">
 				
@@ -556,7 +561,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getLayoutPath">#</a>
-			<code><a href="source-class-UflAs.Render.html#125-131" title="Go to source code">getLayoutPath</a>( )</code>
+			<code><a href="source-class-UflAs.Render.html#126-132" title="Go to source code">getLayoutPath</a>( )</code>
 
 			<div class="description short">
 				
@@ -591,7 +596,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_isLayoutMode">#</a>
-			<code><a href="source-class-UflAs.Render.html#133-139" title="Go to source code">isLayoutMode</a>( )</code>
+			<code><a href="source-class-UflAs.Render.html#134-140" title="Go to source code">isLayoutMode</a>( )</code>
 
 			<div class="description short">
 				
@@ -626,7 +631,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setContentName">#</a>
-			<code><a href="source-class-UflAs.Render.html#141-148" title="Go to source code">setContentName</a>( <span> <var>$contentName</var></span> )</code>
+			<code><a href="source-class-UflAs.Render.html#142-149" title="Go to source code">setContentName</a>( <span> <var>$contentName</var></span> )</code>
 
 			<div class="description short">
 				
@@ -662,7 +667,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getContentName">#</a>
-			<code><a href="source-class-UflAs.Render.html#150-156" title="Go to source code">getContentName</a>( )</code>
+			<code><a href="source-class-UflAs.Render.html#151-157" title="Go to source code">getContentName</a>( )</code>
 
 			<div class="description short">
 				
@@ -709,7 +714,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Render.html#8-9" title="Go to source code"><var>$instance</var></a>
+					<a href="source-class-UflAs.Render.html#9-10" title="Go to source code"><var>$instance</var></a>
 
 				<div class="description short">
 					
@@ -734,7 +739,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Render.html#10-11" title="Go to source code"><var>$render</var></a>
+					<a href="source-class-UflAs.Render.html#11-12" title="Go to source code"><var>$render</var></a>
 
 				<div class="description short">
 					
@@ -759,7 +764,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Render.html#12-13" title="Go to source code"><var>$headers</var></a>
+					<a href="source-class-UflAs.Render.html#13-14" title="Go to source code"><var>$headers</var></a>
 
 				<div class="description short">
 					
@@ -793,6 +798,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

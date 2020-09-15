@@ -1,17 +1,23 @@
 <?php
+
 namespace UflAs\Session;
+
 use DateTime;
 use PDO;
 use PDOStatement;
 use UflAs\StringUtility;
 
+/**
+ * Class SQLiteSessionHandler
+ * @package UflAs\Session
+ */
 class SQLiteSessionHandler implements SessionHandlerInterface
 {
     /** @var PDO */
     private $pdo;
     /** @var string */
     private $savePath;
-    
+
     public function __construct()
     {
         if (PHP_VERSION_ID < 504000) {
@@ -102,7 +108,8 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * @param array $params
      * @return bool
      */
-    protected function exec($stmt, $params = null) {
+    protected function exec($stmt, $params = null)
+    {
         return $stmt->execute($params);
     }
 
@@ -119,7 +126,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      */
     public function create_sid()
     {
-        return StringUtility::random(64);
+        return StringUtility::random(64, false);
     }
     // 以下 implements
 

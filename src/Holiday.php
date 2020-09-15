@@ -1,9 +1,14 @@
 <?php
+
 namespace UflAs;
 
-use UflAs\Holiday\Holiday AS HolidayBase;
-use UflAs\Holiday\Japan AS JapanHoliday;
+use UflAs\Holiday\Holiday as HolidayBase;
+use UflAs\Holiday\Japan as JapanHoliday;
 
+/**
+ * Class Holiday
+ * @package UflAs
+ */
 class Holiday
 {
     /**
@@ -11,10 +16,11 @@ class Holiday
      * @param string [$countryCode]
      * @return HolidayBase[]|array
      */
-    public static function listOf($year, $countryCode = 'JP') {
+    public static function listOf($year, $countryCode = 'JP')
+    {
         switch ($countryCode) {
             case 'JP':
-            return JapanHoliday::listOf($year);
+                return JapanHoliday::listOf($year);
         }
         return array();
     }

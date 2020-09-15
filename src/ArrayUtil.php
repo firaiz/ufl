@@ -1,6 +1,11 @@
 <?php
+
 namespace UflAs;
 
+/**
+ * Class ArrayUtil
+ * @package UflAs
+ */
 class ArrayUtil
 {
     const DELIMITER = '.';
@@ -10,9 +15,9 @@ class ArrayUtil
     /**
      * Add an element to an array using "dot" notation
      *
-     * @param  array $array
-     * @param  string $key
-     * @param  mixed $value
+     * @param array $array
+     * @param string $key
+     * @param mixed $value
      *
      * @return array
      */
@@ -27,9 +32,9 @@ class ArrayUtil
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  array $array
-     * @param  string $key
-     * @param  mixed $default
+     * @param array $array
+     * @param string $key
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -66,7 +71,7 @@ class ArrayUtil
     /**
      * Return the default value of the given value.
      *
-     * @param  mixed $value
+     * @param mixed $value
      *
      * @return mixed
      */
@@ -80,9 +85,9 @@ class ArrayUtil
      *
      * If no key is given to the method, the entire array will be replaced.
      *
-     * @param  array $array
-     * @param  string $key
-     * @param  mixed $value
+     * @param array $array
+     * @param string $key
+     * @param mixed $value
      *
      * @return array
      */
@@ -125,8 +130,8 @@ class ArrayUtil
     /**
      * Check if an item exists in an array using "dot" notation.
      *
-     * @param  array $array
-     * @param  string $key
+     * @param array $array
+     * @param string $key
      * @return bool
      */
     public static function has($array, $key)
@@ -152,7 +157,7 @@ class ArrayUtil
     /**
      * Get the first element of an array. Useful for method chaining.
      *
-     * @param  array $array
+     * @param array $array
      * @return mixed
      */
     public static function head($array)

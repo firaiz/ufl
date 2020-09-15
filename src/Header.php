@@ -1,6 +1,11 @@
 <?php
+
 namespace UflAs;
 
+/**
+ * Class Header
+ * @package UflAs
+ */
 class Header
 {
     private static $instance;
@@ -44,7 +49,8 @@ class Header
         http_response_code($code);
     }
 
-    private function setHeaders($headers, $isOverWrite) {
+    private function setHeaders($headers, $isOverWrite)
+    {
         foreach ($headers as $name => $value) {
             $namedValues = ArrayUtil::get($this->headers, $name, array());
             foreach ((array)$value as $val) {
@@ -73,14 +79,16 @@ class Header
     /**
      * clear headers
      */
-    public function reset() {
+    public function reset()
+    {
         $this->headers = array();
     }
 
     /**
      * @return bool
      */
-    public function isSent() {
+    public function isSent()
+    {
         return headers_sent();
     }
 
@@ -88,17 +96,18 @@ class Header
      * @param $url
      * @param int $code
      */
-    public function location($url, $code = 302) {
+    public function location($url, $code = 302)
+    {
         if (!$this->isSent()) {
             header('Location: ' . $url, true, $code);
         } else {
             echo '<script type="text/javascript">',
-                   'window.location.replace="'.$url.'";',
-                 '</script>',
-                 '<noscript>',
-                   '<meta http-equiv="refresh" content="',($code === 301 ? 0 : 3), ';url=',$url,'" />',
-                 '</noscript>',
-                 '<a href="', $url ,'">moved page</a>';
+                'window.location.replace="' . $url . '";',
+            '</script>',
+            '<noscript>',
+            '<meta http-equiv="refresh" content="', ($code === 301 ? 0 : 3), ';url=', $url, '" />',
+            '</noscript>',
+            '<a href="', $url, '">moved page</a>';
         }
         exit;
     }

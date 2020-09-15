@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li class="active"><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -178,7 +180,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Response.html#4-141" title="Go to source code">Response.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Response.html#5-144" title="Go to source code">Response.php</a>
 		<br>
 	</div>
 
@@ -198,7 +200,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Response.html#13-20" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#14-21" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>View constructor.</p>
@@ -227,7 +229,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_initRender">#</a>
-			<code><a href="source-class-UflAs.Response.html#22-25" title="Go to source code">initRender</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#23-27" title="Go to source code">initRender</a>( )</code>
 
 			<div class="description short">
 				
@@ -256,7 +258,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_getInstance">#</a>
-			<code><a href="source-class-UflAs.Response.html#27-36" title="Go to source code">getInstance</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#29-38" title="Go to source code">getInstance</a>( )</code>
 
 			<div class="description short">
 				
@@ -289,7 +291,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setLayout">#</a>
-			<code><a href="source-class-UflAs.Response.html#38-44" title="Go to source code">setLayout</a>( <span>string <var>$templatePath</var></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#40-46" title="Go to source code">setLayout</a>( <span>string <var>$templatePath</var></span> )</code>
 
 			<div class="description short">
 				
@@ -323,7 +325,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_assign">#</a>
-			<code><a href="source-class-UflAs.Response.html#46-56" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#48-58" title="Go to source code">assign</a>( <span>string|array <var>$name</var></span>, <span>mixed <var>$var</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$noCache</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				
@@ -365,7 +367,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_html">#</a>
-			<code><a href="source-class-UflAs.Response.html#58-65" title="Go to source code">html</a>( <span>string <var>$template</var></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#60-67" title="Go to source code">html</a>( <span>string <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -399,7 +401,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_header">#</a>
-			<code><a href="source-class-UflAs.Response.html#67-72" title="Go to source code">header</a>( )</code>
+			<code><a href="source-class-UflAs.Response.html#69-75" title="Go to source code">header</a>( )</code>
 
 			<div class="description short">
 				
@@ -432,7 +434,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_compileHtml">#</a>
-			<code><a href="source-class-UflAs.Response.html#74-81" title="Go to source code">compileHtml</a>( <span>string <var>$template</var></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#77-84" title="Go to source code">compileHtml</a>( <span>string <var>$template</var></span> )</code>
 
 			<div class="description short">
 				
@@ -470,7 +472,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_json">#</a>
-			<code><a href="source-class-UflAs.Response.html#83-92" title="Go to source code">json</a>( <span>mixed <var>$data</var></span>, <span>string <var>$charset</var> = <span class="php-quote">'utf-8'</span></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#86-95" title="Go to source code">json</a>( <span>mixed <var>$data</var></span>, <span>string <var>$charset</var> = <span class="php-quote">'utf-8'</span></span> )</code>
 
 			<div class="description short">
 				
@@ -506,7 +508,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_download">#</a>
-			<code><a href="source-class-UflAs.Response.html#94-129" title="Go to source code">download</a>( <span>mixed <var>$contents</var></span>, <span>string <var>$downloadFileName</var></span>, <span>string <var>$contentType</var> = <span class="php-quote">'application/octet-stream'</span></span> )</code>
+			<code><a href="source-class-UflAs.Response.html#97-132" title="Go to source code">download</a>( <span>mixed <var>$contents</var></span>, <span>string <var>$downloadFileName</var></span>, <span>string <var>$contentType</var> = <span class="php-quote">'application/octet-stream'</span></span> )</code>
 
 			<div class="description short">
 				
@@ -556,7 +558,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Response.html#6-7" title="Go to source code"><var>$instance</var></a>
+					<a href="source-class-UflAs.Response.html#7-8" title="Go to source code"><var>$instance</var></a>
 
 				<div class="description short">
 					
@@ -581,7 +583,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Response.html#8-9" title="Go to source code"><var>$render</var></a>
+					<a href="source-class-UflAs.Response.html#9-10" title="Go to source code"><var>$render</var></a>
 
 				<div class="description short">
 					
@@ -615,6 +617,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ use UflAs\Exception\File\NotWritable;
 class Storage
 {
     const DS = DIRECTORY_SEPARATOR;
-    const DEFAULT_PERMISSION = 0700;
+    const DEFAULT_PERMISSION = 0755;
 
 
     /** @var static */
@@ -23,7 +23,8 @@ class Storage
      */
     protected function __construct()
     {
-        $this->filePath = defined('BASE_DIR') ? BASE_DIR : dirname(dirname(dirname(dirname(__FILE__))));
+        $this->filePath = defined('STORAGE_DIR') ?
+            STORAGE_DIR : dirname(dirname(dirname(dirname(dirname(__FILE__))))).DIRECTORY_SEPARATOR.'storage';
 
         if (!file_exists($this->filePath)) {
             throw new NotFound();
@@ -34,8 +35,6 @@ class Storage
 
     /**
      * @return static
-     * @throws NotFound
-     * @throws NotWritable
      */
     public static function getInstance()
     {
@@ -54,7 +53,7 @@ class Storage
     public function getPath($path, $isCreate = false, $permission = self::DEFAULT_PERMISSION)
     {
         if ($isCreate === false || $isCreate && $this->create($path, $permission)) {
-            return realpath($this->base()) . self::DS . $this->replace($path);
+            return $this->base() . self::DS . $this->replace($path);
         }
         return '';
     }
@@ -68,7 +67,13 @@ class Storage
     {
         $dirPath = $this->base() . self::DS . $this->replace($path);
         if (is_writable($this->base())) {
-            return is_dir($dirPath) ? true : mkdir($dirPath, $permission, true);
+            if (is_dir($dirPath)) {
+                return true;
+            }
+            $oldMask = umask(0);
+            $makeStatus = @mkdir($dirPath, $permission, true);
+            umask($oldMask);
+            return $makeStatus;
         }
         return false;
     }
@@ -78,7 +83,7 @@ class Storage
      */
     public function base()
     {
-        return $this->filePath;
+        return realpath($this->filePath);
     }
 
     /**
@@ -87,6 +92,14 @@ class Storage
      */
     protected function replace($path)
     {
-        return str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);
+        return str_replace(
+            $this->base().self::DS.'storage',
+            $this->base(),
+            str_replace(
+                array('/', '\\'),
+                array(DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR),
+                preg_replace('#^storage/#', '', $path)
+            )
+        );
     }
 }

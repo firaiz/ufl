@@ -4,19 +4,25 @@ namespace UflAs\Cache;
 
 use Doctrine\Common\Cache\CacheProvider;
 use ReflectionClass;
+use ReflectionException;
+use UflAs\Exception\Cache\ClassNotFound;
 
+/**
+ * Class Generator
+ * @package UflAs\Cache
+ */
 class Generator
 {
     /**
      * @param Initializer $initializer
      * @return CacheProvider
      * @throws ClassNotFound
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public static function generate($initializer)
     {
         $callParams = call_user_func($initializer->getParamGenerator());
-        $className = '\\Doctrine\\Common\\Cache\\'.$initializer->getCacheType().'Cache';
+        $className = '\\Doctrine\\Common\\Cache\\' . $initializer->getCacheType() . 'Cache';
         if (!class_exists($className)) {
             throw new ClassNotFound();
         }
@@ -26,6 +32,7 @@ class Generator
         }
 
         $reflection = new ReflectionClass($className);
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $reflection->newInstanceArgs($callParams);
     }
 }

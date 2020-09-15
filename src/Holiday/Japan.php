@@ -1,16 +1,23 @@
 <?php
+
 namespace UflAs\Holiday;
 
 use DateTime;
+use Exception;
 use UflAs\Date;
 
+/**
+ * Class Japan
+ * @package UflAs\Holiday
+ */
 class Japan extends Holiday
 {
     const FORMAT = 'Y-m-d';
     const CHECK_TYPE_ABORT = 'abort';
     const CHECK_TYPE_SINCE = 'since';
 
-    public static function getYearConfig($year) {
+    public static function getYearConfig($year)
+    {
         return array(
             array('date' => Date::toDate($year, 1, 1, self::FORMAT), 'name' => '元日'),
             array('date' => Date::toDate($year, 1, Date::calcWeekDay($year, 1, 2, 1), self::FORMAT), 'name' => '成人の日', self::CHECK_TYPE_SINCE => 2000),
@@ -66,7 +73,8 @@ class Japan extends Holiday
         return static::checkDate($config, $checkTarget, self::CHECK_TYPE_ABORT);
     }
 
-    protected static function checkDate($config, $checkTarget, $type) {
+    protected static function checkDate($config, $checkTarget, $type)
+    {
         if (!isset($config[$type])) {
             return true;
         }
@@ -90,6 +98,7 @@ class Japan extends Holiday
     /**
      * @param int $year
      * @return static[]
+     * @throws Exception
      */
     public static function listOf($year)
     {
@@ -153,9 +162,9 @@ class Japan extends Holiday
      * @param int $year
      * @return int
      */
-    public  static function getSpringEquinoxDay($year)
+    public static function getSpringEquinoxDay($year)
     {
-        return floor(20.8431 + 0.242194 * ($year - 1980)) - floor(($year - 1980)/4);
+        return floor(20.8431 + 0.242194 * ($year - 1980)) - floor(($year - 1980) / 4);
     }
 
     /**
@@ -165,6 +174,6 @@ class Japan extends Holiday
      */
     public static function getAutumnalEquinoxDay($year)
     {
-        return floor(23.2488 + 0.242194 * ($year - 1980)) - floor(($year - 1980)/4);
+        return floor(23.2488 + 0.242194 * ($year - 1980)) - floor(($year - 1980) / 4);
     }
 }

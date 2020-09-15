@@ -3,6 +3,10 @@ namespace UflAs;
 
 use ArrayAccess;
 
+/**
+ * Class CommandLine
+ * @package UflAs
+ */
 class CommandLine implements ArrayAccess
 {
     protected $argv = array();

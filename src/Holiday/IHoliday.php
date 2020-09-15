@@ -1,7 +1,11 @@
 <?php
+
 namespace UflAs\Holiday;
 
-
+/**
+ * Interface IHoliday
+ * @package UflAs\Holiday
+ */
 interface IHoliday
 {
     /**

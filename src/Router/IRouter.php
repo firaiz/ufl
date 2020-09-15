@@ -1,6 +1,13 @@
 <?php
+
 namespace UflAs\Router;
 
+use UflAs\Exception\Route\NotFound;
+
+/**
+ * Interface IRouter
+ * @package UflAs\Router
+ */
 interface IRouter
 {
 
@@ -23,7 +30,7 @@ interface IRouter
 
     /**
      * @return IRouterContainer
-     * @throws \UflAs\Exception\Route\NotFound
+     * @throws NotFound
      */
     public function getNoRoute();
 }

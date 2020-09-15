@@ -1,4 +1,5 @@
 <?php
+
 namespace UflAs;
 
 use UflAs\Render\IRender;
@@ -24,8 +25,8 @@ class Render implements IRender
             $render['engine'] = 'Smarty';
         }
         $this->initRender($render['engine']);
-        $this->setDefaultHeaders($render['headers']);
-        $this->setConfigs($render['config']);
+        $this->setDefaultHeaders(is_array($render['headers']) ? $render['headers'] : array());
+        $this->setConfigs(is_array($render['config']) ? $render['config'] : array());
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 namespace UflAs;
 
 class Response
@@ -19,7 +20,8 @@ class Response
         $this->header->reset();
     }
 
-    protected function initRender() {
+    protected function initRender()
+    {
         $this->render = Render::getInstance();
         $this->header->add($this->render->getDefaultHeaders());
     }
@@ -67,8 +69,9 @@ class Response
     /**
      * @return Header
      */
-    public function header() {
-       return $this->header;
+    public function header()
+    {
+        return $this->header;
     }
 
     /**
@@ -116,7 +119,7 @@ class Response
             $downloadFileName = mb_convert_encoding($downloadFileName, 'UTF-8', $encode);
         }
         $header->set(array(
-            'Content-Disposition' => 'attachment; filename*=UTF-8'."''".rawurlencode($downloadFileName),
+            'Content-Disposition' => 'attachment; filename*=UTF-8' . "''" . rawurlencode($downloadFileName),
             'Content-Length' => $size,
             'Content-Type' => $contentType
         ));

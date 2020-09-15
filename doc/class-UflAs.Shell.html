@@ -126,6 +126,7 @@
 				<li><a href="class-UflAs.Cron.html">Cron</a></li>
 				<li><a href="class-UflAs.Database.html">Database</a></li>
 				<li><a href="class-UflAs.Date.html">Date</a></li>
+				<li><a href="class-UflAs.Dispatcher.html">Dispatcher</a></li>
 				<li><a href="class-UflAs.Header.html">Header</a></li>
 				<li><a href="class-UflAs.Holiday.html">Holiday</a></li>
 				<li><a href="class-UflAs.JsonResponse.html">JsonResponse</a></li>
@@ -133,12 +134,13 @@
 				<li><a href="class-UflAs.Render.html">Render</a></li>
 				<li><a href="class-UflAs.Request.html">Request</a></li>
 				<li><a href="class-UflAs.Response.html">Response</a></li>
-				<li><a href="class-UflAs.Router.html">Router</a></li>
+				<li><a href="class-UflAs.Router.html" class="deprecated">Router</a></li>
 				<li><a href="class-UflAs.Session.html">Session</a></li>
 				<li><a href="class-UflAs.SessionContainer.html" class="deprecated">SessionContainer</a></li>
 				<li class="active"><a href="class-UflAs.Shell.html">Shell</a></li>
 				<li><a href="class-UflAs.Storage.html">Storage</a></li>
 				<li><a href="class-UflAs.StringUtility.html">StringUtility</a></li>
+				<li><a href="class-UflAs.System.html">System</a></li>
 			</ul>
 
 
@@ -172,7 +174,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Shell.html#4-17" title="Go to source code">Shell.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Shell.html#5-48" title="Go to source code">Shell.php</a>
 		<br>
 	</div>
 
@@ -185,14 +187,14 @@
 
 			<td class="attributes"><code>
 				 public static
-				
+				string
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_exec">#</a>
-			<code><a href="source-class-UflAs.Shell.html#6-8" title="Go to source code">exec</a>( <span> <var>$commandParams</var></span> )</code>
+			<code><a href="source-class-UflAs.Shell.html#7-14" title="Go to source code">exec</a>( <span> <var>$commandParams</var></span> )</code>
 
 			<div class="description short">
 				
@@ -202,7 +204,16 @@
 				
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$commandParams</var></dt>
+						<dd></dd>
+					</dl></div>
 
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
 
 
 
@@ -214,14 +225,14 @@
 
 			<td class="attributes"><code>
 				 protected static
-				
+				string
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_toCommand">#</a>
-			<code><a href="source-class-UflAs.Shell.html#10-12" title="Go to source code">toCommand</a>( <span> <var>$commandParams</var></span> )</code>
+			<code><a href="source-class-UflAs.Shell.html#16-23" title="Go to source code">toCommand</a>( <span> <var>$commandParams</var></span> )</code>
 
 			<div class="description short">
 				
@@ -231,7 +242,16 @@
 				
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$commandParams</var></dt>
+						<dd></dd>
+					</dl></div>
 
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
 
 
 
@@ -243,14 +263,14 @@
 
 			<td class="attributes"><code>
 				 public static
-				
+				false|string
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_system">#</a>
-			<code><a href="source-class-UflAs.Shell.html#14-16" title="Go to source code">system</a>( <span> <var>$commandParams</var></span> )</code>
+			<code><a href="source-class-UflAs.Shell.html#25-32" title="Go to source code">system</a>( <span> <var>$commandParams</var></span> )</code>
 
 			<div class="description short">
 				
@@ -260,7 +280,56 @@
 				
 
 
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$commandParams</var></dt>
+						<dd></dd>
+					</dl></div>
 
+					<h4>Returns</h4>
+					<div class="list">
+						false|string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="noWaitExec" id="_noWaitExec">
+
+			<td class="attributes"><code>
+				 public static
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_noWaitExec">#</a>
+			<code><a href="source-class-UflAs.Shell.html#34-47" title="Go to source code">noWaitExec</a>( <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span>, <span>string <var>$logPath</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$params</var></dt>
+						<dd></dd>
+						<dt><var>$logPath</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
 
 
 
@@ -289,6 +358,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?7b4498ecbb8197ad0a30234f4cdc2261b7918919"></script>
-<script src="elementlist.js?ac068dd2edc2c815b4711af3ba3b6e3c607aa3a1"></script>
+<script src="elementlist.js?34cfd4b50b90d39a7d1ce511b801c556e1ac51b9"></script>
 </body>
 </html>

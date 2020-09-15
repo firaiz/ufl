@@ -1,8 +1,13 @@
 <?php
+
 namespace UflAs\Container;
 
 use UflAs\ArrayUtil;
 
+/**
+ * Class AbstractContainer
+ * @package UflAs\Container
+ */
 abstract class AbstractContainer implements IContainer
 {
 
@@ -86,7 +91,7 @@ abstract class AbstractContainer implements IContainer
 
     /**
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      */
     public function set($name, $value)
     {

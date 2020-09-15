@@ -1,4 +1,5 @@
 <?php
+
 namespace UflAs;
 
 use DateInterval;
@@ -6,6 +7,10 @@ use DatePeriod;
 use DateTime;
 use Exception;
 
+/**
+ * Class Date
+ * @package UflAs
+ */
 class Date
 {
     const INTERVAL_TYPE_YEAR = 'Y';
@@ -241,7 +246,8 @@ class Date
      * @param $week 0-6 sunday - saturday
      * @return string
      */
-    public static function weekToText($week) {
+    public static function weekToText($week)
+    {
         switch ($week) {
             case 0:
                 return 'sunday';
@@ -265,7 +271,8 @@ class Date
      * @param $weekNo 1-5
      * @return string
      */
-    public static function monthWeekNoToText($weekNo) {
+    public static function monthWeekNoToText($weekNo)
+    {
         switch ($weekNo) {
             case 1:
                 return 'first';
@@ -291,13 +298,13 @@ class Date
      */
     public static function calcWeekDay($year, $month, $weekNo, $week)
     {
-        $date = static::object($year.'-'.$month);
+        $date = static::object($year . '-' . $month);
         if ($date->format('w') == $week) {
             $weekNo -= 1;
         }
         $weekText = static::weekToText($week);
         $weekNoText = static::monthWeekNoToText($weekNo);
-        $date->modify($weekNoText.' '.$weekText);
+        $date->modify($weekNoText . ' ' . $weekText);
         return $date->format('d') - 0;
     }
 
@@ -309,7 +316,8 @@ class Date
      * @return DateTime|string
      * @throws Exception
      */
-    public static function toDate($year, $month, $day, $format = null) {
+    public static function toDate($year, $month, $day, $format = null)
+    {
         $date = static::object(sprintf('%4d-%02d-%02d', $year, $month, $day));
         return is_null($format) ? $date : $date->format($format);
     }

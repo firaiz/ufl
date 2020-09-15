@@ -1,6 +1,11 @@
 <?php
+
 namespace UflAs\Render;
 
+/**
+ * Interface IRender
+ * @package UflAs\Render
+ */
 interface IRender
 {
 

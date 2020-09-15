@@ -5,7 +5,6 @@ namespace UflAs;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
-
 use PDO;
 
 /**

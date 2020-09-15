@@ -67,6 +67,8 @@ class ClassRouter extends AbstractRouter
         $context = null;
         if (class_exists($className) && method_exists($className, $methodName)) {
             $context = array(new $className, $methodName);
+        } elseif (class_exists($className) && method_exists($className, 'index')) {
+            $context = array(new $className, 'index');
         }
         return $this->initContainer($context, $params);
     }

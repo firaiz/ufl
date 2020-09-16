@@ -58,8 +58,14 @@ class ClassRouter extends AbstractRouter
             if (is_string($routes)) {
                 $className = $routes;
                 array_shift($params);
-                $methodName = array_shift($params);
-                $methodName = is_null($methodName) ? 'index' : $methodName;
+                foreach (array(reset($params), 'index') as $methodName) {
+                    if (method_exists($className, $methodName)) {
+                        if ($methodName === reset($params)) {
+                            array_shift($params);
+                        }
+                        break 2;
+                    }
+                }
             } elseif (is_array($routes) && isset($routes['class'], $routes['method'])) {
                 $className = $routes['class'];
                 $methodName = $routes['method'];

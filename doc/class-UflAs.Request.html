@@ -174,7 +174,7 @@
 		<b>Namespace:</b> <a href="namespace-UflAs.html">UflAs</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-UflAs.Request.html#5-157" title="Go to source code">Request.php</a>
+			<b>Located at</b> <a href="source-class-UflAs.Request.html#7-180" title="Go to source code">Request.php</a>
 		<br>
 	</div>
 
@@ -194,7 +194,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-UflAs.Request.html#21-39" title="Go to source code">__construct</a>( )</code>
+			<code><a href="source-class-UflAs.Request.html#25-48" title="Go to source code">__construct</a>( )</code>
 
 			<div class="description short">
 				<p>Request constructor.</p>
@@ -212,31 +212,107 @@
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="isCLIRequest" id="_isCLIRequest">
+		<tr data-order="is" id="_is">
 
 			<td class="attributes"><code>
-				 protected 
+				 public 
 				boolean
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_isCLIRequest">#</a>
-			<code><a href="source-class-UflAs.Request.html#41-48" title="Go to source code">isCLIRequest</a>( )</code>
+			<a class="anchor" href="#_is">#</a>
+			<code><a href="source-class-UflAs.Request.html#50-57" title="Go to source code">is</a>( <span>string <var>$requestType</var></span> )</code>
 
 			<div class="description short">
-				<p>request is cli</p>
+				
 			</div>
 
 			<div class="description detailed hidden">
-				<p>request is cli</p>
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$requestType</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="input" id="_input">
+
+			<td class="attributes"><code>
+				 public 
+				false|string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_input">#</a>
+			<code><a href="source-class-UflAs.Request.html#59-65" title="Go to source code">input</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
 
 
 
 					<h4>Returns</h4>
 					<div class="list">
-						boolean
+						false|string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="json" id="_json">
+
+			<td class="attributes"><code>
+				 public 
+				stdClass|array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_json">#</a>
+			<code><a href="source-class-UflAs.Request.html#67-74" title="Go to source code">json</a>( <span>boolean <var>$toArray</var> = <span class="php-keyword1">false</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$toArray</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						stdClass|array
 					</div>
 
 
@@ -256,7 +332,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_setDetectOrder">#</a>
-			<code><a href="source-class-UflAs.Request.html#66-84" title="Go to source code">setDetectOrder</a>( <span>array <var>$order</var></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#88-106" title="Go to source code">setDetectOrder</a>( <span>array <var>$order</var></span> )</code>
 
 			<div class="description short">
 				
@@ -294,7 +370,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_post">#</a>
-			<code><a href="source-class-UflAs.Request.html#86-95" title="Go to source code">post</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#108-117" title="Go to source code">post</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>get the post request value</p>
@@ -334,7 +410,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_val">#</a>
-			<code><a href="source-class-UflAs.Request.html#97-115" title="Go to source code">val</a>( <span>string|string[] <var>$targetTypes</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$default</var></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#119-137" title="Go to source code">val</a>( <span>string|string[] <var>$targetTypes</var></span>, <span>string <var>$key</var></span>, <span>mixed <var>$default</var></span> )</code>
 
 			<div class="description short">
 				
@@ -376,7 +452,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_cli">#</a>
-			<code><a href="source-class-UflAs.Request.html#126-135" title="Go to source code">cli</a>( <span>string|integer <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#148-157" title="Go to source code">cli</a>( <span>string|integer <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>get the cli options</p>
@@ -416,14 +492,14 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_both">#</a>
-			<code><a href="source-class-UflAs.Request.html#137-145" title="Go to source code">both</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#159-168" title="Go to source code">both</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
-				
+				<p>get the get or post method request value</p>
 			</div>
 
 			<div class="description detailed hidden">
-				
+				<p>get the get or post method request value</p>
 
 
 					<h4>Parameters</h4>
@@ -456,7 +532,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_get">#</a>
-			<code><a href="source-class-UflAs.Request.html#147-156" title="Go to source code">get</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-UflAs.Request.html#170-179" title="Go to source code">get</a>( <span>string <var>$key</var></span>, <span>mixed <var>$default</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
 				<p>get the get request value</p>
@@ -503,7 +579,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#7" title="Go to source code"><b>TYPE_GET</b></a>
+						<a href="source-class-UflAs.Request.html#9" title="Go to source code"><b>TYPE_GET</b></a>
 					</code>
 
 					<div class="description short">
@@ -527,7 +603,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#8" title="Go to source code"><b>TYPE_POST</b></a>
+						<a href="source-class-UflAs.Request.html#10" title="Go to source code"><b>TYPE_POST</b></a>
 					</code>
 
 					<div class="description short">
@@ -551,7 +627,7 @@
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#9" title="Go to source code"><b>TYPE_CLI</b></a>
+						<a href="source-class-UflAs.Request.html#11" title="Go to source code"><b>TYPE_CLI</b></a>
 					</code>
 
 					<div class="description short">
@@ -570,12 +646,84 @@
 					</div>
 				</td>
 			</tr>
+			<tr data-order="TYPE_PUT" id="TYPE_PUT">
+
+				<td class="attributes"><code>string</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-UflAs.Request.html#12" title="Go to source code"><b>TYPE_PUT</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#TYPE_PUT" class="anchor">#</a>
+						<code><span class="php-quote">'PUT'</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="TYPE_DELETE" id="TYPE_DELETE">
+
+				<td class="attributes"><code>string</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-UflAs.Request.html#13" title="Go to source code"><b>TYPE_DELETE</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#TYPE_DELETE" class="anchor">#</a>
+						<code><span class="php-quote">'DELETE'</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="TYPE_OPTIONS" id="TYPE_OPTIONS">
+
+				<td class="attributes"><code>string</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-UflAs.Request.html#14" title="Go to source code"><b>TYPE_OPTIONS</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#TYPE_OPTIONS" class="anchor">#</a>
+						<code><span class="php-quote">'OPTIONS'</span></code>
+					</div>
+				</td>
+			</tr>
 			<tr data-order="TYPE_REQUEST" id="TYPE_REQUEST">
 
 				<td class="attributes"><code>string</code></td>
 				<td class="name">
 					<code>
-						<a href="source-class-UflAs.Request.html#10" title="Go to source code"><b>TYPE_REQUEST</b></a>
+						<a href="source-class-UflAs.Request.html#15" title="Go to source code"><b>TYPE_REQUEST</b></a>
 					</code>
 
 					<div class="description short">
@@ -603,31 +751,6 @@
 		<div class="panel panel-default">
             <div class="panel-heading"><h2>Properties summary</h2></div>
 			<table class="summary table table-bordered table-striped properties" id="properties">
-		<tr data-order="requestMethod" id="$requestMethod">
-			<td class="attributes"><code>
-				protected  
-				
-			</code></td>
-
-			<td class="name">
-					<a href="source-class-UflAs.Request.html#12" title="Go to source code"><var>$requestMethod</var></a>
-
-				<div class="description short">
-					
-				</div>
-
-				<div class="description detailed hidden">
-					
-
-				</div>
-			</td>
-			<td class="value">
-				<div>
-					<a href="#$requestMethod" class="anchor">#</a>
-					<code><span class="php-keyword1">null</span></code>
-				</div>
-			</td>
-		</tr>
 		<tr data-order="vars" id="$vars">
 			<td class="attributes"><code>
 				protected  
@@ -635,7 +758,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#13" title="Go to source code"><var>$vars</var></a>
+					<a href="source-class-UflAs.Request.html#17" title="Go to source code"><var>$vars</var></a>
 
 				<div class="description short">
 					
@@ -660,7 +783,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#14-18" title="Go to source code"><var>$defaultDetectOrders</var></a>
+					<a href="source-class-UflAs.Request.html#18-22" title="Go to source code"><var>$defaultDetectOrders</var></a>
 
 				<div class="description short">
 					
@@ -689,7 +812,7 @@
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-UflAs.Request.html#19" title="Go to source code"><var>$detectOrders</var></a>
+					<a href="source-class-UflAs.Request.html#23" title="Go to source code"><var>$detectOrders</var></a>
 
 				<div class="description short">
 					

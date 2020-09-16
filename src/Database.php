@@ -3,8 +3,12 @@
 namespace UflAs;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\ConnectionException;
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Statement;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
+use Doctrine\DBAL\Query\QueryBuilder;
 use PDO;
 
 /**
@@ -50,7 +54,7 @@ class Database
      *
      * @param array $options is optional
      * @return bool true is connected
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function connect($options = null)
     {
@@ -101,7 +105,7 @@ class Database
     /**
      * Creates a new instance of a SQL query builder.
      *
-     * @return \Doctrine\DBAL\Query\QueryBuilder
+     * @return QueryBuilder
      */
     public function builder()
     {
@@ -116,7 +120,7 @@ class Database
      * @param array $types The query parameter types.
      *
      * @return array
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function fetchAll($sql, array $params = array(), $types = array())
     {
@@ -127,8 +131,8 @@ class Database
      * @param $sql
      * @param array $params
      * @param array $types
-     * @return \Doctrine\DBAL\Driver\Statement
-     * @throws \Doctrine\DBAL\DBALException
+     * @return Statement
+     * @throws DBALException
      */
     public function select($sql, array $params = array(), array $types = array())
     {
@@ -144,7 +148,7 @@ class Database
      * @param array $types The query parameter types.
      *
      * @return array
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function fetchRow($statement, array $params = array(), array $types = array())
     {
@@ -230,7 +234,7 @@ class Database
      *
      * @return void
      *
-     * @throws \Doctrine\DBAL\ConnectionException If the commit failed due to no active transaction or
+     * @throws ConnectionException If the commit failed due to no active transaction or
      *                                            because the transaction was marked for rollback only.
      */
     public function commit()
@@ -244,7 +248,7 @@ class Database
      * This method can be listened with onPreTransactionRollback and onTransactionRollback
      * eventlistener methods.
      *
-     * @throws \Doctrine\DBAL\ConnectionException If the rollback operation failed.
+     * @throws ConnectionException If the rollback operation failed.
      */
     public function rollBack()
     {

@@ -8,11 +8,12 @@ class PrefixClassRouteAppender
     /**
      * @param string $routPath
      * @param mixed $detector
-     * @return void
+     * @return static
      */
     public function add($routPath, $detector)
     {
         $this->routes[PrefixClassRouter::pathToKey($routPath)] = $detector;
+        return $this;
     }
 
     /**

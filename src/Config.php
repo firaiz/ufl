@@ -62,7 +62,7 @@ class Config
     private function getEnv($envName)
     {
         $env = getenv($envName);
-        if (strlen($env) === 0) {
+        if ($env === '') {
             return null;
         }
         return strtolower($env);

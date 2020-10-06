@@ -13,52 +13,52 @@ interface IRender
      * @param array $configs
      * @return void
      */
-    function setConfigs($configs);
+    public function setConfigs($configs);
 
     /**
      * @param string|array $name
      * @param mixed $var
-     * @param boolean $noCache
+     * @param bool $noCache
      * @return static
      */
-    function assign($name, $var = null, $noCache = false);
+    public function assign($name, $var = null, $noCache = false);
 
     /**
      * @param string $template
      * @return string
      */
-    function compile($template);
+    public function compile($template);
 
     /**
      * @param $template
-     * @return boolean
+     * @return bool
      */
-    function templateExists($template);
+    public function templateExists($template);
 
     /**
      * @param string $layout is template path
      * @return void
      */
-    function setLayoutPath($layout);
+    public function setLayoutPath($layout);
 
     /**
      * @return string
      */
-    function getLayoutPath();
+    public function getLayoutPath();
 
     /**
-     * @return boolean
+     * @return bool
      */
-    function isLayoutMode();
+    public function isLayoutMode();
 
     /**
      * @param $contentName
      * @return void
      */
-    function setContentName($contentName);
+    public function setContentName($contentName);
 
     /**
      * @return string
      */
-    function getContentName();
+    public function getContentName();
 }

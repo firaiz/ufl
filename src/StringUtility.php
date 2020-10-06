@@ -2,8 +2,19 @@
 
 namespace UflAs;
 
+use Exception;
+
+/**
+ * Class StringUtility
+ * @package UflAs
+ */
 class StringUtility
 {
+    /**
+     * @param string $separator
+     * @param int $version
+     * @return string
+     */
     public static function uuid($separator = '-', $version = 4)
     {
         switch ($version) {
@@ -13,6 +24,10 @@ class StringUtility
         return '';
     }
 
+    /**
+     * @param string $separator
+     * @return string
+     */
     public static function randomUUID($separator = '-')
     {
         return sprintf(
@@ -36,6 +51,12 @@ class StringUtility
         );
     }
 
+    /**
+     * @param int $length
+     * @param bool $isFast
+     * @return false|string
+     * @throws Exception
+     */
     public static function random($length = 32, $isFast = true)
     {
         if ($isFast) {
@@ -54,7 +75,7 @@ class StringUtility
             } else if (function_exists('openssl_random_pseudo_bytes')) {
                 $str = openssl_random_pseudo_bytes($generateLength);
             }
-            if (strlen($str) === 0) {
+            if ($str === '') {
                 return self::random($length);
             }
             $randomStr = bin2hex($str);

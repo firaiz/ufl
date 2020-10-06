@@ -86,13 +86,8 @@ class Japan extends Holiday
                 Date::toDate($date, 12, 31)->setTime(23, 59, 59);
         }
 
-        if (
-            ($type === self::CHECK_TYPE_SINCE && $checkTarget < $date) ||
-            ($type === self::CHECK_TYPE_ABORT && $date < $checkTarget)
-        ) {
-            return false;
-        }
-        return true;
+        return !(($type === self::CHECK_TYPE_SINCE && $checkTarget < $date) ||
+            ($type === self::CHECK_TYPE_ABORT && $date < $checkTarget));
     }
 
     /**

@@ -228,7 +228,7 @@
 </span><span id="25" class="l">    <span class="php-comment">/**
 </span></span><span id="26" class="l"><span class="php-comment">     * SmartyRender constructor.
 </span></span><span id="27" class="l"><span class="php-comment">     */</span>
-</span><span id="28" class="l">    <span class="php-keyword1">function</span> __construct()
+</span><span id="28" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> __construct()
 </span><span id="29" class="l">    {
 </span><span id="30" class="l">        <span class="php-var">$this</span>-&gt;smarty = <span class="php-keyword1">new</span> Smarty();
 </span><span id="31" class="l">    }
@@ -237,7 +237,7 @@
 </span></span><span id="34" class="l"><span class="php-comment">     * @param array $configs
 </span></span><span id="35" class="l"><span class="php-comment">     * @return void
 </span></span><span id="36" class="l"><span class="php-comment">     */</span>
-</span><span id="37" class="l">    <span class="php-keyword1">function</span> setConfigs(<span class="php-var">$configs</span>)
+</span><span id="37" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setConfigs(<span class="php-var">$configs</span>)
 </span><span id="38" class="l">    {
 </span><span id="39" class="l">        <span class="php-var">$storage</span> = Storage::getInstance();
 </span><span id="40" class="l">
@@ -264,10 +264,10 @@
 </span><span id="61" class="l">    <span class="php-comment">/**
 </span></span><span id="62" class="l"><span class="php-comment">     * @param string|array $name
 </span></span><span id="63" class="l"><span class="php-comment">     * @param mixed $var
-</span></span><span id="64" class="l"><span class="php-comment">     * @param boolean $noCache
+</span></span><span id="64" class="l"><span class="php-comment">     * @param bool $noCache
 </span></span><span id="65" class="l"><span class="php-comment">     * @return static
 </span></span><span id="66" class="l"><span class="php-comment">     */</span>
-</span><span id="67" class="l">    <span class="php-keyword1">function</span> assign(<span class="php-var">$name</span>, <span class="php-var">$var</span> = <span class="php-keyword1">null</span>, <span class="php-var">$noCache</span> = <span class="php-keyword1">false</span>)
+</span><span id="67" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> assign(<span class="php-var">$name</span>, <span class="php-var">$var</span> = <span class="php-keyword1">null</span>, <span class="php-var">$noCache</span> = <span class="php-keyword1">false</span>)
 </span><span id="68" class="l">    {
 </span><span id="69" class="l">        <span class="php-var">$this</span>-&gt;smarty-&gt;assign(<span class="php-var">$name</span>, <span class="php-var">$var</span>, <span class="php-var">$noCache</span>);
 </span><span id="70" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
@@ -279,7 +279,7 @@
 </span></span><span id="76" class="l"><span class="php-comment">     * @throws Exception
 </span></span><span id="77" class="l"><span class="php-comment">     * @throws SmartyException
 </span></span><span id="78" class="l"><span class="php-comment">     */</span>
-</span><span id="79" class="l">    <span class="php-keyword1">function</span> compile(<span class="php-var">$template</span>)
+</span><span id="79" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> compile(<span class="php-var">$template</span>)
 </span><span id="80" class="l">    {
 </span><span id="81" class="l">        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;isLayoutMode()) {
 </span><span id="82" class="l">            <span class="php-var">$this</span>-&gt;smarty-&gt;assign(<span class="php-var">$this</span>-&gt;getContentName(), <span class="php-var">$template</span>);
@@ -289,9 +289,9 @@
 </span><span id="86" class="l">    }
 </span><span id="87" class="l">
 </span><span id="88" class="l">    <span class="php-comment">/**
-</span></span><span id="89" class="l"><span class="php-comment">     * @return boolean
+</span></span><span id="89" class="l"><span class="php-comment">     * @return bool
 </span></span><span id="90" class="l"><span class="php-comment">     */</span>
-</span><span id="91" class="l">    <span class="php-keyword1">function</span> isLayoutMode()
+</span><span id="91" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> isLayoutMode()
 </span><span id="92" class="l">    {
 </span><span id="93" class="l">        <span class="php-keyword1">return</span> <span class="php-keyword2">is_string</span>(<span class="php-var">$this</span>-&gt;layout);
 </span><span id="94" class="l">    }
@@ -299,7 +299,7 @@
 </span><span id="96" class="l">    <span class="php-comment">/**
 </span></span><span id="97" class="l"><span class="php-comment">     * @return string
 </span></span><span id="98" class="l"><span class="php-comment">     */</span>
-</span><span id="99" class="l">    <span class="php-keyword1">function</span> getContentName()
+</span><span id="99" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getContentName()
 </span><span id="100" class="l">    {
 </span><span id="101" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;isLayoutMode() ? <span class="php-var">$this</span>-&gt;contentName : <span class="php-keyword1">null</span>;
 </span><span id="102" class="l">    }
@@ -308,7 +308,7 @@
 </span></span><span id="105" class="l"><span class="php-comment">     * @param $contentName
 </span></span><span id="106" class="l"><span class="php-comment">     * @return void
 </span></span><span id="107" class="l"><span class="php-comment">     */</span>
-</span><span id="108" class="l">    <span class="php-keyword1">function</span> setContentName(<span class="php-var">$contentName</span>)
+</span><span id="108" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setContentName(<span class="php-var">$contentName</span>)
 </span><span id="109" class="l">    {
 </span><span id="110" class="l">        <span class="php-var">$this</span>-&gt;contentName = <span class="php-var">$contentName</span>;
 </span><span id="111" class="l">    }
@@ -316,7 +316,7 @@
 </span><span id="113" class="l">    <span class="php-comment">/**
 </span></span><span id="114" class="l"><span class="php-comment">     * @return string
 </span></span><span id="115" class="l"><span class="php-comment">     */</span>
-</span><span id="116" class="l">    <span class="php-keyword1">function</span> getLayoutPath()
+</span><span id="116" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getLayoutPath()
 </span><span id="117" class="l">    {
 </span><span id="118" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;layout;
 </span><span id="119" class="l">    }
@@ -325,7 +325,7 @@
 </span></span><span id="122" class="l"><span class="php-comment">     * @param string $template
 </span></span><span id="123" class="l"><span class="php-comment">     * @return bool
 </span></span><span id="124" class="l"><span class="php-comment">     */</span>
-</span><span id="125" class="l">    <span class="php-keyword1">function</span> templateExists(<span class="php-var">$template</span>)
+</span><span id="125" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> templateExists(<span class="php-var">$template</span>)
 </span><span id="126" class="l">    {
 </span><span id="127" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;smarty-&gt;templateExists(<span class="php-var">$template</span>);
 </span><span id="128" class="l">    }
@@ -334,7 +334,7 @@
 </span></span><span id="131" class="l"><span class="php-comment">     * @param string $layout is template path
 </span></span><span id="132" class="l"><span class="php-comment">     * @return void
 </span></span><span id="133" class="l"><span class="php-comment">     */</span>
-</span><span id="134" class="l">    <span class="php-keyword1">function</span> setLayoutPath(<span class="php-var">$layout</span>)
+</span><span id="134" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setLayoutPath(<span class="php-var">$layout</span>)
 </span><span id="135" class="l">    {
 </span><span id="136" class="l">        <span class="php-var">$this</span>-&gt;layout = <span class="php-var">$layout</span>;
 </span><span id="137" class="l">    }

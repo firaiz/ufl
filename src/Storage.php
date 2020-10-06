@@ -12,9 +12,9 @@ class Storage
 
 
     /** @var static */
-    protected static $instance = null;
+    protected static $instance;
     /** @var string base path */
-    protected $filePath = null;
+    protected $filePath;
 
     /**
      * Storage constructor.
@@ -24,11 +24,13 @@ class Storage
     protected function __construct()
     {
         $this->filePath = defined('STORAGE_DIR') ?
-            STORAGE_DIR : dirname(dirname(dirname(dirname(dirname(__FILE__))))).DIRECTORY_SEPARATOR.'storage';
+            STORAGE_DIR : dirname(dirname(dirname(dirname(__DIR__)))).DIRECTORY_SEPARATOR.'storage';
 
         if (!file_exists($this->filePath)) {
             throw new NotFound($this->filePath);
-        } elseif (!is_writable($this->filePath)) {
+        }
+
+        if (!is_writable($this->filePath)) {
             throw new NotWritable($this->filePath);
         }
     }
@@ -46,13 +48,13 @@ class Storage
 
     /**
      * @param string $path
-     * @param boolean $isCreate
+     * @param bool $isCreate
      * @param int $permission
      * @return string is fullpath
      */
     public function getPath($path, $isCreate = false, $permission = self::DEFAULT_PERMISSION)
     {
-        if ($isCreate === false || $isCreate && $this->create($path, $permission)) {
+        if ($isCreate === false || ($isCreate && $this->create($path, $permission))) {
             return $this->base() . self::DS . $this->replace($path);
         }
         return '';

@@ -265,7 +265,7 @@
 </span><span id="62" class="l">    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> <span class="php-keyword2">getEnv</span>(<span class="php-var">$envName</span>)
 </span><span id="63" class="l">    {
 </span><span id="64" class="l">        <span class="php-var">$env</span> = <span class="php-keyword2">getenv</span>(<span class="php-var">$envName</span>);
-</span><span id="65" class="l">        <span class="php-keyword1">if</span> (<span class="php-keyword2">strlen</span>(<span class="php-var">$env</span>) === <span class="php-num">0</span>) {
+</span><span id="65" class="l">        <span class="php-keyword1">if</span> (<span class="php-var">$env</span> === <span class="php-quote">''</span>) {
 </span><span id="66" class="l">            <span class="php-keyword1">return</span> <span class="php-keyword1">null</span>;
 </span><span id="67" class="l">        }
 </span><span id="68" class="l">        <span class="php-keyword1">return</span> <span class="php-keyword2">strtolower</span>(<span class="php-var">$env</span>);

@@ -11,7 +11,7 @@ class SessionContainerTest extends TestCase
     {
         $container = new TestSessionContainer('foo.bar');
         $container->set('a', 'v');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array(
             'foo.bar' => array('a' => 'v')
             )
@@ -22,7 +22,7 @@ class SessionContainerTest extends TestCase
     {
         $container = new TestSessionContainer();
         $container->set('a', 'v');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array('a' => 'v')
         ), json_encode($container));
     }
@@ -31,7 +31,7 @@ class SessionContainerTest extends TestCase
     {
         $container = new TestSessionContainer();
         $container->set('a.b.c', 'v');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array('a' => array('b' => array('c' => 'v')))
         ), json_encode($container));
     }
@@ -40,19 +40,19 @@ class SessionContainerTest extends TestCase
     {
         $container = new TestSessionContainer();
         $container->set('a.b.c', 'v');
-        $this->assertEquals('v', $container->get('a.b.c'));
+        self::assertEquals('v', $container->get('a.b.c'));
     }
 
     public function testMultipleDel()
     {
         $container = new TestSessionContainer();
         $container->set('a.b.c', 'v');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array('a' => array('b' => array('c' => 'v')))
         ), json_encode($container));
 
         $container->del('a.b');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array('a' => array())
         ), json_encode($container));
     }
@@ -61,7 +61,7 @@ class SessionContainerTest extends TestCase
     {
         $container = new TestSessionContainer();
         $container->set('a', 'v');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array('a' => 'v')
         ), json_encode($container));
     }
@@ -70,19 +70,19 @@ class SessionContainerTest extends TestCase
     {
         $container = new TestSessionContainer();
         $container->set('a', 'v');
-        $this->assertEquals('v', $container->get('a'));
+        self::assertEquals('v', $container->get('a'));
     }
 
     public function testDel()
     {
         $container = new TestSessionContainer();
         $container->set('a', 'v');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array('a' => 'v')
         ), json_encode($container));
 
         $container->del('a');
-        $this->assertEquals(json_encode(
+        self::assertEquals(json_encode(
             array()
         ), json_encode($container));
     }

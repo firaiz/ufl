@@ -6,7 +6,7 @@ namespace UflAs;
 class Session
 {
     /** @var static */
-    protected static $instance = null;
+    protected static $instance;
 
     protected $status = false;
 

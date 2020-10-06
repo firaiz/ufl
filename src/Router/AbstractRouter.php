@@ -18,7 +18,7 @@ abstract class AbstractRouter implements IRouter
     /**
      * @var string
      */
-    private $pathInfo = null;
+    private $pathInfo;
 
     /**
      * @var IRouterContainer
@@ -34,8 +34,7 @@ abstract class AbstractRouter implements IRouter
             if (isset($_SERVER['REDIRECT_PATH_INFO'])) {
                 $_SERVER['PATH_INFO'] = $_SERVER['REDIRECT_PATH_INFO'];
             }
-            $selfUri = str_replace(DIRECTORY_SEPARATOR, '/',
-                str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])));
+            $selfUri = str_replace(array($_SERVER['DOCUMENT_ROOT'], DIRECTORY_SEPARATOR), array('', '/'), dirname($_SERVER['SCRIPT_FILENAME']));
             $this->pathInfo = str_replace($selfUri, '', isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '');
             $this->pathInfo = preg_replace('/(\S+)\/$/', '$1', $this->pathInfo);
         }

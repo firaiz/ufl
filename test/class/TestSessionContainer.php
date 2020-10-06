@@ -2,13 +2,14 @@
 namespace UflAs\TestClass;
 
 use JsonSerializable;
-use UflAs\SessionContainer;
+use UflAs\Container\SessionContainer;
 
 class TestSessionContainer extends SessionContainer implements JsonSerializable
 {
     protected function &makeContainer() {
         static $ary;
         $ary = parent::makeContainer();
+        /** @noinspection SuspiciousAssignmentsInspection */
         $ary = array();
         return $ary;
     }

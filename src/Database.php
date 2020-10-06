@@ -43,8 +43,8 @@ class Database
      */
     public static function getInstance()
     {
-        if (!(self::$_instance instanceof Database)) {
-            self::$_instance = new Database();
+        if (!(self::$_instance instanceof self)) {
+            self::$_instance = new self();
         }
         return self::$_instance;
     }
@@ -70,7 +70,7 @@ class Database
         if (is_object($this->connection) && $this->connection instanceof Connection) {
             $params = $this->connection->getParams();
             if (
-                isset($options['url']) && $options['url'] === $params['url'] ||
+                (isset($options['url']) && $options['url'] === $params['url']) ||
                 $options === $params
             ) {
                 return $this->isConnected();
@@ -84,7 +84,7 @@ class Database
     /**
      * Whether an actual connection to the database is established.
      *
-     * @return boolean
+     * @return bool
      */
     public function isConnected()
     {
@@ -164,7 +164,7 @@ class Database
      * @param array $identifier The deletion criteria. An associative array containing column-value pairs.
      * @param array $types The types of identifiers.
      *
-     * @return integer The number of affected rows.
+     * @return int The number of affected rows.
      *
      * @throws InvalidArgumentException
      */
@@ -183,7 +183,7 @@ class Database
      * @param array $identifier The update criteria. An associative array containing column-value pairs.
      * @param array $types Types of the merged $data and $identifier arrays in that order.
      *
-     * @return integer The number of affected rows.
+     * @return int The number of affected rows.
      */
     public function update($tableExpression, array $data, array $identifier, array $types = array())
     {
@@ -199,7 +199,7 @@ class Database
      * @param array $data An associative array containing column-value pairs.
      * @param array $types Types of the inserted data.
      *
-     * @return integer The number of affected rows.
+     * @return int The number of affected rows.
      */
     public function insert($tableExpression, array $data, array $types = array())
     {
@@ -295,7 +295,7 @@ class Database
     /**
      * Fetches the SQLSTATE associated with the last database operation.
      *
-     * @return integer The last error code.
+     * @return int The last error code.
      */
     public function errorCode()
     {

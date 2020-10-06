@@ -7,7 +7,7 @@ class System
 {
     public static function path()
     {
-        return defined('SYSTEM_DIR') ? SYSTEM_DIR : dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+        return defined('SYSTEM_DIR') ? SYSTEM_DIR : dirname(dirname(dirname(dirname(__DIR__))));
     }
 
     public static function templatePath()

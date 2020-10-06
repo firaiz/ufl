@@ -76,10 +76,10 @@ class Render implements IRender
     /**
      * @param string|array $name
      * @param mixed $var
-     * @param boolean $noCache
+     * @param bool $noCache
      * @return static
      */
-    function assign($name, $var = null, $noCache = false)
+    public function assign($name, $var = null, $noCache = false)
     {
         $this->getRender()->assign($name, $var, $noCache);
         return $this;
@@ -107,9 +107,9 @@ class Render implements IRender
 
     /**
      * @param $template
-     * @return boolean
+     * @return bool
      */
-    function templateExists($template)
+    public function templateExists($template)
     {
         return $this->getRender()->templateExists($template);
     }
@@ -118,7 +118,7 @@ class Render implements IRender
      * @param string $layout is template path
      * @return void
      */
-    function setLayoutPath($layout)
+    public function setLayoutPath($layout)
     {
         $this->getRender()->setLayoutPath($layout);
     }
@@ -126,15 +126,15 @@ class Render implements IRender
     /**
      * @return string
      */
-    function getLayoutPath()
+    public function getLayoutPath()
     {
         return $this->getRender()->getLayoutPath();
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    function isLayoutMode()
+    public function isLayoutMode()
     {
         return $this->getRender()->isLayoutMode();
     }
@@ -143,7 +143,7 @@ class Render implements IRender
      * @param $contentName
      * @return void
      */
-    function setContentName($contentName)
+    public function setContentName($contentName)
     {
         $this->getRender()->setContentName($contentName);
     }
@@ -151,7 +151,7 @@ class Render implements IRender
     /**
      * @return string
      */
-    function getContentName()
+    public function getContentName()
     {
         return $this->getRender()->getContentName();
     }

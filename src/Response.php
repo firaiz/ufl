@@ -48,7 +48,7 @@ class Response
     /**
      * @param string|array $name
      * @param mixed $var
-     * @param boolean $noCache
+     * @param bool $noCache
      * @return static
      */
     public function assign($name, $var = null, $noCache = false)
@@ -115,7 +115,7 @@ class Response
 
         $header = $this->header();
         $encode = mb_detect_encoding($downloadFileName, 'SJIS,SJIS-win,EUC-JP,UTF-8', true);
-        if ($encode != 'UTF-8') {
+        if ($encode !== 'UTF-8') {
             $downloadFileName = mb_convert_encoding($downloadFileName, 'UTF-8', $encode);
         }
         $header->set(array(

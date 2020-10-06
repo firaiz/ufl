@@ -10,7 +10,7 @@ use Serializable;
 
 class Model implements Serializable, JsonSerializable
 {
-    private $_findKeyName = '';
+    private $_findKeyName = 'id';
     private $_initValues = array();
 
     /**
@@ -18,10 +18,13 @@ class Model implements Serializable, JsonSerializable
      * @param mixed $findKey
      * @param string $findKeyName
      */
-    public function __construct($findKey = null, $findKeyName = 'id')
+    public function __construct($findKey = null, $findKeyName = null)
     {
-        $this->setFindKeyName($findKeyName);
-        if (!is_null($findKey)) {
+        if (is_string($findKeyName)) {
+            $this->setFindKeyName($findKeyName);
+        }
+
+        if ($findKey !== null) {
             $this->init($findKey);
         }
     }
@@ -60,6 +63,10 @@ class Model implements Serializable, JsonSerializable
         return Database::getInstance();
     }
 
+    /**
+     * @param string $name
+     * @return string
+     */
     public static function quoteIdentifier($name)
     {
         return static::builder()->getConnection()->quoteIdentifier($name);
@@ -185,10 +192,10 @@ class Model implements Serializable, JsonSerializable
 
     /**
      * @param $array
-     * @param string $findKeyName
-     * @return static is create object
+     * @param string $findKeyName unused parameter. Compatibility only implementation
+     * @return static is new created object
      */
-    public static function create($array, $findKeyName = 'id')
+    public static function create($array, $findKeyName = null)
     {
         $qb = static::builder()
             ->insert(static::tableName());
@@ -199,7 +206,13 @@ class Model implements Serializable, JsonSerializable
         }
         $qb->execute();
 
-        return new static($qb->getConnection()->lastInsertId(), $findKeyName);
+        $newId = $qb->getConnection()->lastInsertId();
+        $newInstance = new static();
+        if (is_string($findKeyName) && $newInstance->getFindKeyName() !== $findKeyName) {
+            $newInstance->setFindKeyName($findKeyName);
+        }
+        $newInstance->init($newId);
+        return $newInstance;
     }
 
     /**
@@ -270,7 +283,7 @@ class Model implements Serializable, JsonSerializable
      */
     public function getIndex()
     {
-        return $this->{$this->toField($this->getFindKeyName())};
+        return $this->{self::toField($this->getFindKeyName())};
     }
 
     /**
@@ -289,6 +302,7 @@ class Model implements Serializable, JsonSerializable
         if ($isStrict) {
             return $this->{$filed} === $obj->{$filed};
         }
+        /** @noinspection TypeUnsafeComparisonInspection */
         return $this->{$filed} == $obj->{$filed};
     }
 

@@ -49,7 +49,9 @@ class Date
     {
         if ($date instanceof DateTime) {
             return clone $date;
-        } elseif (is_int($date)) {
+        }
+
+        if (is_int($date)) {
             $obj = new DateTime();
             return $obj->setTimestamp($date);
         }
@@ -299,8 +301,9 @@ class Date
     public static function calcWeekDay($year, $month, $weekNo, $week)
     {
         $date = static::object($year . '-' . $month);
+        /** @noinspection TypeUnsafeComparisonInspection */
         if ($date->format('w') == $week) {
-            $weekNo -= 1;
+            --$weekNo;
         }
         $weekText = static::weekToText($week);
         $weekNoText = static::monthWeekNoToText($weekNo);

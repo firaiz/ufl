@@ -66,7 +66,7 @@ class CommandLine implements ArrayAccess
      * @param mixed $offset <p>
      * An offset to check for.
      * </p>
-     * @return boolean true on success or false on failure.
+     * @return bool true on success or false on failure.
      * </p>
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
@@ -91,7 +91,6 @@ class CommandLine implements ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        return;
     }
 
     /**
@@ -105,6 +104,5 @@ class CommandLine implements ArrayAccess
      */
     public function offsetUnset($offset)
     {
-        return;
     }
 }

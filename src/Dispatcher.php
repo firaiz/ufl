@@ -79,8 +79,6 @@ class Dispatcher
         $this->router->setNoRoute(new CallableContainer($closure));
     }
 
-    // ----------------------
-
     /**
      * @param string $routePath
      * @param mixed $detector

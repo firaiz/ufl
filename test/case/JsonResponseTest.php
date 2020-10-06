@@ -3,6 +3,7 @@
 namespace UflAs\TestCase;
 
 use PHPUnit\Framework\TestCase;
+use stdClass;
 use UflAs\JsonResponse;
 
 class JsonResponseTest extends TestCase
@@ -17,7 +18,7 @@ class JsonResponseTest extends TestCase
         ob_start();
         $jsonResponse->write();
         $result = ob_get_clean();
-        $this->assertEquals($result, '{"a":"b"}');
+        self::assertEquals('{"a":"b"}', $result);
     }
 
     /**
@@ -27,7 +28,7 @@ class JsonResponseTest extends TestCase
     {
         $jsonResponse = JsonResponse::getInstance();
 
-        $obj = new \stdClass();
+        $obj = new stdClass();
         $obj->a = "1";
         $obj->b = 2;
         $obj->c = array(1,2,3,4,5);
@@ -36,6 +37,6 @@ class JsonResponseTest extends TestCase
         ob_start();
         $jsonResponse->write();
         $result = ob_get_clean();
-        $this->assertEquals($result, '{"a":{"a":"1","b":2,"c":[1,2,3,4,5]}}');
+        self::assertEquals('{"a":{"a":"1","b":2,"c":[1,2,3,4,5]}}', $result);
     }
 }

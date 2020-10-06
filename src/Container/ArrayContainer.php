@@ -8,6 +8,9 @@ namespace UflAs\Container;
  */
 class ArrayContainer extends AbstractContainer
 {
+    /**
+     * @return array
+     */
     protected function &makeContainer()
     {
         static $val = array();

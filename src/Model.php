@@ -211,7 +211,7 @@ class Model implements Serializable, JsonSerializable
         if (is_string($findKeyName) && $newInstance->getFindKeyName() !== $findKeyName) {
             $newInstance->setFindKeyName($findKeyName);
         }
-        $newInstance->init($newId);
+        $newInstance->init(is_int($newId) && 0 < $newId ? $newId : $array[$newInstance->getFindKeyName()]);
         return $newInstance;
     }
 

@@ -281,24 +281,4 @@ class Database
     {
         $this->connection->close();
     }
-
-    /**
-     * Fetches extended error information associated with the last database operation.
-     *
-     * @return array The last error information.
-     */
-    public function errorInfo()
-    {
-        return $this->connection->errorInfo();
-    }
-
-    /**
-     * Fetches the SQLSTATE associated with the last database operation.
-     *
-     * @return int The last error code.
-     */
-    public function errorCode()
-    {
-        return $this->connection->errorCode();
-    }
 }

@@ -6,8 +6,10 @@
     { "name": "Kenichi Yoshida", "email": "yoshida@anysys.jp" }
   ],
   "require": {
-    "php": ">=5.3.3",
+    "php": ">=7.3",
     "smarty/smarty": "~3.1.27",
+    "doctrine/inflector": "2.*",
+    "doctrine/cache": "1.*",
     "doctrine/dbal" : "3.*",
     "ext-pdo": "*",
     "ext-json": "*"

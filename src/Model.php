@@ -2,8 +2,9 @@
 
 namespace UflAs;
 
-use Doctrine\Common\Inflector\Inflector;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 use Exception;
 use JsonSerializable;
 use Serializable;
@@ -12,6 +13,7 @@ class Model implements Serializable, JsonSerializable
 {
     private $_findKeyName = 'id';
     private $_initValues = array();
+    private static $_inflector;
 
     /**
      * Model constructor.
@@ -27,6 +29,18 @@ class Model implements Serializable, JsonSerializable
         if ($findKey !== null) {
             $this->init($findKey);
         }
+    }
+
+    /**
+     * @return Inflector
+     */
+    private static function inflector(): Inflector
+    {
+        if (static::$_inflector instanceof Inflector ) {
+            return static::$_inflector;
+        }
+        static::$_inflector = InflectorFactory::create()->build();
+        return static::$_inflector;
     }
 
     /**
@@ -95,7 +109,7 @@ class Model implements Serializable, JsonSerializable
      */
     protected static function tableize($word)
     {
-        return Inflector::tableize($word);
+        return static::inflector()->tableize($word);
     }
 
     /**
@@ -115,7 +129,7 @@ class Model implements Serializable, JsonSerializable
      */
     public static function toField($filed)
     {
-        return Inflector::camelize($filed);
+        return static::inflector()->camelize($filed);
     }
 
     /**

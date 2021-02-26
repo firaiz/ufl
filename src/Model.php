@@ -143,12 +143,17 @@ class Model implements Serializable, JsonSerializable
         return $obj;
     }
 
+    /**
+     * @return \Doctrine\DBAL\Result|int
+     * @throws \Doctrine\DBAL\Exception
+     */
     public function delete()
     {
-        static::builder()
+        return static::builder()
             ->delete(static::tableName())
             ->where(static::quoteIdentifier($this->getFindKeyName()) . ' = :id')
-            ->setParameter(':id', $this->{$this->getFindKeyName()});
+            ->setParameter('id', $this->{$this->getFindKeyName()})
+            ->execute();
     }
 
     /**
@@ -176,16 +181,15 @@ class Model implements Serializable, JsonSerializable
         $qb = static::builder()
             ->update(static::tableName())
             ->where(static::quoteIdentifier($this->getFindKeyName()) . ' = :id')
-            ->setParameter(':id', $this->getIndex());
+            ->setParameter('id', $this->getIndex());
 
         if ($hasUpdated) {
             $updateRow['updated_at'] = Date::nowString();
         }
 
         foreach ($updateRow as $key => $value) {
-            $paramKey = ':' . $key;
-            $qb->set(static::quoteIdentifier($key), $paramKey);
-            $qb->setParameter($paramKey, $value);
+            $qb->set(static::quoteIdentifier($key), ':'. $key);
+            $qb->setParameter($key, $value);
         }
 
         if ($qb->execute() === 1) {
@@ -216,7 +220,7 @@ class Model implements Serializable, JsonSerializable
 
         foreach ($array as $key => $value) {
             $qb->setValue(static::quoteIdentifier($key), ':' . $key)
-                ->setParameter(':' . $key, $value);
+                ->setParameter($key, $value);
         }
         $qb->execute();
 
@@ -225,7 +229,7 @@ class Model implements Serializable, JsonSerializable
         if (is_string($findKeyName) && $newInstance->getFindKeyName() !== $findKeyName) {
             $newInstance->setFindKeyName($findKeyName);
         }
-        $newInstance->init(is_int($newId) && 0 < $newId ? $newId : $array[$newInstance->getFindKeyName()]);
+        $newInstance->init(0 < $newId ? $newId : $array[$newInstance->getFindKeyName()]);
         return $newInstance;
     }
 

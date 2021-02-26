@@ -100,7 +100,7 @@ class Model implements Serializable, JsonSerializable
     public static function tableName()
     {
         $ary = array_reverse(explode('\\', get_called_class()));
-        return static::tableize(Inflector::pluralize(reset($ary)));
+        return static::tableize(static::inflector()->pluralize(reset($ary)));
     }
 
     /**

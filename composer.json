@@ -7,7 +7,7 @@
   ],
   "require": {
     "php": ">=7.3",
-    "smarty/smarty": "~3.1.27",
+    "smarty/smarty": "3.1.*",
     "doctrine/inflector": "2.*",
     "doctrine/cache": "1.*",
     "doctrine/dbal" : "3.*",

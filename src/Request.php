@@ -1,14 +1,18 @@
 <?php
 namespace UflAs;
 
+use stdClass;
+
 class Request
 {
     const TYPE_GET = 'GET';
     const TYPE_POST = 'POST';
     const TYPE_CLI = 'CLI';
+    const TYPE_PUT = 'PUT';
+    const TYPE_DELETE = 'DELETE';
+    const TYPE_OPTIONS = 'OPTIONS';
     const TYPE_REQUEST = 'REQUEST';
 
-    protected $requestMethod = null;
     protected $vars = array();
     protected $defaultDetectOrders = array(
         self::TYPE_POST => true,
@@ -23,13 +27,18 @@ class Request
     public function __construct()
     {
         $this->detectOrders = $this->defaultDetectOrders;
+        $parseInputValues = array();
+        @parse_str($this->input(), $parseInputValues);
         $this->vars = array(
             self::TYPE_GET => $_GET,
             self::TYPE_POST => $_POST,
             self::TYPE_REQUEST => $_REQUEST,
+            self::TYPE_PUT => $parseInputValues,
+            self::TYPE_DELETE => $parseInputValues,
+            self::TYPE_OPTIONS => $parseInputValues,
         );
 
-        if ($this->isCLIRequest()) {
+        if ($this->is(self::TYPE_CLI)) {
             $this->detectOrders = array(self::TYPE_CLI => true);
             $this->vars = array(
                 self::TYPE_CLI => new CommandLine(),
@@ -38,12 +47,29 @@ class Request
     }
 
     /**
-     * request is cli
+     * @param string $requestType
      * @return bool
      */
-    protected function isCLIRequest()
+    public function is($requestType)
     {
-        return $this->detectRequest() === self::TYPE_CLI;
+        return $this->detectRequest() === $requestType;
+    }
+
+    /**
+     * @return false|string
+     */
+    public function input()
+    {
+        return file_get_contents('php://input');
+    }
+
+    /**
+     * @param bool $toArray
+     * @return stdClass|array
+     */
+    public function json($toArray = false)
+    {
+        return json_decode($this->input(), $toArray);
     }
 
     /**
@@ -55,11 +81,7 @@ class Request
         if (!isset($_SERVER["REQUEST_METHOD"])) {
             return self::TYPE_CLI;
         }
-        $method = strtoupper($_SERVER["REQUEST_METHOD"]);
-        if (!array_key_exists($method, $this->detectOrders)) {
-            return null;
-        }
-        return $method;
+        return strtoupper($_SERVER["REQUEST_METHOD"]);
     }
 
     /**

@@ -27,10 +27,7 @@ class SimpleRouter extends AbstractRouter
         return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
     }
 
-    /**
-     * @return IRouterContainer
-     */
-    public function getContainer()
+    public function makeContextWithParams()
     {
         $routeKey = $this->pathToKey(substr($this->getPathInfo(), 1));
         $params = $keys = ArrayUtil::toKeys($routeKey);
@@ -42,19 +39,6 @@ class SimpleRouter extends AbstractRouter
                 break;
             }
         }
-        return $this->initContainer($context, $params);
-    }
-
-    /**
-     * @param mixed $context
-     * @param mixed $params
-     * @return IRouterContainer
-     */
-    function initContainer($context, $params)
-    {
-        if (!is_array($params)) {
-            $params = array();
-        }
-        return new CallableContainer($context, $params);
+        return array($context, $params);
     }
 }

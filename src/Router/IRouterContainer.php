@@ -9,7 +9,7 @@ interface IRouterContainer
     public function exec();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isValid();
 

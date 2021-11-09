@@ -26,8 +26,10 @@ abstract class AbstractRouter implements IRouter
     public function getPathInfo()
     {
         if (is_null($this->pathInfo)) {
-            $selfUri = str_replace(DIRECTORY_SEPARATOR, '/',
-                str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])));
+            if (isset($_SERVER['REDIRECT_PATH_INFO'])) {
+                $_SERVER['PATH_INFO'] = $_SERVER['REDIRECT_PATH_INFO'];
+            }
+            $selfUri = str_replace(array($_SERVER['DOCUMENT_ROOT'], DIRECTORY_SEPARATOR), array('', '/'), dirname($_SERVER['SCRIPT_FILENAME']));
             $this->pathInfo = str_replace($selfUri, '', isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '');
             $this->pathInfo = preg_replace('/(\S+)\/$/', '$1', $this->pathInfo);
         }
@@ -35,11 +37,31 @@ abstract class AbstractRouter implements IRouter
     }
 
     /**
+     * @return IRouterContainer
+     */
+    public function getContainer()
+    {
+        list($context, $params) = $this->makeContextWithParams();
+        return $this->initContainer($context, $params);
+    }
+
+    /**
+     * @return array [context,params]
+     */
+    abstract protected function makeContextWithParams();
+
+    /**
      * @param mixed $context
      * @param mixed $params
      * @return IRouterContainer
      */
-    abstract function initContainer($context, $params);
+    protected function initContainer($context, $params)
+    {
+        if (!is_array($params)) {
+            $params = array();
+        }
+        return new CallableContainer($context, $params);
+    }
 
     /**
      * @param IRouterContainer $container

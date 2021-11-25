@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Holiday;
+namespace Ufl\Holiday;
 
 /**
  * Interface IHoliday
- * @package UflAs\Holiday
+ * @package Ufl\Holiday
  */
 interface IHoliday
 {

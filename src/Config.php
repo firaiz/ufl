@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 /**
  * Class Config
- * @package UflAs
+ * @package Ufl
  */
 class Config
 {

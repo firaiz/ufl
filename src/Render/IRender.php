@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Render;
+namespace Ufl\Render;
 
 /**
  * Interface IRender
- * @package UflAs\Render
+ * @package Ufl\Render
  */
 interface IRender
 {

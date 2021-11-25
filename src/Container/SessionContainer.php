@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Container;
+namespace Ufl\Container;
 
-use UflAs\Session;
+use Ufl\Session;
 
 /**
  * Class SessionContainer
- * @package UflAs
+ * @package Ufl
  */
 class SessionContainer extends AbstractContainer
 {

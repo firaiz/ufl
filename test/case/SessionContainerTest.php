@@ -1,9 +1,9 @@
 <?php
 
-namespace UflAs\TestCase;
+namespace Ufl\TestCase;
 
 use PHPUnit\Framework\TestCase;
-use UflAs\TestClass\TestSessionContainer;
+use Ufl\TestClass\TestSessionContainer;
 
 class SessionContainerTest extends TestCase
 {

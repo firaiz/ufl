@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Exception\File;
+namespace Ufl\Exception\File;
 
 use Exception;
 
 /**
  * Class NotWritable
- * @package UflAs\Exception\File
+ * @package Ufl\Exception\File
  */
 class NotWritable extends Exception
 {

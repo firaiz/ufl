@@ -1,8 +1,8 @@
 <?php
-namespace UflAs\TestClass;
+namespace Ufl\TestClass;
 
 use JsonSerializable;
-use UflAs\Container\ArrayContainer;
+use Ufl\Container\ArrayContainer;
 
 class TestArrayContainer extends ArrayContainer implements JsonSerializable
 {

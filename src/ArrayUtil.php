@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 /**
  * Class ArrayUtil
- * @package UflAs
+ * @package Ufl
  */
 class ArrayUtil
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace UflAs\TestCase;
+namespace Ufl\TestCase;
 
 use PHPUnit\Framework\TestCase;
-use UflAs\TestClass\TestArrayContainer;
+use Ufl\TestClass\TestArrayContainer;
 
 class ArrayContainerTest extends TestCase
 {

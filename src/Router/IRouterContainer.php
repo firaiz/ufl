@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Router;
+namespace Ufl\Router;
 
 /**
  * Interface IRouterContainer
- * @package UflAs\Router
+ * @package Ufl\Router
  */
 interface IRouterContainer
 {

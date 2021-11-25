@@ -1,4 +1,4 @@
-# ulterior framework library for any system
+# ulterior framework library
 
 namespace UflAs
 

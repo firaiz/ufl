@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 use Exception;
 
 /**
  * Class StringUtility
- * @package UflAs
+ * @package Ufl
  */
 class StringUtility
 {

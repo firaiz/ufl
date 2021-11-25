@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Router;
+namespace Ufl\Router;
 
-use UflAs\Exception\Route\NotFound;
+use Ufl\Exception\Route\NotFound;
 
 /**
  * Interface IRouter
- * @package UflAs\Router
+ * @package Ufl\Router
  */
 interface IRouter
 {

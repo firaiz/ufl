@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Exception\File;
+namespace Ufl\Exception\File;
 
 use Exception;
 
 /**
  * Class NotFound
- * @package UflAs\Exception\File
+ * @package Ufl\Exception\File
  */
 class NotFound extends Exception
 {

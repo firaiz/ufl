@@ -1,11 +1,11 @@
 <?php
 
 
-namespace UflAs;
+namespace Ufl;
 
 /**
  * Class Router
- * @package UflAs
+ * @package Ufl
  * @deprecated
  */
 class Router extends Dispatcher

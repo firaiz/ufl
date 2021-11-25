@@ -1,8 +1,8 @@
 <?php
-namespace UflAs\TestClass;
+namespace Ufl\TestClass;
 
 use JsonSerializable;
-use UflAs\Container\SessionContainer;
+use Ufl\Container\SessionContainer;
 
 class TestSessionContainer extends SessionContainer implements JsonSerializable
 {

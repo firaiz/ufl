@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Container;
+namespace Ufl\Container;
 
 /**
  * Interface IContainer
- * @package UflAs\Container
+ * @package Ufl\Container
  */
 interface IContainer
 {

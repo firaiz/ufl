@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Router;
+namespace Ufl\Router;
 
-use UflAs\ArrayUtil;
+use Ufl\ArrayUtil;
 
 /**
  * Class SimpleRouter
- * @package UflAs\Router
+ * @package Ufl\Router
  */
 class SimpleRouter extends AbstractRouter
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 use stdClass;
 

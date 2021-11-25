@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Container;
+namespace Ufl\Container;
 
 /**
  * Class ArrayContainer
- * @package UflAs
+ * @package Ufl
  */
 class ArrayContainer extends AbstractContainer
 {

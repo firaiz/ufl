@@ -3,7 +3,7 @@ if (PHP_VERSION_ID < 50400) {
     if (!interface_exists('SessionHandlerInterface')) {
         /**
          * Interface SessionHandlerInterface
-         * @package UflAs\Session
+         * @package Ufl\Session
          * @covers
          */
         interface SessionHandlerInterface
@@ -25,7 +25,7 @@ if (PHP_VERSION_ID < 50400) {
     if (!interface_exists('JsonSerializable')) {
         /**
          * Interface JsonSerializable
-         * @package UflAs
+         * @package Ufl
          * @covers
          */
         interface JsonSerializable

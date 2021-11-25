@@ -1,13 +1,13 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
-use UflAs\Holiday\Holiday as HolidayBase;
-use UflAs\Holiday\Japan as JapanHoliday;
+use Ufl\Holiday\Holiday as HolidayBase;
+use Ufl\Holiday\Japan as JapanHoliday;
 
 /**
  * Class Holiday
- * @package UflAs
+ * @package Ufl
  */
 class Holiday
 {

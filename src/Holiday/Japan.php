@@ -1,14 +1,14 @@
 <?php
 
-namespace UflAs\Holiday;
+namespace Ufl\Holiday;
 
 use DateTime;
 use Exception;
-use UflAs\Date;
+use Ufl\Date;
 
 /**
  * Class Japan
- * @package UflAs\Holiday
+ * @package Ufl\Holiday
  */
 class Japan extends Holiday
 {

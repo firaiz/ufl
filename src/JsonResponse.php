@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 /**
  * Class JsonResponse
- * @package UflAs
+ * @package Ufl
  */
 class JsonResponse extends Response
 {

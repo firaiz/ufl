@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
-use UflAs\Container\SessionContainer as newSessionContainer;
+use Ufl\Container\SessionContainer as newSessionContainer;
 
 /**
  * Class SessionContainer
- * @package UflAs
+ * @package Ufl
  * @deprecated
  */
 class SessionContainer extends newSessionContainer

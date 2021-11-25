@@ -1,9 +1,9 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
-use UflAs\Exception\File\NotFound;
-use UflAs\Exception\File\NotWritable;
+use Ufl\Exception\File\NotFound;
+use Ufl\Exception\File\NotWritable;
 
 class Storage
 {

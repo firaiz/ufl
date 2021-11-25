@@ -1,15 +1,15 @@
 <?php
 
-namespace UflAs\Session;
+namespace Ufl\Session;
 
 use DateTime;
 use PDO;
 use PDOStatement;
-use UflAs\StringUtility;
+use Ufl\StringUtility;
 
 /**
  * Class SQLiteSessionHandler
- * @package UflAs\Session
+ * @package Ufl\Session
  */
 class SQLiteSessionHandler implements SessionHandlerInterface
 {

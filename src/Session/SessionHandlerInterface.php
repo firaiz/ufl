@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Session;
+namespace Ufl\Session;
 
 use SessionHandlerInterface as DefaultSessionHandlerInterface;
 
 /**
  * Interface SessionHandlerInterface
- * @package UflAs\Session
+ * @package Ufl\Session
  */
 interface SessionHandlerInterface extends DefaultSessionHandlerInterface
 {

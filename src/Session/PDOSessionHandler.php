@@ -1,9 +1,9 @@
 <?php
-namespace UflAs\Session;
+namespace Ufl\Session;
 
 /**
  * Class PDOSessionHandler
- * @package UflAs\Session
+ * @package Ufl\Session
  * @deprecated
  */
 class PDOSessionHandler extends SQLiteSessionHandler

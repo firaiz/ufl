@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Holiday;
+namespace Ufl\Holiday;
 
 use DateTime;
 
 /**
  * Class Holiday
- * @package UflAs\Holiday
+ * @package Ufl\Holiday
  */
 abstract class Holiday implements IHoliday
 {

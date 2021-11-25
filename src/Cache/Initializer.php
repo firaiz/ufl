@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Cache;
+namespace Ufl\Cache;
 
 /**
  * Class Initializer
- * @package UflAs\Cache
+ * @package Ufl\Cache
  */
 class Initializer
 {

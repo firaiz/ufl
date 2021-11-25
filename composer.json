@@ -1,9 +1,9 @@
 {
   "name": "uflas/framework-library",
-  "description": "ulterior framework library for any system",
+  "description": "ulterior framework library",
   "license": "proprietary",
   "authors": [
-    { "name": "Kenichi Yoshida", "email": "yoshida@anysys.jp" }
+    { "name": "romer", "email": "romer.t.co@gmail.com" }
   ],
   "require": {
     "php": ">=7.3",
@@ -19,7 +19,7 @@
     "ext-openssl": "*"
   },
   "autoload": {
-    "psr-4": { "UflAs\\" : "src", "UflAs\\TestClass\\" : "test/class", "UflAs\\TestCase\\" : "test/case" },
+    "psr-4": { "Ufl\\" : "src", "Ufl\\TestClass\\" : "test/class", "Ufl\\TestCase\\" : "test/case" },
     "files" : [
       "src/helpers.php",
       "src/compatible.php"

@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs\Router;
+namespace Ufl\Router;
 
 /**
  * Class CallableContainer
- * @package UflAs\Router
+ * @package Ufl\Router
  */
 class CallableContainer implements IRouterContainer
 {

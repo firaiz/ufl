@@ -1,15 +1,15 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
-use UflAs\Router\CallableContainer;
-use UflAs\Router\IRouter;
-use UflAs\Router\IRouterContainer;
-use UflAs\Router\SimpleRouter;
+use Ufl\Router\CallableContainer;
+use Ufl\Router\IRouter;
+use Ufl\Router\IRouterContainer;
+use Ufl\Router\SimpleRouter;
 
 /**
  * Class Dispatcher
- * @package UflAs
+ * @package Ufl
  */
 class Dispatcher
 {

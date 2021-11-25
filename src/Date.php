@@ -1,6 +1,6 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 use DateInterval;
 use DatePeriod;
@@ -9,7 +9,7 @@ use Exception;
 
 /**
  * Class Date
- * @package UflAs
+ * @package Ufl
  */
 class Date
 {

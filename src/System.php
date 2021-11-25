@@ -1,7 +1,7 @@
 <?php
 
 
-namespace UflAs;
+namespace Ufl;
 
 class System
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 /**
  * Class Header
- * @package UflAs
+ * @package Ufl
  */
 class Header
 {

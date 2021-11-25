@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Exception\Cache;
+namespace Ufl\Exception\Cache;
 
 use Exception;
 
 /**
  * Class ClassNotFound
- * @package UflAs\Exception\Cache
+ * @package Ufl\Exception\Cache
  */
 class ClassNotFound extends Exception
 {

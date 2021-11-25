@@ -1,5 +1,5 @@
 <?php
-namespace UflAs\Router;
+namespace Ufl\Router;
 
 class PrefixClassRouteAppender
 {

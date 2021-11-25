@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs\Exception\Session;
+namespace Ufl\Exception\Session;
 
 use Exception;
 
 /**
  * Class NotStarted
- * @package UflAs\Exception\Session
+ * @package Ufl\Exception\Session
  */
 class NotStarted extends Exception
 {

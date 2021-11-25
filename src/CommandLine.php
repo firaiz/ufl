@@ -1,11 +1,11 @@
 <?php
-namespace UflAs;
+namespace Ufl;
 
 use ArrayAccess;
 
 /**
  * Class CommandLine
- * @package UflAs
+ * @package Ufl
  */
 class CommandLine implements ArrayAccess
 {

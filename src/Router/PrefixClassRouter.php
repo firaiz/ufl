@@ -1,11 +1,11 @@
 <?php
 
-namespace UflAs\Router;
+namespace Ufl\Router;
 
 
 /**
  * Class PrefixClassRouter
- * @package UflAs\Router
+ * @package Ufl\Router
  */
 class PrefixClassRouter extends ClassRouter
 {

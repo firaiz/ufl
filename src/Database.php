@@ -1,6 +1,6 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;
@@ -13,7 +13,7 @@ use PDO;
 
 /**
  * Class Database
- * @package UflAs
+ * @package Ufl
  */
 class Database
 {

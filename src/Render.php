@@ -1,8 +1,8 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
-use UflAs\Render\IRender;
+use Ufl\Render\IRender;
 
 class Render implements IRender
 {

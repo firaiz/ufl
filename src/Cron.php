@@ -1,12 +1,12 @@
 <?php
 
-namespace UflAs;
+namespace Ufl;
 
-use UflAs\Cron\ICron;
+use Ufl\Cron\ICron;
 
 /**
  * Class Cron
- * @package UflAs
+ * @package Ufl
  */
 abstract class Cron implements ICron
 {

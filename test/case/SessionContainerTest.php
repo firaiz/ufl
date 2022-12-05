@@ -3,6 +3,7 @@
 namespace Ufl\TestCase;
 
 use PHPUnit\Framework\TestCase;
+use Ufl\Session;
 use Ufl\TestClass\TestSessionContainer;
 
 class SessionContainerTest extends TestCase

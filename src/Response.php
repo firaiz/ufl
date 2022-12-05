@@ -77,11 +77,14 @@ class Response
 
     /**
      * @param mixed $data
-     * @param string $charset
+     * @param ?string $charset
      * @throws JsonException
      */
-    public function json(mixed $data, string $charset = 'utf-8'): void
+    public function json(mixed $data,?string $charset = 'utf-8'): void
     {
+        if (is_null($charset)) {
+            $charset = 'utf-8';
+        }
         $this->header()->set(array('Content-Type' => 'application/json; charset=' . $charset));
         $this->header()->flush();
         echo json_encode($data, JSON_THROW_ON_ERROR);

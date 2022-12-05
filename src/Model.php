@@ -250,9 +250,9 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @return array
+     * @return ?array
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         $row = get_object_vars($this);
         unset($row['_initValues'], $row['_findKeyName']);
@@ -393,7 +393,7 @@ class Model implements Serializable, JsonSerializable
         // empty
     }
 
-    public function unserialize($serialized)
+    public function unserialize($data)
     {
         // empty
     }
@@ -412,7 +412,7 @@ class Model implements Serializable, JsonSerializable
         $this->initFields($data['row']);
     }
 
-    public function jsonSerialize(): mixed
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

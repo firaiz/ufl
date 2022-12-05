@@ -146,16 +146,16 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     /**
      * Destroy a session
      * @link http://php.net/manual/en/sessionhandlerinterface.destroy.php
-     * @param string $session_id The session ID being destroyed.
+     * @param string $id The session ID being destroyed.
      * @return bool <p>
      * The return value (usually TRUE on success, FALSE on failure).
      * Note this value is returned internally to PHP for processing.
      * </p>
      * @since 5.4.0
      */
-    #[ReturnTypeWillChange] public function destroy(string $session_id): bool
+    #[ReturnTypeWillChange] public function destroy(string $id): bool
     {
-        return $this->exec($this->deletePrepare(), array(':sid' => $session_id));
+        return $this->exec($this->deletePrepare(), array(':sid' => $id));
     }
 
     /**

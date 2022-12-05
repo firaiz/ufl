@@ -1,7 +1,7 @@
 {
-  "name": "uflas/framework-library",
+  "name": "firaiz/ufl",
   "description": "ulterior framework library",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     { "name": "romer", "email": "romer.t.co@gmail.com" },
     { "name":  "Kenichi Yoshida", "email": "k.yoshida@miraizu.jp"}
@@ -23,11 +23,11 @@
   "autoload": {
     "psr-4": { "Ufl\\" : "src", "Ufl\\TestClass\\" : "test/class", "Ufl\\TestCase\\" : "test/case" },
     "files" : [
-      "src/helpers.php",
-      "src/compatible.php"
+      "src/helpers.php"
     ]
   },
   "require-dev": {
-    "roave/security-advisories": "dev-master"
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "9.5.26"
   }
 }

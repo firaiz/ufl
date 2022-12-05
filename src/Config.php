@@ -20,6 +20,7 @@ class Config
     /**
      * Config constructor.
      * @param string $configPath
+     * @throws JsonException
      */
     protected function __construct(string $configPath)
     {
@@ -88,9 +89,9 @@ class Config
     /**
      * @param string $key
      * @param mixed|null $default
-     * @return string|false
+     * @return mixed
      */
-    public function get(string $key, mixed $default = null): bool|string
+    public function get(string $key, mixed $default = null): mixed
     {
         return ArrayUtil::get($this->configs, $key, $default);
     }

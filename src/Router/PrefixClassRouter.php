@@ -25,7 +25,10 @@ class PrefixClassRouter extends ClassRouter
         return $this->prefixes[$prefix];
     }
 
-    public function getPathInfo(): array|string|null
+    /**
+     * @return string
+     */
+    public function getPathInfo(): string
     {
         $pathInfo = parent::getPathInfo();
         if (count($this->prefixes) === 0) {

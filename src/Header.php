@@ -86,8 +86,9 @@ class Header
     /**
      * @param $url
      * @param int $code
+     * @return never
      */
-    #[NoReturn] public function location($url, int $code = 302): void
+    #[NoReturn] public function location($url, int $code = 302): never
     {
         if (!$this->isSent()) {
             header('Location: ' . $url, true, $code);

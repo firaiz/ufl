@@ -36,15 +36,15 @@ interface IRender
     public function templateExists($template): bool;
 
     /**
-     * @param string $layout is template path
+     * @param ?string $layout is template path
      * @return void
      */
-    public function setLayoutPath(string $layout): void;
+    public function setLayoutPath(?string $layout): void;
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getLayoutPath(): string;
+    public function getLayoutPath(): ?string;
 
     /**
      * @return bool
@@ -58,7 +58,7 @@ interface IRender
     public function setContentName($contentName): void;
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getContentName(): string;
+    public function getContentName(): ?string;
 }

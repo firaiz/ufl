@@ -4,7 +4,7 @@ namespace Ufl\Traits;
 
 trait SingletonTrait
 {
-    protected static mixed $instance;
+    protected static mixed $instance = null;
     public static function getInstance(): static
     {
         if (!(self::$instance instanceof static)) {

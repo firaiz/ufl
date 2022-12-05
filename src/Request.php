@@ -126,7 +126,7 @@ class Request
             $targetTypes = array($targetTypes => true);
         }
         foreach ($targetTypes as $type => $null) {
-            $val = ArrayUtil::get($this->getTypeVars($type), $key, null);
+            $val = ArrayUtil::get($this->getTypeVars($type), $key);
             if (!is_null($val)) {
                 return $val;
             }

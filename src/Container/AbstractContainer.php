@@ -12,10 +12,10 @@ abstract class AbstractContainer implements IContainer
 {
 
     /** @var ?string */
-    protected ?string $prefix;
+    protected ?string $prefix = null;
 
     /** @var mixed */
-    protected mixed $container;
+    protected mixed $container = null;
 
     /**
      * Session constructor.

@@ -111,7 +111,7 @@ class SmartyRender implements IRender
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getLayoutPath(): ?string
     {
@@ -129,10 +129,10 @@ class SmartyRender implements IRender
     }
 
     /**
-     * @param string $layout is template path
+     * @param ?string $layout is template path
      * @return void
      */
-    public function setLayoutPath(string $layout): void
+    public function setLayoutPath(?string $layout): void
     {
         $this->layout = $layout;
     }

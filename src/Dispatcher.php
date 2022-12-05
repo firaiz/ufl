@@ -52,7 +52,7 @@ class Dispatcher
     public function dispatch(): void
     {
         $routeContainer = $this->router->getContainer();
-        if ($routeContainer instanceof IRouterContainer && $routeContainer->isValid()) {
+        if ($routeContainer->isValid()) {
             $routeContainer->exec();
             return;
         }

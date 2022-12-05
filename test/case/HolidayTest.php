@@ -438,7 +438,7 @@ class HolidayTest extends TestCase
     
     const FORMAT = 'Y-m-d';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         Date::init();
     }

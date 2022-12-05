@@ -99,16 +99,16 @@ class Render implements IRender
      * @param $template
      * @return bool
      */
-    public function templateExists($template)
+    public function templateExists($template): bool
     {
         return $this->getRender()->templateExists($template);
     }
 
     /**
-     * @param string $layout is template path
+     * @param string|null $layout is template path
      * @return void
      */
-    public function setLayoutPath(string $layout)
+    public function setLayoutPath(?string $layout): void
     {
         $this->getRender()->setLayoutPath($layout);
     }
@@ -116,7 +116,7 @@ class Render implements IRender
     /**
      * @return string
      */
-    public function getLayoutPath()
+    public function getLayoutPath(): string
     {
         return $this->getRender()->getLayoutPath();
     }
@@ -124,7 +124,7 @@ class Render implements IRender
     /**
      * @return bool
      */
-    public function isLayoutMode()
+    public function isLayoutMode(): bool
     {
         return $this->getRender()->isLayoutMode();
     }
@@ -133,7 +133,7 @@ class Render implements IRender
      * @param $contentName
      * @return void
      */
-    public function setContentName($contentName)
+    public function setContentName($contentName): void
     {
         $this->getRender()->setContentName($contentName);
     }
@@ -141,7 +141,7 @@ class Render implements IRender
     /**
      * @return string
      */
-    public function getContentName()
+    public function getContentName(): string
     {
         return $this->getRender()->getContentName();
     }

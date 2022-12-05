@@ -3,7 +3,8 @@
   "description": "ulterior framework library",
   "license": "proprietary",
   "authors": [
-    { "name": "romer", "email": "romer.t.co@gmail.com" }
+    { "name": "romer", "email": "romer.t.co@gmail.com" },
+    { "name":  "Kenichi Yoshida", "email": "k.yoshida@miraizu.jp"}
   ],
   "require": {
     "php": ">=8.1",

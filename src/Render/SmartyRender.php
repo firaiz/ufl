@@ -1,17 +1,17 @@
 <?php
 
-namespace Ufl\Render;
+namespace Firaiz\Ufl\Render;
 
 use Exception;
 use Smarty;
 use SmartyException;
-use Ufl\ArrayUtil;
-use Ufl\Storage;
-use Ufl\System;
+use Firaiz\Ufl\ArrayUtil;
+use Firaiz\Ufl\Storage;
+use Firaiz\Ufl\System;
 
 /**
  * Class SmartyRender
- * @package Ufl\Render
+ * @package Firaiz\Ufl\Render
  */
 class SmartyRender implements IRender
 {

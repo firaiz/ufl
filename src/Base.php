@@ -1,5 +1,5 @@
 <?php
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 /**
  * Class Base
@@ -16,7 +16,7 @@ abstract class Base
     /** @var array allowed to overwrite */
     protected array $singletons = ['conf' => 'Config', 'db' => 'Database', 'response' => 'Response', 'header' => 'Header'];
     /** @var array allowed to overwrite */
-    protected array $instances = ['request' => 'Request', 'session' => \Ufl\Container\SessionContainer::class];
+    protected array $instances = ['request' => 'Request', 'session' => \Firaiz\Ufl\Container\SessionContainer::class];
 
     /**
      * Base constructor.
@@ -29,7 +29,7 @@ abstract class Base
     /**
      * initialized instances
      */
-    protected function init()
+    protected function init(): void
     {
         foreach ($this->singletons as $prop => $cls) {
             $clsName = $this->initClassName($cls);
@@ -47,7 +47,7 @@ abstract class Base
      * @param $className
      * @return string
      */
-    private function initClassName($className)
+    private function initClassName($className): string
     {
         if (str_contains($className, '\\')) {
             return $className;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
-use Ufl\Exception\File\NotFound;
-use Ufl\Exception\File\NotWritable;
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Exception\File\NotFound;
+use Firaiz\Ufl\Exception\File\NotWritable;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 class Storage
 {

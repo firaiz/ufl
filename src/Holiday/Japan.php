@@ -1,14 +1,14 @@
 <?php
 
-namespace Ufl\Holiday;
+namespace Firaiz\Ufl\Holiday;
 
 use DateTime;
 use Exception;
-use Ufl\Date;
+use Firaiz\Ufl\Date;
 
 /**
  * Class Japan
- * @package Ufl\Holiday
+ * @package Firaiz\Ufl\Holiday
  */
 class Japan extends Holiday
 {

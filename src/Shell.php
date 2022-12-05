@@ -1,6 +1,6 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 class Shell
 {

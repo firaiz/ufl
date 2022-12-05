@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Cache;
+namespace Firaiz\Ufl\Cache;
 
 use Closure;
 
 /**
  * Class Initializer
- * @package Ufl\Cache
+ * @package Firaiz\Ufl\Cache
  */
 class Initializer
 {

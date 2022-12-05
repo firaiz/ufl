@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\Cron;
+namespace Firaiz\Ufl\Cron;
 
 /**
  * Interface ICron
- * @package Ufl\Cron
+ * @package Firaiz\Ufl\Cron
  */
 interface ICron
 {

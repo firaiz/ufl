@@ -1,8 +1,8 @@
 <?php
 
-use Ufl\Security\Csrf;
-use Ufl\Storage;
-use Ufl\StringUtility;
+use Firaiz\Ufl\Security\Csrf;
+use Firaiz\Ufl\Storage;
+use Firaiz\Ufl\StringUtility;
 
 if (!function_exists('storage')) {
     function storage($key, $isCreate = false, $permission = Storage::DEFAULT_PERMISSION): string

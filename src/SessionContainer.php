@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
-use Ufl\Container\SessionContainer as newSessionContainer;
+use Firaiz\Ufl\Container\SessionContainer as newSessionContainer;
 
 /**
  * Class SessionContainer
- * @package Ufl
+ * @package Firaiz\Ufl
  * @deprecated
  */
 class SessionContainer extends newSessionContainer

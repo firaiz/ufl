@@ -1,11 +1,11 @@
 <?php
 
-namespace Ufl\Router;
+namespace Firaiz\Ufl\Router;
 
 
 /**
  * Class PrefixClassRouter
- * @package Ufl\Router
+ * @package Firaiz\Ufl\Router
  */
 class PrefixClassRouter extends ClassRouter
 {
@@ -50,7 +50,7 @@ class PrefixClassRouter extends ClassRouter
      */
     public function add(string $routePath, mixed $detector): void
     {
-        foreach ($this->prefixes as $prefix => $appender) {
+        foreach ($this->prefixes as $appender) {
             $appender->add($routePath, $detector);
         }
     }

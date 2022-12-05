@@ -1,9 +1,9 @@
 <?php
-namespace Ufl\TestClass;
+namespace Firaiz\Ufl\TestClass;
 
 use JsonSerializable;
 use ReturnTypeWillChange;
-use Ufl\Container\SessionContainer;
+use Firaiz\Ufl\Container\SessionContainer;
 
 class TestSessionContainer extends SessionContainer implements JsonSerializable
 {

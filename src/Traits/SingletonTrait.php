@@ -1,6 +1,6 @@
 <?php
 
-namespace Ufl\Traits;
+namespace Firaiz\Ufl\Traits;
 
 trait SingletonTrait
 {

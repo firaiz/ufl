@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\Holiday;
+namespace Firaiz\Ufl\Holiday;
 
 /**
  * Interface IHoliday
- * @package Ufl\Holiday
+ * @package Firaiz\Ufl\Holiday
  */
 interface IHoliday
 {

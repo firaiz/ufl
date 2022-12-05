@@ -1,12 +1,12 @@
 <?php
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use ArrayAccess;
 use ReturnTypeWillChange;
 
 /**
  * Class CommandLine
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class CommandLine implements ArrayAccess
 {

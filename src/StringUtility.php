@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use Exception;
 
 /**
  * Class StringUtility
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class StringUtility
 {

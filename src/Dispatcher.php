@@ -1,17 +1,16 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use Closure;
-use Ufl\Router\CallableContainer;
-use Ufl\Router\IRouter;
-use Ufl\Router\IRouterContainer;
-use Ufl\Router\SimpleRouter;
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Router\CallableContainer;
+use Firaiz\Ufl\Router\IRouter;
+use Firaiz\Ufl\Router\SimpleRouter;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 /**
  * Class Dispatcher
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class Dispatcher
 {

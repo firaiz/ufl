@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use JsonException;
 
 /**
  * Class Config
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class Config
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Router;
+namespace Firaiz\Ufl\Router;
 
-use Ufl\Exception\Route\NotFound;
+use Firaiz\Ufl\Exception\Route\NotFound;
 
 /**
  * Class AbstractRouter
- * @package Ufl\Router
+ * @package Firaiz\Ufl\Router
  */
 abstract class AbstractRouter implements IRouter
 {

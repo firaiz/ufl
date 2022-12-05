@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Router;
+namespace Firaiz\Ufl\Router;
 
-use Ufl\ArrayUtil;
+use Firaiz\Ufl\ArrayUtil;
 
 /**
  * Class ClassRouter
- * @package Ufl\Router
+ * @package Firaiz\Ufl\Router
  */
 class ClassRouter extends AbstractRouter
 {
@@ -76,8 +76,7 @@ class ClassRouter extends AbstractRouter
                 array_shift($params);
             }
         }
-
-        $obj = null;
+        
         $context = null;
         if (class_exists($className) && method_exists($className, $methodName)) {
             $context = array(new $className, $methodName);

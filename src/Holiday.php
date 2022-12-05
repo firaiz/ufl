@@ -1,14 +1,14 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use Exception;
-use Ufl\Holiday\Holiday as HolidayBase;
-use Ufl\Holiday\Japan as JapanHoliday;
+use Firaiz\Ufl\Holiday\Holiday as HolidayBase;
+use Firaiz\Ufl\Holiday\Japan as JapanHoliday;
 
 /**
  * Class Holiday
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class Holiday
 {

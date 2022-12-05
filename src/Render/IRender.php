@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\Render;
+namespace Firaiz\Ufl\Render;
 
 /**
  * Interface IRender
- * @package Ufl\Render
+ * @package Firaiz\Ufl\Render
  */
 interface IRender
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Ufl\Cache;
+namespace Firaiz\Ufl\Cache;
 
 use Doctrine\Common\Cache\CacheProvider;
 use ReflectionClass;
 use ReflectionException;
-use Ufl\Exception\Cache\ClassNotFound;
+use Firaiz\Ufl\Exception\Cache\ClassNotFound;
 
 /**
  * Class Generator
- * @package Ufl\Cache
+ * @package Firaiz\Ufl\Cache
  */
 class Generator
 {

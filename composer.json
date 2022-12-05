@@ -21,7 +21,7 @@
     "ext-openssl": "*"
   },
   "autoload": {
-    "psr-4": { "Ufl\\" : "src", "Ufl\\TestClass\\" : "test/class", "Ufl\\TestCase\\" : "test/case" },
+    "psr-4": { "Firaiz\\Ufl\\" : "src", "Firaiz\\Ufl\\TestClass\\" : "test/class", "Firaiz\\Ufl\\TestCase\\" : "test/case" },
     "files" : [
       "src/helpers.php"
     ]

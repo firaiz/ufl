@@ -1,9 +1,9 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use JsonException;
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 class Response
 {

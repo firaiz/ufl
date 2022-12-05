@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\Container;
+namespace Firaiz\Ufl\Container;
 
 /**
  * Interface IContainer
- * @package Ufl\Container
+ * @package Firaiz\Ufl\Container
  */
 interface IContainer
 {
@@ -18,12 +18,11 @@ interface IContainer
     /**
      * @param string $name
      * @param mixed $value
-     * @return void
      */
-    public function set(string $name, mixed $value);
+    public function set(string $name, mixed $value): void;
 
     /**
      * @param string|null $name
      */
-    public function del(string $name = null);
+    public function del(string $name = null): void;
 }

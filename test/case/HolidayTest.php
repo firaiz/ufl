@@ -1,10 +1,10 @@
 <?php
-namespace Ufl\TestCase;
+namespace Firaiz\Ufl\TestCase;
 
 use DateTime;
 use PHPUnit\Framework\TestCase;
-use Ufl\Date;
-use Ufl\Holiday\Japan;
+use Firaiz\Ufl\Date;
+use Firaiz\Ufl\Holiday\Japan;
 
 class HolidayTest extends TestCase
 {

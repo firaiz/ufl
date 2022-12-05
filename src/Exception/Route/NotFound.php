@@ -1,11 +1,11 @@
 <?php
-namespace Ufl\Exception\Route;
+namespace Firaiz\Ufl\Exception\Route;
 
 use Exception;
 
 /**
  * Class NotFound
- * @package Ufl\Exception\RouteÒ
+ * @package Firaiz\Ufl\Exception\RouteÒ
  */
 class NotFound extends Exception
 {

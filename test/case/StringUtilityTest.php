@@ -1,8 +1,8 @@
 <?php
-namespace Ufl\TestCase;
+namespace Firaiz\Ufl\TestCase;
 
 use PHPUnit\Framework\TestCase;
-use Ufl\StringUtility;
+use Firaiz\Ufl\StringUtility;
 
 class StringUtilityTest extends TestCase
 {

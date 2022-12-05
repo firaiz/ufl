@@ -1,9 +1,9 @@
 <?php
-namespace Ufl\TestClass;
+namespace Firaiz\Ufl\TestClass;
 
 use JsonSerializable;
 use ReturnTypeWillChange;
-use Ufl\Container\ArrayContainer;
+use Firaiz\Ufl\Container\ArrayContainer;
 
 class TestArrayContainer extends ArrayContainer implements JsonSerializable
 {

@@ -1,17 +1,17 @@
 <?php /** @noinspection SpellCheckingInspection */
 
-namespace Ufl\Session;
+namespace Firaiz\Ufl\Session;
 
 use DateTime;
 use Exception;
 use PDO;
 use PDOStatement;
 use ReturnTypeWillChange;
-use Ufl\StringUtility;
+use Firaiz\Ufl\StringUtility;
 
 /**
  * Class SQLiteSessionHandler
- * @package Ufl\Session
+ * @package Firaiz\Ufl\Session
  */
 class SQLiteSessionHandler implements SessionHandlerInterface
 {

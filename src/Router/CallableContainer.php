@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Router;
+namespace Firaiz\Ufl\Router;
 
 use Closure;
 
 /**
  * Class CallableContainer
- * @package Ufl\Router
+ * @package Firaiz\Ufl\Router
  */
 class CallableContainer implements IRouterContainer
 {

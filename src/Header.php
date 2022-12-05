@@ -1,13 +1,13 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use JetBrains\PhpStorm\NoReturn;
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 /**
  * Class Header
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class Header
 {

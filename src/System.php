@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 class System
 {

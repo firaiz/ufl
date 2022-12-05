@@ -1,9 +1,9 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
-use Ufl\Render\IRender;
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Render\IRender;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 class Render implements IRender
 {

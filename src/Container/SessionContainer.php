@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Container;
+namespace Firaiz\Ufl\Container;
 
-use Ufl\Session;
+use Firaiz\Ufl\Session;
 
 /**
  * Class SessionContainer
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class SessionContainer extends AbstractContainer
 {

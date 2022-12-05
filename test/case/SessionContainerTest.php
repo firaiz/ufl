@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\TestCase;
+namespace Firaiz\Ufl\TestCase;
 
 use PHPUnit\Framework\TestCase;
-use Ufl\Session;
-use Ufl\TestClass\TestSessionContainer;
+use Firaiz\Ufl\Session;
+use Firaiz\Ufl\TestClass\TestSessionContainer;
 
 class SessionContainerTest extends TestCase
 {

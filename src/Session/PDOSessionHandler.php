@@ -1,9 +1,9 @@
 <?php
-namespace Ufl\Session;
+namespace Firaiz\Ufl\Session;
 
 /**
  * Class PDOSessionHandler
- * @package Ufl\Session
+ * @package Firaiz\Ufl\Session
  * @deprecated
  */
 class PDOSessionHandler extends SQLiteSessionHandler

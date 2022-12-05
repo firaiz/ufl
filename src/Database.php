@@ -1,21 +1,19 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;
 use Doctrine\DBAL\Driver\Exception;
-use Doctrine\DBAL\Driver\Statement;
 use Doctrine\DBAL\DriverManager;
-use Doctrine\DBAL\Exception\InvalidArgumentException;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Result;
 use PDO;
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 /**
  * Class Database
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class Database
 {
@@ -124,7 +122,7 @@ class Database
      * @return Result
      * @throws \Doctrine\DBAL\Exception
      */
-    public function select($sql, array $params = array(), array $types = array())
+    public function select($sql, array $params = array(), array $types = array()): Result
     {
         return $this->connection->executeQuery($sql, $params, $types);
     }
@@ -140,7 +138,7 @@ class Database
      * @return array
      * @throws \Doctrine\DBAL\Exception
      */
-    public function fetchRow(string $statement, array $params = array(), array $types = array())
+    public function fetchRow(string $statement, array $params = array(), array $types = array()): array
     {
         return $this->select($statement, $params, $types)->fetchAssociative();
     }
@@ -154,11 +152,11 @@ class Database
      * @param array $identifier The deletion criteria. An associative array containing column-value pairs.
      * @param array $types The types of identifiers.
      *
-     * @return int The number of affected rows.
+     * @return int|string The number of affected rows.
      *
      * @throws \Doctrine\DBAL\Exception
      */
-    public function delete(string $tableExpression, array $identifier, array $types = array()): int
+    public function delete(string $tableExpression, array $identifier, array $types = array()): int|string
     {
         return $this->connection->delete($tableExpression, $identifier, $types);
     }
@@ -173,10 +171,10 @@ class Database
      * @param array $identifier The update criteria. An associative array containing column-value pairs.
      * @param array $types Types of the merged $data and $identifier arrays in that order.
      *
-     * @return int The number of affected rows.
+     * @return int|string The number of affected rows.
      * @throws \Doctrine\DBAL\Exception
      */
-    public function update(string $tableExpression, array $data, array $identifier, array $types = array()): int
+    public function update(string $tableExpression, array $data, array $identifier, array $types = array()): int|string
     {
         return $this->connection->update($tableExpression, $data, $identifier, $types);
     }
@@ -190,10 +188,10 @@ class Database
      * @param array $data An associative array containing column-value pairs.
      * @param array $types Types of the inserted data.
      *
-     * @return int The number of affected rows.
+     * @return int|string The number of affected rows.
      * @throws \Doctrine\DBAL\Exception
      */
-    public function insert(string $tableExpression, array $data, array $types = array())
+    public function insert(string $tableExpression, array $data, array $types = array()): int|string
     {
         return $this->connection->insert($tableExpression, $data, $types);
     }
@@ -260,10 +258,10 @@ class Database
      *
      * @param string|null $seqName Name of the sequence object from which the ID should be returned.
      *
-     * @return string A string representation of the last inserted ID.
+     * @return int|string A string representation of the last inserted ID.
      * @throws \Doctrine\DBAL\Exception
      */
-    public function lastInsertId(string $seqName = null): string
+    public function lastInsertId(string $seqName = null): int|string
     {
         return $this->connection->lastInsertId($seqName);
     }

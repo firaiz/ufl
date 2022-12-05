@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Router;
+namespace Firaiz\Ufl\Router;
 
-use Ufl\ArrayUtil;
+use Firaiz\Ufl\ArrayUtil;
 
 /**
  * Class SimpleRouter
- * @package Ufl\Router
+ * @package Firaiz\Ufl\Router
  */
 class SimpleRouter extends AbstractRouter
 {

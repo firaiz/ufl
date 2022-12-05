@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 /**
  * Class Router
- * @package Ufl
+ * @package Firaiz\Ufl
  * @deprecated
  */
 class Router extends Dispatcher

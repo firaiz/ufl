@@ -1,15 +1,15 @@
 <?php
 
-namespace Ufl\Security;
+namespace Firaiz\Ufl\Security;
 
-use Ufl\Container\SessionContainer;
-use Ufl\Exception\Session\NotStarted;
-use Ufl\Session;
-use Ufl\StringUtility;
+use Firaiz\Ufl\Container\SessionContainer;
+use Firaiz\Ufl\Exception\Session\NotStarted;
+use Firaiz\Ufl\Session;
+use Firaiz\Ufl\StringUtility;
 
 /**
  * Class Csrf
- * @package Ufl\Security
+ * @package Firaiz\Ufl\Security
  */
 class Csrf
 {

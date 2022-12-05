@@ -1,6 +1,6 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query\QueryBuilder;

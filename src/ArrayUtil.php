@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 /**
  * Class ArrayUtil
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class ArrayUtil
 {

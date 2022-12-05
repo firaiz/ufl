@@ -1,6 +1,6 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 use DateInterval;
 use DatePeriod;
@@ -9,7 +9,7 @@ use Exception;
 
 /**
  * Class Date
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class Date
 {
@@ -212,7 +212,7 @@ class Date
      * @return DateTime
      * @throws Exception
      */
-    public static function add(string $addType, DateTime $date, int $dateCount)
+    public static function add(string $addType, DateTime $date, int $dateCount): DateTime
     {
         $newDate = clone $date;
         $newDate->add(static::createSimpleInterval($addType, $dateCount));

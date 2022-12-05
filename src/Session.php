@@ -1,9 +1,9 @@
 <?php
 
-namespace Ufl;
+namespace Firaiz\Ufl;
 
 
-use Ufl\Traits\SingletonTrait;
+use Firaiz\Ufl\Traits\SingletonTrait;
 
 class Session
 {

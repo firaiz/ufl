@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\TestCase;
+namespace Firaiz\Ufl\TestCase;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use Ufl\JsonResponse;
+use Firaiz\Ufl\JsonResponse;
 
 class JsonResponseTest extends TestCase
 {

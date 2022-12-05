@@ -1,10 +1,10 @@
 <?php
 
-namespace Ufl\Container;
+namespace Firaiz\Ufl\Container;
 
 /**
  * Class ArrayContainer
- * @package Ufl
+ * @package Firaiz\Ufl
  */
 class ArrayContainer extends AbstractContainer
 {

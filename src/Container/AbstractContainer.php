@@ -1,12 +1,12 @@
 <?php
 
-namespace Ufl\Container;
+namespace Firaiz\Ufl\Container;
 
-use Ufl\ArrayUtil;
+use Firaiz\Ufl\ArrayUtil;
 
 /**
  * Class AbstractContainer
- * @package Ufl\Container
+ * @package Firaiz\Ufl\Container
  */
 abstract class AbstractContainer implements IContainer
 {

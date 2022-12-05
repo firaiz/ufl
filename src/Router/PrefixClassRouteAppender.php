@@ -1,5 +1,5 @@
 <?php
-namespace Ufl\Router;
+namespace Firaiz\Ufl\Router;
 
 class PrefixClassRouteAppender
 {
@@ -10,7 +10,7 @@ class PrefixClassRouteAppender
      * @param mixed $detector
      * @return static
      */
-    public function add(string $routPath, mixed $detector)
+    public function add(string $routPath, mixed $detector): static
     {
         $this->routes[PrefixClassRouter::pathToKey($routPath)] = $detector;
         return $this;

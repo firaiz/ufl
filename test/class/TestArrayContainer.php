@@ -2,11 +2,12 @@
 namespace Ufl\TestClass;
 
 use JsonSerializable;
+use ReturnTypeWillChange;
 use Ufl\Container\ArrayContainer;
 
 class TestArrayContainer extends ArrayContainer implements JsonSerializable
 {
-    protected function &makeContainer() {
+    protected function &makeContainer():array {
         $ary = parent::makeContainer();
         /** @noinspection SuspiciousAssignmentsInspection */
         $ary = array();
@@ -20,7 +21,7 @@ class TestArrayContainer extends ArrayContainer implements JsonSerializable
      * which is a value of any type other than a resource.
      * @since 5.4.0
      */
-    public function jsonSerialize()
+    #[ReturnTypeWillChange] public function jsonSerialize(): mixed
     {
         $values = $this->getContainer();
         if (is_string($this->prefix)) {

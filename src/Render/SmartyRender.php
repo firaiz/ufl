@@ -16,11 +16,11 @@ use Ufl\System;
 class SmartyRender implements IRender
 {
     /** @var Smarty */
-    protected $smarty;
+    protected Smarty $smarty;
+    /** @var ?string */
+    protected ?string $layout;
     /** @var string */
-    protected $layout;
-    /** @var string */
-    protected $contentName = 'contents';
+    protected string $contentName = 'contents';
 
     /**
      * SmartyRender constructor.
@@ -34,7 +34,7 @@ class SmartyRender implements IRender
      * @param array $configs
      * @return void
      */
-    public function setConfigs($configs)
+    public function setConfigs(array $configs): void
     {
         $storage = Storage::getInstance();
 
@@ -59,12 +59,12 @@ class SmartyRender implements IRender
     }
 
     /**
-     * @param string|array $name
-     * @param mixed $var
+     * @param array|string $name
+     * @param mixed|null $var
      * @param bool $noCache
      * @return static
      */
-    public function assign($name, $var = null, $noCache = false)
+    public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
         $this->smarty->assign($name, $var, $noCache);
         return $this;
@@ -76,7 +76,7 @@ class SmartyRender implements IRender
      * @throws Exception
      * @throws SmartyException
      */
-    public function compile($template)
+    public function compile(string $template): string
     {
         if ($this->isLayoutMode()) {
             $this->smarty->assign($this->getContentName(), $template);
@@ -88,15 +88,15 @@ class SmartyRender implements IRender
     /**
      * @return bool
      */
-    public function isLayoutMode()
+    public function isLayoutMode(): bool
     {
         return is_string($this->layout);
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getContentName()
+    public function getContentName(): ?string
     {
         return $this->isLayoutMode() ? $this->contentName : null;
     }
@@ -105,7 +105,7 @@ class SmartyRender implements IRender
      * @param $contentName
      * @return void
      */
-    public function setContentName($contentName)
+    public function setContentName($contentName): void
     {
         $this->contentName = $contentName;
     }
@@ -113,7 +113,7 @@ class SmartyRender implements IRender
     /**
      * @return string
      */
-    public function getLayoutPath()
+    public function getLayoutPath(): ?string
     {
         return $this->layout;
     }
@@ -121,8 +121,9 @@ class SmartyRender implements IRender
     /**
      * @param string $template
      * @return bool
+     * @throws SmartyException
      */
-    public function templateExists($template)
+    public function templateExists($template): bool
     {
         return $this->smarty->templateExists($template);
     }
@@ -131,7 +132,7 @@ class SmartyRender implements IRender
      * @param string $layout is template path
      * @return void
      */
-    public function setLayoutPath($layout)
+    public function setLayoutPath(string $layout): void
     {
         $this->layout = $layout;
     }

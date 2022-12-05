@@ -3,12 +3,13 @@
 namespace Ufl;
 
 
+use Ufl\Traits\SingletonTrait;
+
 class Session
 {
-    /** @var static */
-    protected static $instance;
+    use SingletonTrait;
 
-    protected $status = false;
+    protected bool $status = false;
 
     /**
      * Session constructor.
@@ -18,21 +19,9 @@ class Session
     }
 
     /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (!(self::$instance instanceof static)) {
-            self::$instance = new static();
-        }
-
-        return self::$instance;
-    }
-
-    /**
      *
      */
-    public function start()
+    public function start(): void
     {
         if ($this->isStarted()) {
             return;
@@ -43,7 +32,7 @@ class Session
     /**
      * @return bool
      */
-    public function isStarted()
+    public function isStarted(): bool
     {
         return $this->status;
     }
@@ -52,7 +41,7 @@ class Session
      * @param bool $deleteOld
      * @return bool
      */
-    public function regenerate($deleteOld = false)
+    public function regenerate(bool $deleteOld = false): bool
     {
         if (!$this->isStarted()) {
             return false;
@@ -63,9 +52,9 @@ class Session
 
     /**
      * @param string $name
-     * @param string|int $value
+     * @param mixed $value
      */
-    public function setConfig($name, $value)
+    public function setConfig(string $name, mixed $value): void
     {
         ini_set('session.' . $name, $value);
     }
@@ -73,12 +62,15 @@ class Session
     /**
      * @return array
      */
-    public function &getContainer()
+    public function &getContainer(): array
     {
         return $_SESSION;
     }
 
-    public function getSID()
+    /**
+     * @return string|bool|null
+     */
+    public function getSID(): string|bool|null
     {
         if (!$this->isStarted()) {
             return null;

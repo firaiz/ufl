@@ -2,10 +2,12 @@
 
 namespace Ufl;
 
+use Closure;
 use Ufl\Router\CallableContainer;
 use Ufl\Router\IRouter;
 use Ufl\Router\IRouterContainer;
 use Ufl\Router\SimpleRouter;
+use Ufl\Traits\SingletonTrait;
 
 /**
  * Class Dispatcher
@@ -13,14 +15,12 @@ use Ufl\Router\SimpleRouter;
  */
 class Dispatcher
 {
-    /**
-     * @var static
-     */
-    protected static $instance;
+    use SingletonTrait;
+
     /**
      * @var IRouter
      */
-    protected $router;
+    protected IRouter $router;
 
     /**
      * Router constructor.
@@ -31,23 +31,12 @@ class Dispatcher
     }
 
     /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (!(static::$instance instanceof static)) {
-            static::$instance = new static();
-        }
-        return static::$instance;
-    }
-
-    /**
-     * @param IRouter $router
+     * @param IRouter|null $router
      * @return void
      */
-    public function init($router = null)
+    public function init(IRouter $router = null): void
     {
-        if (!($this->router instanceof IRouter) && is_null($router)) {
+        if (is_null($router)) {
             $router = new SimpleRouter();
         }
 
@@ -60,7 +49,7 @@ class Dispatcher
      * @return void
      * @throws Exception\Route\NotFound
      */
-    public function dispatch()
+    public function dispatch(): void
     {
         $routeContainer = $this->router->getContainer();
         if ($routeContainer instanceof IRouterContainer && $routeContainer->isValid()) {
@@ -72,9 +61,9 @@ class Dispatcher
     }
 
     /**
-     * @param callable $closure
+     * @param Closure $closure
      */
-    public function initNoRoute($closure)
+    public function initNoRoute(Closure $closure): void
     {
         $this->router->setNoRoute(new CallableContainer($closure));
     }
@@ -83,7 +72,7 @@ class Dispatcher
      * @param string $routePath
      * @param mixed $detector
      */
-    public function add($routePath, $detector)
+    public function add(string $routePath, mixed $detector): void
     {
         $this->router->add($routePath, $detector);
     }

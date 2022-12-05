@@ -2,20 +2,22 @@
 
 namespace Ufl\Cache;
 
+use Closure;
+
 /**
  * Class Initializer
  * @package Ufl\Cache
  */
 class Initializer
 {
-    const CACHE_TYPE_SQLite3 = 'SQLite3';
+    public const CACHE_TYPE_SQLite3 = 'SQLite3';
 
-    /** @var Callable */
-    private $paramGenerator;
+    /** @var Closure */
+    private Closure $paramGenerator;
     /** @var string */
-    private $cacheType;
+    private mixed $cacheType;
 
-    public function __construct($callable, $cacheType = self::CACHE_TYPE_SQLite3)
+    public function __construct(Closure $callable, $cacheType = self::CACHE_TYPE_SQLite3)
     {
         $this->paramGenerator = $callable;
         $this->cacheType = $cacheType;
@@ -24,21 +26,21 @@ class Initializer
     /**
      * @return string
      */
-    public function getCacheType()
+    public function getCacheType(): string
     {
         return $this->cacheType;
     }
 
     /**
      * Doctrine Cache initial parameters
-     * @return Callable
+     * @return Closure
      *
      * callable example for SQLite cache
      * function () use($path) {
      *  return [new SQLite3($path), 'exampleCache'];
      * }
      */
-    public function getParamGenerator()
+    public function getParamGenerator(): Closure
     {
         return $this->paramGenerator;
     }

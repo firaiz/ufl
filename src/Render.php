@@ -3,15 +3,16 @@
 namespace Ufl;
 
 use Ufl\Render\IRender;
+use Ufl\Traits\SingletonTrait;
 
 class Render implements IRender
 {
-    /** @var Render */
-    protected static $instance;
+    use SingletonTrait;
+
     /** @var IRender */
-    protected $render;
+    protected IRender $render;
     /** @var array */
-    protected $headers = array();
+    protected array $headers = array();
 
     /**
      * View constructor.
@@ -32,13 +33,13 @@ class Render implements IRender
     /**
      * @param string $engine is class name. Have a implemented Render interface
      */
-    protected function initRender($engine)
+    protected function initRender(string $engine): void
     {
         $render = __NAMESPACE__ . '\\Render\\' . $engine . 'Render';
         $this->render = new $render();
     }
 
-    private function setDefaultHeaders($headers)
+    private function setDefaultHeaders($headers): void
     {
         $this->headers = $headers;
     }
@@ -47,7 +48,7 @@ class Render implements IRender
      * @param array $configs
      * @return void
      */
-    public function setConfigs($configs)
+    public function setConfigs(array $configs): void
     {
         $this->getRender()->setConfigs($configs);
     }
@@ -55,12 +56,12 @@ class Render implements IRender
     /**
      * @return IRender
      */
-    private function getRender()
+    private function getRender(): IRender
     {
         return $this->render;
     }
 
-    public function getDefaultHeaders()
+    public function getDefaultHeaders(): array
     {
         return $this->headers;
     }
@@ -68,41 +69,30 @@ class Render implements IRender
     /**
      * @param string $templatePath
      */
-    public function setLayout($templatePath)
+    public function setLayout(string $templatePath): void
     {
         $this->getRender()->setLayoutPath($templatePath);
     }
 
     /**
-     * @param string|array $name
-     * @param mixed $var
+     * @param array|string $name
+     * @param mixed|null $var
      * @param bool $noCache
      * @return static
      */
-    public function assign($name, $var = null, $noCache = false)
+    public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
         $this->getRender()->assign($name, $var, $noCache);
         return $this;
     }
 
     /**
-     * @param $template
+     * @param string $template
      * @return string
      */
-    public function compile($template)
+    public function compile(string $template): string
     {
         return $this->getRender()->compile($template);
-    }
-
-    /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (!(static::$instance instanceof static)) {
-            static::$instance = new static();
-        }
-        return static::$instance;
     }
 
     /**
@@ -118,7 +108,7 @@ class Render implements IRender
      * @param string $layout is template path
      * @return void
      */
-    public function setLayoutPath($layout)
+    public function setLayoutPath(string $layout)
     {
         $this->getRender()->setLayoutPath($layout);
     }

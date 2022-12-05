@@ -2,25 +2,26 @@
 
 namespace Ufl;
 
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
-use Exception;
 use JsonSerializable;
 use Serializable;
 
 class Model implements Serializable, JsonSerializable
 {
-    private $_findKeyName = 'id';
-    private $_initValues = array();
-    private static $_inflector;
+    private string $_findKeyName = 'id';
+    private array $_initValues = array();
+    private static Inflector $_inflector;
 
     /**
      * Model constructor.
-     * @param mixed $findKey
-     * @param string $findKeyName
+     * @param ?mixed $findKey
+     * @param ?string $findKeyName
+     * @throws Exception
      */
-    public function __construct($findKey = null, $findKeyName = null)
+    public function __construct(mixed $findKey = null, ?string $findKeyName = null)
     {
         if (is_string($findKeyName)) {
             $this->setFindKeyName($findKeyName);
@@ -44,10 +45,10 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @param $findKey
+     * @param mixed $findKey
      * @return QueryBuilder
      */
-    protected function initQuery($findKey)
+    protected function initQuery(mixed $findKey): QueryBuilder
     {
         return static::builder()
             ->select('*')
@@ -58,10 +59,11 @@ class Model implements Serializable, JsonSerializable
 
     /**
      * @param mixed $findKey
+     * @throws Exception
      */
-    protected function init($findKey)
+    protected function init(mixed $findKey): void
     {
-        $row = $this->initQuery($findKey)->execute()->fetch();
+        $row = $this->initQuery($findKey)->executeQuery()->fetchAssociative();
         if (!is_array($row)) {
             $this->{$this->getFindKeyName()} = $findKey;
             return;
@@ -72,7 +74,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return Database
      */
-    public static function db()
+    public static function db(): Database
     {
         return Database::getInstance();
     }
@@ -81,15 +83,15 @@ class Model implements Serializable, JsonSerializable
      * @param string $name
      * @return string
      */
-    public static function quoteIdentifier($name)
+    public static function quoteIdentifier(string $name): string
     {
-        return static::builder()->getConnection()->quoteIdentifier($name);
+        return static::db()->getConnection()->quoteIdentifier($name);
     }
 
     /**
      * @return QueryBuilder
      */
-    protected static function builder()
+    protected static function builder(): QueryBuilder
     {
         return static::db()->builder();
     }
@@ -97,9 +99,9 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return string
      */
-    public static function tableName()
+    public static function tableName(): string
     {
-        $ary = array_reverse(explode('\\', get_called_class()));
+        $ary = array_reverse(explode('\\', static::class));
         return static::tableize(static::inflector()->pluralize(reset($ary)));
     }
 
@@ -107,7 +109,7 @@ class Model implements Serializable, JsonSerializable
      * @param string $word
      * @return string
      */
-    protected static function tableize($word)
+    protected static function tableize(string $word): string
     {
         return static::inflector()->tableize($word);
     }
@@ -115,7 +117,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @param array $row
      */
-    private function initFields($row)
+    private function initFields(array $row): void
     {
         foreach ($row as $name => $value) {
             $this->{static::toField($name)} = $value;
@@ -127,7 +129,7 @@ class Model implements Serializable, JsonSerializable
      * @param string $filed
      * @return string
      */
-    public static function toField($filed)
+    public static function toField(string $filed): string
     {
         return static::inflector()->camelize($filed);
     }
@@ -136,7 +138,7 @@ class Model implements Serializable, JsonSerializable
      * @param array $row
      * @return static
      */
-    protected static function import($row)
+    protected static function import(array $row): static
     {
         $obj = new static();
         $obj->initFields($row);
@@ -144,16 +146,16 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @return \Doctrine\DBAL\Result|int
-     * @throws \Doctrine\DBAL\Exception
+     * @return int
+     * @throws Exception
      */
-    public function delete()
+    public function delete(): int
     {
         return static::builder()
             ->delete(static::tableName())
             ->where(static::quoteIdentifier($this->getFindKeyName()) . ' = :id')
             ->setParameter('id', $this->{$this->getFindKeyName()})
-            ->execute();
+            ->executeQuery()->rowCount();
     }
 
     /**
@@ -161,7 +163,7 @@ class Model implements Serializable, JsonSerializable
      * @return static
      * @throws Exception
      */
-    public function save($isCreating = false)
+    public function save(bool $isCreating = false): static
     {
         if ($isCreating && !$this->isExists()) {
             return static::create(static::toTableizeArray($this->toArray()));
@@ -192,7 +194,7 @@ class Model implements Serializable, JsonSerializable
             $qb->setParameter($key, $value);
         }
 
-        if ($qb->execute() === 1) {
+        if ($qb->executeQuery()->rowCount() === 1) {
             $this->initFields($updateRow);
             return $this;
         }
@@ -203,17 +205,18 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return bool
      */
-    public function isExists()
+    public function isExists(): bool
     {
         return 0 < count($this->_initValues);
     }
 
     /**
      * @param $array
-     * @param string $findKeyName unused parameter. Compatibility only implementation
+     * @param string|null $findKeyName unused parameter. Compatibility only implementation
      * @return static is new created object
+     * @throws Exception
      */
-    public static function create($array, $findKeyName = null)
+    public static function create($array, string $findKeyName = null): static
     {
         $qb = static::builder()
             ->insert(static::tableName());
@@ -222,9 +225,9 @@ class Model implements Serializable, JsonSerializable
             $qb->setValue(static::quoteIdentifier($key), ':' . $key)
                 ->setParameter($key, $value);
         }
-        $qb->execute();
+        $qb->executeQuery();
 
-        $newId = $qb->getConnection()->lastInsertId();
+        $newId = static::db()->lastInsertId();
         $newInstance = new static();
         if (is_string($findKeyName) && $newInstance->getFindKeyName() !== $findKeyName) {
             $newInstance->setFindKeyName($findKeyName);
@@ -237,7 +240,7 @@ class Model implements Serializable, JsonSerializable
      * @param array $array
      * @return array
      */
-    public static function toTableizeArray($array)
+    public static function toTableizeArray(array $array): array
     {
         $result = array();
         foreach ($array as $key => $value) {
@@ -249,7 +252,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $row = get_object_vars($this);
         unset($row['_initValues'], $row['_findKeyName']);
@@ -257,10 +260,10 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @param array $row
+     * @param ?array $row
      * @return array
      */
-    public function diff($row = null)
+    public function diff(?array $row = null): array
     {
         if (is_null($row)) {
             $row = $this->toArray();
@@ -287,7 +290,7 @@ class Model implements Serializable, JsonSerializable
      * @param array $array
      * @return array
      */
-    public static function toFiledArray($array)
+    public static function toFiledArray(array $array): array
     {
         $result = array();
         foreach ($array as $key => $value) {
@@ -299,7 +302,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return mixed
      */
-    public function getIndex()
+    public function getIndex(): mixed
     {
         return $this->{self::toField($this->getFindKeyName())};
     }
@@ -310,7 +313,7 @@ class Model implements Serializable, JsonSerializable
      * @param bool $isStrict
      * @return bool
      */
-    public function eqByKey($obj, $key, $isStrict = true)
+    public function eqByKey(mixed $obj, string $key, bool $isStrict = true): bool
     {
         $filed = static::toField($key);
         if (!property_exists($this, $filed) || !property_exists($obj, $filed)) {
@@ -327,7 +330,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @param array $row
      */
-    public function overwrite($row)
+    public function overwrite(array $row): void
     {
         foreach ($row as $filedKey => $value) {
             if (array_key_exists($filedKey, $this->_initValues)) {
@@ -339,7 +342,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @param array $row
      */
-    public function initOverwrite($row)
+    public function initOverwrite(array $row): void
     {
         $checkers = array();
         foreach ($row as $key => $v) {
@@ -356,15 +359,15 @@ class Model implements Serializable, JsonSerializable
      * @param string $key
      * @return mixed
      */
-    public function getOldValue($key)
+    public function getOldValue(string $key): mixed
     {
-        return array_key_exists($key, $this->_initValues) ? $this->_initValues[$key] : null;
+        return $this->_initValues[$key] ?? null;
     }
 
     /**
      * @return string[]
      */
-    public function getOldValues()
+    public function getOldValues(): array
     {
         return $this->_initValues;
     }
@@ -372,7 +375,7 @@ class Model implements Serializable, JsonSerializable
     /**
      * @param string $findKeyName
      */
-    protected function setFindKeyName($findKeyName)
+    protected function setFindKeyName(string $findKeyName): void
     {
         $this->_findKeyName = $findKeyName;
     }
@@ -380,47 +383,36 @@ class Model implements Serializable, JsonSerializable
     /**
      * @return string
      */
-    protected function getFindKeyName()
+    protected function getFindKeyName(): string
     {
         return $this->_findKeyName;
     }
 
-    /**
-     * String representation of object
-     * @link https://php.net/manual/en/serializable.serialize.php
-     * @return string the string representation of the object or null
-     * @since 5.1.0
-     */
     public function serialize()
     {
-        $row = self::toTableizeArray($this->toArray());
-        return serialize(array('row' => $row, 'key' => $this->getFindKeyName()));
+        // empty
     }
 
-    /**
-     * Constructs the object
-     * @link https://php.net/manual/en/serializable.unserialize.php
-     * @param string $serialized <p>
-     * The string representation of the object.
-     * </p>
-     * @return void
-     * @since 5.1.0
-     */
     public function unserialize($serialized)
     {
-        $config = unserialize($serialized);
-        $this->setFindKeyName($config['key']);
-        $this->initFields($config['row']);
+        // empty
     }
 
-    /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
-     */
-    public function jsonSerialize()
+    public function __serialize(): array
+    {
+        return [
+            'row' => self::toTableizeArray($this->toArray()),
+            'key' => $this->getFindKeyName()
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->setFindKeyName($data['key']);
+        $this->initFields($data['row']);
+    }
+
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }

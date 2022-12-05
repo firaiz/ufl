@@ -10,20 +10,20 @@ interface IContainer
 {
     /**
      * @param $name
-     * @param mixed $default
+     * @param mixed|null $default
      * @return mixed
      */
-    public function get($name, $default = null);
+    public function get($name, mixed $default = null): mixed;
 
     /**
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      * @return void
      */
-    public function set($name, $value);
+    public function set(string $name, mixed $value);
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function del($name = null);
+    public function del(string $name = null);
 }

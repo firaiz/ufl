@@ -11,7 +11,7 @@ class ArrayContainer extends AbstractContainer
     /**
      * @return array
      */
-    protected function &makeContainer()
+    protected function &makeContainer(): array
     {
         static $val = array();
         return $val;

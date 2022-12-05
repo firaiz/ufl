@@ -2,14 +2,17 @@
 
 namespace Ufl;
 
+use JsonException;
+use Ufl\Traits\SingletonTrait;
+
 class Response
 {
-    /** @var static */
-    protected static $instance;
-    /** @var Render */
-    protected $render;
+    use SingletonTrait;
+
+    /** @var ?Render */
+    protected ?Render $render;
     /** @var Header */
-    private $header;
+    private Header $header;
 
     /**
      * View constructor.
@@ -20,38 +23,27 @@ class Response
         $this->header->reset();
     }
 
-    protected function initRender()
+    protected function initRender(): void
     {
         $this->render = Render::getInstance();
         $this->header->add($this->render->getDefaultHeaders());
     }
 
     /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (!(static::$instance instanceof static)) {
-            static::$instance = new static();
-        }
-        return static::$instance;
-    }
-
-    /**
      * @param string $templatePath
      */
-    public function setLayout($templatePath)
+    public function setLayout(string $templatePath): void
     {
         $this->render()->setLayout($templatePath);
     }
 
     /**
-     * @param string|array $name
-     * @param mixed $var
+     * @param array|string $name
+     * @param mixed|null $var
      * @param bool $noCache
      * @return static
      */
-    public function assign($name, $var = null, $noCache = false)
+    public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
         $this->render()->assign($name, $var, $noCache);
         return $this;
@@ -60,7 +52,7 @@ class Response
     /**
      * @param string $template
      */
-    public function html($template)
+    public function html(string $template): void
     {
         $this->header()->flush();
         echo $this->compileHtml($template);
@@ -69,7 +61,7 @@ class Response
     /**
      * @return Header
      */
-    public function header()
+    public function header(): Header
     {
         return $this->header;
     }
@@ -78,7 +70,7 @@ class Response
      * @param string $template
      * @return string
      */
-    public function compileHtml($template)
+    public function compileHtml(string $template): string
     {
         return $this->render()->compile($template);
     }
@@ -86,12 +78,13 @@ class Response
     /**
      * @param mixed $data
      * @param string $charset
+     * @throws JsonException
      */
-    public function json($data, $charset = 'utf-8')
+    public function json(mixed $data, string $charset = 'utf-8'): void
     {
         $this->header()->set(array('Content-Type' => 'application/json; charset=' . $charset));
         $this->header()->flush();
-        echo json_encode($data);
+        echo json_encode($data, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -99,7 +92,7 @@ class Response
      * @param string $downloadFileName is local file name
      * @param string $contentType
      */
-    public function download($contents, $downloadFileName, $contentType = 'application/octet-stream')
+    public function download(mixed $contents, string $downloadFileName, string $contentType = 'application/octet-stream'): void
     {
         $isFile = file_exists($contents) && is_readable($contents) && is_file($contents);
 
@@ -115,7 +108,7 @@ class Response
 
         $header = $this->header();
         $encode = mb_detect_encoding($downloadFileName, 'SJIS,SJIS-win,EUC-JP,UTF-8', true);
-        if ($encode !== 'UTF-8') {
+        if (is_string($encode) && $encode !== 'UTF-8') {
             $downloadFileName = mb_convert_encoding($downloadFileName, 'UTF-8', $encode);
         }
         $header->set(array(
@@ -134,7 +127,7 @@ class Response
     /**
      * @return Render
      */
-    private function render()
+    private function render(): Render
     {
         if (is_null($this->render)) {
             $this->initRender();

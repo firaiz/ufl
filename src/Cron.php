@@ -13,17 +13,17 @@ abstract class Cron implements ICron
     /**
      * @var Database
      */
-    protected $db;
+    protected Database $db;
 
     /**
      * @var Config
      */
-    protected $config;
+    protected Config $config;
 
     /**
      * @var Request
      */
-    protected $request;
+    protected Request $request;
 
     final public function __construct()
     {

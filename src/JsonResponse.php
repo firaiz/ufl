@@ -2,29 +2,33 @@
 
 namespace Ufl;
 
+use JsonException;
+
 /**
  * Class JsonResponse
  * @package Ufl
  */
 class JsonResponse extends Response
 {
-    private $assigns = array();
+    private array $assigns = array();
 
     /**
      * @param array|string $name
-     * @param mixed $var
+     * @param mixed|null $var
      * @param false $noCache
-     * @return JsonResponse|void
+     * @return static
      */
-    public function assign($name, $var = null, $noCache = false)
+    public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
         $this->assigns[$name] = $var;
+        return $this;
     }
 
     /**
-     * @param string $charset
+     * @param ?string $charset
+     * @throws JsonException
      */
-    public function write($charset = null)
+    public function write(?string $charset = null): void
     {
         $this->json($this->assigns, $charset);
     }

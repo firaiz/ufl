@@ -2,6 +2,7 @@
 
 namespace Ufl;
 
+use Exception;
 use Ufl\Holiday\Holiday as HolidayBase;
 use Ufl\Holiday\Japan as JapanHoliday;
 
@@ -13,15 +14,15 @@ class Holiday
 {
     /**
      * @param int $year
-     * @param string [$countryCode]
+     * @param string $countryCode
      * @return HolidayBase[]|array
+     * @throws Exception
      */
-    public static function listOf($year, $countryCode = 'JP')
+    public static function listOf(int $year, string $countryCode = 'JP'): array
     {
-        switch ($countryCode) {
-            case 'JP':
-                return JapanHoliday::listOf($year);
-        }
-        return array();
+        return match ($countryCode) {
+            'JP' => JapanHoliday::listOf($year),
+            default => array(),
+        };
     }
 }

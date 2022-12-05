@@ -2,25 +2,26 @@
 
 namespace Ufl;
 
+use JsonException;
 use stdClass;
 
 class Request
 {
-    const TYPE_GET = 'GET';
-    const TYPE_POST = 'POST';
-    const TYPE_CLI = 'CLI';
-    const TYPE_PUT = 'PUT';
-    const TYPE_DELETE = 'DELETE';
-    const TYPE_OPTIONS = 'OPTIONS';
-    const TYPE_REQUEST = 'REQUEST';
+    public const TYPE_GET = 'GET';
+    public const TYPE_POST = 'POST';
+    public const TYPE_CLI = 'CLI';
+    public const TYPE_PUT = 'PUT';
+    public const TYPE_DELETE = 'DELETE';
+    public const TYPE_OPTIONS = 'OPTIONS';
+    public const TYPE_REQUEST = 'REQUEST';
 
-    protected $vars = array();
-    protected $defaultDetectOrders = array(
+    protected array $vars = array();
+    protected array $defaultDetectOrders = array(
         self::TYPE_POST => true,
         self::TYPE_GET => true,
         self::TYPE_REQUEST => true,
     );
-    protected $detectOrders;
+    protected array $detectOrders;
 
     /**
      * Request constructor.
@@ -51,7 +52,7 @@ class Request
      * @param string $requestType
      * @return bool
      */
-    public function is($requestType)
+    public function is(string $requestType): bool
     {
         return $this->detectRequest() === $requestType;
     }
@@ -59,7 +60,7 @@ class Request
     /**
      * @return false|string
      */
-    public function input()
+    public function input(): bool|string
     {
         return file_get_contents('php://input');
     }
@@ -67,17 +68,18 @@ class Request
     /**
      * @param bool $toArray
      * @return stdClass|array
+     * @throws JsonException
      */
-    public function json($toArray = false)
+    public function json(bool $toArray = false): array|stdClass
     {
-        return json_decode($this->input(), $toArray);
+        return json_decode($this->input(), $toArray, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
      * detect request method
      * @return string
      */
-    private function detectRequest()
+    private function detectRequest(): string
     {
         if (!isset($_SERVER["REQUEST_METHOD"])) {
             return self::TYPE_CLI;
@@ -89,12 +91,8 @@ class Request
      * @param array $order key => bool array
      * @return bool
      */
-    public function setDetectOrder($order)
+    public function setDetectOrder(array $order): bool
     {
-        if (!is_array($order)) {
-            return false;
-        }
-
         $isOk = true;
         foreach ($order as $type) {
             $isOk = $isOk && array_key_exists($type, $this->defaultDetectOrders);
@@ -108,10 +106,10 @@ class Request
     /**
      * get the post request value
      * @param string $key
-     * @param mixed $default
+     * @param mixed|null $default
      * @return mixed
      */
-    public function post($key, $default = null)
+    public function post(string $key, mixed $default = null): mixed
     {
         return $this->val(self::TYPE_POST, $key, $default);
     }
@@ -122,7 +120,7 @@ class Request
      * @param mixed $default
      * @return mixed
      */
-    protected function val($targetTypes, $key, $default)
+    protected function val(array|string $targetTypes, string $key, mixed $default): mixed
     {
         if (is_string($targetTypes)) {
             $targetTypes = array($targetTypes => true);
@@ -138,20 +136,20 @@ class Request
 
     /**
      * @param $type
-     * @return array is typed arrays
+     * @return array|CommandLine is typed arrays
      */
-    private function getTypeVars($type)
+    private function getTypeVars($type): array|CommandLine
     {
         return $this->vars[$type];
     }
 
     /**
      * get the cli options
-     * @param string|int $key
+     * @param int|string $key
      * @param mixed $default
      * @return mixed
      */
-    public function cli($key, $default = null)
+    public function cli(int|string $key, mixed $default = null): mixed
     {
         return $this->val(self::TYPE_CLI, $key, $default);
     }
@@ -162,7 +160,7 @@ class Request
      * @param mixed $default
      * @return mixed
      */
-    public function both($key, $default = null)
+    public function both(string $key, mixed $default = null): mixed
     {
         return $this->val($this->detectOrders, $key, $default);
     }
@@ -170,10 +168,10 @@ class Request
     /**
      * get the get request value
      * @param string $key
-     * @param mixed $default
+     * @param mixed|null $default
      * @return mixed
      */
-    public function get($key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         return $this->val(self::TYPE_GET, $key, $default);
     }

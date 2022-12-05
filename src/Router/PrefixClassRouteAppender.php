@@ -3,14 +3,14 @@ namespace Ufl\Router;
 
 class PrefixClassRouteAppender
 {
-    private $routes = array();
+    private array $routes = array();
 
     /**
      * @param string $routPath
      * @param mixed $detector
      * @return static
      */
-    public function add($routPath, $detector)
+    public function add(string $routPath, mixed $detector)
     {
         $this->routes[PrefixClassRouter::pathToKey($routPath)] = $detector;
         return $this;
@@ -19,7 +19,7 @@ class PrefixClassRouteAppender
     /**
      * @return array
      */
-    public function getRoutes()
+    public function getRoutes(): array
     {
         return $this->routes;
     }

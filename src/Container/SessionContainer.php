@@ -10,7 +10,7 @@ use Ufl\Session;
  */
 class SessionContainer extends AbstractContainer
 {
-    protected function &makeContainer()
+    protected function &makeContainer(): array
     {
         return Session::getInstance()->getContainer();
     }

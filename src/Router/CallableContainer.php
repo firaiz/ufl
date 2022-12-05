@@ -2,6 +2,8 @@
 
 namespace Ufl\Router;
 
+use Closure;
+
 /**
  * Class CallableContainer
  * @package Ufl\Router
@@ -16,20 +18,20 @@ class CallableContainer implements IRouterContainer
     /**
      * @var array
      */
-    private $params;
+    private array $params;
 
     /**
      * ContextContainer constructor.
-     * @param callable $context
+     * @param Closure $context
      * @param array $params
      */
-    public function __construct($context, $params = array())
+    public function __construct(Closure $context, array $params = [])
     {
         $this->context = $context;
         $this->params = $params;
     }
 
-    public function exec()
+    public function exec(): void
     {
         if ($this->isValid()) {
             call_user_func_array($this->context, $this->getParams());
@@ -39,7 +41,7 @@ class CallableContainer implements IRouterContainer
     /**
      * @return bool
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return is_callable($this->context);
     }
@@ -47,7 +49,7 @@ class CallableContainer implements IRouterContainer
     /**
      * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->params;
     }
@@ -55,7 +57,7 @@ class CallableContainer implements IRouterContainer
     /**
      * @param array $params
      */
-    public function setParams($params)
+    public function setParams(array $params): void
     {
         $this->params = $params;
     }

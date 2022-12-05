@@ -11,20 +11,20 @@ interface IRouterContainer
     /**
      * @return void
      */
-    public function exec();
+    public function exec(): void;
 
     /**
      * @return bool
      */
-    public function isValid();
+    public function isValid(): bool;
 
     /**
      * @return array
      */
-    public function getParams();
+    public function getParams(): array;
 
     /**
      * @param array $params
      */
-    public function setParams($params);
+    public function setParams(array $params);
 }

@@ -8,9 +8,9 @@ namespace Ufl;
  */
 class ArrayUtil
 {
-    const DELIMITER = '.';
-    const REPLACEMENT = '{__REPLACE__}';
-    public static $delimiter = self::DELIMITER;
+    public const DELIMITER = '.';
+    public const REPLACEMENT = '{__REPLACE__}';
+    public static string $delimiter = self::DELIMITER;
 
     /**
      * Add an element to an array using "dot" notation
@@ -21,7 +21,7 @@ class ArrayUtil
      *
      * @return array
      */
-    public static function add(&$array, $key, $value)
+    public static function add(array &$array, string $key, mixed $value): array
     {
         $setArray = self::get($array, $key, array());
         $setArray[] = $value;
@@ -33,12 +33,12 @@ class ArrayUtil
      * Get an item from an array using "dot" notation.
      *
      * @param array $array
-     * @param string $key
-     * @param mixed $default
+     * @param ?string $key
+     * @param mixed|null $default
      *
      * @return mixed
      */
-    public static function get($array, $key, $default = null)
+    public static function get(array $array, ?string $key, mixed $default = null): mixed
     {
         if (is_null($key)) {
             return $array;
@@ -63,7 +63,7 @@ class ArrayUtil
      * @param string $key
      * @return array
      */
-    public static function toKeys($key)
+    public static function toKeys(string $key): array
     {
         return explode(self::$delimiter, $key);
     }
@@ -75,9 +75,9 @@ class ArrayUtil
      *
      * @return mixed
      */
-    public static function value($value)
+    public static function value(mixed $value): mixed
     {
-        return is_callable($value) ? call_user_func($value) : $value;
+        return is_callable($value) ? $value() : $value;
     }
 
     /**
@@ -86,12 +86,12 @@ class ArrayUtil
      * If no key is given to the method, the entire array will be replaced.
      *
      * @param array $array
-     * @param string $key
+     * @param ?string $key
      * @param mixed $value
      *
      * @return array
      */
-    public static function set(&$array, $key, $value)
+    public static function set(array &$array,? string $key, mixed $value): array
     {
         if (is_null($key)) {
             return $array = $value;
@@ -122,7 +122,7 @@ class ArrayUtil
      * @param string $key
      * @return int
      */
-    public static function count($array, $key)
+    public static function count(array $array, string $key): int
     {
         return count(self::get($array, $key, array()));
     }
@@ -131,10 +131,10 @@ class ArrayUtil
      * Check if an item exists in an array using "dot" notation.
      *
      * @param array $array
-     * @param string $key
+     * @param ?string $key
      * @return bool
      */
-    public static function has($array, $key)
+    public static function has(array $array, ?string $key): bool
     {
         if (empty($array) || is_null($key)) {
             return false;
@@ -160,7 +160,7 @@ class ArrayUtil
      * @param array $array
      * @return mixed
      */
-    public static function head($array)
+    public static function head(array $array): mixed
     {
         return reset($array);
     }
@@ -170,9 +170,9 @@ class ArrayUtil
      *
      * @param string $key
      * @param int $number
-     * @return string
+     * @return string|null
      */
-    public static function keyValue($key, $number)
+    public static function keyValue(string $key, int $number): ?string
     {
         $keys = self::toKeys($key);
         return isset($keys[$number]) ? str_replace(self::REPLACEMENT, self::$delimiter, $keys[$number]) : null;
@@ -181,11 +181,11 @@ class ArrayUtil
     /**
      * Convert to key string
      *
-     * @param string|array $value
+     * @param array|string $value
      * @param bool $disableEscape
      * @return string
      */
-    public static function toKey($value, $disableEscape = false)
+    public static function toKey(array|string $value, bool $disableEscape = false): string
     {
         if ($disableEscape) {
             return implode(self::$delimiter, (array)$value);
@@ -194,7 +194,7 @@ class ArrayUtil
         return implode(
             self::$delimiter,
             array_map(
-                function ($val) {
+                static function ($val) {
                     return str_replace(ArrayUtil::$delimiter, ArrayUtil::REPLACEMENT, (string)$val);
                 },
                 (array)$value

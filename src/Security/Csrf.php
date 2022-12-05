@@ -13,20 +13,20 @@ use Ufl\StringUtility;
  */
 class Csrf
 {
-    const CSRF_TAG = '__secure__';
-    const SECRET_TOKEN = 'SecretToken';
-    const FIXED_TOKEN = 'SecretFixedToken';
+    public const CSRF_TAG = '__secure__';
+    public const SECRET_TOKEN = 'SecretToken';
+    public const FIXED_TOKEN = 'SecretFixedToken';
 
     /**
      * @var SessionContainer
      */
-    private static $container;
+    private static SessionContainer $container;
 
     /**
      * @return SessionContainer
      * @throws NotStarted
      */
-    private static function container()
+    private static function container(): SessionContainer
     {
         if (!(self::$container instanceof SessionContainer)) {
             $session = Session::getInstance();
@@ -41,11 +41,11 @@ class Csrf
     }
 
     /**
-     * @param string $token
+     * @param string|null $token
      * @return string
      * @throws NotStarted
      */
-    protected static function generateToken($token = null)
+    protected static function generateToken(string $token = null): string
     {
         $securityContainer = self::container();
         if (is_null($token)) {
@@ -60,7 +60,7 @@ class Csrf
      * @return string
      * @throws NotStarted
      */
-    public static function takeToken()
+    public static function takeToken(): string
     {
         if (!is_null(self::container())) {
             return self::generateToken();
@@ -73,7 +73,7 @@ class Csrf
      * @return bool
      * @throws NotStarted
      */
-    public static function isValidToken($token)
+    public static function isValidToken(string $token): bool
     {
         return static::takeToken() === $token && $token !== '';
     }
@@ -82,7 +82,7 @@ class Csrf
      * @return string
      * @throws NotStarted
      */
-    public static function regenerateToken()
+    public static function regenerateToken(): string
     {
         return self::generateToken(StringUtility::random(64, false));
     }

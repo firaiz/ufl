@@ -13,29 +13,29 @@ abstract class AbstractRouter implements IRouter
     /**
      * uri path separator
      */
-    const PATH_SEPARATOR = '/';
+    public const PATH_SEPARATOR = '/';
 
     /**
-     * @var string
+     * @var ?string
      */
-    private $pathInfo;
+    private ?string $pathInfo;
 
     /**
-     * @var IRouterContainer
+     * @var ?IRouterContainer
      */
-    private $noRoute;
+    private ?IRouterContainer $noRoute;
 
     /**
      * @return string
      */
-    public function getPathInfo()
+    public function getPathInfo(): string
     {
         if (is_null($this->pathInfo)) {
             if (isset($_SERVER['REDIRECT_PATH_INFO'])) {
                 $_SERVER['PATH_INFO'] = $_SERVER['REDIRECT_PATH_INFO'];
             }
             $selfUri = str_replace(array($_SERVER['DOCUMENT_ROOT'], DIRECTORY_SEPARATOR), array('', '/'), dirname($_SERVER['SCRIPT_FILENAME']));
-            $this->pathInfo = str_replace($selfUri, '', isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '');
+            $this->pathInfo = str_replace($selfUri, '', $_SERVER['PATH_INFO'] ?? '');
             $this->pathInfo = preg_replace('/(\S+)\/$/', '$1', $this->pathInfo);
         }
         return $this->pathInfo;
@@ -44,23 +44,23 @@ abstract class AbstractRouter implements IRouter
     /**
      * @return IRouterContainer
      */
-    public function getContainer()
+    public function getContainer(): IRouterContainer
     {
-        list($context, $params) = $this->makeContextWithParams();
+        [$context, $params] = $this->makeContextWithParams();
         return $this->initContainer($context, $params);
     }
 
     /**
      * @return array [context,params]
      */
-    abstract protected function makeContextWithParams();
+    abstract protected function makeContextWithParams(): array;
 
     /**
      * @param mixed $context
      * @param mixed $params
      * @return IRouterContainer
      */
-    protected function initContainer($context, $params)
+    protected function initContainer(mixed $context, mixed $params): IRouterContainer
     {
         if (!is_array($params)) {
             $params = array();
@@ -71,7 +71,7 @@ abstract class AbstractRouter implements IRouter
     /**
      * @param IRouterContainer $container
      */
-    public function setNoRoute($container)
+    public function setNoRoute(IRouterContainer $container): void
     {
         $this->noRoute = $container;
     }
@@ -80,7 +80,7 @@ abstract class AbstractRouter implements IRouter
      * @return IRouterContainer
      * @throws NotFound
      */
-    public function getNoRoute()
+    public function getNoRoute(): IRouterContainer
     {
         if ($this->noRoute instanceof IRouterContainer) {
             $this->noRoute->setParams(array($this->getPathInfo()));

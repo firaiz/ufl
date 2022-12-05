@@ -4,17 +4,17 @@ namespace Ufl;
 
 use Ufl\Exception\File\NotFound;
 use Ufl\Exception\File\NotWritable;
+use Ufl\Traits\SingletonTrait;
 
 class Storage
 {
-    const DS = DIRECTORY_SEPARATOR;
-    const DEFAULT_PERMISSION = 0755;
+    public const DS = DIRECTORY_SEPARATOR;
+    public const DEFAULT_PERMISSION = 0755;
 
+    use SingletonTrait;
 
-    /** @var static */
-    protected static $instance;
     /** @var string base path */
-    protected $filePath;
+    protected string $filePath;
 
     /**
      * Storage constructor.
@@ -23,8 +23,9 @@ class Storage
      */
     protected function __construct()
     {
+        /** @noinspection PhpUndefinedConstantInspection */
         $this->filePath = defined('STORAGE_DIR') ?
-            STORAGE_DIR : dirname(dirname(dirname(dirname(__DIR__)))).DIRECTORY_SEPARATOR.'storage';
+            STORAGE_DIR : dirname(__DIR__, 4) .DIRECTORY_SEPARATOR.'storage';
 
         if (!file_exists($this->filePath)) {
             throw new NotFound($this->filePath);
@@ -36,23 +37,12 @@ class Storage
     }
 
     /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (!(self::$instance instanceof static)) {
-            self::$instance = new static();
-        }
-        return self::$instance;
-    }
-
-    /**
      * @param string $path
      * @param bool $isCreate
      * @param int $permission
-     * @return string is fullpath
+     * @return string is full-path
      */
-    public function getPath($path, $isCreate = false, $permission = self::DEFAULT_PERMISSION)
+    public function getPath(string $path, bool $isCreate = false, int $permission = self::DEFAULT_PERMISSION): string
     {
         if ($isCreate === false || ($isCreate && $this->create($path, $permission))) {
             return $this->base() . self::DS . $this->replace($path);
@@ -65,7 +55,7 @@ class Storage
      * @param int $permission octet number
      * @return bool
      */
-    public function create($path, $permission = self::DEFAULT_PERMISSION)
+    public function create(string $path, int $permission = self::DEFAULT_PERMISSION): bool
     {
         $dirPath = $this->base() . self::DS . $this->replace($path);
         if (is_writable($this->base())) {
@@ -83,7 +73,7 @@ class Storage
     /**
      * @return string
      */
-    public function base()
+    public function base(): string
     {
         return realpath($this->filePath);
     }
@@ -92,7 +82,7 @@ class Storage
      * @param string $path
      * @return string
      */
-    protected function replace($path)
+    protected function replace(string $path): string
     {
         return str_replace(
             $this->base().self::DS.'storage',

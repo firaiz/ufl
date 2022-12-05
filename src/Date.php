@@ -13,27 +13,27 @@ use Exception;
  */
 class Date
 {
-    const INTERVAL_TYPE_YEAR = 'Y';
-    const INTERVAL_TYPE_MONTH = 'M';
-    const INTERVAL_TYPE_DAY = 'D';
-    const INTERVAL_TYPE_HOUR = 'H';
-    const INTERVAL_TYPE_MINUETS = 'm';
-    const INTERVAL_TYPE_SECOND = 'S';
+    public const INTERVAL_TYPE_YEAR = 'Y';
+    public const INTERVAL_TYPE_MONTH = 'M';
+    public const INTERVAL_TYPE_DAY = 'D';
+    public const INTERVAL_TYPE_HOUR = 'H';
+    public const INTERVAL_TYPE_MINUETS = 'm';
+    public const INTERVAL_TYPE_SECOND = 'S';
 
     /**
      * @param string $timezone init timezone
      */
-    public static function init($timezone = 'Asia/Tokyo')
+    public static function init(string $timezone = 'Asia/Tokyo'): void
     {
         date_default_timezone_set($timezone);
     }
 
     /**
-     * @param string|int|DateTime $date
+     * @param DateTime|int|string|null $date
      * @return string
      * @throws Exception
      */
-    public static function week($date)
+    public static function week(DateTime|int|string|null $date): string
     {
         $weekText = array('日', '月', '火', '水', '木', '金', '土');
         $date = static::object($date);
@@ -41,30 +41,29 @@ class Date
     }
 
     /**
-     * @param string|int|DateTime
+     * @param DateTime|int|string|null $date
      * @return DateTime
      * @throws Exception
      */
-    public static function object($date = null)
+    public static function object(DateTime|int|string|null $date = null): DateTime
     {
         if ($date instanceof DateTime) {
             return clone $date;
         }
 
         if (is_int($date)) {
-            $obj = new DateTime();
-            return $obj->setTimestamp($date);
+            return (new DateTime())->setTimestamp($date);
         }
         return new DateTime($date);
     }
 
     /**
-     * @param string|int|DateTime $time
+     * @param DateTime|int|string|null $time
      * @param int $size
      * @return DateTime[]
      * @throws Exception
      */
-    public static function getWeekDateList($time, $size = 1)
+    public static function getWeekDateList(DateTime|int|string|null $time, int $size = 1): array
     {
         $startDate = static::object($time);
         if ($startDate->format('w') === '0') {
@@ -83,7 +82,7 @@ class Date
      * @return DateInterval
      * @throws Exception
      */
-    public static function createSimpleInterval($type, $span = 1)
+    public static function createSimpleInterval(string $type, int $span = 1): DateInterval
     {
         $format = 'P';
         if ($type === 'H' || $type === 'm' || $type === 'S') {
@@ -98,7 +97,7 @@ class Date
      * @return DateTime[]
      * @throws Exception
      */
-    public static function getDateList($startDate, $endDate)
+    public static function getDateList(DateTime $startDate, DateTime $endDate): array
     {
         $dateIterator = new DatePeriod($startDate, static::createSimpleInterval(static::INTERVAL_TYPE_DAY), $endDate);
 
@@ -110,12 +109,12 @@ class Date
     }
 
     /**
-     * @param string|int|DateTime $startYear
+     * @param DateTime|int|string|null $startYear
      * @param int $dateMargin
      * @return array
      * @throws Exception
      */
-    public static function createYears($startYear, $dateMargin = 2)
+    public static function createYears(DateTime|int|string|null $startYear, int $dateMargin = 2): array
     {
         $startDate = static::object($startYear);
 
@@ -126,7 +125,8 @@ class Date
         $result = array();
         foreach ($dateIterator as $date) {
             /** @var DateTime $date */
-            $result[$date->format('Y')] = $date->format('Y');
+            $year = $date->format('Y');
+            $result[$year] = $year;
         }
         return $result;
     }
@@ -134,7 +134,7 @@ class Date
     /**
      * @return array
      */
-    public static function createMonths()
+    public static function createMonths(): array
     {
         return array(
             1 => 1,
@@ -157,7 +157,7 @@ class Date
      * @return string
      * @throws Exception
      */
-    public static function nowString($format = 'Y-m-d H:i:s')
+    public static function nowString(string $format = 'Y-m-d H:i:s'): string
     {
         return static::now()->format($format);
     }
@@ -166,7 +166,7 @@ class Date
      * @return DateTime
      * @throws Exception
      */
-    public static function now()
+    public static function now(): DateTime
     {
         return static::object();
     }
@@ -175,17 +175,17 @@ class Date
      * @return DateTime
      * @throws Exception
      */
-    public static function today()
+    public static function today(): DateTime
     {
         return static::toDayTime();
     }
 
     /**
-     * @param string|int|DateTime|null $date
+     * @param DateTime|int|string|null $date
      * @return DateTime
      * @throws Exception
      */
-    public static function toDayTime($date = null)
+    public static function toDayTime(DateTime|int|string|null $date = null): DateTime
     {
         $toDay = static::object($date);
         $toDay->setTime(0, 0, 0);
@@ -195,10 +195,10 @@ class Date
     /**
      * @param DateTime $base
      * @param DateTime $target
-     * @return bool|DateInterval
+     * @return DateInterval
      * @throws Exception
      */
-    public static function diffDate($base, $target)
+    public static function diffDate(DateTime $base, DateTime $target): DateInterval
     {
         $diffBase = static::toDayTime($base);
         $diffTarget = static::toDayTime($target);
@@ -212,7 +212,7 @@ class Date
      * @return DateTime
      * @throws Exception
      */
-    public static function add($addType, $date, $dateCount)
+    public static function add(string $addType, DateTime $date, int $dateCount)
     {
         $newDate = clone $date;
         $newDate->add(static::createSimpleInterval($addType, $dateCount));
@@ -220,11 +220,11 @@ class Date
     }
 
     /**
-     * @param string|int|DateTime $date
+     * @param DateTime|int|string|null $date
      * @return DateTime
      * @throws Exception
      */
-    public static function firstDayOfThisMonth($date)
+    public static function firstDayOfThisMonth(DateTime|int|string|null $date): DateTime
     {
         $date = static::toDayTime($date);
         $date->setDate($date->format('Y'), $date->format('m'), 1);
@@ -232,11 +232,11 @@ class Date
     }
 
     /**
-     * @param string|int|DateTime $date
+     * @param DateTime|int|string|null $date
      * @return DateTime
      * @throws Exception
      */
-    public static function lastDayOfThisMonth($date)
+    public static function lastDayOfThisMonth(DateTime|int|string|null $date): DateTime
     {
         $date = static::object($date);
         $date->modify('last day of this month');
@@ -248,46 +248,34 @@ class Date
      * @param $week 0-6 sunday - saturday
      * @return string
      */
-    public static function weekToText($week)
+    public static function weekToText($week): string
     {
-        switch ($week) {
-            case 0:
-                return 'sunday';
-            case 1:
-                return 'monday';
-            case 2:
-                return 'tuesday';
-            case 3:
-                return 'wednesday';
-            case 4:
-                return 'thursday';
-            case 5:
-                return 'friday';
-            case 6:
-                return 'saturday';
-        }
-        return '';
+        return match ($week) {
+            0 => 'sunday',
+            1 => 'monday',
+            2 => 'tuesday',
+            3 => 'wednesday',
+            4 => 'thursday',
+            5 => 'friday',
+            6 => 'saturday',
+            default => '',
+        };
     }
 
     /**
      * @param $weekNo 1-5
      * @return string
      */
-    public static function monthWeekNoToText($weekNo)
+    public static function monthWeekNoToText($weekNo): string
     {
-        switch ($weekNo) {
-            case 1:
-                return 'first';
-            case 2:
-                return 'second';
-            case 3:
-                return 'third';
-            case 4:
-                return 'fourth';
-            case 5:
-                return 'fifth';
-        }
-        return '';
+        return match ($weekNo) {
+            1 => 'first',
+            2 => 'second',
+            3 => 'third',
+            4 => 'fourth',
+            5 => 'fifth',
+            default => '',
+        };
     }
 
     /**
@@ -298,7 +286,7 @@ class Date
      * @return int
      * @throws Exception
      */
-    public static function calcWeekDay($year, $month, $weekNo, $week)
+    public static function calcWeekDay(int $year, int $month, $weekNo, $week): int
     {
         $date = static::object($year . '-' . $month);
         /** @noinspection TypeUnsafeComparisonInspection */
@@ -315,11 +303,11 @@ class Date
      * @param int $year
      * @param int $month
      * @param int $day
-     * @param string [$format]
+     * @param string|null $format
      * @return DateTime|string
      * @throws Exception
      */
-    public static function toDate($year, $month, $day, $format = null)
+    public static function toDate(int $year, int $month, int $day, string $format = null): DateTime|string
     {
         $date = static::object(sprintf('%4d-%02d-%02d', $year, $month, $day));
         return is_null($format) ? $date : $date->format($format);

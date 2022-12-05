@@ -16,21 +16,21 @@ interface IRouter
      * @param mixed $detector
      * @return void
      */
-    public function add($routePath, $detector);
+    public function add(string $routePath, mixed $detector): void;
 
     /**
      * @return IRouterContainer
      */
-    public function getContainer();
+    public function getContainer(): IRouterContainer;
 
     /**
      * @param IRouterContainer $container
      */
-    public function setNoRoute($container);
+    public function setNoRoute(IRouterContainer $container);
 
     /**
      * @return IRouterContainer
      * @throws NotFound
      */
-    public function getNoRoute();
+    public function getNoRoute(): IRouterContainer;
 }

@@ -2,15 +2,18 @@
 
 namespace Ufl;
 
+use JetBrains\PhpStorm\NoReturn;
+use Ufl\Traits\SingletonTrait;
+
 /**
  * Class Header
  * @package Ufl
  */
 class Header
 {
-    private static $instance;
+    use SingletonTrait;
 
-    protected $headers = array();
+    protected array $headers = [];
 
     /**
      * Header constructor.
@@ -20,19 +23,7 @@ class Header
         // empty
     }
 
-
-    /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (!(static::$instance instanceof self)) {
-            static::$instance = new self();
-        }
-        return static::$instance;
-    }
-
-    public function flush()
+    public function flush(): void
     {
         foreach ($this->headers as $name => $values) {
             foreach ($values as $value) {
@@ -44,12 +35,12 @@ class Header
     /**
      * @param int $code
      */
-    public function code($code)
+    public function code(int $code): void
     {
         http_response_code($code);
     }
 
-    private function setHeaders($headers, $isOverWrite)
+    private function setHeaders($headers, $isOverWrite): void
     {
         foreach ($headers as $name => $value) {
             $namedValues = ArrayUtil::get($this->headers, $name, array());
@@ -63,7 +54,7 @@ class Header
     /**
      * @param array $headers
      */
-    public function add($headers)
+    public function add(array $headers): void
     {
         $this->setHeaders($headers, false);
     }
@@ -71,7 +62,7 @@ class Header
     /**
      * @param array $headers
      */
-    public function set($headers)
+    public function set(array $headers): void
     {
         $this->setHeaders($headers, true);
     }
@@ -79,7 +70,7 @@ class Header
     /**
      * clear headers
      */
-    public function reset()
+    public function reset(): void
     {
         $this->headers = array();
     }
@@ -87,7 +78,7 @@ class Header
     /**
      * @return bool
      */
-    public function isSent()
+    public function isSent(): bool
     {
         return headers_sent();
     }
@@ -96,7 +87,7 @@ class Header
      * @param $url
      * @param int $code
      */
-    public function location($url, $code = 302)
+    #[NoReturn] public function location($url, int $code = 302): void
     {
         if (!$this->isSent()) {
             header('Location: ' . $url, true, $code);

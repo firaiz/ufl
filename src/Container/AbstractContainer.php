@@ -11,17 +11,17 @@ use Ufl\ArrayUtil;
 abstract class AbstractContainer implements IContainer
 {
 
-    /** @var string */
-    protected $prefix;
+    /** @var ?string */
+    protected ?string $prefix;
 
-    /** @var array */
-    protected $container;
+    /** @var mixed */
+    protected mixed $container;
 
     /**
      * Session constructor.
-     * @param string $prefix
+     * @param string|null $prefix
      */
-    public function __construct($prefix = null)
+    public function __construct(string $prefix = null)
     {
         if (is_string($prefix)) {
             $this->prefix = $prefix;
@@ -30,9 +30,9 @@ abstract class AbstractContainer implements IContainer
 
     /**
      * unset session
-     * @param string $name
+     * @param string|null $name
      */
-    public function del($name = null)
+    public function del(string $name = null): void
     {
         $container =& $this->getContainer();
         if (is_null($name)) {
@@ -60,10 +60,9 @@ abstract class AbstractContainer implements IContainer
     }
 
     /**
-     * @name string
-     * @return array
+     * @return mixed
      */
-    protected function &getContainer()
+    protected function &getContainer(): mixed
     {
         if (!is_array($this->container)) {
             $this->initContainer();
@@ -74,7 +73,7 @@ abstract class AbstractContainer implements IContainer
     /**
      * init session container
      */
-    protected function initContainer()
+    protected function initContainer(): void
     {
         $container =& $this->makeContainer();
         if (is_string($this->prefix)) {
@@ -93,7 +92,7 @@ abstract class AbstractContainer implements IContainer
      * @param string $name
      * @param mixed $value
      */
-    public function set($name, $value)
+    public function set(string $name, mixed $value): void
     {
         ArrayUtil::set($this->getContainer(), $name, $value);
     }
@@ -101,10 +100,10 @@ abstract class AbstractContainer implements IContainer
     /**
      * get session data
      * @param $name
-     * @param mixed $default
+     * @param mixed|null $default
      * @return mixed
      */
-    public function get($name, $default = null)
+    public function get($name, mixed $default = null):mixed
     {
         return ArrayUtil::get($this->getContainer(), $name, $default);
     }

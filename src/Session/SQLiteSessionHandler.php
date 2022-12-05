@@ -1,10 +1,12 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
 
 namespace Ufl\Session;
 
 use DateTime;
+use Exception;
 use PDO;
 use PDOStatement;
+use ReturnTypeWillChange;
 use Ufl\StringUtility;
 
 /**
@@ -13,10 +15,10 @@ use Ufl\StringUtility;
  */
 class SQLiteSessionHandler implements SessionHandlerInterface
 {
-    /** @var PDO */
-    private $pdo;
+    /** @var ?PDO */
+    private ?PDO $pdo;
     /** @var string */
-    private $savePath;
+    private string $savePath;
 
     public function __construct()
     {
@@ -39,7 +41,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     /**
      * @return int
      */
-    protected function getTime()
+    protected function getTime(): int
     {
         $oldTZ = @date_default_timezone_get();
         date_default_timezone_set('UTC');
@@ -51,80 +53,76 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     /**
      * @return PDO
      */
-    protected function connect()
+    protected function connect(): PDO
     {
-        if ($this->pdo instanceof PDO) {
-            return $this->pdo;
+        if (!($this->pdo instanceof PDO)) {
+            $this->pdo = new PDO('sqlite:' . $this->savePath);
+            $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
-        $this->pdo = new PDO('sqlite:' . $this->savePath);
-        $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $this->pdo;
     }
 
     /**
      * @return PDOStatement
      */
-    protected function createPrepare()
+    protected function createPrepare(): PDOStatement
     {
-        $db = $this->connect();
-        return $db->prepare('CREATE TABLE IF NOT EXISTS sessions ("sid" TEXT(64) NOT NULL,"data" TEXT,"expire_date" INTEGER NOT NULL,PRIMARY KEY ("sid" ASC));');
+        return $this->connect()->prepare('CREATE TABLE IF NOT EXISTS sessions ("sid" TEXT(64) NOT NULL,"data" TEXT,"expire_date" INTEGER NOT NULL,PRIMARY KEY ("sid" ASC));');
     }
 
     /**
      * @return PDOStatement
      */
-    protected function writePrepare()
+    protected function writePrepare(): PDOStatement
     {
-        $db = $this->connect();
-        return $db->prepare('REPLACE INTO sessions ("sid", "data", "expire_date") VALUES (:sid, :data, :expire);');
+        return $this->connect()->prepare('REPLACE INTO sessions ("sid", "data", "expire_date") VALUES (:sid, :data, :expire);');
     }
 
     /**
      * @return PDOStatement
      */
-    protected function readPrepare()
+    protected function readPrepare(): PDOStatement
     {
-        $db = $this->connect();
-        return $db->prepare('SELECT * FROM sessions WHERE sid = :sid');
+        return $this->connect()->prepare('SELECT * FROM sessions WHERE sid = :sid');
     }
 
     /**
      * @return PDOStatement
      */
-    protected function deletePrepare()
+    protected function deletePrepare(): PDOStatement
     {
-        $db = $this->connect();
-        return $db->prepare('DELETE FROM sessions WHERE sid = :sid');
+        return $this->connect()->prepare('DELETE FROM sessions WHERE sid = :sid');
     }
 
-    protected function gcPrepare()
+    protected function gcPrepare(): bool|PDOStatement
     {
-        $db = $this->connect();
-        return $db->prepare('DELETE FROM sessions WHERE expire_date <= :lifetime');
+        return $this->connect()->prepare('DELETE FROM sessions WHERE expire_date <= :lifetime');
     }
 
     /**
      * @param PDOStatement $stmt
-     * @param array $params
+     * @param array|null $params
      * @return bool
      */
-    protected function exec($stmt, $params = null)
+    protected function exec(PDOStatement $stmt, array $params = null): bool
     {
         return $stmt->execute($params);
     }
 
     /**
      * @return string
+     * @throws Exception
      */
-    public function sid()
+    public function sid(): string
     {
         return $this->create_sid();
     }
 
     /**
      * @return string
+     * @throws Exception
      */
-    public function create_sid()
+    public function create_sid(): string
     {
         return StringUtility::random(64, false);
     }
@@ -139,7 +137,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * </p>
      * @since 5.4.0
      */
-    public function close()
+    #[ReturnTypeWillChange] public function close(): bool
     {
         $this->pdo = null;
         return true;
@@ -155,7 +153,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * </p>
      * @since 5.4.0
      */
-    public function destroy($session_id)
+    #[ReturnTypeWillChange] public function destroy(string $session_id): bool
     {
         return $this->exec($this->deletePrepare(), array(':sid' => $session_id));
     }
@@ -163,7 +161,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     /**
      * Cleanup old sessions
      * @link http://php.net/manual/en/sessionhandlerinterface.gc.php
-     * @param int $maxlifetime <p>
+     * @param int $max_lifetime <p>
      * Sessions that have not updated for
      * the last maxlifetime seconds will be removed.
      * </p>
@@ -173,15 +171,15 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * </p>
      * @since 5.4.0
      */
-    public function gc($maxlifetime)
+    #[ReturnTypeWillChange] public function gc(int $max_lifetime): bool
     {
-        return $this->exec($this->gcPrepare(), array(':lifetime' => $this->getTime() - $maxlifetime));
+        return $this->exec($this->gcPrepare(), array(':lifetime' => $this->getTime() - $max_lifetime));
     }
 
     /**
      * Initialize session
      * @link http://php.net/manual/en/sessionhandlerinterface.open.php
-     * @param string $save_path The path where to store/retrieve the session.
+     * @param string $path The path where to store/retrieve the session.
      * @param string $name The session name.
      * @return bool <p>
      * The return value (usually TRUE on success, FALSE on failure).
@@ -189,16 +187,16 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * </p>
      * @since 5.4.0
      */
-    public function open($save_path, $name)
+    #[ReturnTypeWillChange] public function open(string $path, string $name): bool
     {
-        $this->savePath = $save_path;
+        $this->savePath = $path;
         return $this->exec($this->createPrepare());
     }
 
     /**
      * Read session data
      * @link http://php.net/manual/en/sessionhandlerinterface.read.php
-     * @param string $session_id The session id to read data for.
+     * @param string $id The session id to read data for.
      * @return string <p>
      * Returns an encoded string of the read data.
      * If nothing was read, it must return an empty string.
@@ -206,10 +204,10 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * </p>
      * @since 5.4.0
      */
-    public function read($session_id)
+    #[ReturnTypeWillChange] public function read(string $id): string
     {
         $stmt = $this->readPrepare();
-        $stmt->execute(array(':sid' => $session_id));
+        $stmt->execute(array(':sid' => $id));
         $row = $stmt->fetch();
         $stmt->closeCursor();
         return is_array($row) ? $row['data'] : '';
@@ -218,8 +216,8 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     /**
      * Write session data
      * @link http://php.net/manual/en/sessionhandlerinterface.write.php
-     * @param string $session_id The session id.
-     * @param string $session_data <p>
+     * @param string $id The session id.
+     * @param string $data <p>
      * The encoded session data. This data is the
      * result of the PHP internally encoding
      * the $_SESSION superglobal to a serialized
@@ -232,13 +230,13 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      * </p>
      * @since 5.4.0
      */
-    public function write($session_id, $session_data)
+    #[ReturnTypeWillChange] public function write(string $id, string $data): bool
     {
         return $this->exec(
             $this->writePrepare(),
             array(
-                ':sid' => $session_id,
-                ':data' => $session_data,
+                ':sid' => $id,
+                ':data' => $data,
                 ':expire' => $this->getTime()
             )
         );

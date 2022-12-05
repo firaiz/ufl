@@ -2,6 +2,7 @@
 namespace Ufl;
 
 use ArrayAccess;
+use ReturnTypeWillChange;
 
 /**
  * Class CommandLine
@@ -9,8 +10,8 @@ use ArrayAccess;
  */
 class CommandLine implements ArrayAccess
 {
-    protected $argv = array();
-    protected $argc = 0;
+    protected array $argv = array();
+    protected int $argc = 0;
 
     /**
      * CommandLine constructor.
@@ -33,7 +34,7 @@ class CommandLine implements ArrayAccess
      * </p>
      * @return mixed Can return all value types.
      */
-    public function offsetGet($offset)
+    #[ReturnTypeWillChange] public function offsetGet(mixed $offset): mixed
     {
         $opt = $this->getOpt($offset);
         return $this->offsetExists($offset) ? $opt[$offset] : null;
@@ -43,7 +44,7 @@ class CommandLine implements ArrayAccess
      * @param int|string $offset
      * @return array
      */
-    protected function getOpt($offset)
+    protected function getOpt(int|string $offset): array
     {
         if (is_int($offset)) {
             return $this->argv;
@@ -71,7 +72,7 @@ class CommandLine implements ArrayAccess
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
      */
-    public function offsetExists($offset)
+    #[ReturnTypeWillChange] public function offsetExists(mixed $offset): bool
     {
         $opt = $this->getOpt($offset);
         return array_key_exists($offset, $opt);
@@ -89,7 +90,7 @@ class CommandLine implements ArrayAccess
      * </p>
      * @return void
      */
-    public function offsetSet($offset, $value)
+    #[ReturnTypeWillChange] public function offsetSet(mixed $offset, mixed $value): void
     {
     }
 
@@ -102,7 +103,7 @@ class CommandLine implements ArrayAccess
      * </p>
      * @return void
      */
-    public function offsetUnset($offset)
+    #[ReturnTypeWillChange] public function offsetUnset(mixed $offset): void
     {
     }
 }

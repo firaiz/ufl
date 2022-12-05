@@ -19,7 +19,7 @@ class Generator
      * @throws ClassNotFound
      * @throws ReflectionException
      */
-    public static function generate($initializer)
+    public static function generate(Initializer $initializer): CacheProvider
     {
         $callParams = call_user_func($initializer->getParamGenerator());
         $className = '\\Doctrine\\Common\\Cache\\' . $initializer->getCacheType() . 'Cache';
@@ -31,8 +31,6 @@ class Generator
             return new $className();
         }
 
-        $reflection = new ReflectionClass($className);
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $reflection->newInstanceArgs($callParams);
+        return (new ReflectionClass($className))->newInstanceArgs($callParams);
     }
 }

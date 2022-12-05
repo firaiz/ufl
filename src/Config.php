@@ -2,36 +2,40 @@
 
 namespace Ufl;
 
+use JsonException;
+
 /**
  * Class Config
  * @package Ufl
  */
 class Config
 {
-    /** @var static */
-    protected static $instances = array();
+    /** @var static[] */
+    protected static array $instances = array();
     /** @var array */
-    protected $configs = array();
+    protected array $configs = [];
     /** @var string */
-    protected $configPath = '';
+    protected string $configPath = '';
 
     /**
      * Config constructor.
      * @param string $configPath
      */
-    protected function __construct($configPath)
+    protected function __construct(string $configPath)
     {
         $this->initConfig($configPath);
     }
 
     /**
      * initialize configuration
-     * @param string $configPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
+     * @param string|null $configPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
      * @return bool
+     * @throws JsonException
      */
-    public function initConfig($configPath = null)
+    public function initConfig(string $configPath = null): bool
     {
         if (is_null($configPath) && defined('CONF_PATH')) {
+            /** @noinspection PhpUndefinedConstantInspection */
             $configPath = CONF_PATH;
         } elseif (!file_exists($configPath)) {
             $configPath = System::path() . DIRECTORY_SEPARATOR . 'configs';
@@ -51,7 +55,7 @@ class Config
         }
 
         $this->configPath = $configPath;
-        $this->configs = json_decode(file_get_contents($this->configPath), true);
+        $this->configs = json_decode(file_get_contents($this->configPath), true, 512, JSON_THROW_ON_ERROR);
         return true;
     }
 
@@ -59,7 +63,7 @@ class Config
      * @param string $envName
      * @return string|null
      */
-    private function getEnv($envName)
+    private function getEnv(string $envName): ?string
     {
         $env = getenv($envName);
         if ($env === '') {
@@ -70,10 +74,10 @@ class Config
 
     /**
      * @param string $store
-     * @param null $configPath
+     * @param ?string $configPath
      * @return static
      */
-    public static function getInstance($store = '_', $configPath = null)
+    public static function getInstance(string $store = '_', ?string $configPath = null): static
     {
         if (!(isset(self::$instances[$store]) && self::$instances[$store] instanceof static)) {
             self::$instances[$store] = new static($configPath);
@@ -83,10 +87,10 @@ class Config
 
     /**
      * @param string $key
-     * @param mixed $default
+     * @param mixed|null $default
      * @return string|false
      */
-    public function get($key, $default = null)
+    public function get(string $key, mixed $default = null): bool|string
     {
         return ArrayUtil::get($this->configs, $key, $default);
     }
@@ -95,7 +99,7 @@ class Config
      * @param string $key
      * @return bool
      */
-    public function has($key)
+    public function has(string $key): bool
     {
         return ArrayUtil::has($this->configs, $key);
     }

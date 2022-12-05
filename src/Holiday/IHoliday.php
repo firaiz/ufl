@@ -12,5 +12,5 @@ interface IHoliday
      * @param int $year
      * @return static[]
      */
-    public static function listOf($year);
+    public static function listOf(int $year): array;
 }

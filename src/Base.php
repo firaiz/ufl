@@ -13,10 +13,10 @@ namespace Ufl;
  */
 abstract class Base
 {
-    /** @var array allowed overwrite */
-    protected $singletons = array('conf' => 'Config', 'db' => 'Database', 'response' => 'Response', 'header' => 'Header');
-    /** @var array allowed overwrite */
-    protected $instances = array('request' => 'Request', 'session' => '\\Ufl\\Container\\SessionContainer');
+    /** @var array allowed to overwrite */
+    protected array $singletons = ['conf' => 'Config', 'db' => 'Database', 'response' => 'Response', 'header' => 'Header'];
+    /** @var array allowed to overwrite */
+    protected array $instances = ['request' => 'Request', 'session' => \Ufl\Container\SessionContainer::class];
 
     /**
      * Base constructor.
@@ -33,6 +33,7 @@ abstract class Base
     {
         foreach ($this->singletons as $prop => $cls) {
             $clsName = $this->initClassName($cls);
+            /** @noinspection PhpUndefinedMethodInspection */
             $this->{$prop} = $clsName::getInstance();
         }
 
@@ -48,7 +49,7 @@ abstract class Base
      */
     private function initClassName($className)
     {
-        if (strpos($className, '\\') !== false) {
+        if (str_contains($className, '\\')) {
             return $className;
         }
         return __NAMESPACE__ . '\\' . $className;
@@ -57,5 +58,5 @@ abstract class Base
     /**
      * @return void
      */
-    abstract public function execute();
+    abstract public function execute(): void;
 }

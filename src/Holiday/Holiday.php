@@ -11,16 +11,16 @@ use DateTime;
 abstract class Holiday implements IHoliday
 {
     /** @var string */
-    protected $name;
+    protected string $name;
     /** @var DateTime */
-    protected $date;
+    protected DateTime $date;
 
     /**
      * Holiday constructor.
      * @param string $name
      * @param DateTime $date
      */
-    public function __construct($name, DateTime $date)
+    public function __construct(string $name, DateTime $date)
     {
         $this->name = $name;
         $this->date = $date;
@@ -31,7 +31,7 @@ abstract class Holiday implements IHoliday
      * @param DateTime $date
      * @return static
      */
-    protected static function init($name, $date)
+    protected static function init(string $name, DateTime $date): static
     {
         return new static($name, $date);
     }
@@ -44,16 +44,16 @@ abstract class Holiday implements IHoliday
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param string [$format]
+     * @param string|null $format
      * @return DateTime|string
      */
-    public function getDate($format = null)
+    public function getDate(string $format = null): DateTime|string
     {
         if (is_null($format)) {
             return $this->date;

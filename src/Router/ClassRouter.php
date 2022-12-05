@@ -11,28 +11,31 @@ use Ufl\ArrayUtil;
 class ClassRouter extends AbstractRouter
 {
 
-    protected $routes = array();
+    protected array $routes = array();
 
     /**
-     * @param string $routPath
+     * @param string $routePath
      * @param mixed $detector
      * @return void
      */
-    public function add($routPath, $detector)
+    public function add(string $routePath, mixed $detector): void
     {
-        ArrayUtil::set($this->routes, self::pathToKey($routPath), $detector);
+        ArrayUtil::set($this->routes, self::pathToKey($routePath), $detector);
     }
 
     /**
      * @param string $path
      * @return string
      */
-    public static function pathToKey($path)
+    public static function pathToKey(string $path): string
     {
         return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, substr($path, 1)));
     }
 
-    protected function getRoutes()
+    /**
+     * @return array
+     */
+    protected function getRoutes(): array
     {
         return $this->routes;
     }
@@ -40,7 +43,7 @@ class ClassRouter extends AbstractRouter
     /**
      * @return array
      */
-    protected function makeContextWithParams()
+    protected function makeContextWithParams(): array
     {
         $routeKey = self::pathToKey($this->getPathInfo());
         $params = $keys = ArrayUtil::toKeys($routeKey);

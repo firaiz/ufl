@@ -12,11 +12,11 @@ use Ufl\Date;
  */
 class Japan extends Holiday
 {
-    const FORMAT = 'Y-m-d';
-    const CHECK_TYPE_ABORT = 'abort';
-    const CHECK_TYPE_SINCE = 'since';
+    public const FORMAT = 'Y-m-d';
+    public const CHECK_TYPE_ABORT = 'abort';
+    public const CHECK_TYPE_SINCE = 'since';
 
-    public static function getYearConfig($year)
+    public static function getYearConfig($year): array
     {
         return array(
             array('date' => Date::toDate($year, 1, 1, self::FORMAT), 'name' => '元日'),
@@ -63,17 +63,17 @@ class Japan extends Holiday
         );
     }
 
-    public static function isSinceDate($config, $checkTarget)
+    public static function isSinceDate($config, $checkTarget): bool
     {
         return static::checkDate($config, $checkTarget, self::CHECK_TYPE_SINCE);
     }
 
-    public static function isAbortDate($config, $checkTarget)
+    public static function isAbortDate($config, $checkTarget): bool
     {
         return static::checkDate($config, $checkTarget, self::CHECK_TYPE_ABORT);
     }
 
-    protected static function checkDate($config, $checkTarget, $type)
+    protected static function checkDate($config, $checkTarget, $type): bool
     {
         if (!isset($config[$type])) {
             return true;
@@ -95,7 +95,7 @@ class Japan extends Holiday
      * @return static[]
      * @throws Exception
      */
-    public static function listOf($year)
+    public static function listOf(int $year): array
     {
         $list = static::getYearConfig($year);
         /** @var Holiday[] $newHolidays */
@@ -157,7 +157,7 @@ class Japan extends Holiday
      * @param int $year
      * @return int
      */
-    public static function getSpringEquinoxDay($year)
+    public static function getSpringEquinoxDay(int $year): int
     {
         return floor(20.8431 + 0.242194 * ($year - 1980)) - floor(($year - 1980) / 4);
     }
@@ -167,7 +167,7 @@ class Japan extends Holiday
      * @param int $year
      * @return int
      */
-    public static function getAutumnalEquinoxDay($year)
+    public static function getAutumnalEquinoxDay(int $year): int
     {
         return floor(23.2488 + 0.242194 * ($year - 1980)) - floor(($year - 1980) / 4);
     }

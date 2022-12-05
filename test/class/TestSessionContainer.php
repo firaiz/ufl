@@ -2,11 +2,12 @@
 namespace Ufl\TestClass;
 
 use JsonSerializable;
+use ReturnTypeWillChange;
 use Ufl\Container\SessionContainer;
 
 class TestSessionContainer extends SessionContainer implements JsonSerializable
 {
-    protected function &makeContainer() {
+    protected function &makeContainer():array {
         static $ary;
         $ary = parent::makeContainer();
         /** @noinspection SuspiciousAssignmentsInspection */
@@ -21,7 +22,7 @@ class TestSessionContainer extends SessionContainer implements JsonSerializable
      * which is a value of any type other than a resource.
      * @since 5.4.0
      */
-    public function jsonSerialize()
+    #[ReturnTypeWillChange] public function jsonSerialize(): mixed
     {
         $values = $this->getContainer();
         if (is_string($this->prefix)) {

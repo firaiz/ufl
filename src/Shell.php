@@ -8,7 +8,7 @@ class Shell
      * @param $commandParams
      * @return string
      */
-    public static function exec($commandParams)
+    public static function exec($commandParams): string
     {
         return exec(self::toCommand($commandParams));
     }
@@ -17,7 +17,7 @@ class Shell
      * @param $commandParams
      * @return string
      */
-    protected static function toCommand($commandParams)
+    protected static function toCommand($commandParams): string
     {
         return implode(' ', $commandParams);
     }
@@ -26,17 +26,17 @@ class Shell
      * @param $commandParams
      * @return false|string
      */
-    public static function system($commandParams)
+    public static function system($commandParams): bool|string
     {
         return system(self::toCommand($commandParams));
     }
 
     /**
      * @param array $params
-     * @param string $logPath
+     * @param string|null $logPath
      * @return string
      */
-    public static function noWaitExec($params = array(), $logPath = null)
+    public static function noWaitExec(array $params = array(), string $logPath = null): string
     {
         $commandParams = array_merge(
             array('nohup'),

@@ -2,7 +2,7 @@
   "name": "firaiz/ufl",
   "description": "ulterior framework library",
   "license": "MIT",
-  "version": "5.0.4",
+  "version": "5.0.7",
   "authors": [
     { "name": "romer", "email": "romer.t.co@gmail.com" },
     { "name":  "Kenichi Yoshida", "email": "k.yoshida@miraizu.jp"}

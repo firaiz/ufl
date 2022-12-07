@@ -12,7 +12,7 @@ abstract class AbstractContainer implements IContainer
 {
 
     /** @var ?string */
-    protected ?string $prefix = null;
+    protected ?string $prefix;
 
     /** @var mixed */
     protected mixed $container = null;

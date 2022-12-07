@@ -17,9 +17,9 @@ class Dispatcher
     use SingletonTrait;
 
     /**
-     * @var IRouter
+     * @var ?IRouter
      */
-    protected IRouter $router;
+    protected ?IRouter $router;
 
     /**
      * Router constructor.

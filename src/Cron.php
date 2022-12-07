@@ -11,19 +11,19 @@ use Firaiz\Ufl\Cron\ICron;
 abstract class Cron implements ICron
 {
     /**
-     * @var Database
+     * @var ?Database
      */
-    protected Database $db;
+    protected ?Database $db;
 
     /**
-     * @var Config
+     * @var ?Config
      */
-    protected Config $config;
+    protected ?Config $config;
 
     /**
-     * @var Request
+     * @var ?Request
      */
-    protected Request $request;
+    protected ?Request $request;
 
     final public function __construct()
     {

@@ -18,9 +18,9 @@ class Csrf
     public const FIXED_TOKEN = 'SecretFixedToken';
 
     /**
-     * @var SessionContainer
+     * @var ?SessionContainer
      */
-    private static SessionContainer $container;
+    private static ?SessionContainer $container;
 
     /**
      * @return SessionContainer

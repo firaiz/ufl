@@ -8,7 +8,7 @@ use Firaiz\Ufl\Holiday\Japan;
 
 class HolidayTest extends TestCase
 {
-    protected $lists = array(
+    protected array $lists = array(
         1958 => array(
             '1958-01-01' => '元日',
             '1958-01-15' => '成人の日',

@@ -17,8 +17,8 @@ class SQLiteSessionHandler implements SessionHandlerInterface
 {
     /** @var ?PDO */
     private ?PDO $pdo;
-    /** @var string */
-    private string $savePath;
+    /** @var ?string */
+    private ?string $savePath;
 
     public function __construct()
     {

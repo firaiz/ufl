@@ -28,7 +28,7 @@ class Database
     use SingletonTrait;
 
     /** @var ?Connection */
-    protected ?Connection $connection;
+    protected ?Connection $connection = null;
 
     /**
      * Database constructor.

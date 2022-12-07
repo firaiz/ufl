@@ -16,9 +16,9 @@ use Firaiz\Ufl\System;
 class SmartyRender implements IRender
 {
     /** @var ?Smarty */
-    protected ?Smarty $smarty;
+    protected ?Smarty $smarty = null;
     /** @var ?string */
-    protected ?string $layout;
+    protected ?string $layout = '';
     /** @var string */
     protected string $contentName = 'contents';
 

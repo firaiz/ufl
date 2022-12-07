@@ -13,7 +13,7 @@ class Model implements Serializable, JsonSerializable
 {
     private string $_findKeyName = 'id';
     private array $_initValues = array();
-    private static ?Inflector $_inflector;
+    private static ?Inflector $_inflector = null;
 
     /**
      * Model constructor.

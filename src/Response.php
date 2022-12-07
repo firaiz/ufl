@@ -10,9 +10,9 @@ class Response
     use SingletonTrait;
 
     /** @var ?Render */
-    protected ?Render $render;
+    protected ?Render $render = null;
     /** @var ?Header */
-    private ?Header $header;
+    private ?Header $header = null;
 
     /**
      * View constructor.

@@ -20,7 +20,7 @@ class Csrf
     /**
      * @var ?SessionContainer
      */
-    private static ?SessionContainer $container;
+    private static ?SessionContainer $container = null;
 
     /**
      * @return SessionContainer

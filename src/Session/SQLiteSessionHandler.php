@@ -16,7 +16,7 @@ use Firaiz\Ufl\StringUtility;
 class SQLiteSessionHandler implements SessionHandlerInterface
 {
     /** @var ?PDO */
-    private ?PDO $pdo;
+    private ?PDO $pdo = null;
     /** @var ?string */
     private ?string $savePath;
 

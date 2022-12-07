@@ -11,9 +11,9 @@ use DateTime;
 abstract class Holiday implements IHoliday
 {
     /** @var ?string */
-    protected ?string $name;
+    protected ?string $name = '';
     /** @var ?DateTime */
-    protected ?DateTime $date;
+    protected ?DateTime $date = null;
 
     /**
      * Holiday constructor.

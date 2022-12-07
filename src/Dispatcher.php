@@ -19,7 +19,7 @@ class Dispatcher
     /**
      * @var ?IRouter
      */
-    protected ?IRouter $router;
+    protected ?IRouter $router = null;
 
     /**
      * Router constructor.

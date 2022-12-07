@@ -11,14 +11,14 @@ use Closure;
 class CallableContainer implements IRouterContainer
 {
     /**
-     * @var ?Closure
+     * @var Closure
      */
-    private ?Closure $context;
+    private Closure $context;
 
     /**
-     * @var ?array
+     * @var array
      */
-    private ?array $params;
+    private array $params;
 
     /**
      * ContextContainer constructor.

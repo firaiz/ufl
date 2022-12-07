@@ -13,7 +13,7 @@ class Initializer
     public const CACHE_TYPE_SQLite3 = 'SQLite3';
 
     /** @var ?Closure */
-    private ?Closure $paramGenerator;
+    private ?Closure $paramGenerator = null;
     /** @var string */
     private mixed $cacheType;
 

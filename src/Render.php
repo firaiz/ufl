@@ -10,7 +10,7 @@ class Render implements IRender
     use SingletonTrait;
 
     /** @var ?IRender */
-    protected ?IRender $render;
+    protected ?IRender $render = null;
     /** @var array */
     protected array $headers = array();
 

@@ -12,14 +12,9 @@ if (!function_exists('storage')) {
 }
 
 if (!function_exists('csrf_token')) {
-    function csrf_token($id = null): string
+    function csrf_token(mixed $params): string
     {
-        $idText = '';
-        if (!is_null($id)) {
-            $idText = ' id="' . $id . '"';
-        }
-        /** @noinspection PhpUnhandledExceptionInspection */
-        return '<input type="hidden"' . $idText . ' name="' . Csrf::CSRF_TAG . '" value="' . Csrf::takeToken() . '">';
+        return '<input type="hidden"' . (isset($params['id']) ? ' id="' . $params['id'] . '"': '') . ' name="' . Csrf::CSRF_TAG . '" value="' . Csrf::takeToken() . '">';
     }
 }
 

@@ -19,10 +19,10 @@ class Config
 
     /**
      * Config constructor.
-     * @param string $configPath
+     * @param ?string $configPath
      * @throws JsonException
      */
-    protected function __construct(string $configPath)
+    protected function __construct(?string $configPath)
     {
         $this->initConfig($configPath);
     }

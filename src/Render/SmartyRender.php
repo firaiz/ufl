@@ -33,6 +33,7 @@ class SmartyRender implements IRender
     /**
      * @param array $configs
      * @return void
+     * @throws SmartyException
      */
     public function setConfigs(array $configs): void
     {
@@ -56,6 +57,15 @@ class SmartyRender implements IRender
         $this->smarty->setCaching(ArrayUtil::get($configs, 'cache.use', true));
         $this->smarty->setCacheDir($storage->getPath(ArrayUtil::get($configs, 'cache.dir', 'cache' . DIRECTORY_SEPARATOR . 'template'), true));
         $this->smarty->setCacheLifetime(ArrayUtil::get($configs, 'cache.lifetime', 60));
+
+        // plugins
+        $plugins = array_merge(ArrayUtil::get($configs, 'plugins', []), [
+            [ 'type' => 'function', 'name' => 'csrf_token', 'real_name' => 'csrf_token' ],
+            [ 'type' => 'function', 'name' => 'uuid', 'real_name' => 'uuid' ],
+        ]);
+        foreach ($plugins as $plugin) {
+            $this->smarty->registerPlugin($plugin['type'], $plugin['name'], $plugin['real_name']);
+        }
     }
 
     /**

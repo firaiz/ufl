@@ -21,10 +21,13 @@ class Date
     public const INTERVAL_TYPE_SECOND = 'S';
 
     /**
-     * @param string $timezone init timezone
+     * @param string|null $timezone init timezone
      */
-    public static function init(string $timezone = 'Asia/Tokyo'): void
+    public static function init(?string $timezone = 'Asia/Tokyo'): void
     {
+        if (is_null($timezone)) {
+            $timezone = date_default_timezone_get() ?: 'Asia/Tokyo';
+        }
         date_default_timezone_set($timezone);
     }
 
@@ -53,6 +56,9 @@ class Date
 
         if (is_int($date)) {
             return (new DateTime())->setTimestamp($date);
+        }
+        if (is_null($date)) {
+            return new DateTime();
         }
         return new DateTime($date);
     }

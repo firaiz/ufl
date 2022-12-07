@@ -38,7 +38,7 @@ class Config
         if (is_null($configPath) && defined('CONF_PATH')) {
             /** @noinspection PhpUndefinedConstantInspection */
             $configPath = CONF_PATH;
-        } elseif (!file_exists($configPath)) {
+        } elseif (is_null($configPath) || !file_exists($configPath)) {
             $configPath = System::path() . DIRECTORY_SEPARATOR . 'configs';
         }
 
@@ -54,7 +54,6 @@ class Config
         if (!file_exists($configPath)) {
             return false;
         }
-
         $this->configPath = $configPath;
         $this->configs = json_decode(file_get_contents($this->configPath), true, 512, JSON_THROW_ON_ERROR);
         return true;

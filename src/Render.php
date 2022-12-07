@@ -26,8 +26,8 @@ class Render implements IRender
             $render['engine'] = 'Smarty';
         }
         $this->initRender($render['engine']);
-        $this->setDefaultHeaders(is_array($render['headers']) ? $render['headers'] : array());
-        $this->setConfigs(is_array($render['config']) ? $render['config'] : array());
+        $this->setDefaultHeaders(isset($render['headers']) && is_array($render['headers']) ? $render['headers'] : array());
+        $this->setConfigs(isset($render['config']) && is_array($render['config']) ? $render['config'] : array());
     }
 
     /**

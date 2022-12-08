@@ -32,13 +32,13 @@ class ArrayUtil
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param array $array
+     * @param mixed $array
      * @param ?string $key
      * @param mixed|null $default
      *
      * @return mixed
      */
-    public static function get(array $array, ?string $key, mixed $default = null): mixed
+    public static function get(mixed $array, ?string $key, mixed $default = null): mixed
     {
         if (is_null($key)) {
             return $array;
@@ -91,7 +91,7 @@ class ArrayUtil
      *
      * @return array
      */
-    public static function set(array &$array,? string $key, mixed $value): array
+    public static function set(array &$array, ?string $key, mixed $value): array
     {
         if (is_null($key)) {
             return $array = $value;

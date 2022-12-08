@@ -2,7 +2,7 @@
   "name": "firaiz/ufl",
   "description": "ulterior framework library",
   "license": "MIT",
-  "version": "5.0.11",
+  "version": "5.0.12",
   "authors": [
     { "name": "romer", "email": "romer.t.co@gmail.com" },
     { "name":  "Kenichi Yoshida", "email": "k.yoshida@miraizu.jp"}
@@ -16,10 +16,6 @@
     "ext-pdo": "*",
     "ext-json": "*" ,
     "ext-mbstring": "*"
-  },
-  "suggest": {
-    "ext-mcrypt": "*",
-    "ext-openssl": "*"
   },
   "autoload": {
     "psr-4": { "Firaiz\\Ufl\\" : "src", "Firaiz\\Ufl\\TestClass\\" : "test/class", "Firaiz\\Ufl\\TestCase\\" : "test/case" },

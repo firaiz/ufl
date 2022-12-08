@@ -67,9 +67,9 @@ class Render implements IRender
     }
 
     /**
-     * @param string $templatePath
+     * @param ?string $templatePath
      */
-    public function setLayout(string $templatePath): void
+    public function setLayout(?string $templatePath): void
     {
         $this->getRender()->setLayoutPath($templatePath);
     }

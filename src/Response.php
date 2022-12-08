@@ -30,9 +30,9 @@ class Response
     }
 
     /**
-     * @param string $templatePath
+     * @param ?string $templatePath
      */
-    public function setLayout(string $templatePath): void
+    public function setLayout(?string $templatePath): void
     {
         $this->render()->setLayout($templatePath);
     }

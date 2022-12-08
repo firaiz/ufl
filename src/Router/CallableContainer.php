@@ -11,9 +11,9 @@ use Closure;
 class CallableContainer implements IRouterContainer
 {
     /**
-     * @var Closure
+     * @var ?Closure
      */
-    private Closure $context;
+    private ?Closure $context;
 
     /**
      * @var array
@@ -22,10 +22,10 @@ class CallableContainer implements IRouterContainer
 
     /**
      * ContextContainer constructor.
-     * @param Closure $context
+     * @param ?Closure $context
      * @param array $params
      */
-    public function __construct(Closure $context, array $params = [])
+    public function __construct(?Closure $context, array $params = [])
     {
         $this->context = $context;
         $this->params = $params;

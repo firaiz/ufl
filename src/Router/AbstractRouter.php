@@ -18,7 +18,7 @@ abstract class AbstractRouter implements IRouter
     /**
      * @var ?string
      */
-    private ?string $pathInfo = '';
+    private ?string $pathInfo = null;
 
     /**
      * @var ?IRouterContainer

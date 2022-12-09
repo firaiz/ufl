@@ -2,6 +2,8 @@
 namespace Firaiz\Ufl;
 
 use \Firaiz\Ufl\Container\SessionContainer;
+use Firaiz\Ufl\Traits\GetSetPropertiesTrait;
+
 /**
  * Class Base
  *
@@ -14,6 +16,8 @@ use \Firaiz\Ufl\Container\SessionContainer;
  */
 abstract class Base
 {
+    use GetSetPropertiesTrait;
+
     /** @var array allowed to overwrite */
     protected array $singletons = ['conf' => 'Config', 'db' => 'Database', 'response' => 'Response', 'header' => 'Header'];
     /** @var array allowed to overwrite */
@@ -61,19 +65,4 @@ abstract class Base
      * @return void
      */
     abstract public function execute(): void;
-
-    public function __get(string $name)
-    {
-        return $this->properties[$name] ?? null;
-    }
-
-    public function __set(string $name, $value): void
-    {
-        $this->properties[$name] = $value;
-    }
-
-    public function __isset(string $name): bool
-    {
-        return isset($this->properties[$name]);
-    }
 }

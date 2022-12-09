@@ -6,11 +6,14 @@ use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
+use Firaiz\Ufl\Traits\GetSetPropertiesTrait;
 use JsonSerializable;
 use Serializable;
 
 class Model implements Serializable, JsonSerializable
 {
+    use GetSetPropertiesTrait;
+
     private string $_findKeyName = 'id';
     private array $_initValues = array();
     private static ?Inflector $_inflector = null;

@@ -30,7 +30,7 @@ abstract class Cron implements ICron
         $this->init();
     }
 
-    protected function init()
+    protected function init():void
     {
         $this->db = Database::getInstance();
         $this->config = Config::getInstance();

@@ -11,8 +11,8 @@ class Response
 
     /** @var ?Render */
     protected ?Render $render = null;
-    /** @var ?Header */
-    private ?Header $header = null;
+    /** @var Header */
+    private Header $header;
 
     /**
      * View constructor.

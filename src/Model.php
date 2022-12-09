@@ -388,12 +388,12 @@ class Model implements Serializable, JsonSerializable
         return $this->_findKeyName;
     }
 
-    public function serialize()
+    public function serialize():void
     {
         // empty
     }
 
-    public function unserialize($data)
+    public function unserialize($data):void
     {
         // empty
     }

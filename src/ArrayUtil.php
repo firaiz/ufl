@@ -15,13 +15,13 @@ class ArrayUtil
     /**
      * Add an element to an array using "dot" notation
      *
-     * @param array $array
+     * @param mixed $array
      * @param string $key
      * @param mixed $value
      *
      * @return array
      */
-    public static function add(array &$array, string $key, mixed $value): array
+    public static function add(mixed &$array, string $key, mixed $value): array
     {
         $setArray = self::get($array, $key, array());
         $setArray[] = $value;
@@ -160,7 +160,7 @@ class ArrayUtil
      * @param array $array
      * @return mixed
      */
-    public static function head(array $array): mixed
+    public static function head(mixed $array): mixed
     {
         return reset($array);
     }

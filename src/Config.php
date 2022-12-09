@@ -76,6 +76,7 @@ class Config
      * @param string $store
      * @param ?string $configPath
      * @return static
+     * @throws JsonException
      */
     public static function getInstance(string $store = '_', ?string $configPath = null): static
     {

@@ -13,7 +13,7 @@ class CallableContainer implements IRouterContainer
     /**
      * @var mixed
      */
-    private mixed $context;
+    private Closure $context;
 
     /**
      * @var array
@@ -25,9 +25,12 @@ class CallableContainer implements IRouterContainer
      * @param mixed $context
      * @param array $params
      */
-    public function __construct(mixed $context, array $params = [])
+    public function __construct(?callable $context, array $params = [])
     {
-        $this->context = $context;
+        if (is_null($context)) {
+            $context = static function () {};
+        }
+        $this->context = $context(...);
         $this->params = $params;
     }
 
@@ -43,7 +46,7 @@ class CallableContainer implements IRouterContainer
      */
     public function isValid(): bool
     {
-        return is_callable($this->context);
+        return true;
     }
 
     /**

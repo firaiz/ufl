@@ -13,13 +13,13 @@ class Initializer
     public const CACHE_TYPE_SQLite3 = 'SQLite3';
 
     /** @var ?Closure */
-    private ?Closure $paramGenerator = null;
+    private ?Closure $paramGenerator;
     /** @var string */
     private mixed $cacheType;
 
-    public function __construct(Closure $callable, $cacheType = self::CACHE_TYPE_SQLite3)
+    public function __construct(callable $callable, $cacheType = self::CACHE_TYPE_SQLite3)
     {
-        $this->paramGenerator = $callable;
+        $this->paramGenerator = $callable(...);
         $this->cacheType = $cacheType;
     }
 

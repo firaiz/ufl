@@ -4,8 +4,8 @@ namespace Firaiz\Ufl;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;
-use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Result;
 use PDO;
@@ -83,7 +83,7 @@ class Database
     }
 
     /**
-     * @return Connection
+     * @return Connection|null
      */
     public function getConnection(): ?Connection
     {
@@ -112,7 +112,7 @@ class Database
      */
     public function fetchAll(string $sql, array $params = array(), array $types = array()): array
     {
-        return $this->select($sql, $params, $types)->execute()->fetchAllAssociative();
+        return $this->select($sql, $params, $types)->fetchAllAssociative();
     }
 
     /**
@@ -120,7 +120,7 @@ class Database
      * @param array $params
      * @param array $types
      * @return Result
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function select($sql, array $params = array(), array $types = array()): Result
     {
@@ -136,7 +136,7 @@ class Database
      * @param array $types The query parameter types.
      *
      * @return array
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function fetchRow(string $statement, array $params = array(), array $types = array()): array
     {
@@ -154,7 +154,7 @@ class Database
      *
      * @return int|string The number of affected rows.
      *
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function delete(string $tableExpression, array $identifier, array $types = array()): int|string
     {
@@ -172,7 +172,7 @@ class Database
      * @param array $types Types of the merged $data and $identifier arrays in that order.
      *
      * @return int|string The number of affected rows.
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function update(string $tableExpression, array $data, array $identifier, array $types = array()): int|string
     {
@@ -189,7 +189,7 @@ class Database
      * @param array $types Types of the inserted data.
      *
      * @return int|string The number of affected rows.
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function insert(string $tableExpression, array $data, array $types = array()): int|string
     {
@@ -206,14 +206,14 @@ class Database
      */
     public function quote(mixed $input, string $type = null): string
     {
-        return $this->connection->quote($input, $type);
+        return $this->connection->quote($input);
     }
 
     /**
      * Starts a transaction by suspending auto-commit mode.
      *
      * @return void
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function begin(): void
     {
@@ -226,7 +226,7 @@ class Database
      * @return void
      *
      * @throws ConnectionException If the commit failed due to no active transaction or
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      *                                            because the transaction was marked for rollback only.
      */
     public function commit(): void
@@ -241,7 +241,7 @@ class Database
      * eventlistener methods.
      *
      * @throws ConnectionException If the rollback operation failed.
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function rollBack(): void
     {
@@ -259,11 +259,11 @@ class Database
      * @param string|null $seqName Name of the sequence object from which the ID should be returned.
      *
      * @return int|string A string representation of the last inserted ID.
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      */
     public function lastInsertId(string $seqName = null): int|string
     {
-        return $this->connection->lastInsertId($seqName);
+        return $this->connection->lastInsertId();
     }
 
     /**

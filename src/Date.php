@@ -194,7 +194,7 @@ class Date
     public static function toDayTime(DateTime|int|string|null $date = null): DateTime
     {
         $toDay = static::object($date);
-        $toDay->setTime(0, 0, 0);
+        $toDay->setTime(0, 0);
         return $toDay;
     }
 

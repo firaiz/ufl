@@ -12,7 +12,7 @@ class Render implements IRender
     /** @var ?IRender */
     protected ?IRender $render = null;
     /** @var array */
-    protected array $headers = array();
+    protected array $headers = [];
 
     /**
      * View constructor.
@@ -26,8 +26,8 @@ class Render implements IRender
             $render['engine'] = 'Smarty';
         }
         $this->initRender($render['engine']);
-        $this->setDefaultHeaders(isset($render['headers']) && is_array($render['headers']) ? $render['headers'] : array());
-        $this->setConfigs(isset($render['config']) && is_array($render['config']) ? $render['config'] : array());
+        $this->setDefaultHeaders(isset($render['headers']) && is_array($render['headers']) ? $render['headers'] : []);
+        $this->setConfigs(isset($render['config']) && is_array($render['config']) ? $render['config'] : []);
     }
 
     /**
@@ -44,18 +44,11 @@ class Render implements IRender
         $this->headers = $headers;
     }
 
-    /**
-     * @param array $configs
-     * @return void
-     */
     public function setConfigs(array $configs): void
     {
         $this->getRender()->setConfigs($configs);
     }
 
-    /**
-     * @return IRender
-     */
     private function getRender(): IRender
     {
         return $this->render;
@@ -66,19 +59,13 @@ class Render implements IRender
         return $this->headers;
     }
 
-    /**
-     * @param ?string $templatePath
-     */
     public function setLayout(?string $templatePath): void
     {
         $this->getRender()->setLayoutPath($templatePath);
     }
 
     /**
-     * @param array|string $name
      * @param mixed|null $var
-     * @param bool $noCache
-     * @return static
      */
     public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
@@ -86,10 +73,6 @@ class Render implements IRender
         return $this;
     }
 
-    /**
-     * @param string $template
-     * @return string
-     */
     public function compile(string $template): string
     {
         return $this->getRender()->compile($template);
@@ -97,7 +80,6 @@ class Render implements IRender
 
     /**
      * @param $template
-     * @return bool
      */
     public function templateExists($template): bool
     {
@@ -106,24 +88,17 @@ class Render implements IRender
 
     /**
      * @param string|null $layout is template path
-     * @return void
      */
     public function setLayoutPath(?string $layout): void
     {
         $this->getRender()->setLayoutPath($layout);
     }
 
-    /**
-     * @return string
-     */
     public function getLayoutPath(): string
     {
         return $this->getRender()->getLayoutPath();
     }
 
-    /**
-     * @return bool
-     */
     public function isLayoutMode(): bool
     {
         return $this->getRender()->isLayoutMode();
@@ -131,16 +106,12 @@ class Render implements IRender
 
     /**
      * @param $contentName
-     * @return void
      */
     public function setContentName($contentName): void
     {
         $this->getRender()->setContentName($contentName);
     }
 
-    /**
-     * @return string
-     */
     public function getContentName(): string
     {
         return $this->getRender()->getContentName();

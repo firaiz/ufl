@@ -10,22 +10,19 @@ use Closure;
  */
 class Initializer
 {
-    public const CACHE_TYPE_SQLite3 = 'SQLite3';
+    final public const CACHE_TYPE_SQLite3 = 'SQLite3';
 
     /** @var ?Closure */
-    private ?Closure $paramGenerator;
-    /** @var string */
-    private mixed $cacheType;
-
-    public function __construct(callable $callable, $cacheType = self::CACHE_TYPE_SQLite3)
-    {
-        $this->paramGenerator = $callable(...);
-        $this->cacheType = $cacheType;
-    }
+    private readonly ?Closure $paramGenerator;
 
     /**
-     * @return string
+     * @param string $cacheType
      */
+    public function __construct(callable $callable, private $cacheType = self::CACHE_TYPE_SQLite3)
+    {
+        $this->paramGenerator = $callable(...);
+    }
+
     public function getCacheType(): string
     {
         return $this->cacheType;
@@ -33,7 +30,6 @@ class Initializer
 
     /**
      * Doctrine Cache initial parameters
-     * @return Closure
      *
      * callable example for SQLite cache
      * function () use($path) {

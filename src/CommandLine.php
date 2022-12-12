@@ -10,7 +10,7 @@ use ReturnTypeWillChange;
  */
 class CommandLine implements ArrayAccess
 {
-    protected array $argv = array();
+    protected array $argv = [];
     protected int $argc = 0;
 
     /**
@@ -40,10 +40,6 @@ class CommandLine implements ArrayAccess
         return $this->offsetExists($offset) ? $opt[$offset] : null;
     }
 
-    /**
-     * @param int|string $offset
-     * @return array
-     */
     protected function getOpt(int|string $offset): array
     {
         if (is_int($offset)) {
@@ -51,7 +47,7 @@ class CommandLine implements ArrayAccess
         }
         $key = $offset . '::';
         $short = '';
-        $longs = array();
+        $longs = [];
         if (1 < strlen($offset)) {
             $longs[] = $key;
         } else {
@@ -88,7 +84,6 @@ class CommandLine implements ArrayAccess
      * @param mixed $value <p>
      * The value to set.
      * </p>
-     * @return void
      */
     #[ReturnTypeWillChange] public function offsetSet(mixed $offset, mixed $value): void
     {
@@ -101,7 +96,6 @@ class CommandLine implements ArrayAccess
      * @param mixed $offset <p>
      * The offset to unset.
      * </p>
-     * @return void
      */
     #[ReturnTypeWillChange] public function offsetUnset(mixed $offset): void
     {

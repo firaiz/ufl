@@ -13,8 +13,6 @@ use Firaiz\Ufl\Holiday\Japan as JapanHoliday;
 class Holiday
 {
     /**
-     * @param int $year
-     * @param string $countryCode
      * @return HolidayBase[]|array
      * @throws Exception
      */
@@ -22,7 +20,7 @@ class Holiday
     {
         return match ($countryCode) {
             'JP' => JapanHoliday::listOf($year),
-            default => array(),
+            default => [],
         };
     }
 }

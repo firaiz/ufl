@@ -11,38 +11,23 @@ use Firaiz\Ufl\ArrayUtil;
 class ClassRouter extends AbstractRouter
 {
 
-    protected array $routes = array();
+    protected array $routes = [];
 
-    /**
-     * @param string $routePath
-     * @param mixed $detector
-     * @return void
-     */
     public function add(string $routePath, mixed $detector): void
     {
         ArrayUtil::set($this->routes, self::pathToKey($routePath), $detector);
     }
 
-    /**
-     * @param string $path
-     * @return string
-     */
     public static function pathToKey(string $path): string
     {
         return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, substr($path, 1)));
     }
 
-    /**
-     * @return array
-     */
     protected function getRoutes(): array
     {
         return $this->routes;
     }
 
-    /**
-     * @return array
-     */
     protected function makeContextWithParams(): array
     {
         $routeKey = self::pathToKey($this->getPathInfo());
@@ -52,7 +37,7 @@ class ClassRouter extends AbstractRouter
         $className = '';
         $methodName = '';
 
-        $detectKeys = array($keys[0]);
+        $detectKeys = [$keys[0]];
         if (isset($keys[1])) {
             $detectKeys[] = $keys[1];
         }
@@ -61,7 +46,7 @@ class ClassRouter extends AbstractRouter
             if (is_string($routes)) {
                 $className = $routes;
                 array_shift($params);
-                foreach (array(reset($params), 'index') as $methodName) {
+                foreach ([reset($params), 'index'] as $methodName) {
                     if (method_exists($className, $methodName)) {
                         if ($methodName === reset($params)) {
                             array_shift($params);
@@ -79,10 +64,10 @@ class ClassRouter extends AbstractRouter
         
         $context = null;
         if (class_exists($className) && method_exists($className, $methodName)) {
-            $context = array(new $className, $methodName);
+            $context = [new $className, $methodName];
         } elseif (class_exists($className) && method_exists($className, 'index')) {
-            $context = array(new $className, 'index');
+            $context = [new $className, 'index'];
         }
-        return array($context, $params);
+        return [$context, $params];
     }
 }

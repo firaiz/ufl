@@ -15,13 +15,12 @@ class Model implements Serializable, JsonSerializable
     use GetSetPropertiesTrait;
 
     private string $_findKeyName = 'id';
-    private array $_initValues = array();
+    private array $_initValues = [];
     private static ?Inflector $_inflector = null;
 
     /**
      * Model constructor.
      * @param ?mixed $findKey
-     * @param ?string $findKeyName
      * @throws Exception
      */
     public function __construct(mixed $findKey = null, ?string $findKeyName = null)
@@ -35,9 +34,6 @@ class Model implements Serializable, JsonSerializable
         }
     }
 
-    /**
-     * @return Inflector
-     */
     private static function inflector(): Inflector
     {
         if (static::$_inflector instanceof Inflector ) {
@@ -47,10 +43,6 @@ class Model implements Serializable, JsonSerializable
         return static::$_inflector;
     }
 
-    /**
-     * @param mixed $findKey
-     * @return QueryBuilder
-     */
     protected function initQuery(mixed $findKey): QueryBuilder
     {
         return static::builder()
@@ -61,7 +53,6 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @param mixed $findKey
      * @throws Exception
      */
     protected function init(mixed $findKey): void
@@ -74,52 +65,32 @@ class Model implements Serializable, JsonSerializable
         $this->initFields($row);
     }
 
-    /**
-     * @return Database
-     */
     public static function db(): Database
     {
         return Database::getInstance();
     }
 
-    /**
-     * @param string $name
-     * @return string
-     */
     public static function quoteIdentifier(string $name): string
     {
         return static::db()->getConnection()->quoteIdentifier($name);
     }
 
-    /**
-     * @return QueryBuilder
-     */
     protected static function builder(): QueryBuilder
     {
         return static::db()->builder();
     }
 
-    /**
-     * @return string
-     */
     public static function tableName(): string
     {
         $ary = array_reverse(explode('\\', static::class));
         return static::tableize(static::inflector()->pluralize(reset($ary)));
     }
 
-    /**
-     * @param string $word
-     * @return string
-     */
     protected static function tableize(string $word): string
     {
         return static::inflector()->tableize($word);
     }
 
-    /**
-     * @param array $row
-     */
     private function initFields(array $row): void
     {
         foreach ($row as $name => $value) {
@@ -128,19 +99,11 @@ class Model implements Serializable, JsonSerializable
         }
     }
 
-    /**
-     * @param string $filed
-     * @return string
-     */
     public static function toField(string $filed): string
     {
         return static::inflector()->camelize($filed);
     }
 
-    /**
-     * @param array $row
-     * @return static
-     */
     protected static function import(array $row): static
     {
         $obj = new static();
@@ -149,7 +112,6 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @return int
      * @throws Exception
      */
     public function delete(): int
@@ -162,8 +124,6 @@ class Model implements Serializable, JsonSerializable
     }
 
     /**
-     * @param bool $isCreating
-     * @return static
      * @throws Exception
      */
     public function save(bool $isCreating = false): static
@@ -205,9 +165,6 @@ class Model implements Serializable, JsonSerializable
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isExists(): bool
     {
         return 0 < count($this->_initValues);
@@ -239,22 +196,15 @@ class Model implements Serializable, JsonSerializable
         return $newInstance;
     }
 
-    /**
-     * @param array $array
-     * @return array
-     */
     public static function toTableizeArray(array $array): array
     {
-        $result = array();
+        $result = [];
         foreach ($array as $key => $value) {
             $result[static::tableize($key)] = $value;
         }
         return $result;
     }
 
-    /**
-     * @return ?array
-     */
     public function toArray(): ?array
     {
         $row = get_object_vars($this);
@@ -262,10 +212,6 @@ class Model implements Serializable, JsonSerializable
         return $row;
     }
 
-    /**
-     * @param ?array $row
-     * @return array
-     */
     public function diff(?array $row = null): array
     {
         if (is_null($row)) {
@@ -274,11 +220,11 @@ class Model implements Serializable, JsonSerializable
             $row = static::toFiledArray($row);
         }
 
-        if (count($row) <= 0) {
-            return array();
+        if (count((array) $row) <= 0) {
+            return [];
         }
 
-        $result = array();
+        $result = [];
         foreach ($this->_initValues as $filedKey => $value) {
             $filed = static::toField($filedKey);
             if (array_key_exists($filed, $row) && $value != $row[$filed]) {
@@ -289,22 +235,15 @@ class Model implements Serializable, JsonSerializable
         return $result;
     }
 
-    /**
-     * @param array $array
-     * @return array
-     */
     public static function toFiledArray(array $array): array
     {
-        $result = array();
+        $result = [];
         foreach ($array as $key => $value) {
             $result[static::toField($key)] = $value;
         }
         return $result;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIndex(): mixed
     {
         return $this->{self::toField($this->getFindKeyName())};
@@ -312,9 +251,6 @@ class Model implements Serializable, JsonSerializable
 
     /**
      * @param static $obj
-     * @param string $key
-     * @param bool $isStrict
-     * @return bool
      */
     public function eqByKey(mixed $obj, string $key, bool $isStrict = true): bool
     {
@@ -330,9 +266,6 @@ class Model implements Serializable, JsonSerializable
         return $this->{$filed} == $obj->{$filed};
     }
 
-    /**
-     * @param array $row
-     */
     public function overwrite(array $row): void
     {
         foreach ($row as $filedKey => $value) {
@@ -342,12 +275,9 @@ class Model implements Serializable, JsonSerializable
         }
     }
 
-    /**
-     * @param array $row
-     */
     public function initOverwrite(array $row): void
     {
-        $checkers = array();
+        $checkers = [];
         foreach ($row as $key => $v) {
             if (array_key_exists($key, $this->_initValues)) {
                 $checkers[] = true;
@@ -358,10 +288,6 @@ class Model implements Serializable, JsonSerializable
         }
     }
 
-    /**
-     * @param string $key
-     * @return mixed
-     */
     public function getOldValue(string $key): mixed
     {
         return $this->_initValues[$key] ?? null;
@@ -375,17 +301,11 @@ class Model implements Serializable, JsonSerializable
         return $this->_initValues;
     }
 
-    /**
-     * @param string $findKeyName
-     */
     protected function setFindKeyName(string $findKeyName): void
     {
         $this->_findKeyName = $findKeyName;
     }
 
-    /**
-     * @return string
-     */
     protected function getFindKeyName(): string
     {
         return $this->_findKeyName;

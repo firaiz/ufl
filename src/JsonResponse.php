@@ -10,13 +10,10 @@ use JsonException;
  */
 class JsonResponse extends Response
 {
-    private array $assigns = array();
+    private array $assigns = [];
 
     /**
-     * @param array|string $name
      * @param mixed|null $var
-     * @param false $noCache
-     * @return static
      */
     public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
@@ -25,7 +22,6 @@ class JsonResponse extends Response
     }
 
     /**
-     * @param ?string $charset
      * @throws JsonException
      */
     public function write(?string $charset = null): void

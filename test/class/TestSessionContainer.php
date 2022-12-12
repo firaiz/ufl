@@ -11,7 +11,7 @@ class TestSessionContainer extends SessionContainer implements JsonSerializable
         static $ary;
         $ary = parent::makeContainer();
         /** @noinspection SuspiciousAssignmentsInspection */
-        $ary = array();
+        $ary = [];
         return $ary;
     }
 
@@ -26,9 +26,7 @@ class TestSessionContainer extends SessionContainer implements JsonSerializable
     {
         $values = $this->getContainer();
         if (is_string($this->prefix)) {
-            return array(
-                $this->prefix => $values,
-            );
+            return [$this->prefix => $values];
         }
         return $values;
     }

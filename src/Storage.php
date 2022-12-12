@@ -8,8 +8,8 @@ use Firaiz\Ufl\Traits\SingletonTrait;
 
 class Storage
 {
-    public const DS = DIRECTORY_SEPARATOR;
-    public const DEFAULT_PERMISSION = 0755;
+    final public const DS = DIRECTORY_SEPARATOR;
+    final public const DEFAULT_PERMISSION = 0755;
 
     use SingletonTrait;
 
@@ -37,9 +37,6 @@ class Storage
     }
 
     /**
-     * @param string $path
-     * @param bool $isCreate
-     * @param int $permission
      * @return string is full-path
      */
     public function getPath(string $path, bool $isCreate = false, int $permission = self::DEFAULT_PERMISSION): string
@@ -51,9 +48,7 @@ class Storage
     }
 
     /**
-     * @param string $path
      * @param int $permission octet number
-     * @return bool
      */
     public function create(string $path, int $permission = self::DEFAULT_PERMISSION): bool
     {
@@ -70,26 +65,19 @@ class Storage
         return false;
     }
 
-    /**
-     * @return string
-     */
     public function base(): string
     {
         return realpath($this->filePath);
     }
 
-    /**
-     * @param string $path
-     * @return string
-     */
     protected function replace(string $path): string
     {
         return str_replace(
             $this->base().self::DS.'storage',
             $this->base(),
             str_replace(
-                array('/', '\\'),
-                array(DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR),
+                ['/', '\\'],
+                [DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR],
                 preg_replace('#^storage/#', '', $path)
             )
         );

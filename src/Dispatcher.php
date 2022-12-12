@@ -31,7 +31,6 @@ class Dispatcher
 
     /**
      * @param IRouter|null $router
-     * @return void
      */
     public function init(IRouter $router = null): void
     {
@@ -45,7 +44,6 @@ class Dispatcher
     }
 
     /**
-     * @return void
      * @throws Exception\Route\NotFound
      */
     public function dispatch(): void
@@ -59,18 +57,11 @@ class Dispatcher
         $routeContainer->exec();
     }
 
-    /**
-     * @param Closure $closure
-     */
     public function initNoRoute(Closure $closure): void
     {
         $this->router->setNoRoute(new CallableContainer($closure));
     }
 
-    /**
-     * @param string $routePath
-     * @param mixed $detector
-     */
     public function add(string $routePath, mixed $detector): void
     {
         $this->router->add($routePath, $detector);

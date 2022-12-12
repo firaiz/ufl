@@ -13,10 +13,8 @@ class SessionContainerTest extends TestCase
         $container = new TestSessionContainer('foo.bar');
         $container->set('a', 'v');
         self::assertEquals(json_encode(
-            array(
-            'foo.bar' => array('a' => 'v')
-            )
-        ), json_encode($container));
+            ['foo.bar' => ['a' => 'v']]
+        ), json_encode($container, JSON_THROW_ON_ERROR));
     }
 
     public function testInit()
@@ -24,8 +22,8 @@ class SessionContainerTest extends TestCase
         $container = new TestSessionContainer();
         $container->set('a', 'v');
         self::assertEquals(json_encode(
-            array('a' => 'v')
-        ), json_encode($container));
+            ['a' => 'v']
+        ), json_encode($container, JSON_THROW_ON_ERROR));
     }
 
     public function testMultipleSet()
@@ -33,8 +31,8 @@ class SessionContainerTest extends TestCase
         $container = new TestSessionContainer();
         $container->set('a.b.c', 'v');
         self::assertEquals(json_encode(
-            array('a' => array('b' => array('c' => 'v')))
-        ), json_encode($container));
+            ['a' => ['b' => ['c' => 'v']]]
+        ), json_encode($container, JSON_THROW_ON_ERROR));
     }
 
     public function testMultipleGet()
@@ -49,13 +47,13 @@ class SessionContainerTest extends TestCase
         $container = new TestSessionContainer();
         $container->set('a.b.c', 'v');
         self::assertEquals(json_encode(
-            array('a' => array('b' => array('c' => 'v')))
-        ), json_encode($container));
+            ['a' => ['b' => ['c' => 'v']]]
+        ), json_encode($container, JSON_THROW_ON_ERROR));
 
         $container->del('a.b');
         self::assertEquals(json_encode(
-            array('a' => array())
-        ), json_encode($container));
+            ['a' => []]
+        ), json_encode($container, JSON_THROW_ON_ERROR));
     }
 
     public function testSet()
@@ -63,8 +61,8 @@ class SessionContainerTest extends TestCase
         $container = new TestSessionContainer();
         $container->set('a', 'v');
         self::assertEquals(json_encode(
-            array('a' => 'v')
-        ), json_encode($container));
+            ['a' => 'v']
+        ), json_encode($container, JSON_THROW_ON_ERROR));
     }
 
     public function testGet()
@@ -79,12 +77,12 @@ class SessionContainerTest extends TestCase
         $container = new TestSessionContainer();
         $container->set('a', 'v');
         self::assertEquals(json_encode(
-            array('a' => 'v')
-        ), json_encode($container));
+            ['a' => 'v']
+        ), json_encode($container, JSON_THROW_ON_ERROR));
 
         $container->del('a');
         self::assertEquals(json_encode(
-            array()
-        ), json_encode($container));
+            []
+        ), json_encode($container, JSON_THROW_ON_ERROR));
     }
 }

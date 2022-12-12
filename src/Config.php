@@ -11,7 +11,7 @@ use JsonException;
 class Config
 {
     /** @var static[] */
-    protected static array $instances = array();
+    protected static array $instances = [];
     /** @var array */
     protected array $configs = [];
     /** @var string */
@@ -19,7 +19,6 @@ class Config
 
     /**
      * Config constructor.
-     * @param ?string $configPath
      * @throws JsonException
      */
     protected function __construct(?string $configPath)
@@ -30,7 +29,6 @@ class Config
     /**
      * initialize configuration
      * @param string|null $configPath is optional default: __DIR__/../../configs/default.json or {SERVER_ENV}.json
-     * @return bool
      * @throws JsonException
      */
     public function initConfig(string $configPath = null): bool
@@ -59,10 +57,6 @@ class Config
         return true;
     }
 
-    /**
-     * @param string $envName
-     * @return string|null
-     */
     private function getEnv(string $envName): ?string
     {
         $env = getenv($envName);
@@ -73,9 +67,6 @@ class Config
     }
 
     /**
-     * @param string $store
-     * @param ?string $configPath
-     * @return static
      * @throws JsonException
      */
     public static function getInstance(string $store = '_', ?string $configPath = null): static
@@ -87,19 +78,13 @@ class Config
     }
 
     /**
-     * @param string $key
      * @param mixed|null $default
-     * @return mixed
      */
     public function get(string $key, mixed $default = null): mixed
     {
         return ArrayUtil::get($this->configs, $key, $default);
     }
 
-    /**
-     * @param string $key
-     * @return bool
-     */
     public function has(string $key): bool
     {
         return ArrayUtil::has($this->configs, $key);

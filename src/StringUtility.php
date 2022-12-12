@@ -11,9 +11,6 @@ use Exception;
 class StringUtility
 {
     /**
-     * @param string $separator
-     * @param int $version
-     * @return string
      * @throws Exception
      */
     public static function uuid(string $separator = '-', int $version = 4): string
@@ -25,14 +22,12 @@ class StringUtility
     }
 
     /**
-     * @param string $separator
-     * @return string
      * @throws Exception
      */
     public static function randomUUID(string $separator = '-'): string
     {
         return sprintf(
-            implode($separator, array('%04x%04x', '%04x', '%04x', '%04x', '%04x%04x%04x')),
+            implode($separator, ['%04x%04x', '%04x', '%04x', '%04x', '%04x%04x%04x']),
             // 32 bits for "time_low"
             random_int(0, 0xffff),
             random_int(0, 0xffff),
@@ -53,9 +48,6 @@ class StringUtility
     }
 
     /**
-     * @param int $length
-     * @param bool $isFast
-     * @return false|string
      * @throws Exception
      */
     public static function random(int $length = 32, bool $isFast = true): bool|string

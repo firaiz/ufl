@@ -11,22 +11,13 @@ use Firaiz\Ufl\ArrayUtil;
 class SimpleRouter extends AbstractRouter
 {
 
-    protected array $routes = array();
+    protected array $routes = [];
 
-    /**
-     * @param string $routePath
-     * @param mixed $detector
-     * @return void
-     */
     public function add(string $routePath, mixed $detector): void
     {
         ArrayUtil::set($this->routes, $this->pathToKey(substr($routePath, 1)), $detector);
     }
 
-    /**
-     * @param string $path
-     * @return string
-     */
     protected function pathToKey(string $path): string
     {
         return ArrayUtil::toKey(explode(static::PATH_SEPARATOR, $path));
@@ -44,6 +35,6 @@ class SimpleRouter extends AbstractRouter
                 break;
             }
         }
-        return array($context, $params);
+        return [$context, $params];
     }
 }

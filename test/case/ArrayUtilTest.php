@@ -33,22 +33,18 @@ class ArrayUtilTest extends TestCase
             ]
         ];
         $ary = [];
-        self::assertEquals(json_encode($a), json_encode(ArrayUtil::add($ary, 'a.b', 'a')));
+        self::assertEquals(json_encode($a), json_encode(ArrayUtil::add($ary, 'a.b', 'a'), JSON_THROW_ON_ERROR));
     }
 
     public function testValue()
     {
-        self::assertEquals('1', ArrayUtil::value(static function() {
-            return '1';
-        }));
+        self::assertEquals('1', ArrayUtil::value(static fn() => '1'));
         self::assertNull(ArrayUtil::value(null));
         self::assertFalse(ArrayUtil::value(false));
         self::assertIsInt(ArrayUtil::value(0));
         self::assertIsFloat(ArrayUtil::value(0.0));
-        self::assertIsCallable(static function () {
-            return static function () {
+        self::assertIsCallable(static fn() => static function () {
 
-            };
         });
     }
 
@@ -56,7 +52,7 @@ class ArrayUtilTest extends TestCase
     {
         $array = [];
         ArrayUtil::set($array, ArrayUtil::toKey(['a','b','c','d','e']), 'aaa');
-        self::assertEquals(json_encode(['d' => ['e' => 'aaa']]),json_encode(ArrayUtil::get($array, 'a.b.c')));
+        self::assertEquals(json_encode(['d' => ['e' => 'aaa']]),json_encode(ArrayUtil::get($array, 'a.b.c'), JSON_THROW_ON_ERROR));
     }
 
     public function testToKeys()
@@ -81,7 +77,7 @@ class ArrayUtilTest extends TestCase
     {
         $array = [];
         ArrayUtil::set($array, ArrayUtil::toKey(['a','b','c','d','e']), 'aaa');
-        self::assertEquals(json_encode(['a' => ['b' => ['c' => ['d' => ['e' => 'aaa']]]]]),json_encode($array));
+        self::assertEquals(json_encode(['a' => ['b' => ['c' => ['d' => ['e' => 'aaa']]]]]),json_encode($array, JSON_THROW_ON_ERROR));
     }
 
     public function testCount()

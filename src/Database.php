@@ -17,13 +17,13 @@ use Firaiz\Ufl\Traits\SingletonTrait;
  */
 class Database
 {
-    public const PARAM_NULL = PDO::PARAM_NULL;
-    public const PARAM_INT = PDO::PARAM_INT;
-    public const PARAM_STR = PDO::PARAM_STR;
-    public const PARAM_LOB = PDO::PARAM_LOB;
-    public const PARAM_BOOL = PDO::PARAM_BOOL;
-    public const PARAM_INT_ARRAY = Connection::PARAM_INT_ARRAY;
-    public const PARAM_STR_ARRAY = Connection::PARAM_STR_ARRAY;
+    final public const PARAM_NULL = PDO::PARAM_NULL;
+    final public const PARAM_INT = PDO::PARAM_INT;
+    final public const PARAM_STR = PDO::PARAM_STR;
+    final public const PARAM_LOB = PDO::PARAM_LOB;
+    final public const PARAM_BOOL = PDO::PARAM_BOOL;
+    final public const PARAM_INT_ARRAY = Connection::PARAM_INT_ARRAY;
+    final public const PARAM_STR_ARRAY = Connection::PARAM_STR_ARRAY;
 
     use SingletonTrait;
 
@@ -49,13 +49,14 @@ class Database
         if (is_null($options)) {
             $config = Config::getInstance();
             if ($config->has('database.dsn')) {
-                $options = array('url' => $config->get('database.dsn'));
+                $options = ['url' => $config->get('database.dsn')];
             } else {
                 $options = $config->get('database');
             }
         }
 
         if ($this->connection instanceof Connection) {
+            /** @noinspection PhpInternalEntityUsedInspection */
             $params = $this->connection->getParams();
             if (
                 (isset($options['url']) && $options['url'] === $params['url']) ||
@@ -71,8 +72,6 @@ class Database
 
     /**
      * Whether an actual connection to the database is established.
-     *
-     * @return bool
      */
     public function isConnected(): bool
     {
@@ -82,9 +81,6 @@ class Database
         return $this->connection->isConnected();
     }
 
-    /**
-     * @return Connection|null
-     */
     public function getConnection(): ?Connection
     {
         return $this->connection;
@@ -92,8 +88,6 @@ class Database
 
     /**
      * Creates a new instance of a SQL query builder.
-     *
-     * @return QueryBuilder
      */
     public function builder(): QueryBuilder
     {
@@ -107,22 +101,18 @@ class Database
      * @param array $params The query parameters.
      * @param array $types The query parameter types.
      *
-     * @return array
      * @throws Exception
      */
-    public function fetchAll(string $sql, array $params = array(), array $types = array()): array
+    public function fetchAll(string $sql, array $params = [], array $types = []): array
     {
         return $this->select($sql, $params, $types)->fetchAllAssociative();
     }
 
     /**
      * @param $sql
-     * @param array $params
-     * @param array $types
-     * @return Result
      * @throws Exception
      */
-    public function select($sql, array $params = array(), array $types = array()): Result
+    public function select($sql, array $params = [], array $types = []): Result
     {
         return $this->connection->executeQuery($sql, $params, $types);
     }
@@ -135,10 +125,9 @@ class Database
      * @param array $params The query parameters.
      * @param array $types The query parameter types.
      *
-     * @return array
      * @throws Exception
      */
-    public function fetchRow(string $statement, array $params = array(), array $types = array()): array
+    public function fetchRow(string $statement, array $params = [], array $types = []): array
     {
         return $this->select($statement, $params, $types)->fetchAssociative();
     }
@@ -156,7 +145,7 @@ class Database
      *
      * @throws Exception
      */
-    public function delete(string $tableExpression, array $identifier, array $types = array()): int|string
+    public function delete(string $tableExpression, array $identifier, array $types = []): int|string
     {
         return $this->connection->delete($tableExpression, $identifier, $types);
     }
@@ -174,7 +163,7 @@ class Database
      * @return int|string The number of affected rows.
      * @throws Exception
      */
-    public function update(string $tableExpression, array $data, array $identifier, array $types = array()): int|string
+    public function update(string $tableExpression, array $data, array $identifier, array $types = []): int|string
     {
         return $this->connection->update($tableExpression, $data, $identifier, $types);
     }
@@ -191,7 +180,7 @@ class Database
      * @return int|string The number of affected rows.
      * @throws Exception
      */
-    public function insert(string $tableExpression, array $data, array $types = array()): int|string
+    public function insert(string $tableExpression, array $data, array $types = []): int|string
     {
         return $this->connection->insert($tableExpression, $data, $types);
     }
@@ -212,7 +201,6 @@ class Database
     /**
      * Starts a transaction by suspending auto-commit mode.
      *
-     * @return void
      * @throws Exception
      */
     public function begin(): void
@@ -223,7 +211,6 @@ class Database
     /**
      * Commits the current transaction.
      *
-     * @return void
      *
      * @throws ConnectionException If the commit failed due to no active transaction or
      * @throws Exception
@@ -268,8 +255,6 @@ class Database
 
     /**
      * Closes the connection.
-     *
-     * @return void
      */
     public function close(): void
     {

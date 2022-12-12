@@ -3,32 +3,24 @@
 namespace Firaiz\Ufl\Holiday;
 
 use DateTime;
+use Stringable;
 
 /**
  * Class Holiday
  * @package Firaiz\Ufl\Holiday
  */
-abstract class Holiday implements IHoliday
+abstract class Holiday implements IHoliday, Stringable
 {
-    /** @var ?string */
-    protected ?string $name = '';
-    /** @var ?DateTime */
-    protected ?DateTime $date = null;
-
     /**
      * Holiday constructor.
-     * @param string $name
-     * @param DateTime $date
+     * @param string|null $name
+     * @param DateTime|null $date
      */
-    public function __construct(string $name, DateTime $date)
+    public function __construct(protected ?string $name, protected ?DateTime $date)
     {
-        $this->name = $name;
-        $this->date = $date;
     }
 
     /**
-     * @param string $name
-     * @param DateTime $date
      * @return static
      */
     protected static function init(string $name, DateTime $date): static
@@ -36,7 +28,7 @@ abstract class Holiday implements IHoliday
         return new static($name, $date);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getName();
     }

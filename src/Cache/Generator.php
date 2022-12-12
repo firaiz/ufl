@@ -14,8 +14,6 @@ use Firaiz\Ufl\Exception\Cache\ClassNotFound;
 class Generator
 {
     /**
-     * @param Initializer $initializer
-     * @return CacheProvider
      * @throws ClassNotFound
      * @throws ReflectionException
      */

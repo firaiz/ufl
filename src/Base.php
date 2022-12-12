@@ -1,7 +1,7 @@
 <?php
 namespace Firaiz\Ufl;
 
-use \Firaiz\Ufl\Container\SessionContainer;
+use Firaiz\Ufl\Container\SessionContainer;
 use Firaiz\Ufl\Traits\GetSetPropertiesTrait;
 
 /**
@@ -55,14 +55,11 @@ abstract class Base
      */
     private function initClassName($className): string
     {
-        if (str_contains($className, '\\')) {
+        if (str_contains((string) $className, '\\')) {
             return $className;
         }
         return __NAMESPACE__ . '\\' . $className;
     }
 
-    /**
-     * @return void
-     */
     abstract public function execute(): void;
 }

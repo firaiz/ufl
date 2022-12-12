@@ -32,9 +32,6 @@ class Header
         }
     }
 
-    /**
-     * @param int $code
-     */
     public function code(int $code): void
     {
         http_response_code($code);
@@ -43,25 +40,19 @@ class Header
     private function setHeaders($headers, $isOverWrite): void
     {
         foreach ($headers as $name => $value) {
-            $namedValues = ArrayUtil::get($this->headers, $name, array());
+            $namedValues = ArrayUtil::get($this->headers, $name, []);
             foreach ((array)$value as $val) {
                 $namedValues[] = $val;
             }
-            $this->headers[$name] = $isOverWrite ? (is_array($value) ? $value : array($value)) : $namedValues;
+            $this->headers[$name] = $isOverWrite ? (is_array($value) ? $value : [$value]) : $namedValues;
         }
     }
 
-    /**
-     * @param array $headers
-     */
     public function add(array $headers): void
     {
         $this->setHeaders($headers, false);
     }
 
-    /**
-     * @param array $headers
-     */
     public function set(array $headers): void
     {
         $this->setHeaders($headers, true);
@@ -72,12 +63,9 @@ class Header
      */
     public function reset(): void
     {
-        $this->headers = array();
+        $this->headers = [];
     }
 
-    /**
-     * @return bool
-     */
     public function isSent(): bool
     {
         return headers_sent();

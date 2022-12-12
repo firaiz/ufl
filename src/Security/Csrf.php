@@ -13,9 +13,9 @@ use Firaiz\Ufl\StringUtility;
  */
 class Csrf
 {
-    public const CSRF_TAG = '__secure__';
-    public const SECRET_TOKEN = 'SecretToken';
-    public const FIXED_TOKEN = 'SecretFixedToken';
+    final public const CSRF_TAG = '__secure__';
+    final public const SECRET_TOKEN = 'SecretToken';
+    final public const FIXED_TOKEN = 'SecretFixedToken';
 
     /**
      * @var ?SessionContainer
@@ -23,7 +23,6 @@ class Csrf
     private static ?SessionContainer $container = null;
 
     /**
-     * @return SessionContainer
      * @throws NotStarted
      */
     private static function container(): SessionContainer
@@ -42,7 +41,6 @@ class Csrf
 
     /**
      * @param string|null $token
-     * @return string
      * @throws NotStarted
      */
     protected static function generateToken(string $token = null): string
@@ -57,7 +55,6 @@ class Csrf
     }
 
     /**
-     * @return string
      * @throws NotStarted
      */
     public static function takeToken(): string
@@ -69,8 +66,6 @@ class Csrf
     }
 
     /**
-     * @param string $token
-     * @return bool
      * @throws NotStarted
      */
     public static function isValidToken(string $token): bool
@@ -79,7 +74,6 @@ class Csrf
     }
 
     /**
-     * @return string
      * @throws NotStarted
      */
     public static function regenerateToken(): string

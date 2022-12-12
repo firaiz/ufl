@@ -8,22 +8,18 @@ namespace Firaiz\Ufl;
  */
 class ArrayUtil
 {
-    public const DELIMITER = '.';
-    public const REPLACEMENT = '{__REPLACE__}';
+    final public const DELIMITER = '.';
+    final public const REPLACEMENT = '{__REPLACE__}';
     public static string $delimiter = self::DELIMITER;
 
     /**
      * Add an element to an array using "dot" notation
      *
-     * @param mixed $array
-     * @param string $key
-     * @param mixed $value
      *
-     * @return array
      */
     public static function add(mixed &$array, string $key, mixed $value): array
     {
-        $setArray = self::get($array, $key, array());
+        $setArray = self::get($array, $key, []);
         $setArray[] = $value;
         self::set($array, $key, $setArray);
         return $array;
@@ -32,11 +28,8 @@ class ArrayUtil
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param mixed $array
-     * @param ?string $key
      * @param mixed|null $default
      *
-     * @return mixed
      */
     public static function get(mixed $array, ?string $key, mixed $default = null): mixed
     {
@@ -59,10 +52,6 @@ class ArrayUtil
         return $array;
     }
 
-    /**
-     * @param string $key
-     * @return array
-     */
     public static function toKeys(string $key): array
     {
         return explode(self::$delimiter, $key);
@@ -71,9 +60,7 @@ class ArrayUtil
     /**
      * Return the default value of the given value.
      *
-     * @param mixed $value
      *
-     * @return mixed
      */
     public static function value(mixed $value): mixed
     {
@@ -88,8 +75,6 @@ class ArrayUtil
      * @param array $array
      * @param ?string $key
      * @param mixed $value
-     *
-     * @return array
      */
     public static function set(array &$array, ?string $key, mixed $value): array
     {
@@ -106,7 +91,7 @@ class ArrayUtil
             // to hold the next value, allowing us to create the arrays to hold final
             // values at the correct depth. Then we'll keep digging into the array.
             if (!isset($array[$key]) || !is_array($array[$key])) {
-                $array[$key] = array();
+                $array[$key] = [];
             }
 
             $array =& $array[$key];
@@ -117,22 +102,13 @@ class ArrayUtil
         return $array;
     }
 
-    /**
-     * @param array $array
-     * @param string $key
-     * @return int
-     */
     public static function count(array $array, string $key): int
     {
-        return count(self::get($array, $key, array()));
+        return is_countable(self::get($array, $key, [])) ? count(self::get($array, $key, [])) : 0;
     }
 
     /**
      * Check if an item exists in an array using "dot" notation.
-     *
-     * @param array $array
-     * @param ?string $key
-     * @return bool
      */
     public static function has(array $array, ?string $key): bool
     {
@@ -158,7 +134,6 @@ class ArrayUtil
      * Get the first element of an array. Useful for method chaining.
      *
      * @param array $array
-     * @return mixed
      */
     public static function head(mixed $array): mixed
     {
@@ -167,23 +142,15 @@ class ArrayUtil
 
     /**
      * Return the dot key string from number
-     *
-     * @param string $key
-     * @param int $number
-     * @return string|null
      */
     public static function keyValue(string $key, int $number): ?string
     {
         $keys = self::toKeys($key);
-        return isset($keys[$number]) ? str_replace(self::REPLACEMENT, self::$delimiter, $keys[$number]) : null;
+        return isset($keys[$number]) ? str_replace(self::REPLACEMENT, self::$delimiter, (string) $keys[$number]) : null;
     }
 
     /**
      * Convert to key string
-     *
-     * @param array|string $value
-     * @param bool $disableEscape
-     * @return string
      */
     public static function toKey(array|string $value, bool $disableEscape = false): string
     {
@@ -194,9 +161,7 @@ class ArrayUtil
         return implode(
             self::$delimiter,
             array_map(
-                static function ($val) {
-                    return str_replace(ArrayUtil::$delimiter, ArrayUtil::REPLACEMENT, (string)$val);
-                },
+                static fn($val) => str_replace(ArrayUtil::$delimiter, ArrayUtil::REPLACEMENT, (string)$val),
                 (array)$value
             )
         );

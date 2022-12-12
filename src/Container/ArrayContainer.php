@@ -8,12 +8,9 @@ namespace Firaiz\Ufl\Container;
  */
 class ArrayContainer extends AbstractContainer
 {
-    /**
-     * @return array
-     */
     protected function &makeContainer(): array
     {
-        static $val = array();
+        static $val = [];
         return $val;
     }
 }

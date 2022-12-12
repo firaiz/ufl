@@ -12,22 +12,15 @@ class PrefixClassRouter extends ClassRouter
     /**
      * @var PrefixClassRouteAppender[]
      */
-    protected array $prefixes = array();
+    protected array $prefixes = [];
     protected string $usePrefix = '';
 
-    /**
-     * @param string $prefix
-     * @return PrefixClassRouteAppender
-     */
     public function setPrefix(string $prefix): PrefixClassRouteAppender
     {
         $this->prefixes[$prefix] = new PrefixClassRouteAppender();
         return $this->prefixes[$prefix];
     }
 
-    /**
-     * @return string
-     */
     public function getPathInfo(): string
     {
         $pathInfo = parent::getPathInfo();
@@ -43,11 +36,6 @@ class PrefixClassRouter extends ClassRouter
         return '/';
     }
 
-    /**
-     * @param string $routePath
-     * @param mixed $detector
-     * @return void
-     */
     public function add(string $routePath, mixed $detector): void
     {
         foreach ($this->prefixes as $appender) {
@@ -55,13 +43,10 @@ class PrefixClassRouter extends ClassRouter
         }
     }
 
-    /**
-     * @return array
-     */
     protected function getRoutes(): array
     {
         if (!isset($this->prefixes[$this->usePrefix])) {
-            return array();
+            return [];
         }
         return $this->prefixes[$this->usePrefix]->getRoutes();
     }

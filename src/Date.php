@@ -13,12 +13,12 @@ use Exception;
  */
 class Date
 {
-    public const INTERVAL_TYPE_YEAR = 'Y';
-    public const INTERVAL_TYPE_MONTH = 'M';
-    public const INTERVAL_TYPE_DAY = 'D';
-    public const INTERVAL_TYPE_HOUR = 'H';
-    public const INTERVAL_TYPE_MINUETS = 'm';
-    public const INTERVAL_TYPE_SECOND = 'S';
+    final public const INTERVAL_TYPE_YEAR = 'Y';
+    final public const INTERVAL_TYPE_MONTH = 'M';
+    final public const INTERVAL_TYPE_DAY = 'D';
+    final public const INTERVAL_TYPE_HOUR = 'H';
+    final public const INTERVAL_TYPE_MINUETS = 'm';
+    final public const INTERVAL_TYPE_SECOND = 'S';
 
     /**
      * @param string|null $timezone init timezone
@@ -32,20 +32,16 @@ class Date
     }
 
     /**
-     * @param DateTime|int|string|null $date
-     * @return string
      * @throws Exception
      */
     public static function week(DateTime|int|string|null $date): string
     {
-        $weekText = array('日', '月', '火', '水', '木', '金', '土');
+        $weekText = ['日', '月', '火', '水', '木', '金', '土'];
         $date = static::object($date);
         return $weekText[$date->format('w')];
     }
 
     /**
-     * @param DateTime|int|string|null $date
-     * @return DateTime
      * @throws Exception
      */
     public static function object(DateTime|int|string|null $date = null): DateTime
@@ -64,8 +60,6 @@ class Date
     }
 
     /**
-     * @param DateTime|int|string|null $time
-     * @param int $size
      * @return DateTime[]
      * @throws Exception
      */
@@ -83,9 +77,6 @@ class Date
     }
 
     /**
-     * @param string $type
-     * @param int $span
-     * @return DateInterval
      * @throws Exception
      */
     public static function createSimpleInterval(string $type, int $span = 1): DateInterval
@@ -98,8 +89,6 @@ class Date
     }
 
     /**
-     * @param DateTime $startDate
-     * @param DateTime $endDate
      * @return DateTime[]
      * @throws Exception
      */
@@ -107,7 +96,7 @@ class Date
     {
         $dateIterator = new DatePeriod($startDate, static::createSimpleInterval(static::INTERVAL_TYPE_DAY), $endDate);
 
-        $result = array();
+        $result = [];
         foreach ($dateIterator as $date) {
             $result[] = $date;
         }
@@ -115,9 +104,6 @@ class Date
     }
 
     /**
-     * @param DateTime|int|string|null $startYear
-     * @param int $dateMargin
-     * @return array
      * @throws Exception
      */
     public static function createYears(DateTime|int|string|null $startYear, int $dateMargin = 2): array
@@ -128,7 +114,7 @@ class Date
         $endDate->add(static::createSimpleInterval(static::INTERVAL_TYPE_YEAR, $dateMargin));
         $dateIterator = new DatePeriod($startDate, static::createSimpleInterval(static::INTERVAL_TYPE_YEAR), $endDate);
 
-        $result = array();
+        $result = [];
         foreach ($dateIterator as $date) {
             /** @var DateTime $date */
             $year = $date->format('Y');
@@ -137,30 +123,12 @@ class Date
         return $result;
     }
 
-    /**
-     * @return array
-     */
     public static function createMonths(): array
     {
-        return array(
-            1 => 1,
-            2 => 2,
-            3 => 3,
-            4 => 4,
-            5 => 5,
-            6 => 6,
-            7 => 7,
-            8 => 8,
-            9 => 9,
-            10 => 10,
-            11 => 11,
-            12 => 12
-        );
+        return [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12];
     }
 
     /**
-     * @param string $format
-     * @return string
      * @throws Exception
      */
     public static function nowString(string $format = 'Y-m-d H:i:s'): string
@@ -169,7 +137,6 @@ class Date
     }
 
     /**
-     * @return DateTime
      * @throws Exception
      */
     public static function now(): DateTime
@@ -178,7 +145,6 @@ class Date
     }
 
     /**
-     * @return DateTime
      * @throws Exception
      */
     public static function today(): DateTime
@@ -187,8 +153,6 @@ class Date
     }
 
     /**
-     * @param DateTime|int|string|null $date
-     * @return DateTime
      * @throws Exception
      */
     public static function toDayTime(DateTime|int|string|null $date = null): DateTime
@@ -199,9 +163,6 @@ class Date
     }
 
     /**
-     * @param DateTime $base
-     * @param DateTime $target
-     * @return DateInterval
      * @throws Exception
      */
     public static function diffDate(DateTime $base, DateTime $target): DateInterval
@@ -213,9 +174,6 @@ class Date
 
     /**
      * @param string $addType use INTERVAL_TYPE_* constants
-     * @param DateTime $date
-     * @param int $dateCount
-     * @return DateTime
      * @throws Exception
      */
     public static function add(string $addType, DateTime $date, int $dateCount): DateTime
@@ -226,8 +184,6 @@ class Date
     }
 
     /**
-     * @param DateTime|int|string|null $date
-     * @return DateTime
      * @throws Exception
      */
     public static function firstDayOfThisMonth(DateTime|int|string|null $date): DateTime
@@ -238,8 +194,6 @@ class Date
     }
 
     /**
-     * @param DateTime|int|string|null $date
-     * @return DateTime
      * @throws Exception
      */
     public static function lastDayOfThisMonth(DateTime|int|string|null $date): DateTime
@@ -252,7 +206,6 @@ class Date
 
     /**
      * @param $week 0-6 sunday - saturday
-     * @return string
      */
     public static function weekToText($week): string
     {
@@ -270,7 +223,6 @@ class Date
 
     /**
      * @param $weekNo 1-5
-     * @return string
      */
     public static function monthWeekNoToText($weekNo): string
     {
@@ -285,11 +237,8 @@ class Date
     }
 
     /**
-     * @param int $year
-     * @param int $month
      * @param $weekNo 1-5
      * @param $week 0-6
-     * @return int
      * @throws Exception
      */
     public static function calcWeekDay(int $year, int $month, $weekNo, $week): int
@@ -306,11 +255,7 @@ class Date
     }
 
     /**
-     * @param int $year
-     * @param int $month
-     * @param int $day
      * @param string|null $format
-     * @return DateTime|string
      * @throws Exception
      */
     public static function toDate(int $year, int $month, int $day, string $format = null): DateTime|string

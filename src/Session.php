@@ -29,18 +29,11 @@ class Session
         $this->status = session_start();
     }
 
-    /**
-     * @return bool
-     */
     public function isStarted(): bool
     {
         return $this->status;
     }
 
-    /**
-     * @param bool $deleteOld
-     * @return bool
-     */
     public function regenerate(bool $deleteOld = false): bool
     {
         if (!$this->isStarted()) {
@@ -50,26 +43,16 @@ class Session
         return true;
     }
 
-    /**
-     * @param string $name
-     * @param mixed $value
-     */
     public function setConfig(string $name, mixed $value): void
     {
         ini_set('session.' . $name, $value);
     }
 
-    /**
-     * @return array
-     */
     public function &getContainer(): array
     {
         return $_SESSION;
     }
 
-    /**
-     * @return string|bool|null
-     */
     public function getSID(): string|bool|null
     {
         if (!$this->isStarted()) {

@@ -31,8 +31,6 @@ class SmartyRender implements IRender
     }
 
     /**
-     * @param array $configs
-     * @return void
      * @throws SmartyException
      */
     public function setConfigs(array $configs): void
@@ -69,10 +67,7 @@ class SmartyRender implements IRender
     }
 
     /**
-     * @param array|string $name
      * @param mixed|null $var
-     * @param bool $noCache
-     * @return static
      */
     public function assign(array|string $name, mixed $var = null, bool $noCache = false): static
     {
@@ -81,8 +76,6 @@ class SmartyRender implements IRender
     }
 
     /**
-     * @param string $template
-     * @return string
      * @throws Exception
      * @throws SmartyException
      */
@@ -95,17 +88,11 @@ class SmartyRender implements IRender
         return $this->smarty->fetch($template);
     }
 
-    /**
-     * @return bool
-     */
     public function isLayoutMode(): bool
     {
         return is_string($this->layout);
     }
 
-    /**
-     * @return string|null
-     */
     public function getContentName(): ?string
     {
         return $this->isLayoutMode() ? $this->contentName : null;
@@ -113,16 +100,12 @@ class SmartyRender implements IRender
 
     /**
      * @param $contentName
-     * @return void
      */
     public function setContentName($contentName): void
     {
         $this->contentName = $contentName;
     }
 
-    /**
-     * @return ?string
-     */
     public function getLayoutPath(): ?string
     {
         return $this->layout;
@@ -130,7 +113,6 @@ class SmartyRender implements IRender
 
     /**
      * @param string $template
-     * @return bool
      * @throws SmartyException
      */
     public function templateExists($template): bool
@@ -140,7 +122,6 @@ class SmartyRender implements IRender
 
     /**
      * @param ?string $layout is template path
-     * @return void
      */
     public function setLayoutPath(?string $layout): void
     {

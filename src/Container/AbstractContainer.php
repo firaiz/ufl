@@ -36,7 +36,7 @@ abstract class AbstractContainer implements IContainer
     {
         $container =& $this->getContainer();
         if (is_null($name)) {
-            $container = array();
+            $container = [];
             return;
         }
 
@@ -51,7 +51,7 @@ abstract class AbstractContainer implements IContainer
 
         $lastKey = array_pop($keys);
         $key = ArrayUtil::toKey($keys);
-        $setValue = ArrayUtil::get($container, $key, array());
+        $setValue = ArrayUtil::get($container, $key, []);
         if (array_key_exists($lastKey, $setValue)) {
             unset($setValue[$lastKey]);
         }
@@ -59,9 +59,6 @@ abstract class AbstractContainer implements IContainer
         $this->set($key, $setValue);
     }
 
-    /**
-     * @return mixed
-     */
     protected function &getContainer(): mixed
     {
         if (!is_array($this->container)) {
@@ -78,7 +75,7 @@ abstract class AbstractContainer implements IContainer
         $container =& $this->makeContainer();
         if (is_string($this->prefix)) {
             if (!array_key_exists($this->prefix, $container)) {
-                $container[$this->prefix] = array();
+                $container[$this->prefix] = [];
             }
             $this->container =& $container[$this->prefix];
             return;
@@ -88,20 +85,16 @@ abstract class AbstractContainer implements IContainer
 
     abstract protected function &makeContainer();
 
-    /**
-     * @param string $name
-     * @param mixed $value
-     */
     public function set(string $name, mixed $value): void
     {
-        ArrayUtil::set($this->getContainer(), $name, $value);
+        $getContainer = $this->getContainer();
+        ArrayUtil::set($getContainer, $name, $value);
     }
 
     /**
      * get session data
      * @param $name
      * @param mixed|null $default
-     * @return mixed
      */
     public function get($name, mixed $default = null):mixed
     {

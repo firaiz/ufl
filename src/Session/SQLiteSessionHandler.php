@@ -18,19 +18,19 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     /** @var ?PDO */
     private ?PDO $pdo = null;
     /** @var ?string */
-    private ?string $savePath;
+    private ?string $savePath = null;
 
     public function __construct()
     {
         if (PHP_VERSION_ID < 504000) {
             session_set_save_handler(
-                array($this, "open"),
-                array($this, "close"),
-                array($this, "read"),
-                array($this, "write"),
-                array($this, "destroy"),
-                array($this, "gc"),
-                array($this, "create_sid")
+                $this->open(...),
+                $this->close(...),
+                $this->read(...),
+                $this->write(...),
+                $this->destroy(...),
+                $this->gc(...),
+                $this->create_sid(...)
             );
             register_shutdown_function('session_write_close');
         } else {
@@ -38,9 +38,6 @@ class SQLiteSessionHandler implements SessionHandlerInterface
         }
     }
 
-    /**
-     * @return int
-     */
     protected function getTime(): int
     {
         $oldTZ = @date_default_timezone_get();
@@ -50,9 +47,6 @@ class SQLiteSessionHandler implements SessionHandlerInterface
         return $dateTime->format('YmdHis');
     }
 
-    /**
-     * @return PDO
-     */
     protected function connect(): PDO
     {
         if (!($this->pdo instanceof PDO)) {
@@ -62,33 +56,21 @@ class SQLiteSessionHandler implements SessionHandlerInterface
         return $this->pdo;
     }
 
-    /**
-     * @return PDOStatement
-     */
     protected function createPrepare(): PDOStatement
     {
         return $this->connect()->prepare('CREATE TABLE IF NOT EXISTS sessions ("sid" TEXT(64) NOT NULL,"data" TEXT,"expire_date" INTEGER NOT NULL,PRIMARY KEY ("sid" ASC));');
     }
 
-    /**
-     * @return PDOStatement
-     */
     protected function writePrepare(): PDOStatement
     {
         return $this->connect()->prepare('REPLACE INTO sessions ("sid", "data", "expire_date") VALUES (:sid, :data, :expire);');
     }
 
-    /**
-     * @return PDOStatement
-     */
     protected function readPrepare(): PDOStatement
     {
         return $this->connect()->prepare('SELECT * FROM sessions WHERE sid = :sid');
     }
 
-    /**
-     * @return PDOStatement
-     */
     protected function deletePrepare(): PDOStatement
     {
         return $this->connect()->prepare('DELETE FROM sessions WHERE sid = :sid');
@@ -100,9 +82,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param PDOStatement $stmt
      * @param array|null $params
-     * @return bool
      */
     protected function exec(PDOStatement $stmt, array $params = null): bool
     {
@@ -110,7 +90,6 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     }
 
     /**
-     * @return string
      * @throws Exception
      */
     public function sid(): string
@@ -119,7 +98,6 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     }
 
     /**
-     * @return string
      * @throws Exception
      */
     public function create_sid(): string
@@ -155,7 +133,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      */
     #[ReturnTypeWillChange] public function destroy(string $id): bool
     {
-        return $this->exec($this->deletePrepare(), array(':sid' => $id));
+        return $this->exec($this->deletePrepare(), [':sid' => $id]);
     }
 
     /**
@@ -173,7 +151,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
      */
     #[ReturnTypeWillChange] public function gc(int $max_lifetime): bool
     {
-        return $this->exec($this->gcPrepare(), array(':lifetime' => $this->getTime() - $max_lifetime));
+        return $this->exec($this->gcPrepare(), [':lifetime' => $this->getTime() - $max_lifetime]);
     }
 
     /**
@@ -207,7 +185,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     #[ReturnTypeWillChange] public function read(string $id): string
     {
         $stmt = $this->readPrepare();
-        $stmt->execute(array(':sid' => $id));
+        $stmt->execute([':sid' => $id]);
         $row = $stmt->fetch();
         $stmt->closeCursor();
         return is_array($row) ? $row['data'] : '';
@@ -234,11 +212,7 @@ class SQLiteSessionHandler implements SessionHandlerInterface
     {
         return $this->exec(
             $this->writePrepare(),
-            array(
-                ':sid' => $id,
-                ':data' => $data,
-                ':expire' => $this->getTime()
-            )
+            [':sid' => $id, ':data' => $data, ':expire' => $this->getTime()]
         );
     }
 }

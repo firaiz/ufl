@@ -87,8 +87,7 @@ abstract class AbstractContainer implements IContainer
 
     public function set(string $name, mixed $value): void
     {
-        $getContainer = $this->getContainer();
-        ArrayUtil::set($getContainer, $name, $value);
+        ArrayUtil::set($this->getContainer(), $name, $value);
     }
 
     /**

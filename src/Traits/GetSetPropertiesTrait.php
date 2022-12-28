@@ -19,4 +19,9 @@ trait GetSetPropertiesTrait
     {
         return isset($this->properties[$name]);
     }
+
+    protected function getProperties(): array
+    {
+        return $this->properties;
+    }
 }

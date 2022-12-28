@@ -205,11 +205,9 @@ class Model implements Serializable, JsonSerializable
         return $result;
     }
 
-    public function toArray(): ?array
+    public function toArray(): array
     {
-        $row = get_object_vars($this);
-        unset($row['_initValues'], $row['_findKeyName']);
-        return $row;
+        return $this->getProperties();
     }
 
     public function diff(?array $row = null): array
@@ -220,7 +218,7 @@ class Model implements Serializable, JsonSerializable
             $row = static::toFiledArray($row);
         }
 
-        if (count((array) $row) <= 0) {
+        if (count($row) <= 0) {
             return [];
         }
 
